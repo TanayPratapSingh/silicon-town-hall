@@ -1,0 +1,8 @@
+# Raw and extracted public comments carry names and email addresses. Never commit them.
+data/
+
+.env
+.venv/
+__pycache__/
+*.pyc
+.DS_Store

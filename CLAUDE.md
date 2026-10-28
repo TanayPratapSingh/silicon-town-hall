@@ -1,0 +1,18 @@
+# Silicon Town Hall: working context
+
+IST 688 Group 6 final project. LLM agents built from Census data read the I-81 viaduct impact statement, deliberate, and write public comments, which are scored against the real comments NYSDOT published. Read `README.md`, `docs/proposal.md` and `docs/roadmap.md` before structural changes.
+
+## House rules
+
+1. **Never commit `data/`.** Public comments carry names and email addresses. Only aggregate counts go in `runs/`.
+2. **Never invent a metric.** Every number in `docs/` or the README traces to a command and a file in `runs/`. Pilot numbers are labeled as pilot numbers in the same sentence.
+3. **Report failures.** Where simulated residents miss or misportray a group, that is a result, not something to tune away.
+4. **No em dashes** in any file, comment, commit message or output, and no hyphens in compound phrases like "real time" in prose.
+5. **Label every simulated output as simulated** in the app and in the docs.
+
+## Commands
+
+```bash
+python scripts/download.py    # source PDFs into data/raw/
+python scripts/pdf_stats.py   # runs/pdf_stats.csv
+```
