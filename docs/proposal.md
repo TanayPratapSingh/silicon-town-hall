@@ -1,7 +1,5 @@
 # Silicon Town Hall: IST 688 Final Project Proposal
 
-Nov 4, 2026
-
 We will build a town of AI residents for Syracuse, have them react to the I-81 viaduct plan, and check their comments against what real residents told the state. We want to know whether LLM agents built from Census data can predict a real community's concerns, and whose concerns they miss.
 
 ## Why I-81
