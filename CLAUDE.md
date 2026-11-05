@@ -1,6 +1,6 @@
 # Silicon Town Hall: working context
 
-IST 688 Group 6 final project. LLM agents built from Census data read the I-81 viaduct impact statement, deliberate, and write public comments, which are scored against the real comments NYSDOT published. Read `README.md`, `docs/proposal.md` and `docs/roadmap.md` before structural changes.
+IST 688 Group 1 final project. LLM agents built from Census data read the I-81 viaduct impact statement, deliberate, and write public comments, which are scored against the real comments NYSDOT published. Read `README.md`, `docs/proposal.md` and `docs/roadmap.md` before structural changes.
 
 ## House rules
 
