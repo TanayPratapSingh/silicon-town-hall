@@ -1,0 +1,85 @@
+{
+  "pages": 3632,
+  "pages_needing_ocr": 319,
+  "pages_ocr_text_used": 255,
+  "pages_still_20_words_or_fewer": 71,
+  "needing_ocr_by_group": {
+    "feis_comments": 219,
+    "deis_comments": 14,
+    "decision": 36,
+    "feis_chapters": 50
+  },
+  "comments": 3009,
+  "comments_per_file": {
+    "feis_comments/i-81-fdr-feis-comment-submissions-d-through-k.pdf": 83,
+    "feis_comments/i-81-fdr-feis-comment-submissions-nyclu.pdf": 44,
+    "feis_comments/i-81-fdr-feis-comment-submissions-through-c.pdf": 73,
+    "feis_comments/i-81-fdr-feis-comment-submissions-u-through-z.pdf": 24,
+    "feis_comments/i81-fdr-feis-comment-submissions-l-through-nolan.pdf": 51,
+    "feis_comments/i81-fdr-feis-comment-submissions-o-through-r.pdf": 31,
+    "feis_comments/i81-fdr-feis-comment-submissions-s-and-t.pdf": 38,
+    "deis_comments/Appendix M-6_Part 1_Public Hearing Transcripts__April 2022.pdf": 65,
+    "deis_comments/Appendix M-6_Part 2_Neighborhood Meeting Transcripts__April 2022.pdf": 81,
+    "deis_comments/Appendix M-6_Part 3_Voicemail Transcripts__April 2022.pdf": 63,
+    "deis_comments/Appendix M-6_Part 4_Online Comment Form__April 2022.pdf": 2380,
+    "deis_comments/Appendix M-6_Part 5_Written Comment Forms__April 2022.pdf": 76
+  },
+  "comments_per_kind": {
+    "form_email": 92,
+    "email": 187,
+    "letter": 12,
+    "voicemail": 73,
+    "petition": 43,
+    "hearing": 65,
+    "neighborhood_meeting": 81,
+    "online_form": 2380,
+    "written_form": 56,
+    "flyer": 20
+  },
+  "comments_with_quote_cut": 8,
+  "comments_with_zip": 62,
+  "replacements": {
+    "NAME": 1746,
+    "PHONE": 271,
+    "EMAIL": 50,
+    "ADDRESS": 258
+  },
+  "audit_after_scrub": {
+    "emails_left": 0,
+    "phones_left": 0,
+    "known_full_names_left": 0
+  },
+  "nysdot_list_rows_by_type": {
+    "appendix-response-comments.pdf": {
+      "Petition": 604,
+      "Email": 285,
+      "Letter": 32,
+      "Voicemail": 11
+    },
+    "Appendix M-5_Responses to Comments Received__April 2022.pdf": {
+      "Postcard": 1270,
+      "Petition": 1357,
+      "Email": 1882,
+      "Online Form": 2519,
+      "Letter": 117,
+      "Written Form": 76,
+      "Oral": 138,
+      "Voicemail": 52,
+      "unparsed": 2
+    }
+  },
+  "codebook_topics": 13,
+  "appendix_a_toc_entries": 27,
+  "appendix_a_headings_found": 27,
+  "handcheck_sample": 100,
+  "handcheck_kinds": {
+    "online_form": 81,
+    "email": 5,
+    "hearing": 5,
+    "written_form": 2,
+    "neighborhood_meeting": 2,
+    "form_email": 2,
+    "flyer": 1,
+    "voicemail": 2
+  }
+}
