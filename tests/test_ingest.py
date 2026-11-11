@@ -144,6 +144,8 @@ def test_tagger_parses_json_and_drops_unknown_codes():
     assert tagger.parse("not json", ["c"], CODEBOOK) == {}
     assert tagger.parse('{"codes": "4"}', ["c"], CODEBOOK) == {"c": []}
     assert tagger.parse('{"tags": {"a": ["4"], "b": []}}', ["a", "b", "z"], CODEBOOK) == {"a": ["4"], "b": []}
+    assert tagger.parse('{"tags": {"c1": ["4"]}}', ["c"], CODEBOOK) == {"c": ["4"]}  # one comment, renamed id
+    assert tagger.parse('{"tags": {"x": ["4"]}}', ["a", "b"], CODEBOOK) == {}  # in a batch a wrong id stays missing
 
 
 def test_tag_with_fake_llm():

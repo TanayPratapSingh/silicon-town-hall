@@ -58,6 +58,8 @@ def parse(reply, ids, codebook):
     tags = data.get("tags", data)
     if len(ids) == 1 and "codes" in data:
         tags = {ids[0]: data["codes"]}
+    elif len(ids) == 1 and isinstance(tags, dict) and len(tags) == 1:
+        tags = {ids[0]: next(iter(tags.values()))}  # one comment sent: the model sometimes renames its id ("c1" for "c")
     return {i: valid(tags[i], codebook) for i in ids if isinstance(tags, dict) and i in tags}
 
 

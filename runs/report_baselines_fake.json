@@ -1,0 +1,18 @@
+{
+  "label": "FAKE: FakeLLM template and the pilot's 6 FAKE pages, not a model and not the policy. Simulated.",
+  "run_type": "fake",
+  "command": "python -m townhall.report.baselines --fake",
+  "date": "2026-11-11",
+  "residents_file": "data/processed/town/residents.json",
+  "no_personas": {
+    "comments": 20,
+    "with_cited_pages": 20,
+    "all_labeled_simulated": true
+  },
+  "skip_meeting": {
+    "comments": 20,
+    "with_cited_pages": 20,
+    "all_labeled_simulated": true
+  },
+  "token_usage": "none: FakeLLM"
+}
