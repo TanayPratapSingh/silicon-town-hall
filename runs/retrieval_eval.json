@@ -1,0 +1,251 @@
+{
+ "command": "python -m townhall.retrieval.evaluate --vision",
+ "testset": "runs/retrieval_testset.csv",
+ "gold": "one page per question (file plus 1 based physical page); any other page counts as a miss",
+ "secondary_metric": "recall@10 counting the page just before or after the gold page in the same file, because sections run across page breaks; strict numbers are the headline",
+ "returned_per_setting": "top 50 without the cross encoder, top 20 with it (the cross encoder trims to 20)",
+ "anchor_overlap": {
+  "mean": 0.02,
+  "max": 0.2,
+  "questions_with_any_overlap": 4,
+  "meaning": "share of a question's content words that also appear in the heading or title it was written from"
+ },
+ "settings": {
+  "text_only": {
+   "search_kwargs": {
+    "mode": "text",
+    "rerank": false,
+    "vision": false
+   },
+   "stages": {
+    "retrieval": "text",
+    "fusion": "single list",
+    "candidates": 50,
+    "cross_encoder": "off",
+    "vision": "off",
+    "cited_boost": "no cited pages"
+   },
+   "seconds_per_query": 0.05,
+   "questions": 30,
+   "recall@5": 0.333,
+   "recall@10": 0.467,
+   "mrr@10": 0.179,
+   "found_in_returned_list": 21,
+   "secondary_recall@10_gold_page_plus_or_minus_1": 0.633,
+   "by_kind": {
+    "map": {
+     "questions": 9,
+     "recall@5": 0.333,
+     "recall@10": 0.444,
+     "mrr@10": 0.131,
+     "found_in_returned_list": 6
+    },
+    "table": {
+     "questions": 7,
+     "recall@5": 0.571,
+     "recall@10": 0.571,
+     "mrr@10": 0.183,
+     "found_in_returned_list": 7
+    },
+    "text": {
+     "questions": 14,
+     "recall@5": 0.214,
+     "recall@10": 0.429,
+     "mrr@10": 0.208,
+     "found_in_returned_list": 8
+    }
+   }
+  },
+  "image_only": {
+   "search_kwargs": {
+    "mode": "image",
+    "rerank": false,
+    "vision": false
+   },
+   "stages": {
+    "retrieval": "image",
+    "fusion": "single list",
+    "candidates": 50,
+    "cross_encoder": "off",
+    "vision": "off",
+    "cited_boost": "no cited pages"
+   },
+   "seconds_per_query": 0.02,
+   "questions": 30,
+   "recall@5": 0.133,
+   "recall@10": 0.133,
+   "mrr@10": 0.084,
+   "found_in_returned_list": 6,
+   "secondary_recall@10_gold_page_plus_or_minus_1": 0.133,
+   "by_kind": {
+    "map": {
+     "questions": 9,
+     "recall@5": 0.444,
+     "recall@10": 0.444,
+     "mrr@10": 0.281,
+     "found_in_returned_list": 6
+    },
+    "table": {
+     "questions": 7,
+     "recall@5": 0.0,
+     "recall@10": 0.0,
+     "mrr@10": 0.0,
+     "found_in_returned_list": 0
+    },
+    "text": {
+     "questions": 14,
+     "recall@5": 0.0,
+     "recall@10": 0.0,
+     "mrr@10": 0.0,
+     "found_in_returned_list": 0
+    }
+   }
+  },
+  "rrf": {
+   "search_kwargs": {
+    "mode": "both",
+    "rerank": false,
+    "vision": false
+   },
+   "stages": {
+    "retrieval": "both",
+    "fusion": "rrf",
+    "candidates": 50,
+    "cross_encoder": "off",
+    "vision": "off",
+    "cited_boost": "no cited pages"
+   },
+   "seconds_per_query": 0.05,
+   "questions": 30,
+   "recall@5": 0.3,
+   "recall@10": 0.4,
+   "mrr@10": 0.22,
+   "found_in_returned_list": 21,
+   "secondary_recall@10_gold_page_plus_or_minus_1": 0.533,
+   "by_kind": {
+    "map": {
+     "questions": 9,
+     "recall@5": 0.556,
+     "recall@10": 0.667,
+     "mrr@10": 0.43,
+     "found_in_returned_list": 8
+    },
+    "table": {
+     "questions": 7,
+     "recall@5": 0.286,
+     "recall@10": 0.429,
+     "mrr@10": 0.08,
+     "found_in_returned_list": 6
+    },
+    "text": {
+     "questions": 14,
+     "recall@5": 0.143,
+     "recall@10": 0.214,
+     "mrr@10": 0.155,
+     "found_in_returned_list": 7
+    }
+   }
+  },
+  "rrf_cross_encoder": {
+   "search_kwargs": {
+    "mode": "both",
+    "rerank": true,
+    "vision": false
+   },
+   "stages": {
+    "retrieval": "both",
+    "fusion": "rrf",
+    "candidates": 50,
+    "cross_encoder": "ran",
+    "vision": "off",
+    "cited_boost": "no cited pages"
+   },
+   "seconds_per_query": 0.81,
+   "questions": 30,
+   "recall@5": 0.4,
+   "recall@10": 0.467,
+   "mrr@10": 0.255,
+   "found_in_returned_list": 17,
+   "secondary_recall@10_gold_page_plus_or_minus_1": 0.733,
+   "by_kind": {
+    "map": {
+     "questions": 9,
+     "recall@5": 0.222,
+     "recall@10": 0.222,
+     "mrr@10": 0.065,
+     "found_in_returned_list": 4
+    },
+    "table": {
+     "questions": 7,
+     "recall@5": 0.857,
+     "recall@10": 0.857,
+     "mrr@10": 0.405,
+     "found_in_returned_list": 6
+    },
+    "text": {
+     "questions": 14,
+     "recall@5": 0.286,
+     "recall@10": 0.429,
+     "mrr@10": 0.303,
+     "found_in_returned_list": 7
+    }
+   }
+  },
+  "rrf_cross_encoder_vision": {
+   "search_kwargs": {
+    "mode": "both",
+    "rerank": true,
+    "vision": true,
+    "llm": "OpenAI gpt-4.1-mini"
+   },
+   "stages": {
+    "retrieval": "both",
+    "fusion": "rrf",
+    "candidates": 50,
+    "cross_encoder": "ran",
+    "vision": "ran",
+    "cited_boost": "no cited pages"
+   },
+   "seconds_per_query": 13.0,
+   "questions": 30,
+   "recall@5": 0.467,
+   "recall@10": 0.467,
+   "mrr@10": 0.336,
+   "found_in_returned_list": 17,
+   "secondary_recall@10_gold_page_plus_or_minus_1": 0.733,
+   "by_kind": {
+    "map": {
+     "questions": 9,
+     "recall@5": 0.222,
+     "recall@10": 0.222,
+     "mrr@10": 0.167,
+     "found_in_returned_list": 4
+    },
+    "table": {
+     "questions": 7,
+     "recall@5": 0.857,
+     "recall@10": 0.857,
+     "mrr@10": 0.607,
+     "found_in_returned_list": 6
+    },
+    "text": {
+     "questions": 14,
+     "recall@5": 0.429,
+     "recall@10": 0.429,
+     "mrr@10": 0.31,
+     "found_in_returned_list": 7
+    }
+   }
+  }
+ },
+ "vision_usage": {
+  "calls": 300,
+  "prompt_tokens": 501608,
+  "completion_tokens": 4754,
+  "total_tokens": 506362,
+  "cap": 300,
+  "unparsed_replies": 0,
+  "model": "gpt-4.1-mini",
+  "image_dpi": 100
+ }
+}

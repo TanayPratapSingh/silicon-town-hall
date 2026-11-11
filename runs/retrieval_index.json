@@ -1,0 +1,300 @@
+{
+ "command": "python -m townhall.retrieval.index",
+ "text_model": "BAAI/bge-small-en-v1.5",
+ "image_model": "clip-ViT-B-32",
+ "dpi": 100,
+ "chunk_words": 200,
+ "chunk_overlap": 40,
+ "documents": 31,
+ "pages": 1363,
+ "chunks": 4004,
+ "images": 1363,
+ "pages_without_text": 1,
+ "collection_counts": {
+  "text_chunks": 4004,
+  "page_images": 1363
+ },
+ "model_load_seconds": 8.0,
+ "total_seconds": 142.9,
+ "per_document": [
+  {
+   "doc_id": "00 Summary_April 2022",
+   "file": "00 Summary_April 2022.pdf",
+   "pages": 42,
+   "chunks": 134,
+   "images": 42,
+   "pages_without_text": 0,
+   "seconds": 6.0
+  },
+  {
+   "doc_id": "01 Introduction_April 2022",
+   "file": "01 Introduction_April 2022.pdf",
+   "pages": 15,
+   "chunks": 40,
+   "images": 15,
+   "pages_without_text": 0,
+   "seconds": 1.4
+  },
+  {
+   "doc_id": "02 Project Setting_April 2022",
+   "file": "02 Project Setting_April 2022.pdf",
+   "pages": 10,
+   "chunks": 27,
+   "images": 10,
+   "pages_without_text": 0,
+   "seconds": 0.8
+  },
+  {
+   "doc_id": "03 Alternatives_April 2022",
+   "file": "03 Alternatives_April 2022.pdf",
+   "pages": 93,
+   "chunks": 233,
+   "images": 93,
+   "pages_without_text": 0,
+   "seconds": 13.7
+  },
+  {
+   "doc_id": "04 Construction Means and Methods_April 2022",
+   "file": "04 Construction Means and Methods_April 2022.pdf",
+   "pages": 56,
+   "chunks": 189,
+   "images": 56,
+   "pages_without_text": 0,
+   "seconds": 7.5
+  },
+  {
+   "doc_id": "05 Transportation and Engineering Considerations_April 2022",
+   "file": "05 Transportation and Engineering Considerations_April 2022.pdf",
+   "pages": 251,
+   "chunks": 714,
+   "images": 251,
+   "pages_without_text": 0,
+   "seconds": 20.4
+  },
+  {
+   "doc_id": "06 Social Economic and Environmental Considerations_April 2022",
+   "file": "06 Social Economic and Environmental Considerations_April 2022.pdf",
+   "pages": 2,
+   "chunks": 2,
+   "images": 2,
+   "pages_without_text": 0,
+   "seconds": 0.2
+  },
+  {
+   "doc_id": "06-1 Introduction_April 2022",
+   "file": "06-1 Introduction_April 2022.pdf",
+   "pages": 7,
+   "chunks": 17,
+   "images": 7,
+   "pages_without_text": 0,
+   "seconds": 0.5
+  },
+  {
+   "doc_id": "06-2-1 Neighborhood Character_April 2022",
+   "file": "06-2-1 Neighborhood Character_April 2022.pdf",
+   "pages": 64,
+   "chunks": 296,
+   "images": 64,
+   "pages_without_text": 0,
+   "seconds": 5.0
+  },
+  {
+   "doc_id": "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+   "file": "06-2-2 Social Groups Benefitted or Harmed_April 2022.pdf",
+   "pages": 17,
+   "chunks": 48,
+   "images": 17,
+   "pages_without_text": 0,
+   "seconds": 1.2
+  },
+  {
+   "doc_id": "06-2-3 Environmental Justice_April 2022",
+   "file": "06-2-3 Environmental Justice_April 2022.pdf",
+   "pages": 52,
+   "chunks": 166,
+   "images": 52,
+   "pages_without_text": 0,
+   "seconds": 3.6
+  },
+  {
+   "doc_id": "06-3-1 LandAcqDisplRelocated_April 2022",
+   "file": "06-3-1 LandAcqDisplRelocated_April 2022.pdf",
+   "pages": 35,
+   "chunks": 107,
+   "images": 35,
+   "pages_without_text": 0,
+   "seconds": 3.7
+  },
+  {
+   "doc_id": "06-3-2 EC-Local and Regional Economy_April 2022",
+   "file": "06-3-2 EC-Local and Regional Economy_April 2022.pdf",
+   "pages": 49,
+   "chunks": 179,
+   "images": 49,
+   "pages_without_text": 0,
+   "seconds": 5.6
+  },
+  {
+   "doc_id": "06-4-1 Historic and Cultural Resources_April 2022",
+   "file": "06-4-1 Historic and Cultural Resources_April 2022.pdf",
+   "pages": 16,
+   "chunks": 51,
+   "images": 16,
+   "pages_without_text": 0,
+   "seconds": 0.9
+  },
+  {
+   "doc_id": "06-4-10 Contaminated Materials_April 2022",
+   "file": "06-4-10 Contaminated Materials_April 2022.pdf",
+   "pages": 33,
+   "chunks": 69,
+   "images": 33,
+   "pages_without_text": 0,
+   "seconds": 3.3
+  },
+  {
+   "doc_id": "06-4-11 Farmlands_April 2022",
+   "file": "06-4-11 Farmlands_April 2022.pdf",
+   "pages": 6,
+   "chunks": 12,
+   "images": 6,
+   "pages_without_text": 0,
+   "seconds": 0.7
+  },
+  {
+   "doc_id": "06-4-2 Parklands and Recreational Resources_April 2022",
+   "file": "06-4-2 Parklands and Recreational Resources_April 2022.pdf",
+   "pages": 22,
+   "chunks": 66,
+   "images": 22,
+   "pages_without_text": 0,
+   "seconds": 1.9
+  },
+  {
+   "doc_id": "06-4-3 Visual_April 2022",
+   "file": "06-4-3 Visual_April 2022.pdf",
+   "pages": 98,
+   "chunks": 154,
+   "images": 98,
+   "pages_without_text": 0,
+   "seconds": 8.7
+  },
+  {
+   "doc_id": "06-4-4 Air Quality_April 2022",
+   "file": "06-4-4 Air Quality_April 2022.pdf",
+   "pages": 22,
+   "chunks": 69,
+   "images": 22,
+   "pages_without_text": 0,
+   "seconds": 1.3
+  },
+  {
+   "doc_id": "06-4-5 Energy and Climate Change_April 2022",
+   "file": "06-4-5 Energy and Climate Change_April 2022.pdf",
+   "pages": 20,
+   "chunks": 59,
+   "images": 20,
+   "pages_without_text": 0,
+   "seconds": 1.1
+  },
+  {
+   "doc_id": "06-4-6 Noise_April 2022",
+   "file": "06-4-6 Noise_April 2022.pdf",
+   "pages": 72,
+   "chunks": 244,
+   "images": 72,
+   "pages_without_text": 0,
+   "seconds": 4.5
+  },
+  {
+   "doc_id": "06-4-7 Water Resources_April 2022",
+   "file": "06-4-7 Water Resources_April 2022.pdf",
+   "pages": 146,
+   "chunks": 383,
+   "images": 146,
+   "pages_without_text": 0,
+   "seconds": 22.5
+  },
+  {
+   "doc_id": "06-4-8 General Ecology_April 2022",
+   "file": "06-4-8 General Ecology_April 2022.pdf",
+   "pages": 102,
+   "chunks": 388,
+   "images": 102,
+   "pages_without_text": 0,
+   "seconds": 6.8
+  },
+  {
+   "doc_id": "06-4-9 Asbestos and Lead_April 2022",
+   "file": "06-4-9 Asbestos and Lead_April 2022.pdf",
+   "pages": 10,
+   "chunks": 31,
+   "images": 10,
+   "pages_without_text": 0,
+   "seconds": 0.6
+  },
+  {
+   "doc_id": "06-5 ShortTermvsLongTerm_April 2022",
+   "file": "06-5 ShortTermvsLongTerm_April 2022.pdf",
+   "pages": 2,
+   "chunks": 4,
+   "images": 2,
+   "pages_without_text": 0,
+   "seconds": 0.1
+  },
+  {
+   "doc_id": "06-6 Commitment of Resources_April 2022",
+   "file": "06-6 Commitment of Resources_April 2022.pdf",
+   "pages": 2,
+   "chunks": 4,
+   "images": 2,
+   "pages_without_text": 0,
+   "seconds": 0.1
+  },
+  {
+   "doc_id": "06-7 Unavoidable Impacts_April 2022",
+   "file": "06-7 Unavoidable Impacts_April 2022.pdf",
+   "pages": 5,
+   "chunks": 15,
+   "images": 5,
+   "pages_without_text": 0,
+   "seconds": 0.6
+  },
+  {
+   "doc_id": "07 Final Section 4f Evaluation_April 2022",
+   "file": "07 Final Section 4f Evaluation_April 2022.pdf",
+   "pages": 64,
+   "chunks": 134,
+   "images": 64,
+   "pages_without_text": 1,
+   "seconds": 8.5
+  },
+  {
+   "doc_id": "08 Summary of Alternatives_April 2022",
+   "file": "08 Summary of Alternatives_April 2022.pdf",
+   "pages": 17,
+   "chunks": 65,
+   "images": 17,
+   "pages_without_text": 0,
+   "seconds": 1.2
+  },
+  {
+   "doc_id": "09 Agency Coordination and Public Outreach_April 2022",
+   "file": "09 Agency Coordination and Public Outreach_April 2022.pdf",
+   "pages": 30,
+   "chunks": 95,
+   "images": 30,
+   "pages_without_text": 0,
+   "seconds": 2.0
+  },
+  {
+   "doc_id": "10 Financing and Implementation_April 2022",
+   "file": "10 Financing and Implementation_April 2022.pdf",
+   "pages": 3,
+   "chunks": 9,
+   "images": 3,
+   "pages_without_text": 0,
+   "seconds": 0.2
+  }
+ ]
+}
