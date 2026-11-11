@@ -1,0 +1,70 @@
+{
+  "label": "REAL PROFILES written by gpt-4.1-mini from real Census draws. The residents are simulated; the stereotype review here is keyword heuristics only, no LLM review was run.",
+  "command": "python -m townhall.town.pilot --real-profiles",
+  "date": "2026-11-11",
+  "census": {
+    "source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+    "state": "36",
+    "puma": "00701",
+    "person_records_in_puma": 7537,
+    "adult_records_in_puma": 6358,
+    "weighted_adults_in_puma": 115975,
+    "sampled": 20,
+    "seed": 0,
+    "sample_by_race_ethnicity": {
+      "White alone, not Hispanic or Latino": 13,
+      "Black or African American alone, not Hispanic or Latino": 4,
+      "Asian alone, not Hispanic or Latino": 2,
+      "Two or More Races, not Hispanic or Latino": 1
+    },
+    "sample_by_sex": {
+      "Male": 11,
+      "Female": 9
+    },
+    "sample_by_tenure": {
+      "Rented": 11,
+      "N/A (lives in group quarters such as a dorm or nursing home)": 4,
+      "Owned free and clear": 3,
+      "Owned with mortgage or loan": 2
+    },
+    "sample_by_commute": {
+      "N/A (not a worker, or not at work last week)": 10,
+      "Car, truck, or van": 8,
+      "Worked from home": 2
+    },
+    "sample_by_disability": {
+      "Without a disability": 17,
+      "With a disability": 3
+    }
+  },
+  "homes": {
+    "source": "tract counts: ACS 2024 5 year B01003, B03002, B25008, B26001, Census API; tracts in the PUMA: Census 2020 tract to PUMA relationship file; population centers: Census 2020; neighborhoods: City of Syracuse open data",
+    "method": "tract drawn with probability proportional to people in the tract with the resident's race and Hispanic origin times the tract's share with the resident's tenure (treated as independent within a tract; all ages); neighborhood is the one containing the tract's population center",
+    "tracts_in_puma": 55,
+    "tracts_outside_neighborhood_map": 0,
+    "neighborhoods_with_a_tract_center": 30,
+    "neighborhoods_without_a_tract_center": [
+      "Hawley-Green",
+      "Lakefront"
+    ],
+    "tract_population_total": 146384,
+    "neighborhoods_drawn": 14
+  },
+  "profiles": {
+    "count": 20,
+    "model_requested": "gpt-4.1-mini",
+    "models_returned": [
+      "gpt-4.1-mini-2025-04-14"
+    ],
+    "real_calls": 20,
+    "token_usage": {
+      "prompt_tokens": 3787,
+      "completion_tokens": 1709,
+      "total_tokens": 5496
+    },
+    "keyword_flagged_profiles": 0,
+    "keyword_flag_counts": {},
+    "llm_review": "not run, to stay within the cap of one real call per profile"
+  },
+  "known_defects": "Known defects of this run, found after it: (1) the 20 residents were drawn before records were sorted, and the Census API returns rows in a new order on each request, so --seed 0 now draws a different 20; the 20 records and profiles are kept in data/processed/town/residents_real.json. (2) The prompt sent income as a bare 'income' field; one profile called the annual figure monthly. The prompt now sends annual_income_dollars. Regenerating needs 20 more real calls, beyond the cap for this run."
+}

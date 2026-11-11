@@ -1,0 +1,77 @@
+{
+  "label": "FAKE PILOT. Residents and neighborhoods are real Census draws; all text is FakeLLM template output and retrieval is over 6 FAKE pages. Counts test the plumbing only and say nothing about what residents think. Simulated.",
+  "command": "python -m townhall.town.pilot",
+  "date": "2026-11-11",
+  "census": {
+    "source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+    "state": "36",
+    "puma": "00701",
+    "person_records_in_puma": 7537,
+    "adult_records_in_puma": 6358,
+    "weighted_adults_in_puma": 115975,
+    "sampled": 20,
+    "seed": 0,
+    "sample_by_race_ethnicity": {
+      "White alone, not Hispanic or Latino": 12,
+      "Black or African American alone, not Hispanic or Latino": 4,
+      "Asian alone, not Hispanic or Latino": 2,
+      "Two or More Races, not Hispanic or Latino": 2
+    },
+    "sample_by_sex": {
+      "Male": 11,
+      "Female": 9
+    },
+    "sample_by_tenure": {
+      "Rented": 8,
+      "Owned free and clear": 5,
+      "N/A (lives in group quarters such as a dorm or nursing home)": 4,
+      "Owned with mortgage or loan": 3
+    },
+    "sample_by_commute": {
+      "N/A (not a worker, or not at work last week)": 15,
+      "Car, truck, or van": 4,
+      "Worked from home": 1
+    },
+    "sample_by_disability": {
+      "Without a disability": 14,
+      "With a disability": 6
+    }
+  },
+  "homes": {
+    "source": "tract counts: ACS 2024 5 year B01003, B03002, B25008, B26001, Census API; tracts in the PUMA: Census 2020 tract to PUMA relationship file; population centers: Census 2020; neighborhoods: City of Syracuse open data",
+    "method": "tract drawn with probability proportional to people in the tract with the resident's race and Hispanic origin times the tract's share with the resident's tenure (treated as independent within a tract; all ages); neighborhood is the one containing the tract's population center",
+    "tracts_in_puma": 55,
+    "tracts_outside_neighborhood_map": 0,
+    "neighborhoods_with_a_tract_center": 30,
+    "neighborhoods_without_a_tract_center": [
+      "Hawley-Green",
+      "Lakefront"
+    ],
+    "tract_population_total": 146384,
+    "neighborhoods_drawn": 14,
+    "residents_unassigned": 0
+  },
+  "profiles": {
+    "written_by": "FakeLLM template",
+    "count": 20,
+    "keyword_flagged": 0,
+    "llm_review": "FakeLLM, no review was done"
+  },
+  "meeting": {
+    "turns": 20,
+    "agenda_items": 3,
+    "distinct_speakers": 20,
+    "pages_cited_in_meeting": 3,
+    "reply_parse_failures": 0,
+    "llm_calls_total_including_profiles": 101
+  },
+  "comments": {
+    "count": 20,
+    "with_cited_pages": 20,
+    "all_labeled_simulated": true
+  },
+  "memory": {
+    "rows_after_pilot": 20,
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2"
+  }
+}
