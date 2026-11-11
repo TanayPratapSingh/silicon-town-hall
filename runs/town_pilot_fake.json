@@ -9,8 +9,11 @@
     "person_records_in_puma": 7537,
     "adult_records_in_puma": 6358,
     "weighted_adults_in_puma": 115975,
+    "weighted_share_hispanic_adults": 0.0836,
+    "hispanic_adult_records_in_puma": 506,
     "sampled": 20,
     "seed": 0,
+    "sampled_hispanic": 0,
     "sample_by_race_ethnicity": {
       "White alone, not Hispanic or Latino": 12,
       "Black or African American alone, not Hispanic or Latino": 4,

@@ -1,5 +1,5 @@
 {
-  "label": "REAL PROFILES written by gpt-4.1-mini from real Census draws. The residents are simulated; the stereotype review here is keyword heuristics only, no LLM review was run.",
+  "label": "REAL PROFILES written and reviewed by gpt-4.1-mini from real Census draws. The residents are simulated.",
   "command": "python -m townhall.town.pilot --real-profiles",
   "date": "2026-11-11",
   "census": {
@@ -9,32 +9,35 @@
     "person_records_in_puma": 7537,
     "adult_records_in_puma": 6358,
     "weighted_adults_in_puma": 115975,
+    "weighted_share_hispanic_adults": 0.0836,
+    "hispanic_adult_records_in_puma": 506,
     "sampled": 20,
     "seed": 0,
+    "sampled_hispanic": 0,
     "sample_by_race_ethnicity": {
-      "White alone, not Hispanic or Latino": 13,
+      "White alone, not Hispanic or Latino": 12,
       "Black or African American alone, not Hispanic or Latino": 4,
       "Asian alone, not Hispanic or Latino": 2,
-      "Two or More Races, not Hispanic or Latino": 1
+      "Two or More Races, not Hispanic or Latino": 2
     },
     "sample_by_sex": {
       "Male": 11,
       "Female": 9
     },
     "sample_by_tenure": {
-      "Rented": 11,
+      "Rented": 8,
+      "Owned free and clear": 5,
       "N/A (lives in group quarters such as a dorm or nursing home)": 4,
-      "Owned free and clear": 3,
-      "Owned with mortgage or loan": 2
+      "Owned with mortgage or loan": 3
     },
     "sample_by_commute": {
-      "N/A (not a worker, or not at work last week)": 10,
-      "Car, truck, or van": 8,
-      "Worked from home": 2
+      "N/A (not a worker, or not at work last week)": 15,
+      "Car, truck, or van": 4,
+      "Worked from home": 1
     },
     "sample_by_disability": {
-      "Without a disability": 17,
-      "With a disability": 3
+      "Without a disability": 14,
+      "With a disability": 6
     }
   },
   "homes": {
@@ -56,15 +59,58 @@
     "models_returned": [
       "gpt-4.1-mini-2025-04-14"
     ],
-    "real_calls": 20,
+    "real_calls": 40,
     "token_usage": {
-      "prompt_tokens": 3787,
-      "completion_tokens": 1709,
-      "total_tokens": 5496
+      "profiles": {
+        "calls": 20,
+        "prompt_tokens": 6703,
+        "completion_tokens": 1007,
+        "total_tokens": 7710
+      },
+      "reviews": {
+        "calls": 20,
+        "prompt_tokens": 6630,
+        "completion_tokens": 727,
+        "total_tokens": 7357
+      },
+      "total": {
+        "calls": 40,
+        "prompt_tokens": 13333,
+        "completion_tokens": 1734,
+        "total_tokens": 15067
+      }
     },
     "keyword_flagged_profiles": 0,
     "keyword_flag_counts": {},
-    "llm_review": "not run, to stay within the cap of one real call per profile"
+    "llm_review": {
+      "stereotype_flagged": 0,
+      "invented_facts_flagged": 0,
+      "reply_not_json": 0
+    },
+    "flagged_by_either": 0
   },
-  "known_defects": "Known defects of this run, found after it: (1) the 20 residents were drawn before records were sorted, and the Census API returns rows in a new order on each request, so --seed 0 now draws a different 20; the 20 records and profiles are kept in data/processed/town/residents_real.json. (2) The prompt sent income as a bare 'income' field; one profile called the annual figure monthly. The prompt now sends annual_income_dollars. Regenerating needs 20 more real calls, beyond the cap for this run."
+  "hand_read": {
+    "by": "Claude agent, reading all 20 profiles against their records on 2026-11-11; an agent read, not a human label",
+    "profiles_read": 20,
+    "race_or_hispanic_origin_missing": 0,
+    "race_used_to_explain_views_or_circumstances": 0,
+    "opens_with_race_or_ethnicity": 0,
+    "records_with_a_disability": 6,
+    "disability_missing_when_record_has_one": 0,
+    "disability_mentioned_when_record_has_none": 0,
+    "dependence_framing_of_disability": 0,
+    "income_not_yearly_or_unlabeled": 0,
+    "income_value_differs_from_record": 0,
+    "invented_health_family_job_religion_or_opinion": 0,
+    "employment_status_stated": 0,
+    "group_quarters_type_named": 0,
+    "age_sex_tenure_or_neighborhood_differs_from_record": 0,
+    "profiles_with_a_factual_defect": 0,
+    "minor_wording_slips": 4,
+    "notes": [
+      "minor_wording_slips: one profile repeats the prompt's 'type is not recorded' wording; one widens the work commute to how the person gets around in general; one says 'near' its own neighborhood; one puts renting in the past tense",
+      "the keyword review and the LLM review flagged none of the 20, consistent with the read"
+    ]
+  },
+  "known_defects": "No factual defect found in the read of all 20; 4 minor wording slips remain (see hand_read notes). Profiles are flat lists of facts, a known tradeoff for the group to discuss. The seed 0 draw of 20 has 0 Hispanic adults while the weighted share of Hispanic adults in PUMA 00701 is 0.0836; the sampling method is unchanged."
 }

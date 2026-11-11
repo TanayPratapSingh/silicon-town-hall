@@ -103,13 +103,58 @@ def test_homes_unassigned_when_files_fail(monkeypatch):
     assert info["source"].startswith("UNASSIGNED")
 
 
-def test_profile_prompt_uses_facts_only():
+def sent_facts(record):
     llm = FakeLLM(reply="I live in Westcott and take the bus.")
-    resident = {**census.decode(person()), "neighborhood": "Westcott"}
-    assert personas.build_profile(resident, llm) == "I live in Westcott and take the bus."
-    sent = json.loads(llm.calls[0][1]["content"].split("Facts (JSON): ", 1)[1])
-    assert set(sent) == set(personas.PROFILE_FIELDS) - {"income"} | {"annual_income_dollars"}
-    assert sent["neighborhood"] == "Westcott"
+    assert personas.build_profile({**record, "neighborhood": "Westcott"}, llm) == "I live in Westcott and take the bus."
+    return json.loads(llm.calls[0][1]["content"].split("Facts (JSON): ", 1)[1])
+
+
+def test_profile_prompt_carries_race_hispanic_origin_and_annual_income():
+    sent = sent_facts(census.decode(person()))  # record with a disability
+    assert sent["race"] == "Black or African American"
+    assert sent["hispanic_origin"] == "not Hispanic or Latino"
+    assert sent["annual_income_dollars"] == round(30000 * 1.015250) and "income" not in sent
+    assert sent["disability"] == "has a disability (type not recorded)"
+    assert not {"serialno", "person_weight", "sporder"} & set(sent)
+    hispanic = sent_facts(census.decode(person(HISP="03", RAC1P="8", DIS="2")))
+    assert (hispanic["race"], hispanic["hispanic_origin"]) == ("Some Other Race", "Hispanic or Latino (Puerto Rican)")
+    assert "disability" not in hispanic  # no disability is left out of the prompt
+    assert "race and Hispanic origin" in personas.PROFILE_SYSTEM and "yearly income" in personas.PROFILE_SYSTEM
+
+
+def test_profile_prompt_never_gives_job_status_or_group_quarters_type():
+    sent = sent_facts(census.decode(person(JWTRNS="0", TEN="0")))
+    assert sent["commute"] == personas.NO_COMMUTE_FACT and "not a worker" not in sent["commute"]
+    assert sent["tenure"] == personas.GROUP_QUARTERS_FACT
+    assert not {"dorm", "nursing"} & set(json.dumps(sent).lower().replace("(", " ").split())
+    assert "never state employment status" in personas.PROFILE_SYSTEM
+    assert "never name one" in personas.PROFILE_SYSTEM
+    assert sent_facts(census.decode(person()))["commute"] == "Bus"  # real commute modes pass through unchanged
+
+
+def test_review_flags_employment_status_and_group_quarters_type():
+    def flags(text):
+        return personas.review_profile(text)["keyword_flags"]
+
+    for text in ("I do not have a job.", "I am not employed.", "I am not currently working.", "I am retired."):
+        assert flags(text) == ["states employment status"], text
+    for text in ("I live in group quarters such as a nursing home.", "I live in a dorm on South Campus."):
+        assert flags(text) == ["names a type of group quarters"], text
+    assert flags("I work from home. I live in group quarters. I did not commute to work last week.") == []
+
+
+def test_review_flags_dependence_health_and_income_period():
+    def flags(text):
+        return personas.review_profile(text)["keyword_flags"]
+
+    assert set(flags("I do not have a disability, so I can manage on my own.")) == {
+        "mentions not having a disability", "dependence framing of disability"}
+    assert "mentions not having a disability" in flags("I don\u2019t have any disabilities.")
+    assert "dependence framing of disability" in flags("Because of my disability, I rely on others to get around.")
+    assert flags("I am in good health.") == ["invented health claim"]
+    assert flags("My monthly income is about $3,046.") == ["income given as monthly, weekly or hourly"]
+    assert flags("I am White and not Hispanic or Latino. I have a disability. I pay monthly rent "
+                 "and my yearly income is $20,000.") == []
 
 
 def test_stereotype_keywords_and_identity_opener():
@@ -127,5 +172,9 @@ def test_stereotype_llm_review_hook():
     review = personas.review_profile("I take the bus to work.", reviewer)
     assert review["flagged"] and review["keyword_flags"] == []
     assert review["llm_review"]["reasons"] == ["implies culture from race"]
+    invented = FakeLLM(responder=lambda m: {"stereotype": False, "invented_facts": True, "reasons": ["health"]})
+    resident = {**census.decode(person()), "neighborhood": "Westcott"}
+    assert personas.review_profile("I take the bus to work.", invented, resident=resident)["flagged"]
+    assert '"annual_income_dollars"' in invented.calls[0][1]["content"]  # the reviewer sees the facts it checks against
     broken = personas.review_profile("I take the bus to work.", FakeLLM(reply="not json"))
     assert not broken["flagged"] and "error" in broken["llm_review"]

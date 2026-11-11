@@ -9,9 +9,10 @@ model, and the retriever searches six FAKE pages, not the impact statement. It t
 Writes data/processed/town/residents.json, meeting_pilot.json, comments.json and memory.sqlite
 (gitignored), and runs/town_pilot_fake.json with counts only: no Census microdata rows.
 
---real-profiles writes the same residents' profiles with RESIDENT_MODEL (one call each, capped at n),
-reviews them with the keyword heuristics only, and writes data/processed/town/residents_real.json and
-runs/town_profiles_real.json (counts and token usage only). No meeting runs.
+--real-profiles writes the same residents' profiles with RESIDENT_MODEL and reviews each one with the
+keyword heuristics and the LLM reviewer (two real calls per resident, capped at 2n), then writes
+data/processed/town/residents_real.json and runs/town_profiles_real.json (counts and token usage only,
+no profile text). No meeting runs.
 """
 
 import argparse
@@ -64,10 +65,11 @@ def fake_responder(messages):
     if system == personas.PROFILE_SYSTEM:
         f = json.loads(user.split("Facts (JSON): ", 1)[1])
         return (f"[FakeLLM template, simulated] I am {f['age']} and live in {f['neighborhood']}. "
-                f"Census record: {f['sex']}, {f['race_ethnicity']}, income about ${f['annual_income_dollars']:,} a year. "
-                f"Commute: {f['commute']}. Housing: {f['tenure']}. {f['disability']}.")
+                f"Census record: {f['sex']}, {f['race']}, {f['hispanic_origin']}, yearly income about "
+                f"${f['annual_income_dollars']:,}. Commute: {f['commute']}. Housing: {f['tenure']}."
+                + (" I have a disability." if "disability" in f else ""))
     if system == personas.REVIEW_SYSTEM:
-        return {"stereotype": False, "reasons": [], "note": "FakeLLM: no review was done"}
+        return {"stereotype": False, "invented_facts": False, "reasons": [], "note": "FakeLLM: no review was done"}
     if system == meeting.AGENDA_SYSTEM:
         return {"agenda": ["Traffic and commuting", "Noise and air quality", "Construction and housing"]}
     if system == meeting.SPEAK_SYSTEM:
@@ -91,7 +93,8 @@ def capped_openai(max_calls):
             raise RuntimeError(f"real call cap of {max_calls} reached")
         llm.attempts += 1
         response = create(**kwargs)
-        llm.responses.append({"model": response.model, **response.usage.model_dump(include={
+        kind = "review" if kwargs["messages"][0]["content"] == personas.REVIEW_SYSTEM else "profile"
+        llm.responses.append({"kind": kind, "model": response.model, **response.usage.model_dump(include={
             "prompt_tokens", "completion_tokens", "total_tokens"})})
         return response
 
@@ -100,25 +103,35 @@ def capped_openai(max_calls):
 
 
 def real_profiles(residents, census_meta, home, command):
-    llm = capped_openai(max_calls=len(residents))
+    llm = capped_openai(max_calls=2 * len(residents))  # one profile call and one review call per resident
     for r in residents:
         r["profile"] = personas.build_profile(r, llm)
         r["profile_written_by"] = f"{config.RESIDENT_MODEL}, a real model (simulated resident)"
-        r["stereotype_review"] = personas.review_profile(r["profile"])  # keyword heuristics only: stays inside the cap
         r["simulated"] = True
-    label = (f"REAL PROFILES written by {config.RESIDENT_MODEL} from real Census draws. The residents are simulated; "
-             "the stereotype review here is keyword heuristics only, no LLM review was run.")
+    for r in residents:
+        r["stereotype_review"] = personas.review_profile(r["profile"], llm, resident=r)
+    label = (f"REAL PROFILES written and reviewed by {config.RESIDENT_MODEL} from real Census draws. The residents "
+             "are simulated.")
     _write(OUT / "residents_real.json", {"label": label, "census": census_meta, "home_source": home, "residents": residents})
     flags = [f for r in residents for f in r["stereotype_review"]["keyword_flags"]]
-    usage = {k: sum(c[k] for c in llm.responses) for k in ("prompt_tokens", "completion_tokens", "total_tokens")}
+    reviews = [r["stereotype_review"]["llm_review"] for r in residents]
+
+    def usage(kind):
+        calls = [c for c in llm.responses if kind in (None, c["kind"])]
+        return {"calls": len(calls), **{k: sum(c[k] for c in calls) for k in ("prompt_tokens", "completion_tokens",
+                                                                               "total_tokens")}}
+
     run = {"label": label, "command": command, "date": datetime.now(timezone.utc).date().isoformat(), "census": census_meta,
            "homes": {**home, "neighborhoods_drawn": len({r["neighborhood"] for r in residents})},
            "profiles": {"count": len(residents), "model_requested": config.RESIDENT_MODEL,
                         "models_returned": sorted({c["model"] for c in llm.responses}), "real_calls": llm.attempts,
-                        "token_usage": usage,
+                        "token_usage": {"profiles": usage("profile"), "reviews": usage("review"), "total": usage(None)},
                         "keyword_flagged_profiles": sum(bool(r["stereotype_review"]["keyword_flags"]) for r in residents),
                         "keyword_flag_counts": {f: flags.count(f) for f in sorted(set(flags))},
-                        "llm_review": "not run, to stay within the cap of one real call per profile"}}
+                        "llm_review": {"stereotype_flagged": sum(v.get("stereotype") is True for v in reviews),
+                                       "invented_facts_flagged": sum(v.get("invented_facts") is True for v in reviews),
+                                       "reply_not_json": sum("error" in v for v in reviews)},
+                        "flagged_by_either": sum(r["stereotype_review"]["flagged"] for r in residents)}}
     _write(REAL_RUN_FILE, run)
     print(json.dumps(run, indent=2))
 
@@ -143,7 +156,11 @@ def main(argv=None):
     residents, home = homes.home_neighborhoods(residents, "36", "00701", seed=args.seed)
     census_meta = {"source": census_source, "state": "36", "puma": "00701", "person_records_in_puma": len(people),
                    "adult_records_in_puma": len(pool), "weighted_adults_in_puma": int(pool.PWGTP.astype(int).sum()),
+                   "weighted_share_hispanic_adults": round(
+                       pool.PWGTP.astype(int)[pool.HISP.astype(int) != 1].sum() / pool.PWGTP.astype(int).sum(), 4),
+                   "hispanic_adult_records_in_puma": int((pool.HISP.astype(int) != 1).sum()),
                    "sampled": len(residents), "seed": args.seed,
+                   "sampled_hispanic": sum(r["race_ethnicity"] == "Hispanic or Latino" for r in residents),
                    **{f"sample_by_{key}": dict(Counter(r[key] for r in residents).most_common())
                       for key in ("race_ethnicity", "sex", "tenure", "commute", "disability")}}
     if args.real_profiles:
