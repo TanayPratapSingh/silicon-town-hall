@@ -133,7 +133,9 @@ def test_pages_render_with_the_free_model(app):
     text = " ".join(m.value for m in app.markdown)
     assert "**SIMULATED** comment by" in text and ", topic " in text
     assert any("FakeLLM picked the topics" in c.value for c in app.caption)
-    assert [s.value for s in app.subheader][:3] == ["Topics raised", "Topics by neighborhood", "Topics by group"]
+    heads = [s.value for s in app.subheader]
+    assert heads[:5] == ["Pilot scores", "Who to reach in person", "Topics raised", "Topics by neighborhood",
+                         "Topics by group"]
     assert scenario["report"]["reach_in_person"] and "report_error" not in scenario
     assert any(c.value.startswith("Cited: fake_doc, page") for c in app.caption)
     assert any(c.value == core.PILOT_PENDING for c in app.caption)
@@ -141,7 +143,8 @@ def test_pages_render_with_the_free_model(app):
         "meeting": {"score": {"topic_coverage": 0.5, "topic_mix_gap": 0.25}}}}))
     app.run()
     assert any(c.value.startswith("Recorded pilot scores from runs/report_pilot_score.json") for c in app.caption)
-    assert app.json[0].value == json.dumps({"meeting": {"topic_coverage": 0.5, "topic_mix_gap": 0.25, "status": None}})
+    side = next(d.value for d in app.dataframe if "condition" in d.value.columns)
+    assert side.to_dict("records") == [{"condition": "meeting", "real topics raised": "50.0%", "topic mix gap": 0.25}]
     goto(app, "Saved scenarios")
     assert app.dataframe[0].value["name"].tolist() == [scenario["name"]]
 
@@ -173,3 +176,27 @@ def test_upload_is_checked_and_indexed_apart(app, monkeypatch):
     pdf, doc_id, db_dir = calls[0]
     assert doc_id == "upload_Draft_plan" and db_dir.is_relative_to(core.UPLOADS) and pdf.read_bytes().startswith(b"%PDF")
     assert (policy["kind"], policy["pages"], policy["db_dir"]) == ("upload", 3, str(db_dir))
+
+
+def test_import_pilot_reuses_its_tags(app, tmp_path, monkeypatch):
+    login(app)
+    run = run_meetings(app)
+    m = run["meetings"][0]
+    town, report, runs = (tmp_path / d for d in ("town", "report", "runs"))
+    for d in (town, report, runs):
+        d.mkdir()
+    write = lambda path, payload: path.write_text(json.dumps(payload))
+    write(town / "residents_real.json", {"residents": run["residents"]})
+    write(town / "meeting_pilot_real.json", {k: m[k] for k in ("agenda", "transcript", "summary")})
+    write(town / "comments_real.json", {"comments": m["comments"]})
+    write(report / "tagged_meeting.json", {"comments": [{**c, "codes": ["4"]} for c in m["comments"]]})
+    write(runs / "town_pilot_real.json", {"date": "2026-11-11", "command": "python -m test", "real_calls": 0,
+                                         "meeting": {"stance_changes": 0, "reply_parse_failures": 0},
+                                         "token_usage": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}})
+    (town / "memory_real.sqlite").write_bytes((core.SCENARIOS / run["id"] / "memory.sqlite").read_bytes())
+    monkeypatch.setattr(core.config, "PROCESSED", tmp_path)
+    monkeypatch.setattr(core.config, "RUNS", runs)
+    core.import_pilot()
+    pilot_run = core.list_scenarios()[0]
+    assert pilot_run["id"] == core.PILOT_ID and "pilot score run" in pilot_run["report"]["label"]
+    assert pilot_run["report"]["tables"][0]["rows"][0]["code"] == "4" and core.memories(core.PILOT_ID)

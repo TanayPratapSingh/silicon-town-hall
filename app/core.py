@@ -27,6 +27,7 @@ SCENARIOS = APP / "scenarios"
 UPLOADS = APP / "uploads"
 EMBED = None  # memory embedder; None loads all-MiniLM-L6-v2 on first use, tests pass a stand in
 
+PILOT_ID = "pilot_I-81_seed_0"  # sorts before the dated scenarios, so the pilot is listed first
 PRESETS = {"I-81 Syracuse (New York, PUMA 00701)": ("36", "00701")}
 I81 = {"kind": "preset", "name": pilot.POLICY, "topic": pilot.TOPIC, "db_dir": str(index.DB_DIR)}
 FAKE_LABEL = "Free test model: FakeLLM template text, not a model. Simulated."
@@ -158,11 +159,18 @@ def population(state, puma):
 
 
 def build_report(comments, residents, llm, community=None):
-    """Tag the simulated comments with the answer key's tagger (one call each), then map analyst.build_report to
-    what the app renders: label, tables [{title, rows}], sample_comments [{..., cited, label}], reach_in_person."""
+    """Tag the simulated comments with the answer key's tagger (one call each), then build the report."""
+    tagged_by = ("FakeLLM picked the topics from a hash of each comment, not by meaning" if isinstance(llm, FakeLLM)
+                 else f"Topics tagged by {config.ANALYST_MODEL}, the tagger used on the real comments")
+    return report_from_tagged(analyst.tag_comments(comments, cb.load(), llm), residents, tagged_by, community)
+
+
+def report_from_tagged(tagged, residents, tagged_by, community=None):
+    """Map analyst.build_report to what the app renders:
+    label, tables [{title, rows}], sample_comments [{..., cited, label}], reach_in_person [str]."""
     codebook = cb.load()
     shares, source = population(community["state"], community["puma"]) if community else (None, "no community")
-    report = analyst.build_report(analyst.tag_comments(comments, codebook, llm), residents, codebook, shares, source)
+    report = analyst.build_report(tagged, residents, codebook, shares, source)
     names = report["topic_names"]
 
     def cells(by):
@@ -176,8 +184,6 @@ def build_report(comments, residents, llm, community=None):
         return (f"{e['dimension'].replace('_', ' ')}, {e['group']}: {e['simulated_residents']} simulated "
                 f"residents{expected}. {'; '.join(e['reasons']).capitalize()}.")
 
-    tagged_by = ("FakeLLM picked the topics from a hash of each comment, not by meaning" if isinstance(llm, FakeLLM)
-                 else f"Topics tagged by {config.ANALYST_MODEL}, the tagger used on the real comments")
     return {
         "label": f"{report['label']}. {tagged_by}. Population shares: {report['population_source']}.",
         "tables": [
@@ -202,8 +208,41 @@ def pilot_scores():
     run = json.loads(path.read_text())
     scores = {name: {k: (c.get("score") or {}).get(k) for k in ("topic_coverage", "topic_mix_gap", "status")}
               for name, c in run.get("conditions", {}).items()}
-    return {"label": f"Recorded pilot scores from runs/{path.name} ({run.get('command')}), not scores of this "
-                     f"scenario. {run.get('label', '')}", "scores": scores}
+    return {"label": f"Recorded pilot scores from runs/{path.name}, not scores of this scenario. "
+                     f"{run.get('label', '')}", "scores": scores}
+
+
+def import_pilot():
+    """Save the real 20 resident pilot as a scenario, reusing its tagged comments, so the app shows it with no new
+    calls. Reads what python -m townhall.town.pilot --real-meeting and python -m townhall.report.score wrote."""
+    town, run = config.PROCESSED / "town", json.loads((config.RUNS / "town_pilot_real.json").read_text())
+    meeting_file = json.loads((town / "meeting_pilot_real.json").read_text())
+    residents = json.loads((town / "residents_real.json").read_text())["residents"]
+    comments = json.loads((town / "comments_real.json").read_text())["comments"]
+    tagged = json.loads((config.PROCESSED / "report" / "tagged_meeting.json").read_text())["comments"]
+    home = SCENARIOS / PILOT_ID
+    home.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(town / "memory_real.sqlite", home / "memory.sqlite")
+    community = {"community": next(iter(PRESETS)), "state": "36", "puma": "00701", "residents": len(residents),
+                 "seed": 0}
+    scenario = {
+        "id": PILOT_ID, "name": "I-81 pilot: 20 residents, seed 0, one citywide meeting", "date": run["date"],
+        "label": "Simulated residents. Not public comment.",
+        "settings": {**community, "policy": I81["name"], "policy_kind": "preset", "policy_db": I81["db_dir"],
+                     "neighborhoods": ["Citywide"], "rounds": 1, "vision_rerank": False, "proposed_change": "",
+                     "meeting_text_by": f"{config.RESIDENT_MODEL}, a real model. Simulated.",
+                     "source": f"{run['command']}, then python -m townhall.report.score"},
+        "status": "complete", "residents": residents,
+        "meetings": [{"round": 1, "neighborhood": "Citywide", "comments": comments,
+                      **{k: meeting_file[k] for k in ("agenda", "transcript", "summary")},
+                      "stance_changes": run["meeting"]["stance_changes"],
+                      "parse_failures": run["meeting"]["reply_parse_failures"]}],
+        "report": report_from_tagged(tagged, residents, f"Topics tagged by {config.ANALYST_MODEL} in the pilot "
+                                     "score run (runs/report_pilot_score.json)", community),
+        "usage": {"meetings": {"real_calls": run["real_calls"], **run["token_usage"]}},
+    }
+    (home / "scenario.json").write_text(json.dumps(scenario, indent=1, ensure_ascii=False))
+    return scenario
 
 
 def list_scenarios():
@@ -246,3 +285,7 @@ def delete_scenario(sid):
     if (home / "memory.sqlite").exists():
         delete_memories(sid)
     shutil.rmtree(home)
+
+
+if __name__ == "__main__":  # python -m app.core imports the real pilot as a scenario
+    print("saved scenario", import_pilot()["id"])

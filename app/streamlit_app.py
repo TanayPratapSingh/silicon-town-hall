@@ -158,26 +158,34 @@ def render_report(scenario):
         return st.error("This scenario has no report: "
                         f"{scenario.get('report_error', 'building it failed after the meetings were saved')}.")
     st.caption(report["label"])
-    main, side = st.columns([3, 1])
-    with main:
-        render_tables(report)
-        st.subheader("Sample comments (SIMULATED)")
-        for c in report["sample_comments"]:
-            st.markdown(f"**SIMULATED** comment by {c['resident_id']}, {c['neighborhood']}, stance {c['stance']}"
-                        + (f", topic {c['topic']}" if c.get("topic") else ""))
-            st.write(c["text"])
-            st.caption(f"Cited: {c['cited']}")
-        st.subheader("Who to reach in person")
-        st.markdown("\n".join(f"- {item}" for item in report["reach_in_person"]) or "Nobody flagged.")
-    with side:
-        st.subheader("Pilot scores")
-        scores = core.pilot_scores() if scenario["settings"]["policy_kind"] == "preset" else None
-        if scores is None:
-            st.caption("Pilot scores exist only for the I-81 pilot, where the real comments are known.")
-        else:
-            st.caption(scores["label"])
-            if scores["scores"]:
-                st.json(scores["scores"])
+    render_pilot_scores(scenario)
+    st.subheader("Who to reach in person")
+    st.markdown("\n".join(f"- {item}" for item in report["reach_in_person"]) or "Nobody flagged.")
+    render_tables(report)
+    st.subheader("Sample comments (SIMULATED)")
+    for c in report["sample_comments"]:
+        st.markdown(f"**SIMULATED** comment by {c['resident_id']}, {c['neighborhood']}, stance {c['stance']}"
+                    + (f", topic {c['topic']}" if c.get("topic") else ""))
+        st.write(c["text"])
+        st.caption(f"Cited: {c['cited']}")
+
+
+def render_pilot_scores(scenario):
+    """The recorded I-81 pilot scores, the only place where real comments exist to score against."""
+    st.subheader("Pilot scores")
+    scores = core.pilot_scores() if scenario["settings"]["policy_kind"] == "preset" else None
+    if scores is None:
+        return st.caption("Pilot scores exist only for the I-81 pilot, where the real comments are known.")
+    st.caption(scores["label"])
+    if scores["scores"]:
+        pct = lambda v: "pending" if v is None else f"{v:.1%}"
+        table, notes = st.columns([1, 1])
+        table.dataframe(pd.DataFrame([{"condition": name.replace("_", " "), "real topics raised": pct(s.get("topic_coverage")),
+                                       "topic mix gap": s.get("topic_mix_gap")} for name, s in scores["scores"].items()]),
+                        hide_index=True)
+        notes.caption("Real topics raised: share of the topics in the real comments that at least one simulated comment "
+                      "raised. Topic mix gap: 0 is the same mix of topics, 1 is no topic in common. Conditions: the "
+                      "meeting; one model with no personas; the same residents writing without the meeting.")
 
 
 def report_page():
