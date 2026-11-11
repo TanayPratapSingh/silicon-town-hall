@@ -2,6 +2,7 @@
 
 import csv
 import json
+import re
 
 import pytest
 
@@ -138,10 +139,11 @@ CODEBOOK = [{"code": "4", "topic": "Community Grid Alternative", "definition": "
 
 
 def test_tagger_parses_json_and_drops_unknown_codes():
-    assert tagger.parse('{"codes": ["7-5", "4", "99"]}', CODEBOOK) == ["4", "7-5"]
-    assert tagger.parse('["7-5"]', CODEBOOK) == ["7-5"]
-    assert tagger.parse("not json", CODEBOOK) == []
-    assert tagger.parse('{"codes": "4"}', CODEBOOK) == []
+    assert tagger.parse('{"codes": ["7-5", "4", "99"]}', ["c"], CODEBOOK) == {"c": ["4", "7-5"]}
+    assert tagger.parse('["7-5"]', ["c"], CODEBOOK) == {"c": ["7-5"]}
+    assert tagger.parse("not json", ["c"], CODEBOOK) == {}
+    assert tagger.parse('{"codes": "4"}', ["c"], CODEBOOK) == {"c": []}
+    assert tagger.parse('{"tags": {"a": ["4"], "b": []}}', ["a", "b", "z"], CODEBOOK) == {"a": ["4"], "b": []}
 
 
 def test_tag_with_fake_llm():
@@ -181,3 +183,68 @@ def test_tagger_cli_exits_cleanly_without_key(monkeypatch, capsys):
 def test_committed_codebook_is_valid_json():
     topics = json.loads(codebook.OUT.read_text())
     assert topics and all({"code", "topic", "definition"} <= set(t) for t in topics)
+
+
+def batch_llm(codes=("7-5",), drop=()):
+    """FakeLLM that answers every comment id in the batch, except the ids in `drop`."""
+    def respond(messages):
+        ids = re.findall(r"^\[(c\d+)\]$", messages[1]["content"], re.MULTILINE)
+        return {"tags": {i: list(codes) for i in ids if i not in drop}}
+    return FakeLLM(responder=respond)
+
+
+def comments(n, group="feis_comments"):
+    return [{"id": f"c{i:05d}", "file": f"{group}/x.pdf", "pages": [1, 1], "kind": "email", "text": "noise " * 200}
+            for i in range(n)]
+
+
+def test_tag_all_filters_groups_and_batches(tmp_path):
+    out = tmp_path / "tagged.jsonl"
+    llm = batch_llm()
+    deis = [{**c, "id": "d" + c["id"]} for c in comments(5, "deis_comments")]
+    stats, spent = tagger.tag_all(comments(25) + deis, CODEBOOK, llm, cap=1.0, out=out, groups=["feis_comments"])
+    rows = [json.loads(line) for line in out.read_text().splitlines()]
+    assert len(rows) == 25 and all(r["file"].startswith("feis_comments/") and r["codes"] == ["7-5"] for r in rows)
+    assert stats["calls"] == len(llm.calls) == 3  # 10 per batch, so the codebook went out 3 times, not 25
+    assert all(m[1]["content"].count("7-5: Noise") == 1 for m in llm.calls)
+    assert 0 < spent < 1.0
+
+
+def test_tag_all_stops_before_the_cap(tmp_path):
+    out = tmp_path / "tagged.jsonl"
+    stats, spent = tagger.tag_all(comments(25), CODEBOOK, batch_llm(), cap=0.000001, out=out)
+    assert stats["stopped_by_cap"] == 1 and stats["calls"] == 0 and spent == 0 and not out.read_text()
+    one_batch = tagger.cost(len(json.dumps(tagger.prompt(comments(10), CODEBOOK))) // 3, 450) * 1.5
+    stats, spent = tagger.tag_all(comments(25), CODEBOOK, batch_llm(), cap=one_batch, out=out)
+    assert stats["calls"] == 1 and stats["stopped_by_cap"] == 1 and spent <= one_batch
+
+
+def test_tag_all_resumes_and_retries_missing(tmp_path):
+    out = tmp_path / "tagged.jsonl"
+    stats, _ = tagger.tag_all(comments(12), CODEBOOK, batch_llm(drop={"c00003"}), cap=1.0, out=out)
+    assert stats["tagged"] == 11 and stats["missing_from_reply"] == 1
+    llm = batch_llm()
+    stats, _ = tagger.tag_all(comments(12), CODEBOOK, llm, cap=1.0, out=out)
+    assert stats["skipped_already_tagged"] == 11 and stats["tagged"] == 1 and len(llm.calls) == 1
+    ids = [json.loads(line)["id"] for line in out.read_text().splitlines()]
+    assert sorted(ids) == [f"c{i:05d}" for i in range(12)]
+
+
+def test_tag_all_refuses_unscrubbed_text(tmp_path):
+    leaky = [{**comments(1)[0], "text": "write to jane@example.com"}]
+    with pytest.raises(ValueError):
+        tagger.tag_all(leaky, CODEBOOK, batch_llm(), cap=1.0, out=tmp_path / "t.jsonl")
+
+
+def test_tagger_cli_writes_cumulative_stats_without_text(tmp_path, monkeypatch):
+    monkeypatch.setattr(tagger, "DIR", tmp_path)
+    monkeypatch.setattr(tagger, "TAGGED", tmp_path / "tagged.jsonl")
+    monkeypatch.setattr(tagger.config, "RUNS", tmp_path)
+    monkeypatch.setattr(tagger.cb, "load", lambda: CODEBOOK)
+    (tmp_path / "comments.jsonl").write_text("".join(json.dumps(c) + "\n" for c in comments(15)))
+    tagger.main(["--groups", "feis_comments", "--cap", "1"], llm=batch_llm())
+    tagger.main(["--groups", "feis_comments", "--cap", "1"], llm=batch_llm())  # resume: nothing left to tag
+    report = json.loads((tmp_path / "ingest_tags_feis.json").read_text())
+    assert report["skipped_already_tagged"] == 15 and report["calls"] == 0 and report["calls_all_runs"] == 2
+    assert report["comments_tagged_total"] == 15 and report["topic_counts"] == {"7-5": 15}
+    assert "noise" not in json.dumps(report)

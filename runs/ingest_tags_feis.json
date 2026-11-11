@@ -1,0 +1,38 @@
+{
+  "model": "gpt-4.1",
+  "groups": [
+    "feis_comments"
+  ],
+  "cap_dollars": 1.0,
+  "selected": 344,
+  "skipped_already_tagged": 344,
+  "tagged": 0,
+  "missing_from_reply": 0,
+  "calls": 0,
+  "prompt_tokens": 0,
+  "completion_tokens": 0,
+  "stopped_by_cap": 0,
+  "estimated_dollars_this_run": 0.0,
+  "calls_all_runs": 42,
+  "prompt_tokens_all_runs": 177181,
+  "completion_tokens_all_runs": 7313,
+  "estimated_dollars_all_runs": 0.4129,
+  "estimate_note": "from list prices of $2.00 per million prompt and $8.00 per million completion tokens, not from the OpenAI bill",
+  "comments_tagged_total": 344,
+  "comments_with_no_code": 12,
+  "topic_counts": {
+    "4": 159,
+    "7-1": 149,
+    "7-2": 127,
+    "7-3": 19,
+    "7-4": 168,
+    "7-5": 107,
+    "7-7": 150,
+    "3": 63,
+    "6": 91,
+    "8": 44,
+    "2": 19,
+    "7-6": 5,
+    "5": 28
+  }
+}
