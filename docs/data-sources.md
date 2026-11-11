@@ -46,7 +46,9 @@ From Appendix A's table of contents (Responses to Comments Received on the FDR/F
 ## Census
 
 - The ACS 5 year microdata variables endpoint responds: <https://api.census.gov/data/2023/acs/acs5/pums/variables/PUMA.json>
-- A record query (`get=AGEP,SEX,RAC1P,PINCP,JWTRNS&for=public use microdata area:*&in=state:36&AGEP=40`) returned no rows on Oct 27. Still to fix: find the PUMA codes for Syracuse and Onondaga County and query those directly.
+- A record query (`get=AGEP,SEX,RAC1P,PINCP,JWTRNS&for=public use microdata area:*&in=state:36&AGEP=40`) returned no rows on Oct 27.
+- Cause, found Nov 11: the API now redirects every data request without a key to `https://api.census.gov/data/missing_key.html`, so it returns a web page instead of rows. Fix: sign up for a free key at <https://api.census.gov/data/key_signup.html> and pass `&key=...`.
+- Syracuse is PUMA `00701`, "Onondaga County (Central)--Syracuse City PUMA" (state 36). The Census Geocoder reported this for Syracuse City Hall (233 E Washington St) on Nov 11; the same lookup gives each address its census tract, which is how residents get a home neighborhood.
 
 ## Open questions
 

@@ -17,7 +17,7 @@ Five tracks, one owner each, so all five people work in parallel from week one. 
 | Workstream | What it delivers | Owner |
 | --- | --- | --- |
 | 1. Answer key | Every comment PDF downloaded and turned into text (OCR for scanned pages), email boilerplate and personal details stripped, each comment tagged with NYSDOT topic codes, 100 tags checked by hand |  |
-| 2. Project RAG | Impact statement chunked and embedded, vector store, reranker, retrieval tests; doubles as our Nov 10 RAG and reranking presentation demo |  |
+| 2. Project RAG | Any uploaded policy indexed as text and page images, fusion of both, cross-encoder and vision reranking, cited page boost, retrieval tests; the I-81 impact statement is the first document |  |
 | 3. Residents | Census persona sampler, persona prompts, neighborhood meeting loop, agent memory across rounds |  |
 | 4. Evaluation and ethics | Coverage and topic mix metrics, two baselines, per group divergence report, ethics rubric write up |  |
 | 5. App and delivery | Streamlit app with the what if editor, deployment, slides, demo script, final document assembly |  |
@@ -28,18 +28,19 @@ The number after each task is its workstream.
 
 ### Phase 1: now to Nov 8 (proposal due)
 
-- [ ] Trim the proposal to one page and submit it (all)
+- [x] Trim the proposal to one page and submit it (all); accepted Nov 11
 - [ ] Email the instructor the concept, subject "IST 688: Final project concept" (5)
 - [x] Set up the shared repo (5); Streamlit skeleton and API spending cap still to do
 - [x] Download every FEIS comment PDF, Appendix A and the impact statement chapters (1): `python scripts/download.py`
 - [ ] Turn Appendix A's table of contents into a topic codebook with a one line definition per topic (1, 4)
-- [ ] Get a working Census microdata query for the Syracuse area (3)
+- [ ] Get a working Census microdata query for the Syracuse area (3): cause found Nov 11, the API needs a free key; Syracuse is PUMA 00701
 
 ### Phase 2: Nov 9 to Nov 15 (approach and milestones due)
 
 - [ ] Extract text, OCR scanned pages, strip the quoted NYSDOT announcement and email signatures (1)
 - [ ] Remove names, emails, phone numbers and street addresses (1)
 - [ ] Build the impact statement index and reranker, then present it Nov 10 (2)
+- [ ] Index every page as text and as a page image; merge text and image results by reciprocal rank fusion (top 50), cross-encoder to 20, vision model scores the top 10 page images (2)
 - [ ] Write 20 pilot personas from Census records and review them for stereotypes (3, 4)
 - [ ] Turn this roadmap into the Approach and Milestones submission (5)
 

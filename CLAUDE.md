@@ -1,6 +1,6 @@
 # Silicon Town Hall: working context
 
-IST 688 Group 1 final project. LLM agents built from Census data read the I-81 viaduct impact statement, deliberate, and write public comments, which are scored against the real comments NYSDOT published. Read `README.md`, `docs/proposal.md` and `docs/roadmap.md` before structural changes.
+IST 688 Group 1 final project, accepted Nov 11, 2026. A planning tool: a government team uploads a draft policy, AI residents built from Census data read it and debate it in neighborhood meetings, and the team gets a feedback report of concerns by neighborhood and group and who to reach in person. The I-81 viaduct is the pilot, scored against the real comments NYSDOT published. Read `README.md`, `docs/proposal.md` and `docs/roadmap.md` before structural changes.
 
 ## House rules
 

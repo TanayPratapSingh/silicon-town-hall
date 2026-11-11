@@ -1,6 +1,6 @@
 # Silicon Town Hall
 
-Can AI residents built from Census data predict what Syracuse said about the I-81 viaduct project, and whose voices do they miss?
+A simulated town hall for government teams to test a new policy before real outreach. The I-81 viaduct in Syracuse is the pilot.
 
 IST 688, Building Human Centered AI Applications, Syracuse University, Fall 2026.
 
@@ -8,15 +8,16 @@ IST 688, Building Human Centered AI Applications, Syracuse University, Fall 2026
 
 Syracuse is replacing the I-81 highway bridge through downtown. Before deciding, the state collected public comments and published them, sorted by topic: noise, pollution, traffic, people losing their homes.
 
-We build a town of a few hundred AI residents, each based on real Census data. Each one reads the parts of the project plan that affect its own life, talks with neighbors in a simulated meeting, and writes a public comment. Then we compare those comments with what real residents wrote. The interesting part is what the AI town misses: research says LLMs tend to flatten people into stereotypes, so we measure where that happens.
+A planning team uploads a draft policy. The app builds a town of a few hundred AI residents from real Census data; each reads the parts of the policy that affect its own life, talks with neighbors in simulated meetings, and writes a comment. The team gets a report of which concerns come up, from which neighborhoods and groups, and who to reach in person. For I-81 we can check that report against what real residents told the state, and we show where the AI town got people wrong.
 
 The app is a rehearsal tool, not a replacement for real public input. Every output is labeled simulated.
 
-## Status, Oct 27, 2026
+## Status, Nov 11, 2026
 
 Done:
 
-- Proposal drafted: [docs/proposal.md](docs/proposal.md), due Nov 8
+- Proposal accepted Nov 11: [docs/proposal.md](docs/proposal.md), submitted as [docs/proposal.pdf](docs/proposal.pdf)
+- Found why the Census microdata query returned nothing: the API now requires a free key (see [docs/data-sources.md](docs/data-sources.md))
 - Roadmap with workstreams, phase checklists, stack and risks: [docs/roadmap.md](docs/roadmap.md)
 - All 47 public source PDFs located; the downloader is tested; page and word counts are in [runs/pdf_stats.csv](runs/pdf_stats.csv), summarized in [docs/data-sources.md](docs/data-sources.md)
 
