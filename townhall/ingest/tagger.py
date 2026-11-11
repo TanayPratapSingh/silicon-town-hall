@@ -11,8 +11,9 @@ import argparse
 import csv
 import json
 import random
+import re
 import sys
-from collections import Counter
+from collections import Counter, defaultdict
 
 from townhall import config
 from townhall.ingest import codebook as cb
@@ -22,6 +23,9 @@ DIR = config.PROCESSED / "ingest"
 TAGGED = DIR / "comments_tagged.jsonl"
 MAX_CHARS = 12000  # shortcut: long letters with exhibits are cut here; chunk them if their tags matter
 BATCH_CHARS, BATCH_SIZE = 20000, 10
+# Near duplicates are tagged once: word 5 gram overlap of 0.9 groups all 92 FEIS form emails, while 0.8 starts
+# merging distinct letters (issue #20). Tags differed across copies only because batch neighbors differed.
+DEDUPE_JACCARD = 0.9
 # gpt-4.1 list prices in dollars per token, from the lead; costs below are estimates from these, not the bill
 PROMPT_PRICE, COMPLETION_PRICE = 2.00 / 1e6, 8.00 / 1e6
 
@@ -85,6 +89,33 @@ def tag(comment_text, codebook, llm):
     return parse(reply, ["c"], codebook).get("c", [])
 
 
+def shingles(text):
+    words = re.findall(r"[a-z0-9]+", re.sub(r"\[(NAME|EMAIL|PHONE|ADDRESS)\]", " ", text.lower()))
+    return {" ".join(words[i:i + 5]) for i in range(max(1, len(words) - 4))}
+
+
+def representatives(comments, threshold=DEDUPE_JACCARD):
+    """{comment id: id of the first comment in its near duplicate group}.
+    shortcut: compares every pair, fine for a few thousand comments; use MinHash for a much bigger corpus."""
+    sets = [shingles(c["text"]) for c in comments]
+    parent = list(range(len(comments)))
+
+    def root(i):
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+
+    for i, a in enumerate(sets):
+        for j in range(i + 1, len(sets)):
+            b = sets[j]
+            if a == b or (min(len(a), len(b)) >= max(5, threshold * max(len(a), len(b)))
+                          and len(a & b) >= threshold * len(a | b)):
+                ri, rj = root(i), root(j)
+                parent[max(ri, rj)] = min(ri, rj)
+    return {c["id"]: comments[root(i)]["id"] for i, c in enumerate(comments)}
+
+
 def batches(comments):
     batch, size = [], 0
     for c in comments:
@@ -104,11 +135,16 @@ def load_comments(path=DIR / "comments.jsonl"):
 
 
 def tag_all(comments, codebook, llm, cap, out=TAGGED, groups=None):
-    """Tag the comments in `groups` (path prefixes such as 'feis_comments') not yet in `out`, under a dollar cap."""
+    """Tag the comments in `groups` (path prefixes such as 'feis_comments') not yet in `out`, under a dollar cap.
+    Each near duplicate group is sent once and its codes are copied to every copy, marked with tags_from."""
     done = {c["id"] for c in load_comments(out)} if out.exists() else set()
     chosen = [c for c in comments if not groups or c["file"].split("/")[0] in groups]
-    todo = [c for c in chosen if c["id"] not in done]
-    stats = Counter(selected=len(chosen), skipped_already_tagged=len(chosen) - len(todo))
+    rep, copies = representatives(chosen), defaultdict(list)
+    for c in chosen:
+        copies[rep[c["id"]]].append(c)
+    todo = [c for c in chosen if rep[c["id"]] == c["id"] and any(d["id"] not in done for d in copies[c["id"]])]
+    stats = Counter(selected=len(chosen), distinct_texts=len(copies),
+                    skipped_already_tagged=sum(c["id"] in done for c in chosen))
     spent = 0.0
     with open(out, "a") as f:
         for batch in batches(todo):
@@ -124,9 +160,11 @@ def tag_all(comments, codebook, llm, cap, out=TAGGED, groups=None):
             spent += cost(p, q)
             stats.update(calls=1, prompt_tokens=p, completion_tokens=q)
             tags = parse(reply, [c["id"] for c in batch], codebook)
-            stats.update(tagged=len(tags), missing_from_reply=len(batch) - len(tags))
-            f.writelines(json.dumps({**c, "codes": tags[c["id"]], "model": config.ANALYST_MODEL}) + "\n"
-                         for c in batch if c["id"] in tags)
+            stats.update(tagged=len(tags), missing_from_reply=len(batch) - len(tags),
+                         copied_to_duplicates=sum(len(copies[i]) - 1 for i in tags))
+            f.writelines(json.dumps({**d, "codes": tags[c["id"]], "model": config.ANALYST_MODEL,
+                                     "tags_from": c["id"]}) + "\n"
+                         for c in batch if c["id"] in tags for d in copies[c["id"]] if d["id"] not in done)
             f.flush()
     return stats, spent
 
@@ -162,8 +200,10 @@ def main(argv=None, llm=None):
     before = json.loads(path.read_text()) if path.exists() else {}  # a resumed run adds to the earlier totals
     tagged = [c for c in load_comments(TAGGED) if not groups or c["file"].split("/")[0] in groups]
     report = {"model": config.ANALYST_MODEL, "groups": sorted(groups) or "all", "cap_dollars": args.cap,
-              **{k: stats[k] for k in ("selected", "skipped_already_tagged", "tagged", "missing_from_reply",
-                                       "calls", "prompt_tokens", "completion_tokens", "stopped_by_cap")},
+              "dedupe_jaccard": DEDUPE_JACCARD,
+              **{k: stats[k] for k in ("selected", "distinct_texts", "skipped_already_tagged", "tagged",
+                                       "copied_to_duplicates", "missing_from_reply", "calls", "prompt_tokens",
+                                       "completion_tokens", "stopped_by_cap")},
               "estimated_dollars_this_run": round(spent, 4),
               **{f"{k}_all_runs": before.get(f"{k}_all_runs", before.get(k, 0)) + stats[k]
                  for k in ("calls", "prompt_tokens", "completion_tokens")},

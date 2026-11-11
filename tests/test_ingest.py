@@ -196,8 +196,24 @@ def batch_llm(codes=("7-5",), drop=()):
 
 
 def comments(n, group="feis_comments"):
-    return [{"id": f"c{i:05d}", "file": f"{group}/x.pdf", "pages": [1, 1], "kind": "email", "text": "noise " * 200}
-            for i in range(n)]
+    return [{"id": f"c{i:05d}", "file": f"{group}/x.pdf", "pages": [1, 1], "kind": "email",
+             "text": " ".join(f"noise{i}w{j}" for j in range(120))} for i in range(n)]
+
+
+def test_near_duplicates_are_tagged_once_and_copied(tmp_path):
+    form = " ".join(f"reason{j}" for j in range(200))  # a 200 word form letter
+    dupes = [{**c, "text": f"Dear NYSDOT, {form} Thank you, [NAME]"} for c in comments(3)]
+    dupes[2]["text"] = dupes[2]["text"].replace("Thank you", "Sincerely, from a neighbor")
+    rows = comments(5)[3:] + dupes  # c00003, c00004 distinct; c00000 to c00002 one form letter
+    rep = tagger.representatives(rows)
+    assert rep["c00003"] == "c00003" and rep["c00004"] == "c00004"
+    assert rep["c00000"] == rep["c00001"] == rep["c00002"] == "c00000"
+    out, llm = tmp_path / "tagged.jsonl", batch_llm()
+    stats, _ = tagger.tag_all(rows, CODEBOOK, llm, cap=1.0, out=out)
+    sent = re.findall(r"^\[(c\d+)\]$", llm.calls[0][1]["content"], re.MULTILINE)
+    assert sorted(sent) == ["c00000", "c00003", "c00004"] and stats["copied_to_duplicates"] == 2
+    tagged = {r["id"]: r for r in map(json.loads, out.read_text().splitlines())}
+    assert len(tagged) == 5 and tagged["c00002"]["tags_from"] == "c00000" and tagged["c00002"]["codes"] == ["7-5"]
 
 
 def test_tag_all_filters_groups_and_batches(tmp_path):

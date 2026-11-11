@@ -1,0 +1,1037 @@
+{
+  "label": "Run type: 20 resident pilot. Every comment scored here is simulated. Real side: real tags from data/processed/ingest/comments_tagged.jsonl",
+  "run_type": "20 resident pilot",
+  "command": "python -m townhall.report.score --sim meeting=data/processed/town/comments_real.json --sim no_personas=data/processed/report/baseline_no_personas.json --sim skip_meeting=data/processed/report/baseline_skip_meeting.json --residents data/processed/town/residents_real.json --max-calls 65",
+  "date": "2026-11-11",
+  "tagger_model": "gpt-4.1",
+  "residents_in_file": 20,
+  "population_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums); tract counts: ACS 2024 5 year B01003, B03002, B25008, B26001, Census API; tracts in the PUMA: Census 2020 tract to PUMA relationship file; population centers: Census 2020; neighborhoods: City of Syracuse open data",
+  "real_tags_file": "data/processed/ingest/comments_tagged.jsonl",
+  "residents_file": "data/processed/town/residents_real.json",
+  "real_tags_available": true,
+  "real_comments_by_source_group": {
+    "feis_comments": 344
+  },
+  "conditions": {
+    "meeting": {
+      "comments": 20,
+      "all_labeled_simulated": true,
+      "who_to_reach": [
+        {
+          "dimension": "age_band",
+          "group": "45 to 64",
+          "simulated_residents": 1,
+          "expected_residents": 4.92,
+          "population_share": 0.2458,
+          "reasons": [
+            "underrepresented: 1 simulated residents where its population share implies 4.9",
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Northside",
+          "simulated_residents": 0,
+          "expected_residents": 2.14,
+          "population_share": 0.1072,
+          "reasons": [
+            "no simulated resident, though the group is 10.7% of the population"
+          ]
+        },
+        {
+          "dimension": "race_ethnicity",
+          "group": "Hispanic or Latino",
+          "simulated_residents": 0,
+          "expected_residents": 1.67,
+          "population_share": 0.0836,
+          "reasons": [
+            "no simulated resident, though the group is 8.4% of the population"
+          ]
+        },
+        {
+          "dimension": "commute",
+          "group": "Walked",
+          "simulated_residents": 0,
+          "expected_residents": 0.95,
+          "population_share": 0.0477,
+          "reasons": [
+            "no simulated resident, though the group is 4.8% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Near Westside",
+          "simulated_residents": 0,
+          "expected_residents": 0.9,
+          "population_share": 0.0451,
+          "reasons": [
+            "no simulated resident, though the group is 4.5% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Brighton",
+          "simulated_residents": 0,
+          "expected_residents": 0.88,
+          "population_share": 0.0442,
+          "reasons": [
+            "no simulated resident, though the group is 4.4% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Eastwood",
+          "simulated_residents": 1,
+          "expected_residents": 1.83,
+          "population_share": 0.0916,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Court-Woodlawn",
+          "simulated_residents": 0,
+          "expected_residents": 0.77,
+          "population_share": 0.0386,
+          "reasons": [
+            "no simulated resident, though the group is 3.9% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "University Hill",
+          "simulated_residents": 1,
+          "expected_residents": 1.65,
+          "population_share": 0.0823,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Salt Springs",
+          "simulated_residents": 0,
+          "expected_residents": 0.63,
+          "population_share": 0.0314,
+          "reasons": [
+            "no simulated resident, though the group is 3.1% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Strathmore",
+          "simulated_residents": 0,
+          "expected_residents": 0.55,
+          "population_share": 0.0276,
+          "reasons": [
+            "no simulated resident, though the group is 2.8% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Elmwood",
+          "simulated_residents": 0,
+          "expected_residents": 0.54,
+          "population_share": 0.0268,
+          "reasons": [
+            "no simulated resident, though the group is 2.7% of the population"
+          ]
+        },
+        {
+          "dimension": "commute",
+          "group": "Bus",
+          "simulated_residents": 0,
+          "expected_residents": 0.49,
+          "population_share": 0.0247,
+          "reasons": [
+            "no simulated resident, though the group is 2.5% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Downtown",
+          "simulated_residents": 0,
+          "expected_residents": 0.45,
+          "population_share": 0.0226,
+          "reasons": [
+            "no simulated resident, though the group is 2.3% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Outer Comstock",
+          "simulated_residents": 0,
+          "expected_residents": 0.45,
+          "population_share": 0.0223,
+          "reasons": [
+            "no simulated resident, though the group is 2.2% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Park Ave.",
+          "simulated_residents": 0,
+          "expected_residents": 0.33,
+          "population_share": 0.0165,
+          "reasons": [
+            "no simulated resident, though the group is 1.7% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Skunk City",
+          "simulated_residents": 0,
+          "expected_residents": 0.31,
+          "population_share": 0.0154,
+          "reasons": [
+            "no simulated resident, though the group is 1.5% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Westcott",
+          "simulated_residents": 0,
+          "expected_residents": 0.28,
+          "population_share": 0.0138,
+          "reasons": [
+            "no simulated resident, though the group is 1.4% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Far Westside",
+          "simulated_residents": 0,
+          "expected_residents": 0.27,
+          "population_share": 0.0136,
+          "reasons": [
+            "no simulated resident, though the group is 1.4% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Southwest",
+          "simulated_residents": 0,
+          "expected_residents": 0.25,
+          "population_share": 0.0123,
+          "reasons": [
+            "no simulated resident, though the group is 1.2% of the population"
+          ]
+        },
+        {
+          "dimension": "income_band",
+          "group": "$100,000 and over",
+          "simulated_residents": 1,
+          "expected_residents": 1.24,
+          "population_share": 0.0621,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Prospect Hill",
+          "simulated_residents": 0,
+          "expected_residents": 0.23,
+          "population_share": 0.0114,
+          "reasons": [
+            "no simulated resident, though the group is 1.1% of the population"
+          ]
+        },
+        {
+          "dimension": "commute",
+          "group": "Worked from home",
+          "simulated_residents": 1,
+          "expected_residents": 1.22,
+          "population_share": 0.0612,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Winkworth",
+          "simulated_residents": 0,
+          "expected_residents": 0.19,
+          "population_share": 0.0093,
+          "reasons": [
+            "no simulated resident, though the group is 0.9% of the population"
+          ]
+        },
+        {
+          "dimension": "commute",
+          "group": "Other method",
+          "simulated_residents": 0,
+          "expected_residents": 0.18,
+          "population_share": 0.0091,
+          "reasons": [
+            "no simulated resident, though the group is 0.9% of the population"
+          ]
+        },
+        {
+          "dimension": "tenure",
+          "group": "Occupied without payment of rent",
+          "simulated_residents": 0,
+          "expected_residents": 0.18,
+          "population_share": 0.0091,
+          "reasons": [
+            "no simulated resident, though the group is 0.9% of the population"
+          ]
+        },
+        {
+          "dimension": "commute",
+          "group": "Taxi or ride hailing services",
+          "simulated_residents": 0,
+          "expected_residents": 0.14,
+          "population_share": 0.0068,
+          "reasons": [
+            "no simulated resident, though the group is 0.7% of the population"
+          ]
+        },
+        {
+          "dimension": "race_ethnicity",
+          "group": "Some Other Race alone, not Hispanic or Latino",
+          "simulated_residents": 0,
+          "expected_residents": 0.09,
+          "population_share": 0.0043,
+          "reasons": [
+            "no simulated resident, though the group is 0.4% of the population"
+          ]
+        },
+        {
+          "dimension": "commute",
+          "group": "Bicycle",
+          "simulated_residents": 0,
+          "expected_residents": 0.08,
+          "population_share": 0.0041,
+          "reasons": [
+            "no simulated resident, though the group is 0.4% of the population"
+          ]
+        },
+        {
+          "dimension": "commute",
+          "group": "Subway or elevated rail",
+          "simulated_residents": 0,
+          "expected_residents": 0.07,
+          "population_share": 0.0034,
+          "reasons": [
+            "no simulated resident, though the group is 0.3% of the population"
+          ]
+        },
+        {
+          "dimension": "race_ethnicity",
+          "group": "American Indian alone, not Hispanic or Latino",
+          "simulated_residents": 0,
+          "expected_residents": 0.05,
+          "population_share": 0.0025,
+          "reasons": [
+            "no simulated resident, though the group is 0.2% of the population"
+          ]
+        },
+        {
+          "dimension": "race_ethnicity",
+          "group": "American Indian and Alaska Native tribes specified, or not specified and no other races, not Hispanic or Latino",
+          "simulated_residents": 0,
+          "expected_residents": 0.02,
+          "population_share": 0.0012,
+          "reasons": [
+            "no simulated resident, though the group is 0.1% of the population"
+          ]
+        },
+        {
+          "dimension": "commute",
+          "group": "Motorcycle",
+          "simulated_residents": 0,
+          "expected_residents": 0.01,
+          "population_share": 0.0004,
+          "reasons": [
+            "no simulated resident, though the group is 0.0% of the population"
+          ]
+        },
+        {
+          "dimension": "race_ethnicity",
+          "group": "Native Hawaiian and Other Pacific Islander alone, not Hispanic or Latino",
+          "simulated_residents": 0,
+          "expected_residents": 0.0,
+          "population_share": 0.0002,
+          "reasons": [
+            "no simulated resident, though the group is 0.0% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "South Campus",
+          "simulated_residents": 1,
+          "expected_residents": 0.71,
+          "population_share": 0.0357,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Southside",
+          "simulated_residents": 1,
+          "expected_residents": 0.66,
+          "population_share": 0.0331,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Meadowbrook",
+          "simulated_residents": 1,
+          "expected_residents": 0.61,
+          "population_share": 0.0303,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Tipp Hill",
+          "simulated_residents": 1,
+          "expected_residents": 0.59,
+          "population_share": 0.0297,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Sedgwick",
+          "simulated_residents": 1,
+          "expected_residents": 0.47,
+          "population_share": 0.0234,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Near Eastside",
+          "simulated_residents": 1,
+          "expected_residents": 0.3,
+          "population_share": 0.0151,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Franklin Square",
+          "simulated_residents": 1,
+          "expected_residents": 0.17,
+          "population_share": 0.0084,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        }
+      ],
+      "score": {
+        "real_comments": 344,
+        "simulated_comments": 20,
+        "real_comments_with_no_topic": 9,
+        "simulated_comments_with_no_topic": 0,
+        "topic_coverage": 0.6154,
+        "topic_coverage_note": "Share of the topics in the real comments that at least one simulated comment raised.",
+        "topic_mix_gap": 0.5503,
+        "topic_mix_gap_note": "Jensen Shannon distance (base 2) between the share of topic mentions in real and in simulated comments: 0 means the same mix of topics, 1 means no topic in common.",
+        "concerns_only_real": [
+          {
+            "code": "7-4",
+            "topic": "Air Quality, Energy, and Climate Change",
+            "real_comments": 165
+          },
+          {
+            "code": "7-3",
+            "topic": "Historic and Cultural Resources",
+            "real_comments": 99
+          },
+          {
+            "code": "3",
+            "topic": "Viaduct Alternative",
+            "real_comments": 58
+          },
+          {
+            "code": "5",
+            "topic": "Other Potential Alternatives",
+            "real_comments": 28
+          },
+          {
+            "code": "7-6",
+            "topic": "Natural Resources",
+            "real_comments": 5
+          }
+        ],
+        "topics_only_simulated": [],
+        "real_topic_counts": {
+          "4": 177,
+          "7-4": 165,
+          "7-5": 157,
+          "7-1": 154,
+          "7-7": 149,
+          "7-2": 145,
+          "7-3": 99,
+          "6": 95,
+          "3": 58,
+          "8": 43,
+          "5": 28,
+          "2": 16,
+          "7-6": 5
+        },
+        "simulated_topic_counts": {
+          "7-7": 20,
+          "8": 17,
+          "7-1": 15,
+          "7-5": 9,
+          "2": 3,
+          "4": 3,
+          "6": 2,
+          "7-2": 1
+        }
+      }
+    },
+    "no_personas": {
+      "comments": 19,
+      "all_labeled_simulated": true,
+      "score": {
+        "real_comments": 344,
+        "simulated_comments": 19,
+        "real_comments_with_no_topic": 9,
+        "simulated_comments_with_no_topic": 5,
+        "topic_coverage": 0.7692,
+        "topic_coverage_note": "Share of the topics in the real comments that at least one simulated comment raised.",
+        "topic_mix_gap": 0.4658,
+        "topic_mix_gap_note": "Jensen Shannon distance (base 2) between the share of topic mentions in real and in simulated comments: 0 means the same mix of topics, 1 means no topic in common.",
+        "concerns_only_real": [
+          {
+            "code": "7-5",
+            "topic": "Noise",
+            "real_comments": 157
+          },
+          {
+            "code": "6",
+            "topic": "Transportation Considerations",
+            "real_comments": 95
+          },
+          {
+            "code": "7-6",
+            "topic": "Natural Resources",
+            "real_comments": 5
+          }
+        ],
+        "topics_only_simulated": [],
+        "real_topic_counts": {
+          "4": 177,
+          "7-4": 165,
+          "7-5": 157,
+          "7-1": 154,
+          "7-7": 149,
+          "7-2": 145,
+          "7-3": 99,
+          "6": 95,
+          "3": 58,
+          "8": 43,
+          "5": 28,
+          "2": 16,
+          "7-6": 5
+        },
+        "simulated_topic_counts": {
+          "8": 5,
+          "7-7": 3,
+          "2": 3,
+          "4": 3,
+          "7-1": 2,
+          "7-3": 2,
+          "7-2": 2,
+          "3": 1,
+          "7-4": 1,
+          "5": 1
+        }
+      }
+    },
+    "skip_meeting": {
+      "comments": 20,
+      "all_labeled_simulated": true,
+      "who_to_reach": [
+        {
+          "dimension": "age_band",
+          "group": "45 to 64",
+          "simulated_residents": 1,
+          "expected_residents": 4.92,
+          "population_share": 0.2458,
+          "reasons": [
+            "underrepresented: 1 simulated residents where its population share implies 4.9",
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Northside",
+          "simulated_residents": 0,
+          "expected_residents": 2.14,
+          "population_share": 0.1072,
+          "reasons": [
+            "no simulated resident, though the group is 10.7% of the population"
+          ]
+        },
+        {
+          "dimension": "race_ethnicity",
+          "group": "Hispanic or Latino",
+          "simulated_residents": 0,
+          "expected_residents": 1.67,
+          "population_share": 0.0836,
+          "reasons": [
+            "no simulated resident, though the group is 8.4% of the population"
+          ]
+        },
+        {
+          "dimension": "commute",
+          "group": "Walked",
+          "simulated_residents": 0,
+          "expected_residents": 0.95,
+          "population_share": 0.0477,
+          "reasons": [
+            "no simulated resident, though the group is 4.8% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Near Westside",
+          "simulated_residents": 0,
+          "expected_residents": 0.9,
+          "population_share": 0.0451,
+          "reasons": [
+            "no simulated resident, though the group is 4.5% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Brighton",
+          "simulated_residents": 0,
+          "expected_residents": 0.88,
+          "population_share": 0.0442,
+          "reasons": [
+            "no simulated resident, though the group is 4.4% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Eastwood",
+          "simulated_residents": 1,
+          "expected_residents": 1.83,
+          "population_share": 0.0916,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Court-Woodlawn",
+          "simulated_residents": 0,
+          "expected_residents": 0.77,
+          "population_share": 0.0386,
+          "reasons": [
+            "no simulated resident, though the group is 3.9% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "University Hill",
+          "simulated_residents": 1,
+          "expected_residents": 1.65,
+          "population_share": 0.0823,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Salt Springs",
+          "simulated_residents": 0,
+          "expected_residents": 0.63,
+          "population_share": 0.0314,
+          "reasons": [
+            "no simulated resident, though the group is 3.1% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Strathmore",
+          "simulated_residents": 0,
+          "expected_residents": 0.55,
+          "population_share": 0.0276,
+          "reasons": [
+            "no simulated resident, though the group is 2.8% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Elmwood",
+          "simulated_residents": 0,
+          "expected_residents": 0.54,
+          "population_share": 0.0268,
+          "reasons": [
+            "no simulated resident, though the group is 2.7% of the population"
+          ]
+        },
+        {
+          "dimension": "commute",
+          "group": "Bus",
+          "simulated_residents": 0,
+          "expected_residents": 0.49,
+          "population_share": 0.0247,
+          "reasons": [
+            "no simulated resident, though the group is 2.5% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Downtown",
+          "simulated_residents": 0,
+          "expected_residents": 0.45,
+          "population_share": 0.0226,
+          "reasons": [
+            "no simulated resident, though the group is 2.3% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Outer Comstock",
+          "simulated_residents": 0,
+          "expected_residents": 0.45,
+          "population_share": 0.0223,
+          "reasons": [
+            "no simulated resident, though the group is 2.2% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Park Ave.",
+          "simulated_residents": 0,
+          "expected_residents": 0.33,
+          "population_share": 0.0165,
+          "reasons": [
+            "no simulated resident, though the group is 1.7% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Skunk City",
+          "simulated_residents": 0,
+          "expected_residents": 0.31,
+          "population_share": 0.0154,
+          "reasons": [
+            "no simulated resident, though the group is 1.5% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Westcott",
+          "simulated_residents": 0,
+          "expected_residents": 0.28,
+          "population_share": 0.0138,
+          "reasons": [
+            "no simulated resident, though the group is 1.4% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Far Westside",
+          "simulated_residents": 0,
+          "expected_residents": 0.27,
+          "population_share": 0.0136,
+          "reasons": [
+            "no simulated resident, though the group is 1.4% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Southwest",
+          "simulated_residents": 0,
+          "expected_residents": 0.25,
+          "population_share": 0.0123,
+          "reasons": [
+            "no simulated resident, though the group is 1.2% of the population"
+          ]
+        },
+        {
+          "dimension": "income_band",
+          "group": "$100,000 and over",
+          "simulated_residents": 1,
+          "expected_residents": 1.24,
+          "population_share": 0.0621,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Prospect Hill",
+          "simulated_residents": 0,
+          "expected_residents": 0.23,
+          "population_share": 0.0114,
+          "reasons": [
+            "no simulated resident, though the group is 1.1% of the population"
+          ]
+        },
+        {
+          "dimension": "commute",
+          "group": "Worked from home",
+          "simulated_residents": 1,
+          "expected_residents": 1.22,
+          "population_share": 0.0612,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Winkworth",
+          "simulated_residents": 0,
+          "expected_residents": 0.19,
+          "population_share": 0.0093,
+          "reasons": [
+            "no simulated resident, though the group is 0.9% of the population"
+          ]
+        },
+        {
+          "dimension": "commute",
+          "group": "Other method",
+          "simulated_residents": 0,
+          "expected_residents": 0.18,
+          "population_share": 0.0091,
+          "reasons": [
+            "no simulated resident, though the group is 0.9% of the population"
+          ]
+        },
+        {
+          "dimension": "tenure",
+          "group": "Occupied without payment of rent",
+          "simulated_residents": 0,
+          "expected_residents": 0.18,
+          "population_share": 0.0091,
+          "reasons": [
+            "no simulated resident, though the group is 0.9% of the population"
+          ]
+        },
+        {
+          "dimension": "commute",
+          "group": "Taxi or ride hailing services",
+          "simulated_residents": 0,
+          "expected_residents": 0.14,
+          "population_share": 0.0068,
+          "reasons": [
+            "no simulated resident, though the group is 0.7% of the population"
+          ]
+        },
+        {
+          "dimension": "race_ethnicity",
+          "group": "Some Other Race alone, not Hispanic or Latino",
+          "simulated_residents": 0,
+          "expected_residents": 0.09,
+          "population_share": 0.0043,
+          "reasons": [
+            "no simulated resident, though the group is 0.4% of the population"
+          ]
+        },
+        {
+          "dimension": "commute",
+          "group": "Bicycle",
+          "simulated_residents": 0,
+          "expected_residents": 0.08,
+          "population_share": 0.0041,
+          "reasons": [
+            "no simulated resident, though the group is 0.4% of the population"
+          ]
+        },
+        {
+          "dimension": "commute",
+          "group": "Subway or elevated rail",
+          "simulated_residents": 0,
+          "expected_residents": 0.07,
+          "population_share": 0.0034,
+          "reasons": [
+            "no simulated resident, though the group is 0.3% of the population"
+          ]
+        },
+        {
+          "dimension": "race_ethnicity",
+          "group": "American Indian alone, not Hispanic or Latino",
+          "simulated_residents": 0,
+          "expected_residents": 0.05,
+          "population_share": 0.0025,
+          "reasons": [
+            "no simulated resident, though the group is 0.2% of the population"
+          ]
+        },
+        {
+          "dimension": "race_ethnicity",
+          "group": "American Indian and Alaska Native tribes specified, or not specified and no other races, not Hispanic or Latino",
+          "simulated_residents": 0,
+          "expected_residents": 0.02,
+          "population_share": 0.0012,
+          "reasons": [
+            "no simulated resident, though the group is 0.1% of the population"
+          ]
+        },
+        {
+          "dimension": "commute",
+          "group": "Motorcycle",
+          "simulated_residents": 0,
+          "expected_residents": 0.01,
+          "population_share": 0.0004,
+          "reasons": [
+            "no simulated resident, though the group is 0.0% of the population"
+          ]
+        },
+        {
+          "dimension": "race_ethnicity",
+          "group": "Native Hawaiian and Other Pacific Islander alone, not Hispanic or Latino",
+          "simulated_residents": 0,
+          "expected_residents": 0.0,
+          "population_share": 0.0002,
+          "reasons": [
+            "no simulated resident, though the group is 0.0% of the population"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "South Campus",
+          "simulated_residents": 1,
+          "expected_residents": 0.71,
+          "population_share": 0.0357,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Southside",
+          "simulated_residents": 1,
+          "expected_residents": 0.66,
+          "population_share": 0.0331,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Meadowbrook",
+          "simulated_residents": 1,
+          "expected_residents": 0.61,
+          "population_share": 0.0303,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Tipp Hill",
+          "simulated_residents": 1,
+          "expected_residents": 0.59,
+          "population_share": 0.0297,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Sedgwick",
+          "simulated_residents": 1,
+          "expected_residents": 0.47,
+          "population_share": 0.0234,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Near Eastside",
+          "simulated_residents": 1,
+          "expected_residents": 0.3,
+          "population_share": 0.0151,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        },
+        {
+          "dimension": "neighborhood",
+          "group": "Franklin Square",
+          "simulated_residents": 1,
+          "expected_residents": 0.17,
+          "population_share": 0.0084,
+          "reasons": [
+            "only one simulated resident speaks for this group"
+          ]
+        }
+      ],
+      "score": {
+        "real_comments": 344,
+        "simulated_comments": 20,
+        "real_comments_with_no_topic": 9,
+        "simulated_comments_with_no_topic": 0,
+        "topic_coverage": 0.7692,
+        "topic_coverage_note": "Share of the topics in the real comments that at least one simulated comment raised.",
+        "topic_mix_gap": 0.4189,
+        "topic_mix_gap_note": "Jensen Shannon distance (base 2) between the share of topic mentions in real and in simulated comments: 0 means the same mix of topics, 1 means no topic in common.",
+        "concerns_only_real": [
+          {
+            "code": "7-5",
+            "topic": "Noise",
+            "real_comments": 157
+          },
+          {
+            "code": "5",
+            "topic": "Other Potential Alternatives",
+            "real_comments": 28
+          },
+          {
+            "code": "7-6",
+            "topic": "Natural Resources",
+            "real_comments": 5
+          }
+        ],
+        "topics_only_simulated": [],
+        "real_topic_counts": {
+          "4": 177,
+          "7-4": 165,
+          "7-5": 157,
+          "7-1": 154,
+          "7-7": 149,
+          "7-2": 145,
+          "7-3": 99,
+          "6": 95,
+          "3": 58,
+          "8": 43,
+          "5": 28,
+          "2": 16,
+          "7-6": 5
+        },
+        "simulated_topic_counts": {
+          "7-1": 18,
+          "7-2": 10,
+          "6": 6,
+          "7-7": 6,
+          "4": 5,
+          "3": 4,
+          "8": 4,
+          "7-3": 1,
+          "2": 1,
+          "7-4": 1
+        }
+      }
+    }
+  },
+  "token_usage": {
+    "calls": 59,
+    "models_returned": [
+      "gpt-4.1-2025-04-14"
+    ],
+    "prompt_tokens": 44959,
+    "completion_tokens": 1047,
+    "total_tokens": 46006
+  }
+}

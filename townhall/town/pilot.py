@@ -2,6 +2,7 @@
 
     .venv/bin/python -m townhall.town.pilot [--n 20] [--seed 0] [--turns N]
     .venv/bin/python -m townhall.town.pilot --real-profiles   # n real profile calls, no meeting
+    .venv/bin/python -m townhall.town.pilot --real-meeting    # one real meeting, at most 3n + 5 calls
 
 The residents and their neighborhoods are real Census draws. In the fake pilot every piece of text
 (profiles, agenda, turns, summary, comments, LLM reviews) comes from FakeLLM, a template that is not a
@@ -136,6 +137,41 @@ def real_profiles(residents, census_meta, home, command):
     print(json.dumps(run, indent=2))
 
 
+def real_meeting(turns, command):
+    """One citywide meeting of the residents in residents_real.json over the impact statement index, with
+    RESIDENT_MODEL and no vision calls. Citywide, not by neighborhood: 20 residents fall in 14 neighborhoods, so
+    most neighborhood meetings would have one person and match the skip meeting baseline."""
+    from townhall.retrieval import Retriever
+
+    residents = json.loads((OUT / "residents_real.json").read_text())["residents"]
+    llm = capped_openai(max_calls=3 * len(residents) + 5)  # one agenda, a turn and a summary per turn, one comment each
+    retrieve = meeting.retriever_from(Retriever(), k=5, llm=None)
+    (OUT / "memory_real.sqlite").unlink(missing_ok=True)
+    memory = Memory(OUT / "memory_real.sqlite")
+    state = meeting.run_meeting(POLICY, residents, retrieve, llm, max_turns=turns, memory=memory, round=1, topic=TOPIC)
+    label = (f"REAL PILOT MEETING: one citywide meeting, every turn and comment written by {config.RESIDENT_MODEL}, "
+             "a real model, over the impact statement index. The residents and everything they say are simulated.")
+    _write(OUT / "meeting_pilot_real.json", {"label": label, "policy": POLICY, "agenda": state["agenda"],
+                                             "transcript": state["transcript"], "summary": state["summary"]})
+    _write(OUT / "comments_real.json", {"label": label, "comments": state["comments"]})
+    comments = state["comments"]
+    tokens = {k: sum(c[k] for c in llm.responses) for k in ("prompt_tokens", "completion_tokens", "total_tokens")}
+    run = {"label": label, "command": command, "date": datetime.now(timezone.utc).date().isoformat(),
+           "residents": len(residents), "residents_file": "data/processed/town/residents_real.json",
+           "meeting": {"turns": len(state["transcript"]), "agenda_items": len(state["agenda"]),
+                       "distinct_speakers": len({t["resident_id"] for t in state["transcript"]}),
+                       "pages_cited_in_meeting": len(state["cited_pages"]), "stance_changes": state["stance_changes"],
+                       "reply_parse_failures": state["parse_failures"]},
+           "comments": {"count": len(comments), "with_cited_pages": sum(bool(c["cited_pages"]) for c in comments),
+                        "all_labeled_simulated": all(c["simulated"] is True for c in comments),
+                        "stances": dict(Counter(c["stance"] for c in comments))},
+           "memory_rows": memory.count(), "real_calls": llm.attempts,
+           "models_returned": sorted({c["model"] for c in llm.responses}), "token_usage": tokens}
+    memory.close()
+    _write(config.RUNS / "town_pilot_real.json", run)
+    print(json.dumps(run, indent=2))
+
+
 def _write(path, payload):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
@@ -147,8 +183,11 @@ def main(argv=None):
     args.add_argument("--seed", type=int, default=0)
     args.add_argument("--turns", type=int, default=None, help="meeting turns; default one per resident")
     args.add_argument("--real-profiles", action="store_true", help="write profiles with RESIDENT_MODEL, no meeting")
+    args.add_argument("--real-meeting", action="store_true", help="one real meeting of residents_real.json")
     args = args.parse_args(argv)
     command = " ".join(["python -m townhall.town.pilot", *(argv if argv is not None else sys.argv[1:])])
+    if args.real_meeting:
+        return real_meeting(args.turns, command)
 
     people, census_source = census.load_people("36", "00701")
     pool = census.adults(people)

@@ -1,0 +1,68 @@
+{
+  "command": "python scripts/tag_stability.py data/processed/ingest/comments_tagged_v1_batch_order.jsonl data/processed/ingest/comments_tagged.jsonl runs/ingest_tag_stability_feis.json",
+  "old": "comments_tagged_v1_batch_order.jsonl",
+  "new": "comments_tagged.jsonl",
+  "note": "same model (gpt-4.1), prompt and temperature 0; the runs differ in batch neighbors and in near duplicates being sent once in the new run",
+  "comments_compared": 344,
+  "identical_code_sets": 184,
+  "mean_jaccard_of_code_sets": 0.834,
+  "comments_with_no_near_duplicate": 242,
+  "identical_code_sets_among_them": 166,
+  "biggest_near_duplicate_group": 92,
+  "distinct_code_sets_in_it_old": 9,
+  "distinct_code_sets_in_it_new": 1,
+  "topic_counts_old_vs_new": {
+    "2": [
+      19,
+      16
+    ],
+    "3": [
+      63,
+      58
+    ],
+    "4": [
+      159,
+      177
+    ],
+    "5": [
+      28,
+      28
+    ],
+    "6": [
+      91,
+      95
+    ],
+    "7-1": [
+      149,
+      154
+    ],
+    "7-2": [
+      127,
+      145
+    ],
+    "7-3": [
+      19,
+      99
+    ],
+    "7-4": [
+      168,
+      165
+    ],
+    "7-5": [
+      107,
+      157
+    ],
+    "7-6": [
+      5,
+      5
+    ],
+    "7-7": [
+      150,
+      149
+    ],
+    "8": [
+      44,
+      43
+    ]
+  }
+}

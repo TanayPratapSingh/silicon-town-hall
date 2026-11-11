@@ -1,0 +1,25 @@
+{
+  "command": "one tagger.tag call on the representative of the 92 copy FEIS form letter, sent alone",
+  "model": "gpt-4.1-2025-04-14",
+  "codes_in_batch_run": [
+    "4",
+    "7-1",
+    "7-2",
+    "7-3",
+    "7-4",
+    "7-5",
+    "7-7"
+  ],
+  "codes_sent_alone": [
+    "4",
+    "7-1",
+    "7-2",
+    "7-4",
+    "7-5",
+    "7-7"
+  ],
+  "prompt_tokens": 1090,
+  "completion_tokens": 35,
+  "estimated_dollars": 0.0025,
+  "note": "the letter says 'historic' only in 'righting a historic wrong' and has no noise words; a person has not checked either tag set"
+}
