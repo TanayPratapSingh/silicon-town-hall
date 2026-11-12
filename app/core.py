@@ -158,6 +158,26 @@ def population(state, puma):
         return None, f"not available ({type(e).__name__}: {e})"
 
 
+def representation(residents, shares=None):
+    """Simulated residents against the count the Census share implies, for every group on every dimension."""
+    counts = {}
+    for r in residents:
+        for dim, group in analyst.groups(r).items():
+            counts.setdefault(dim, {}).setdefault(group, 0)
+            counts[dim][group] += 1
+    dims = set(counts) | set(shares or {})
+    return [{"dimension": dim, "group": g, "simulated": counts.get(dim, {}).get(g, 0),
+             "expected": None if (shares or {}).get(dim, {}).get(g) is None else round(len(residents) * shares[dim][g], 2)}
+            for dim in sorted(dims) for g in sorted(set(counts.get(dim, {})) | set((shares or {}).get(dim, {})), key=str)]
+
+
+@cache
+def neighborhood_shapes():
+    """Syracuse neighborhood polygons that homes.py saved, or None; the app never downloads them itself."""
+    path = census.CENSUS_RAW / "syracuse_neighborhoods.geojson"
+    return json.loads(path.read_text())["features"] if path.exists() else None
+
+
 def build_report(comments, residents, llm, community=None):
     """Tag the simulated comments with the answer key's tagger (one call each), then build the report."""
     tagged_by = ("FakeLLM picked the topics from a hash of each comment, not by meaning" if isinstance(llm, FakeLLM)
@@ -184,8 +204,13 @@ def report_from_tagged(tagged, residents, tagged_by, community=None):
         return (f"{e['dimension'].replace('_', ' ')}, {e['group']}: {e['simulated_residents']} simulated "
                 f"residents{expected}. {'; '.join(e['reasons']).capitalize()}.")
 
+    matrix = [{"dimension": dim, "group": g, "code": k, "topic": names.get(k, k), "comments": n}
+              for dim, by in {"neighborhood": report["by_neighborhood"], **report["by_group"]}.items()
+              for g, c in by.items() for k, n in c["topics"].items()]
     return {
         "label": f"{report['label']}. {tagged_by}. Population shares: {report['population_source']}.",
+        "residents": report["residents"], "comments": report["comments"], "reach": report["who_to_reach"],
+        "matrix": matrix,  # group by topic counts for the heatmaps; the tables below hold the same numbers
         "tables": [
             {"title": "Topics raised", "rows": [{"code": k, "topic": names.get(k, k), "simulated comments": n}
                                                for k, n in report["topics"].items()]},
@@ -206,8 +231,9 @@ def pilot_scores():
     if path is None:
         return {"label": PILOT_PENDING, "scores": None}
     run = json.loads(path.read_text())
-    scores = {name: {k: (c.get("score") or {}).get(k) for k in ("topic_coverage", "topic_mix_gap", "status")}
-              for name, c in run.get("conditions", {}).items()}
+    scores = {name: {k: (c.get("score") or {}).get(k) for k in (
+        "topic_coverage", "topic_mix_gap", "status", "real_comments", "simulated_comments", "real_topic_counts",
+        "simulated_topic_counts")} for name, c in run.get("conditions", {}).items()}
     return {"label": f"Recorded pilot scores from runs/{path.name}, not scores of this scenario. "
                      f"{run.get('label', '')}", "scores": scores}
 

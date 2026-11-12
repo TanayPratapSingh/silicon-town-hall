@@ -1,0 +1,38 @@
+# Theme for the Silicon Town Hall app. Chart colors are the dataviz reference palette, validated for color
+# vision deficiency in both modes; the order of chartCategoricalColors is part of that check, so keep it.
+
+[theme]
+font = "Public Sans:https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap, sans-serif"
+headingFont = "Fraunces:https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap, serif"
+headingFontWeights = [700, 650, 600]
+baseRadius = "0.7rem"
+buttonRadius = "full"
+showWidgetBorder = true
+showSidebarBorder = true
+
+[theme.light]
+primaryColor = "#1c5cab"
+backgroundColor = "#faf8f4"
+secondaryBackgroundColor = "#f1ede4"
+textColor = "#1b1d21"
+borderColor = "#e3ddd0"
+linkColor = "#1c5cab"
+chartCategoricalColors = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300", "#6250d6", "#e34948"]
+chartSequentialColors = ["#cde2fb", "#b7d3f6", "#9ec5f4", "#86b6ef", "#6da7ec", "#5598e7", "#3987e5", "#2a78d6", "#1c5cab", "#0d366b"]
+
+[theme.light.sidebar]
+backgroundColor = "#f1ede4"
+secondaryBackgroundColor = "#faf8f4"
+
+[theme.dark]
+primaryColor = "#5598e7"
+backgroundColor = "#131416"
+secondaryBackgroundColor = "#1d1f22"
+textColor = "#f0efec"
+borderColor = "#2e3034"
+linkColor = "#86b6ef"
+chartCategoricalColors = ["#3987e5", "#d95926", "#199e70", "#c98500", "#d55181", "#008300", "#9085e9", "#e66767"]
+chartSequentialColors = ["#0d366b", "#104281", "#184f95", "#1c5cab", "#256abf", "#2a78d6", "#3987e5", "#5598e7", "#86b6ef", "#cde2fb"]
+
+[theme.dark.sidebar]
+backgroundColor = "#1a1c1f"

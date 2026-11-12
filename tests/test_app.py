@@ -13,7 +13,7 @@ import pytest
 from PIL import Image
 from streamlit.testing.v1 import AppTest
 
-from app import core
+from app import charts, core
 from tests.test_town_meeting import fake_embed
 from tests.test_town_residents import person
 from townhall.llm import FakeLLM
@@ -47,6 +47,10 @@ def refuse_real(*_, **__):
     raise AssertionError("the app built a real model client")
 
 
+SQUARE = {"type": "Feature", "properties": {"NAME": "North"}, "geometry": {"type": "Polygon", "coordinates": [
+    [[-76.2, 43.0], [-76.1, 43.0], [-76.1, 43.1], [-76.2, 43.1], [-76.2, 43.0]]]}}
+
+
 @pytest.fixture
 def app(tmp_path, monkeypatch):
     image = tmp_path / "page.png"
@@ -61,6 +65,7 @@ def app(tmp_path, monkeypatch):
     monkeypatch.setattr(core, "UPLOADS", tmp_path / "uploads")
     monkeypatch.setattr(core, "EMBED", fake_embed)
     monkeypatch.setattr(core, "population", lambda state, puma: (None, "test: no population shares"))
+    monkeypatch.setattr(core, "neighborhood_shapes", lambda: [SQUARE])
     monkeypatch.setattr(core, "PILOT_SCORE_FILES", (tmp_path / "report_pilot_score.json",))
     monkeypatch.setattr(pilot, "capped_openai", refuse_real)
     monkeypatch.setattr(core.pilot, "capped_openai", refuse_real)
@@ -131,7 +136,7 @@ def test_pages_render_with_the_free_model(app):
     assert "FAKE_policy.pdf, page 1" in [m.value.strip("*") for m in app.markdown]
     goto(app, "Report")
     text = " ".join(m.value for m in app.markdown)
-    assert "**SIMULATED** comment by" in text and ", topic " in text
+    assert "**SIMULATED** comment by" in text and "badge[topic: " in text
     assert any("FakeLLM picked the topics" in c.value for c in app.caption)
     heads = [s.value for s in app.subheader]
     assert heads[:5] == ["Pilot scores", "Who to reach in person", "Topics raised", "Topics by neighborhood",
@@ -149,6 +154,35 @@ def test_pages_render_with_the_free_model(app):
     assert app.dataframe[0].value["name"].tolist() == [scenario["name"]]
 
 
+def test_charts_and_map_draw_the_report_numbers(app):
+    login(app)
+    scenario = run_meetings(app)
+    report = scenario["report"]
+    assert report["reach"] and report["matrix"]
+    assert sum(m["comments"] for m in report["matrix"] if m["dimension"] == "neighborhood") == sum(
+        r["simulated comments"] for r in report["tables"][0]["rows"])  # heatmap cells add up to the topic counts
+    rows = core.representation(scenario["residents"], {"neighborhood": {"North": 0.75, "South": 0.25, "East": 0.1}})
+    hood = {r["group"]: r for r in rows if r["dimension"] == "neighborhood"}
+    assert (hood["North"]["simulated"], hood["North"]["expected"], hood["East"]["simulated"]) == (2, 3.0, 0)
+    assert all(r["expected"] is None for r in rows if r["dimension"] == "age_band")
+    for chart in (charts.topic_bars(report["tables"][0]["rows"]), charts.heatmap(report["matrix"]),
+                  charts.representation([{"label": g, **{k: r[k] for k in ("simulated", "expected")}}
+                                         for g, r in hood.items()])):
+        assert chart.to_dict()["$schema"].startswith("https://vega.github.io/schema/vega-lite/")
+    score = {"real_comments": 4, "simulated_comments": 2, "real_topic_counts": {"4": 2, "8": 1},
+             "simulated_topic_counts": {"8": 2}}
+    shares = charts.real_vs_simulated(score, {"4": "Purpose", "8": "Outreach"}).data.set_index(["topic", "source"]).share
+    assert (shares["Purpose", charts.REAL], shares["Purpose", charts.SIM], shares["Outreach", charts.SIM]) == (0.5, 0, 1)
+    assert charts.real_vs_simulated({"real_topic_counts": None}, {}) is None
+    assert charts.gap_color(-3) == [227, 73, 72, 200] and charts.gap_color(0) == [240, 239, 236, 200]
+    props = charts.neighborhood_map([SQUARE], list(hood.values())).layers[0].data["features"][0]["properties"]
+    assert (props["simulated"], props["expected"], props["fill"]) == (2, "3.0", charts.gap_color(-1.0))
+    goto(app, "Community")
+    assert app.get("deck_gl_json_chart")  # the map renders
+    goto(app, "Report")
+    assert len(app.get("vega_lite_chart")) >= 3 and not app.exception
+
+
 def test_delete_memories_and_scenario(app):
     login(app)
     scenario = run_meetings(app, rounds=2)
@@ -156,7 +190,7 @@ def test_delete_memories_and_scenario(app):
     assert len(scenario["meetings"]) == 4 and len(core.memories(sid)) == 4  # one row per resident and topic
 
     goto(app, "Saved scenarios")
-    app.selectbox[1].set_value("r000").run()  # [0] picks the scenario, [1] the resident
+    app.selectbox(key="memory_resident").set_value("r000").run()
     app.button(key="delete_resident").click().run()
     assert sorted(r["resident_id"] for r in core.memories(sid)) == ["r001", "r002", "r003"]
     assert app.button(key="delete_scenario").disabled
