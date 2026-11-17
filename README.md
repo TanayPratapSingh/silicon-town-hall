@@ -58,6 +58,17 @@ python scripts/download.py    # about 610 MB of public NYSDOT PDFs into data/raw
 python scripts/pdf_stats.py   # rewrites runs/pdf_stats.csv
 ```
 
+To open the app, copy `.env.example` to `.env` and set `APP_PASSWORD` (the app
+stays locked without it). The OpenAI and Census keys are optional. Without the
+OpenAI key every reply is FakeLLM template text, not a model, and costs nothing.
+Without the Census key the app reads the public ACS PUMS CSV files instead,
+downloading about 52 MB for New York into `data/raw/census/` the first time.
+
+```bash
+cp .env.example .env          # then set APP_PASSWORD
+streamlit run app/streamlit_app.py
+```
+
 ## Layout
 
 | Path | What |
