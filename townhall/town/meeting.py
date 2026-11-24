@@ -18,6 +18,8 @@ from typing import TypedDict
 
 from langgraph.graph import END, START, StateGraph
 
+from townhall.town import personas
+
 STANCES = ("support", "oppose", "mixed", "undecided")
 RECENT_TURNS = 4
 EXCERPT_CHARS = 800
@@ -114,6 +116,14 @@ def _parse(raw, hits, stance):
     return str(out.get("text", "")).strip(), new_stance, _union([], cited), reasons, True
 
 
+def _facts(resident):
+    """The resident's Census facts as a prompt line (issue #21: turns stated commutes the record does not have)."""
+    if "race" not in resident:  # test residents carry only an id and a profile
+        return ""
+    return ("Census facts about you (true; never say anything that contradicts them, such as a commute, job, home "
+            f"or age the record does not have): {json.dumps(personas.facts(resident))}\n")
+
+
 def _remembered(memories):
     return "\n".join(f"- round {m['round']}, {m['topic']}: {m['stance']}. {m['comment']}" for m in memories) or "nothing yet"
 
@@ -138,7 +148,7 @@ def build_graph(llm, retriever):
         heard = state["recent"][-1]["text"] if state["recent"] else ""
         hits = retriever(build_query(resident, item, heard), [tuple(p) for p in state["cited_pages"]])
         last = "\n".join(f"{t['resident_id']} ({t['neighborhood']}): {t['text']}" for t in state["recent"])
-        prompt = (f"Your profile: {resident['profile']}\nPolicy: {state['policy']}\nAgenda item: {item}\n"
+        prompt = (f"Your profile: {resident['profile']}\n{_facts(resident)}Policy: {state['policy']}\nAgenda item: {item}\n"
                   f"Your stance so far: {state['stances'][rid]}\n"
                   f"What you said in earlier rounds:\n{_remembered(state['memories'].get(rid, []))}\n"
                   f"Meeting summary so far: {state['summary'] or 'the meeting just started'}\n"
@@ -173,7 +183,7 @@ def build_graph(llm, retriever):
             own_pages = state["resident_pages"].get(rid, [])
             hits = retriever(build_query(resident, "overall comment on the policy", state["summary"]),
                              [tuple(p) for p in own_pages])
-            prompt = (f"Your profile: {resident['profile']}\nPolicy: {state['policy']}\n"
+            prompt = (f"Your profile: {resident['profile']}\n{_facts(resident)}Policy: {state['policy']}\n"
                       f"Your stance after the meeting: {state['stances'][rid]}\n"
                       f"Meeting summary: {state['summary']}\nPolicy excerpts:\n{_excerpts(hits)}")
             raw = llm.chat([{"role": "system", "content": COMMENT_SYSTEM}, {"role": "user", "content": prompt}],

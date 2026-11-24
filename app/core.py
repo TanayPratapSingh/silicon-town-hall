@@ -98,14 +98,55 @@ def index_upload(filename, data):
             "pages": stats["pages"], "pages_without_text": stats["pages_without_text"]}
 
 
+def uploads():
+    """Indexed uploads on disk, newest first: [{doc_id, name, db_dir}]."""
+    homes_ = sorted((p for p in UPLOADS.glob("upload_*") if p.is_dir()), key=lambda p: p.stat().st_mtime, reverse=True)
+    return [{"doc_id": h.name, "name": next((p.name for p in h.glob("*.pdf")), h.name), "db_dir": str(h / "chroma")}
+            for h in homes_]
+
+
+def delete_upload(doc_id):
+    """Delete an uploaded PDF, its index and its page images (issue #22: a draft policy may be private)."""
+    home = UPLOADS / doc_id
+    if not doc_id.startswith("upload_") or home.resolve().parent != UPLOADS.resolve() or not home.is_dir():
+        raise ValueError(f"not an upload: {doc_id}")
+    get_retriever.cache_clear()  # drop an open handle on its index before the files go
+    shutil.rmtree(home)
+
+
 def cite(pages):
     return "; ".join(f"{doc}, page {page}" for doc, page in pages) or "no page cited"
 
 
+GROUPINGS = {"neighborhood": "One meeting per neighborhood", "district": "One meeting per district (compass sectors)",
+             "citywide": "One citywide meeting"}
+CITYWIDE = "Citywide"
+
+
+def meeting_groups(residents, group_by="neighborhood"):
+    """{meeting name: residents in it}. District meetings fix neighborhood meetings of one or two people."""
+    if group_by == "citywide":
+        return {CITYWIDE: list(residents)}
+    if group_by == "district":
+        try:
+            where = homes.districts()
+        except OSError:  # no neighborhood map saved: every neighborhood is its own district
+            where = {}
+        key = lambda r: where.get(r["neighborhood"], r["neighborhood"])  # off the map: its own meeting
+    else:
+        key = lambda r: r["neighborhood"]
+    out = {}
+    for r in residents:
+        out.setdefault(key(r), []).append(r)
+    return dict(sorted(out.items()))
+
+
 def run_scenario(name, residents, policy, neighborhoods, rounds, llm, vision=False, change="", community=None,
-                 on_progress=None):
-    """One meeting per neighborhood per round, memory carried across rounds; saves and returns the scenario.
-    A failure part way (such as the real call cap) is saved with what finished and the error."""
+                 on_progress=None, group_by="neighborhood"):
+    """One meeting per group (neighborhood, district or citywide) per round, memory carried across rounds; saves
+    and returns the scenario. neighborhoods: the meeting names to run, from meeting_groups. A failure part way
+    (such as the real call cap) is saved with what finished and the error."""
+    groups = meeting_groups(residents, group_by)
     sid = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S") + "_" + (re.sub(r"[^\w-]+", "_", name)[:40] or "scenario")
     home = SCENARIOS / sid
     home.mkdir(parents=True)
@@ -118,8 +159,7 @@ def run_scenario(name, residents, policy, neighborhoods, rounds, llm, vision=Fal
             for hood in neighborhoods:
                 if on_progress:
                     on_progress(len(meetings), total, rnd, hood)
-                group = [r for r in residents if r["neighborhood"] == hood]
-                state = meeting.run_meeting(policy_text, group, retrieve, llm, memory=memory, round=rnd,
+                state = meeting.run_meeting(policy_text, groups[hood], retrieve, llm, memory=memory, round=rnd,
                                             topic=policy["topic"])
                 meetings.append({"round": rnd, "neighborhood": hood, **{k: state[k] for k in (
                     "agenda", "transcript", "summary", "comments", "stance_changes", "parse_failures")}})
@@ -133,7 +173,8 @@ def run_scenario(name, residents, policy, neighborhoods, rounds, llm, vision=Fal
         "id": sid, "name": name, "date": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "label": "Simulated residents. Not public comment.",
         "settings": {**(community or {}), "policy": policy["name"], "policy_kind": policy["kind"],
-                     "policy_db": policy["db_dir"], "neighborhoods": list(neighborhoods), "rounds": rounds,
+                     "policy_db": policy["db_dir"], "neighborhoods": list(neighborhoods), "group_by": group_by,
+                     "rounds": rounds,
                      "meeting_text_by": written_by(llm), "vision_rerank": vision, "proposed_change": change},
         "status": "complete" if error is None else f"stopped early: {error}",
         "residents": residents, "meetings": meetings, "report": None, "usage": {"meetings": usage(llm)},
@@ -211,6 +252,7 @@ def report_from_tagged(tagged, residents, tagged_by, community=None):
         "label": f"{report['label']}. {tagged_by}. Population shares: {report['population_source']}.",
         "residents": report["residents"], "comments": report["comments"], "reach": report["who_to_reach"],
         "matrix": matrix,  # group by topic counts for the heatmaps; the tables below hold the same numbers
+        "comment_codes": [{"resident_id": c["resident_id"], "codes": c["codes"]} for c in tagged],  # for scoring
         "tables": [
             {"title": "Topics raised", "rows": [{"code": k, "topic": names.get(k, k), "simulated comments": n}
                                                for k, n in report["topics"].items()]},

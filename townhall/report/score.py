@@ -99,11 +99,12 @@ def main(argv=None):
     args.add_argument("--out", default=str(config.RUNS / "report_pilot_score.json"))
     args.add_argument("--max-calls", type=int, default=100, help="cap on real tagger calls")
     args.add_argument("--no-population", action="store_true", help="skip the Census population shares")
+    args.add_argument("--suffix", default="", help="added to the tagged and report file names, such as _seed1")
     args = args.parse_args(argv)
     command = shlex.join(["python", "-m", "townhall.report.score", *(argv if argv is not None else sys.argv[1:])])
     codebook = cb.load()
     residents = json.loads(Path(args.residents).read_text())["residents"]
-    suffix = "_fake" if args.fake else ""
+    suffix = "_fake" if args.fake else args.suffix
 
     if args.fake:
         llm = FakeLLM(responder=baselines.fake_responder)

@@ -1,0 +1,35 @@
+{
+  "label": "REAL PILOT MEETING: one citywide meeting, every turn and comment written by gpt-4.1-mini, a real model, over the impact statement index. The residents and everything they say are simulated.",
+  "command": "python -m townhall.town.pilot --seed 1 --real-meeting",
+  "date": "2026-11-24",
+  "residents": 20,
+  "residents_file": "data/processed/town/residents_real_seed1.json",
+  "meeting": {
+    "turns": 20,
+    "agenda_items": 5,
+    "distinct_speakers": 20,
+    "pages_cited_in_meeting": 27,
+    "stance_changes": 16,
+    "reply_parse_failures": 0
+  },
+  "comments": {
+    "count": 20,
+    "with_cited_pages": 20,
+    "all_labeled_simulated": true,
+    "stances": {
+      "mixed": 11,
+      "undecided": 4,
+      "support": 5
+    }
+  },
+  "memory_rows": 20,
+  "real_calls": 61,
+  "models_returned": [
+    "gpt-4.1-mini-2025-04-14"
+  ],
+  "token_usage": {
+    "prompt_tokens": 72553,
+    "completion_tokens": 11604,
+    "total_tokens": 84157
+  }
+}

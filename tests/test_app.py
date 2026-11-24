@@ -183,6 +183,28 @@ def test_charts_and_map_draw_the_report_numbers(app):
     assert len(app.get("vega_lite_chart")) >= 3 and not app.exception
 
 
+def test_citywide_meeting_is_scored_by_the_run_script(app):
+    import importlib.util
+
+    login(app)
+    goto(app, "Community")
+    app.number_input[0].set_value(4).run()
+    app.button(key="sample").click().run()
+    goto(app, "Run meetings")
+    app.radio(key="group_by").set_value("citywide").run()
+    app.button(key="run").click().run()
+    assert not app.exception, app.exception
+    s = core.list_scenarios()[0]
+    assert s["settings"]["group_by"] == "citywide" and [m["neighborhood"] for m in s["meetings"]] == [core.CITYWIDE]
+    assert len(s["report"]["comment_codes"]) == 4
+    spec = importlib.util.spec_from_file_location("run_scenario", Path(SCRIPT).parents[1] / "scripts" / "run_scenario.py")
+    script = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(script)
+    out = script.summarize(s, [["4"], ["8"]], core.cb.load())
+    assert out["score"]["simulated_comments"] == 4 and out["fact_check"]["turns"]["texts_checked"] == 4
+    assert sum(out["stances_by_round"][1].values()) == 4
+
+
 def test_delete_memories_and_scenario(app):
     login(app)
     scenario = run_meetings(app, rounds=2)

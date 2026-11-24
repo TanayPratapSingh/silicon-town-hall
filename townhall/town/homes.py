@@ -99,6 +99,33 @@ def load_tracts(state="36", puma="00701"):
     return tracts[keep].reset_index(drop=True), source
 
 
+CENTRAL_KM = 1.6
+
+
+def districts(features=None):
+    """{neighborhood: district}: Central within CENTRAL_KM of Downtown's center, else North, East, South or West
+    by direction from it. shortcut: compass sectors, not an official city map; swap in the city's planning
+    sectors if the team gets them."""
+    if features is None:
+        features = json.loads((CENSUS_RAW / "syracuse_neighborhoods.geojson").read_text())["features"]
+
+    def center(f):
+        g = f["geometry"]
+        ring = g["coordinates"][0] if g["type"] == "Polygon" else max((p[0] for p in g["coordinates"]), key=len)
+        return np.mean([p[0] for p in ring]), np.mean([p[1] for p in ring])
+
+    centers = {f["properties"]["NAME"]: center(f) for f in features}
+    lon0, lat0 = centers.get("Downtown", tuple(np.mean(list(centers.values()), axis=0)))
+    out = {}
+    for name, (lon, lat) in centers.items():
+        dx, dy = (lon - lon0) * 111.32 * np.cos(np.radians(lat0)), (lat - lat0) * 110.57  # km east and north
+        angle = np.degrees(np.arctan2(dy, dx)) % 360
+        out[name] = ("Central" if np.hypot(dx, dy) <= CENTRAL_KM else
+                     "East" if angle < 45 or angle >= 315 else "North" if angle < 135 else
+                     "West" if angle < 225 else "South")
+    return out
+
+
 def assign_homes(residents, tracts, seed=0):
     """Give each resident a tract and neighborhood. Conditioned on race, ethnicity and tenure when the tract
     counts are present, otherwise by population. Mutates and returns residents."""

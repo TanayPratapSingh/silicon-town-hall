@@ -251,8 +251,17 @@ def policy_page():
                     policy = st.session_state.policy = core.index_upload(uploaded.name, uploaded.getvalue())
             except ValueError as e:
                 st.error(str(e))
+        for up in core.uploads():
+            name_col, del_col = st.columns([5, 1], vertical_alignment="center")
+            name_col.markdown(f":material/draft: {md(up['name'])}")
+            if del_col.button("Delete", key=f"delete_upload_{up['doc_id']}", icon=":material/delete:"):
+                core.delete_upload(up["doc_id"])  # the PDF, its index and its page images
+                if policy.get("doc_id") == up["doc_id"]:
+                    st.session_state.policy = core.I81
+                st.rerun()
         if policy["kind"] != "upload":
-            st.info("Upload a PDF and index it. It goes into its own collection, apart from the I-81 index.")
+            st.info("Upload a PDF and index it. It goes into its own collection, apart from the I-81 index. "
+                    "Delete removes the PDF, its index and its page images from this computer.")
             return
     with st.container(border=True):
         name, pages = st.columns([4, 1], vertical_alignment="center")
@@ -283,16 +292,19 @@ def run_page(llm, vision):
         st.button("Go to Community", on_click=go("Community"), icon=":material/groups:")
         return
     policy = st.session_state.get("policy", core.I81)
-    hoods = sorted({r["neighborhood"] for r in residents})
     with st.container(border=True):
         st.markdown(f":material/description: **Policy:** {md(policy['name'])}")
-        chosen = st.multiselect("Neighborhoods (one meeting each)", hoods, default=hoods)
+        group_by = st.radio("Meet by", list(core.GROUPINGS), format_func=core.GROUPINGS.get, horizontal=True,
+                            key="group_by")
+        groups = core.meeting_groups(residents, group_by)
+        chosen = st.multiselect("Meetings", list(groups), default=list(groups),
+                                format_func=lambda g: f"{g} ({len(groups[g])} residents)")
         rounds_col, name_col = st.columns([1, 3])
         rounds = rounds_col.number_input("Rounds", min_value=1, max_value=5, value=1)
         name = name_col.text_input("Scenario name", value=f"{policy['topic']} test")
         change = st.text_area("Try a change (plan editor stub): describe an edit to the policy. Residents hear it as "
                               "part of the policy; the indexed document is not edited.")
-    attending = sum(r["neighborhood"] in chosen for r in residents)
+    attending = sum(len(groups[g]) for g in chosen)
     cols = st.columns(4)
     cols[0].metric("Residents attending", f"{attending} of {len(residents)}", border=True)
     cols[1].metric("Meetings", len(chosen) * int(rounds), border=True)
@@ -307,7 +319,8 @@ def run_page(llm, vision):
             bar.progress(done / total, text=f"Round {rnd}: {hood} (meeting {done + 1} of {total})")
 
         scenario = core.run_scenario(name, residents, policy, chosen, int(rounds), llm, vision=vision, change=change,
-                                     community=st.session_state.get("community"), on_progress=progress)
+                                     community=st.session_state.get("community"), on_progress=progress,
+                                     group_by=group_by)
         bar.progress(1.0, text="Done")
         st.session_state.current = scenario["id"]
         if scenario["status"] != "complete":
@@ -553,6 +566,9 @@ def saved_page():
             with col, st.container(border=True):
                 other = pick_scenario("Scenario", saved, index=default, key=f"compare{default}")
                 st.caption(f"Change: {other['settings']['proposed_change'] or 'none'}")
+                stances = Counter(c.get("stance") for c in latest_comments(other))
+                st.metric("Support, mixed, oppose, undecided",
+                          " / ".join(str(stances[s]) for s in ("support", "mixed", "oppose", "undecided")))
                 if other["report"] is None:
                     st.error("This scenario has no report: building it failed after the meetings were saved.")
                 else:

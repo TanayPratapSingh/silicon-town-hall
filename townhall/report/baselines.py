@@ -104,6 +104,7 @@ def main(argv=None):
     args.add_argument("--fake", action="store_true", help="FakeLLM and the pilot's FAKE pages; no calls")
     args.add_argument("--n", type=int, default=20, help="no persona comments, and residents for skip_meeting")
     args.add_argument("--residents", default=str(config.PROCESSED / "town" / "residents.json"))
+    args.add_argument("--suffix", default="", help="added to output file names, such as _seed1, so runs do not overwrite")
     args = args.parse_args(argv)
     command = shlex.join(["python", "-m", "townhall.report.baselines", *(argv if argv is not None else sys.argv[1:])])
     residents = json.loads(open(args.residents).read())["residents"][:args.n]
@@ -120,14 +121,14 @@ def main(argv=None):
             "skip_meeting": skip_meeting(pilot.POLICY, residents, retriever, llm)}
     OUT.mkdir(parents=True, exist_ok=True)
     for name, comments in made.items():
-        path = OUT / f"baseline_{name}{'_fake' if args.fake else ''}.json"
+        path = OUT / f"baseline_{name}{'_fake' if args.fake else ''}{args.suffix}.json"
         path.write_text(json.dumps({"label": label, "comments": comments}, indent=2, ensure_ascii=False) + "\n")
     run = {"label": label, "run_type": kind, "command": command, "date": datetime.now(timezone.utc).date().isoformat(),
            "residents_file": rel(args.residents),
            **{name: {"comments": len(c), "with_cited_pages": sum(bool(x["cited_pages"]) for x in c),
                      "all_labeled_simulated": all(x["simulated"] is True for x in c)} for name, c in made.items()},
            "token_usage": "none: FakeLLM" if args.fake else _usage(llm)}
-    (config.RUNS / f"report_baselines_{kind}.json").write_text(json.dumps(run, indent=2) + "\n")
+    (config.RUNS / f"report_baselines_{kind}{args.suffix}.json").write_text(json.dumps(run, indent=2) + "\n")
     print(json.dumps(run, indent=2))
 
 

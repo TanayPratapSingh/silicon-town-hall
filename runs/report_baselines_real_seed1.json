@@ -1,0 +1,26 @@
+{
+  "label": "Simulated comments written by gpt-4.1-mini, a real model, over the impact statement index.",
+  "run_type": "real",
+  "command": "python -m townhall.report.baselines --n 20 --residents data/processed/town/residents_real_seed1.json --suffix _seed1",
+  "date": "2026-11-24",
+  "residents_file": "data/processed/town/residents_real_seed1.json",
+  "no_personas": {
+    "comments": 20,
+    "with_cited_pages": 20,
+    "all_labeled_simulated": true
+  },
+  "skip_meeting": {
+    "comments": 20,
+    "with_cited_pages": 20,
+    "all_labeled_simulated": true
+  },
+  "token_usage": {
+    "calls": 21,
+    "models_returned": [
+      "gpt-4.1-mini-2025-04-14"
+    ],
+    "prompt_tokens": 21724,
+    "completion_tokens": 4771,
+    "total_tokens": 26495
+  }
+}
