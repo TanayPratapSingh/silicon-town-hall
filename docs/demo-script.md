@@ -1,6 +1,6 @@
 # Demo script: 10 minute presentation
 
-The deck is in [slides/](slides/) (11 slides, speaker notes on each). Times follow the course rubric: goal and how it
+The deck is in [slides/](slides/) (11 slides, speaker notes on each). Times: goal and how it
 works 3 minutes, live demo 4, key insights 2, questions 1.
 
 | Slides | Time | What |
@@ -10,7 +10,7 @@ works 3 minutes, live demo 4, key insights 2, questions 1.
 | 7 and 8: where simulated residents get people wrong, what it is reliable for | 2:00 | Key insights |
 | 9 to 11: ethics, what comes next, questions | 1:00 | Questions |
 
-## Before class
+## Before the demo
 
 Open the app on the laptop (`streamlit run app/streamlit_app.py`), log in, leave Demo mode on, and keep a recorded
 backup of this demo open in another window. Everything but the map tiles works offline.
