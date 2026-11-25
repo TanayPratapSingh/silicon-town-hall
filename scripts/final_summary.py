@@ -20,9 +20,6 @@ from townhall import config  # noqa: E402
 from townhall.ingest import tagger  # noqa: E402
 from townhall.report import fact_check, score  # noqa: E402
 
-sys.path.insert(0, str(ROOT / "scripts"))
-from run_scenario import group_gaps  # noqa: E402
-
 TOWN, REPORT = config.PROCESSED / "town", config.PROCESSED / "report"
 SEEDS = {0: "", 1: "_seed1"}
 PICK = ("topic_coverage", "topic_mix_gap", "simulated_comments", "simulated_comments_with_no_topic")
@@ -47,7 +44,7 @@ def pilot(seed, suffix, real_counts):
         if tagged.exists():
             codes = [{"resident_id": c["resident_id"], "codes": c["codes"]}
                      for c in json.loads(tagged.read_text())["comments"]]
-            out["group_gaps"] = group_gaps(codes, residents, real_counts)
+            out["group_gaps"] = score.group_gaps(codes, residents, real_counts)
         out["stances"] = dict(Counter(c["stance"] for c in comments))
     return out
 

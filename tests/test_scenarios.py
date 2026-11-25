@@ -77,6 +77,14 @@ def test_dollar_cap_stops_before_the_next_call(monkeypatch):
     assert pilot.dollars("some-new-model", 1e6, 0) == pytest.approx(2.0)  # unknown: priced as the dearest
 
 
+def test_run_estimate_matches_the_pilot_call_count():
+    need = core.run_estimate(meetings=1, residents=20, rounds=1)  # the 20 resident citywide pilot: 61 calls + 20 tags
+    assert need["max_calls"] == 61 + 20 + 5
+    assert need["dollars"] == pytest.approx(0.0496 + 0.0983 / 59 * 20, abs=0.001)  # the control run cost $0.0843
+    assert need["cap"] > need["dollars"] and core.run_estimate(1, 20, 1, vision=True)["max_calls"] == 86 + 400
+    assert core.profile_estimate(20)["max_calls"] == 45 and core.profile_estimate(20)["dollars"] == pytest.approx(0.008, abs=0.001)
+
+
 def test_prompts_carry_the_census_facts():
     resident = {"resident_id": "r1", "profile": "I live here.", "age": 30, "sex": "Female", "race": "White alone",
                 "hispanic_origin": "Not Spanish/Hispanic/Latino", "income": 0, "commute": census.NO_COMMUTE,

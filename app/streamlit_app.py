@@ -1,7 +1,7 @@
 """Silicon Town Hall app (issue #9). Run: streamlit run app/streamlit_app.py
 
-Behind a password; every page carries the simulated banner. The sidebar switch "Use the free test model"
-starts ON and then FakeLLM writes every profile, turn and comment, so nothing costs money.
+Behind a password; every page carries the simulated banner. The sidebar switch "Demo mode" starts ON and then
+FakeLLM template text stands in for every profile, turn and comment, so nothing costs money.
 """
 
 import hmac
@@ -17,6 +17,7 @@ import streamlit as st
 
 from app import charts, core
 from townhall import config
+from townhall.report import score
 
 BANNER = "Simulated residents. Not public comment."
 PAGES = ["Community", "Policy", "Run meetings", "Report", "Saved scenarios"]
@@ -27,8 +28,8 @@ TITLES = {"Community": "Choose a community", "Policy": "Choose the policy", "Run
 BLURBS = {"Community": "Draw residents from real Census records. Each one gets a simulated profile.",
           "Policy": "Pick the plan residents read. Search it the way they will, page by page.",
           "Run meetings": "Residents meet by neighborhood, read the plan, argue and write comments. All simulated.",
-          "Report": "What residents raised, where and by whom, how that compares with the real comments, "
-                    "and who to reach in person.",
+          "Report": "Who to reach in person, what residents raised and where, and a brief to take into outreach "
+                    "planning.",
           "Saved scenarios": "Replay a meeting, look at what residents remember, compare runs and delete them."}
 DIMS = {"neighborhood": "Neighborhood", "age_band": "Age", "race_ethnicity": "Race and ethnicity",
         "tenure": "Own or rent", "income_band": "Income", "disability": "Disability", "commute": "Commute"}
@@ -38,11 +39,6 @@ PRESET_CHOICE, UPLOAD_CHOICE = "I-81 impact statement (preset, already indexed)"
 SEARCHES = ["noise during construction", "displacement and relocation", "air quality", "the community grid"]
 CSS = """<style>
 .sth-hero {margin: 0 0 1.4rem;}
-.sth-steps {display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.2rem;}
-.sth-step {font-size: .8rem; padding: .25rem .75rem; border-radius: 999px; border: 1px solid rgba(128,128,128,.35);
-  opacity: .6; white-space: nowrap;}
-.sth-step.done {opacity: 1; border-color: rgba(42,120,214,.6);}
-.sth-step.current {opacity: 1; background: #2a78d6; border-color: #2a78d6; color: #fff; font-weight: 600;}
 .sth-eyebrow {text-transform: uppercase; letter-spacing: .12em; font-size: .74rem; font-weight: 600; color: #2a78d6;}
 .sth-title {font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: clamp(2rem, 3.4vw, 2.9rem);
   line-height: 1.08; margin: .25rem 0 .45rem;}
@@ -77,13 +73,7 @@ def go(page):
 
 def hero(page):
     i = PAGES.index(page)
-    done = [bool(st.session_state.get("residents")), "policy" in st.session_state, "current" in st.session_state,
-            False, False]
-    steps = "".join(
-        f'<span class="sth-step{" current" if j == i else " done" if done[j] else ""}">'
-        f'{"&#10003;" if done[j] and j != i else j + 1}&nbsp; {p}</span>' for j, p in enumerate(PAGES))
-    st.markdown(f'<div class="sth-hero"><div class="sth-steps">{steps}</div>'
-                f'<div class="sth-eyebrow">Step {i + 1} of {len(PAGES)}</div>'
+    st.markdown(f'<div class="sth-hero"><div class="sth-eyebrow">Step {i + 1} of {len(PAGES)}</div>'
                 f'<div class="sth-title" role="heading" aria-level="1">{TITLES[page]}</div>'
                 f'<div class="sth-sub">{BLURBS[page]}</div></div>', unsafe_allow_html=True)
 
@@ -189,17 +179,28 @@ def resident_cards(residents, limit=24):
         st.caption(f"Showing {limit} of {len(shown)}. The Table tab lists everyone.")
 
 
-def community_page(llm):
+def real_model(free):
+    return not free and bool(config.OPENAI_API_KEY)
+
+
+def community_page(free):
     hero("Community")
     with st.container(border=True):
-        place_col, n_col, seed_col, go_col = st.columns([3, 1.3, 1, 1.4], vertical_alignment="bottom")
+        place_col, n_col, go_col = st.columns([3, 1.3, 1.4], vertical_alignment="bottom")
         place = place_col.selectbox("Community", list(core.PRESETS))
         n = n_col.number_input("Number of residents", min_value=1, max_value=300, value=20)
-        seed = seed_col.number_input("Seed", min_value=0, value=0)
         clicked = go_col.button("Sample residents", key="sample", type="primary", icon=":material/casino:",
                                 width="stretch")
+        with st.expander("Advanced"):
+            seed = st.number_input("Draw number", min_value=0, value=0,
+                                   help="The same number draws the same residents, so a run can be repeated.")
+        need = core.profile_estimate(int(n))
+        if real_model(free):
+            st.caption(f"Real model: writing {int(n)} profiles costs about ${need['dollars']:.2f} at list price and "
+                       f"stops at ${need['cap']:.2f}.")
     if clicked:
         state, puma = core.PRESETS[place]
+        llm = core.make_llm(free, need["max_calls"], need["cap"])
         with st.spinner("Sampling Census records and writing profiles"):
             residents, meta = core.sample_community(state, puma, int(n), int(seed), llm)
         st.session_state.residents = residents
@@ -207,7 +208,7 @@ def community_page(llm):
                                       "seed": int(seed), **meta, "profile_usage": core.usage(llm)}
     residents = st.session_state.get("residents")
     if not residents:
-        st.info("Pick the size and seed, then sample. Residents are real Census records with simulated profiles.",
+        st.info("Pick how many residents, then sample. Residents are real Census records with simulated profiles.",
                 icon=":material/info:")
         return
     c = st.session_state.community
@@ -222,8 +223,9 @@ def community_page(llm):
     cols[3].metric("Renters", f"{sum(r['tenure'] == 'Rented' for r in residents) / len(residents):.0%}", border=True)
     cols[4].metric("Groups with nobody", len(missing) if shares else "not known", border=True,
                    help="Census groups that imply at least half a resident at this size but got no simulated one.")
-    st.caption(f"{c['community']}, {c['residents']} residents, seed {c['seed']}. Census: {c['census_source']}. "
-               f"Profiles: {residents[0]['profile_written_by']}")
+    with st.expander("About these residents"):
+        st.caption(f"{c['community']}, {c['residents']} residents, draw number {c['seed']}. Census: "
+                   f"{c['census_source']}. Profiles: {residents[0]['profile_written_by']}")
     where, who, people, table = st.tabs([":material/map: Map", ":material/bar_chart: Who they are",
                                          ":material/badge: Residents", ":material/table: Table"])
     with where:
@@ -244,6 +246,9 @@ def policy_page():
     if choice == PRESET_CHOICE:
         policy = st.session_state.policy = core.I81
     else:
+        if not core.can_index():  # the online demo's slim install has no embedding models
+            return st.info("Indexing a new PDF needs the full install, so uploads run on the team's computer. "
+                           "The I-81 impact statement is already indexed there.", icon=":material/cloud_off:")
         uploaded = st.file_uploader("Policy PDF", type="pdf")
         if uploaded and st.button("Index this PDF", key="index", type="primary", icon=":material/upload_file:"):
             try:
@@ -265,8 +270,8 @@ def policy_page():
             return
     if not core.index_ready(policy["db_dir"]):
         return st.info(f"**Using:** {md(policy['name'])}. Search needs its index (724 MB for the I-81 statement), "
-                       "which stays on the team's computer, so it is off here. Saved runs, reports and free test "
-                       "meetings over six FAKE pages still work.", icon=":material/cloud_off:")
+                       "which stays on the team's computer, so it is off here. The saved real runs, their reports "
+                       "and the outreach briefs work.", icon=":material/cloud_off:")
     with st.container(border=True):
         name, pages = st.columns([4, 1], vertical_alignment="center")
         name.markdown(f":material/description: **Using:** {md(policy['name'])}")
@@ -279,23 +284,41 @@ def policy_page():
     suggestion = st.pills("Or try", SEARCHES, key="try")
     query = query or suggestion
     if query:
-        for hit in core.get_retriever(policy["db_dir"]).search(query, k=5, mode="both", llm=None):
+        for rank, hit in enumerate(core.get_retriever(policy["db_dir"]).search(query, k=5, mode="both", llm=None), 1):
             with st.container(border=True):
                 thumb, text = st.columns([1, 5])
                 if Path(hit.image_path).exists():
                     thumb.image(hit.image_path, width=130)
                 text.markdown(f"**{hit.file}, page {hit.page}**")
                 text.write(md(hit.text[:600]))
+                text.caption(ranking(rank, hit.stage_scores))
 
 
-def run_page(llm, vision):
+def ranking(rank, stages):
+    """How retrieval placed a page: its place in each search, then the reranker's score (the milestone's 'explicit
+    reranking shown')."""
+    parts = [f"{name} #{stages[key]}" for key, name in (("text_rank", "text search"), ("image_rank", "page image search"))
+             if stages.get(key)]
+    if stages.get("cross_encoder") is not None:
+        parts.append(f"cross encoder {stages['cross_encoder']:.2f}")
+    if stages.get("vision") is not None:
+        parts.append(f"vision {stages['vision']:.1f}")
+    return f"Result {rank}" + (": " + ", then ".join(parts) if parts else "")
+
+
+def run_page(free, vision):
     hero("Run meetings")
+    policy = st.session_state.get("policy", core.I81)
+    if not core.index_ready(policy["db_dir"]):  # the online demo: no index, so no meeting could cite the policy
+        st.info("Meetings need the policy index, which runs on the team's computer. The real runs are saved: open "
+                "Saved scenarios to replay and compare them, or Report to read them.", icon=":material/cloud_off:")
+        st.button("Open Saved scenarios", on_click=go("Saved scenarios"), icon=":material/folder_open:")
+        return
     residents = st.session_state.get("residents")
     if not residents:
         st.info("Sample residents on the Community page first.", icon=":material/info:")
         st.button("Go to Community", on_click=go("Community"), icon=":material/groups:")
         return
-    policy = st.session_state.get("policy", core.I81)
     with st.container(border=True):
         st.markdown(f":material/description: **Policy:** {md(policy['name'])}")
         group_by = st.radio("Meet by", list(core.GROUPINGS), format_func=core.GROUPINGS.get, horizontal=True,
@@ -306,20 +329,18 @@ def run_page(llm, vision):
         rounds_col, name_col = st.columns([1, 3])
         rounds = rounds_col.number_input("Rounds", min_value=1, max_value=5, value=1)
         name = name_col.text_input("Scenario name", value=f"{policy['topic']} test")
-        change = st.text_area("Try a change (plan editor stub): describe an edit to the policy. Residents hear it as "
-                              "part of the policy; the indexed document is not edited.")
+        change = st.text_area("Try a change: describe an edit to the policy. Residents hear it as part of the "
+                              "policy; the indexed document is not edited.")
     attending = sum(len(groups[g]) for g in chosen)
+    need = core.run_estimate(len(chosen), attending, int(rounds), vision)
     cols = st.columns(4)
     cols[0].metric("Residents attending", f"{attending} of {len(residents)}", border=True)
     cols[1].metric("Meetings", len(chosen) * int(rounds), border=True)
     cols[2].metric("Rounds", int(rounds), border=True)
-    cols[3].metric("Text by", "Free test model" if core.written_by(llm) == core.FAKE_LABEL else config.RESIDENT_MODEL,
-                   border=True)
-    st.caption(f"Text by: {core.written_by(llm)}")
-    if not core.index_ready(policy["db_dir"]):
-        st.warning("The policy index is not on this server, so residents read six FAKE pages and only the free test "
-                   "model can run. The saved scenarios hold the real runs.", icon=":material/cloud_off:")
+    cols[3].metric("Cost", f"about ${need['dollars']:.2f}" if real_model(free) else "none (demo mode)", border=True,
+                   help=f"List price estimate from the pilot runs; a real run stops at ${need['cap']:.2f}.")
     if st.button("Run meetings", key="run", disabled=not chosen, type="primary", icon=":material/play_arrow:"):
+        llm = core.make_llm(free, need["max_calls"], need["cap"])
         bar = st.progress(0.0, text="Starting")
 
         def progress(done, total, rnd, hood):
@@ -351,13 +372,14 @@ def kpis(scenario, report):
     cols[1].metric("Simulated comments", report.get("comments", sum(stances.values())), border=True)
     cols[2].metric("Topics raised", f"{topics} of {len(core.cb.load())}", border=True,
                    help="NYSDOT Appendix A topics that at least one simulated comment raised.")
-    cols[3].metric("Support, mixed, oppose", " / ".join(str(stances[s]) for s in ("support", "mixed", "oppose")),
-                   border=True, help="Stance of each simulated comment after the meeting.")
+    cols[3].metric("Support / oppose", f"{stances['support']} / {stances['oppose']}", border=True,
+                   help=f"Stance of each simulated comment after the meeting; also {stances['mixed']} mixed and "
+                        f"{stances['undecided']} undecided.")
 
 
 def render_pilot_scores(scenario):
     """The recorded I-81 pilot scores, the only place where real comments exist to score against."""
-    st.subheader("Pilot scores")
+    st.subheader("Check against the real I-81 comments")
     scores = core.pilot_scores() if scenario["settings"]["policy_kind"] == "preset" else None
     if scores is None:
         return st.caption("Pilot scores exist only for the I-81 pilot, where the real comments are known.")
@@ -403,7 +425,7 @@ def render_reach(scenario, report):
     if not report["reach_in_person"]:
         return st.success("Nobody flagged.", icon=":material/check_circle:")
     if reach is None:  # scenarios saved before the charts carry only the sentences
-        return st.markdown("\n".join(f"- {md(item)}" for item in report["reach_in_person"]))
+        return st.markdown("\n".join(f"- {md(item)}" for item in core.reach_lines(report)))
     chart, where, sentences = st.tabs([":material/scatter_plot: Shortfall", ":material/map: Map",
                                        ":material/list: Reasons"])
     with chart:
@@ -420,10 +442,25 @@ def render_reach(scenario, report):
         else:
             st.caption("This scenario has no community settings to map.")
     with sentences:
-        st.markdown("\n".join(f"- {md(item)}" for item in report["reach_in_person"]))
+        st.markdown("\n".join(f"- {md(item)}" for item in core.reach_lines(report)))
 
 
-def render_topics(report):
+def render_group_gaps(scenario, report, real, dim):
+    """Proposal: reports show group by group where simulated concerns differ from real ones (I-81 only)."""
+    if not real or not report.get("comment_codes"):
+        return
+    gaps = score.group_gaps(report["comment_codes"], scenario["residents"], real).get(dim, {})
+    if gaps:
+        st.dataframe(pd.DataFrame([{"group": g, "simulated comments": v["comments"],
+                                    "topic mix gap to the real comments": v["topic_mix_gap"]}
+                                   for g, v in sorted(gaps.items(), key=lambda kv: -(kv[1]["topic_mix_gap"] or 0))]),
+                     hide_index=True, column_config={"topic mix gap to the real comments": st.column_config.NumberColumn(
+                         format="%.2f")})
+        st.caption("Pilot numbers. 0 is the same topic mix as the real I-81 comments, 1 is none in common. Groups "
+                   "with fewer than 3 simulated comments are left out.")
+
+
+def render_topics(scenario, report, real):
     rows = report["tables"]
     st.subheader("Topics raised")
     show(charts.topic_bars(rows[0]["rows"], dark()), "No simulated comment raised a codebook topic.")
@@ -441,6 +478,7 @@ def render_topics(report):
         if dims:
             dim = st.pills("Group by", dims, default=dims[0], format_func=DIMS.get, key="group_dim") or dims[0]
             show(charts.heatmap([m for m in matrix if m["dimension"] == dim], dark()))
+            render_group_gaps(scenario, report, real, dim)
     with st.expander("Table view"):
         st.dataframe(pd.DataFrame(rows[2]["rows"]), hide_index=True)
 
@@ -471,12 +509,17 @@ def render_report(scenario):
     if report is None:
         return st.error("This scenario has no report: "
                         f"{scenario.get('report_error', 'building it failed after the meetings were saved')}.")
-    st.caption(report["label"])
     kpis(scenario, report)
-    render_pilot_scores(scenario)
+    st.download_button("Download outreach brief", core.outreach_brief(scenario), key="brief",
+                       file_name=f"outreach_brief_{scenario['id']}.md", mime="text/markdown", type="primary",
+                       icon=":material/download:", help="Who to reach, concerns by neighborhood and sample comments, "
+                                                         "labeled simulated, as a Markdown file.")
     render_reach(scenario, report)
-    render_topics(report)
+    render_topics(scenario, report, core.real_topic_counts(scenario))
     render_samples(report)
+    render_pilot_scores(scenario)
+    with st.expander("About these numbers"):
+        st.caption(report["label"])
 
 
 def report_page():
@@ -532,10 +575,6 @@ def saved_page():
     if not saved:
         st.info("No saved scenarios.", icon=":material/info:")
         return
-    st.dataframe(pd.DataFrame([{"name": s["name"], "date": s["date"], "policy": s["settings"]["policy"],
-                                "residents": len(s["residents"]), "meetings": len(s["meetings"]),
-                                "rounds": s["settings"]["rounds"], "text by": s["settings"]["meeting_text_by"],
-                                "status": s["status"]} for s in saved]), hide_index=True)
     s = pick_scenario("View a scenario", saved, key="view")
     sid = s["id"]
     watch, remember, settings, remove = st.tabs([":material/forum: Meeting replay", ":material/psychology: Memories",
@@ -568,7 +607,7 @@ def saved_page():
             st.rerun()
 
     if len(saved) > 1:
-        st.subheader("Compare two scenarios (plan editor stub)")
+        st.subheader("Compare two scenarios")
         for col, default in zip(st.columns(2), (0, 1)):
             with col, st.container(border=True):
                 other = pick_scenario("Scenario", saved, index=default, key=f"compare{default}")
@@ -590,25 +629,25 @@ core.seed_demo()  # online demo only (SILICON_DEMO=1): the committed real runs
 with st.sidebar:
     st.markdown('<div class="sth-brand">Silicon Town Hall</div>'
                 '<div class="sth-tag">Simulated residents for planning teams</div>', unsafe_allow_html=True)
-    free = st.toggle("Use the free test model (no API cost)", value=True, key="free")
-    cap, vision = 0, False
+    free = st.toggle("Demo mode (no API cost)", value=True, key="free",
+                     help="On: template text stands in for the model, so nothing costs money. Off: a real model "
+                          "writes, and each action shows its cost and stops at a dollar cap.")
+    vision = False
     if not free:
         if config.OPENAI_API_KEY:
             st.warning(f"Real model {config.RESIDENT_MODEL}: every call costs money.")
-            cap = st.number_input("Most real calls per action", min_value=1, max_value=2000, value=50)
             vision = st.checkbox("Vision model reranks page images (10 more calls per search)")
         else:
-            st.warning("No OPENAI_API_KEY is set, so the free test model is used.")
+            st.warning("No OPENAI_API_KEY is set, so demo mode stays on.")
     page = st.radio("Page", PAGES, key="page", format_func=lambda p: f"{ICONS[p]} {p}")
     status = st.container(border=True)  # filled after the page runs, so a click on this run shows up in it
 st.warning(BANNER, icon=":material/smart_toy:")
-llm = core.make_llm(free, int(cap))
 if page == "Community":
-    community_page(llm)
+    community_page(free)
 elif page == "Policy":
     policy_page()
 elif page == "Run meetings":
-    run_page(llm, vision)
+    run_page(free, vision)
 elif page == "Report":
     report_page()
 else:

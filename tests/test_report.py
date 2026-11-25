@@ -75,7 +75,7 @@ def test_who_to_reach_flags_missing_underrepresented_single_and_silent_groups():
     assert report["by_group"]["age_band"]["30 to 44"]["residents"] == 4
 
     under = analyst.who_to_reach(analyst._stats(tagged, residents), 10, {"neighborhood": {"Southside": 0.5}})
-    assert any("underrepresented: 1 simulated residents where its population share implies 5.0" in r
+    assert any("underrepresented: 1 simulated resident where its population share implies 5.0" in r
                for e in under if e["group"] == "Southside" for r in e["reasons"])
 
 

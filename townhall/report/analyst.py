@@ -82,7 +82,8 @@ def who_to_reach(stats, n_residents, population=None):
             if count == 0 and share:
                 reasons.append(f"no simulated resident, though the group is {share:.1%} of the population")
             elif expected is not None and count < UNDER_RATIO * expected:
-                reasons.append(f"underrepresented: {count} simulated residents where its population share implies "
+                reasons.append(f"underrepresented: {count} simulated resident{'' if count == 1 else 's'} where its "
+                               f"population share implies "
                                f"{expected:.1f}")
             if count == 1:
                 reasons.append("only one simulated resident speaks for this group")

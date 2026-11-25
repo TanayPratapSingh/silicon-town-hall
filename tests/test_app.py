@@ -138,10 +138,14 @@ def test_pages_render_with_the_free_model(app):
     goto(app, "Report")
     text = " ".join(m.value for m in app.markdown)
     assert "**SIMULATED** comment by" in text and "badge[topic: " in text
-    assert any("FakeLLM picked the topics" in c.value for c in app.caption)
-    heads = [s.value for s in app.subheader]
-    assert heads[:5] == ["Pilot scores", "Who to reach in person", "Topics raised", "Topics by neighborhood",
-                         "Topics by group"]
+    assert any("Demo mode picked the topics" in c.value for c in app.caption)
+    heads = [s.value for s in app.subheader]  # the planner's answer first, the check against real comments last
+    assert heads == ["Who to reach in person", "Topics raised", "Topics by neighborhood", "Topics by group",
+                     "Sample comments (SIMULATED)", "Check against the real I-81 comments"]
+    assert app.get("download_button")  # the outreach brief
+    brief = core.outreach_brief(scenario).splitlines()
+    assert brief[0].startswith("# Outreach brief") and brief[2] == f"**{core.BRIEF_NOTE}**"
+    assert "## Who to reach in person" in brief and any(line.startswith("> SIMULATED: r00") for line in brief)
     assert scenario["report"]["reach_in_person"] and "report_error" not in scenario
     assert any(c.value.startswith("Cited: fake_doc, page") for c in app.caption)
     assert any(c.value == core.PILOT_PENDING for c in app.caption)
@@ -152,7 +156,7 @@ def test_pages_render_with_the_free_model(app):
     side = next(d.value for d in app.dataframe if "condition" in d.value.columns)
     assert side.to_dict("records") == [{"condition": "meeting", "real topics raised": "50.0%", "topic mix gap": 0.25}]
     goto(app, "Saved scenarios")
-    assert app.dataframe[0].value["name"].tolist() == [scenario["name"]]
+    assert app.selectbox(key="view").value == scenario["id"]
 
 
 def test_charts_and_map_draw_the_report_numbers(app):
@@ -208,8 +212,7 @@ def test_citywide_meeting_is_scored_by_the_run_script(app):
 
 def test_online_demo_without_the_index(app, tmp_path, monkeypatch):
     monkeypatch.setattr(core, "index_ready", lambda db_dir: False)
-    monkeypatch.setattr(core, "EMBED", None)
-    monkeypatch.setattr(core, "memory_embedder", lambda: core.hash_embed)
+    monkeypatch.setattr(core, "can_index", lambda: False)
     demo = tmp_path / "demo"
     demo.mkdir()
     (demo / "pilot_demo.json").write_text(json.dumps({"id": "pilot_demo", "name": "Demo run", "date": "2026-11-11T00:00:00",
@@ -219,15 +222,14 @@ def test_online_demo_without_the_index(app, tmp_path, monkeypatch):
     assert core.seed_demo() == 0  # off unless SILICON_DEMO=1
     monkeypatch.setenv("SILICON_DEMO", "1")
     assert core.seed_demo() == 1 and core.seed_demo() == 0  # copied once, then left alone
-    monkeypatch.delenv("SILICON_DEMO")
-    core.delete_scenario("pilot_demo")  # run_meetings below reads the newest scenario
     login(app)
     goto(app, "Policy")
     assert any("stays on the team's computer" in i.value for i in app.info) and not app.text_input
-    scenario = run_meetings(app)
-    assert scenario["settings"]["retrieval"].startswith("FAKE pages")
-    assert {p for m in scenario["meetings"] for t in m["transcript"] for d, p in t["cited_pages"]} <= set(range(1, 7))
-    assert core.hash_embed(["noise noise", "noise"]).shape == (2, 256)
+    app.radio[0].set_value("Upload a PDF").run()  # no embedding models online: say so, never crash
+    assert any("uploads run on the team's computer" in i.value for i in app.info) and not app.exception
+    goto(app, "Run meetings")  # no index online: point to the saved real runs instead of meetings over nothing
+    assert any("Meetings need the policy index" in i.value for i in app.info)
+    assert not [b for b in app.button if b.key == "run"]
 
 
 def test_delete_memories_and_scenario(app):

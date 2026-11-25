@@ -73,6 +73,30 @@ def score(real_codes, sim_codes, codebook):
             "real_topic_counts": dict(real.most_common()), "simulated_topic_counts": dict(sim.most_common())}
 
 
+MIN_GROUP_COMMENTS = 3  # a topic mix of one or two comments says nothing
+
+
+def group_gaps(comment_codes, residents, real_counts):
+    """Per dimension and group with MIN_GROUP_COMMENTS or more simulated comments: coverage and topic mix gap to the
+    real comments. comment_codes: [{resident_id, codes}]. The real comments carry no demographics, so every group is
+    compared with all of them."""
+    by_id = {r["resident_id"]: analyst.groups(r) for r in residents}
+    cells = {}
+    for c in comment_codes:
+        for dim, group in by_id.get(c["resident_id"], {}).items():
+            cells.setdefault(dim, {}).setdefault(group, []).append(c["codes"])
+    out = {}
+    for dim, by_group in cells.items():
+        for group, codes in by_group.items():
+            if len(codes) >= MIN_GROUP_COMMENTS:
+                sim = Counter(x for cs in codes for x in cs)
+                cov, gap = coverage(real_counts, sim), js_distance(real_counts, sim)  # gap None: no topics
+                out.setdefault(dim, {})[group] = {"comments": len(codes),
+                                                  "topic_coverage": None if cov is None else round(cov, 4),
+                                                  "topic_mix_gap": None if gap is None else round(gap, 4)}
+    return out
+
+
 def load_tags(path):
     """Records with a codes list, one per line, as townhall.ingest.tagger writes them."""
     with open(path) as f:

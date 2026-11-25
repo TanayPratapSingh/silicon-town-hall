@@ -22,31 +22,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from app import core  # noqa: E402
 from townhall.ingest import codebook as cb  # noqa: E402
 from townhall.ingest import tagger  # noqa: E402
-from townhall.report import analyst, fact_check, score  # noqa: E402
+from townhall.report import fact_check, score  # noqa: E402
 from townhall.town import pilot  # noqa: E402
-
-MIN_GROUP_COMMENTS = 3  # a topic mix of one or two comments says nothing
-
-
-def group_gaps(comment_codes, residents, real_counts):
-    """Per dimension and group with MIN_GROUP_COMMENTS or more comments: coverage and topic mix gap to the real
-    comments. The real comments carry no demographics, so every group is compared with all real comments."""
-    by_id = {r["resident_id"]: analyst.groups(r) for r in residents}
-    cells = {}
-    for c in comment_codes:
-        for dim, group in by_id[c["resident_id"]].items():
-            cells.setdefault(dim, {}).setdefault(group, []).append(c["codes"])
-    out = {}
-    for dim, by_group in cells.items():
-        for group, codes in by_group.items():
-            if len(codes) >= MIN_GROUP_COMMENTS:
-                sim = Counter(x for cs in codes for x in cs)
-                cov, gap = score.coverage(real_counts, sim), score.js_distance(real_counts, sim)  # gap None: no topics
-                out.setdefault(dim, {})[group] = {"comments": len(codes),
-                                                  "topic_coverage": None if cov is None else round(cov, 4),
-                                                  "topic_mix_gap": None if gap is None else round(gap, 4)}
-    return out
-
 
 def summarize(scenario, real_codes, codebook):
     """Scores, groups, stances and fact checks of a saved scenario; counts only."""
@@ -58,7 +35,7 @@ def summarize(scenario, real_codes, codebook):
     rounds = sorted({m["round"] for m in scenario["meetings"]})
     return {
         "score": score.score(real_codes, [c["codes"] for c in codes], codebook) if codes else None,
-        "group_gaps": group_gaps(codes, residents, real_counts) if codes else None,
+        "group_gaps": score.group_gaps(codes, residents, real_counts) if codes else None,
         "stances_by_round": {r: dict(Counter(c["stance"] for m in scenario["meetings"] if m["round"] == r
                                              for c in m["comments"])) for r in rounds},
         "stance_changes_by_round": {r: sum(m["stance_changes"] for m in scenario["meetings"] if m["round"] == r)

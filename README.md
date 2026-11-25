@@ -79,9 +79,10 @@ streamlit run app/streamlit_app.py
 
 ## Online demo (Streamlit Community Cloud)
 
-The online build shows the committed real runs in `app/demo/` (simulated text and public Census records only) and
-runs free test meetings over six FAKE pages. Policy search stays off, because the 724 MB index is not uploaded.
-It installs from `app/requirements.txt`, which leaves out torch, sentence-transformers and spacy.
+The online build shows the committed real runs in `app/demo/` (simulated text and public Census records only): their
+reports, meeting replays, comparisons and downloadable outreach briefs, and it samples residents. Search, uploads and
+new meetings say they run on the team's computer, because the 724 MB index is not uploaded. It installs from
+`app/requirements.txt`, which leaves out torch, sentence-transformers and spacy.
 
 1. Sign in at share.streamlit.io with the GitHub account that owns this repository and allow access to it.
 2. Create an app: this repository, branch `build`, main file `app/streamlit_app.py`; under Advanced settings pick

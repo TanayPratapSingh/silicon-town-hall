@@ -5,16 +5,16 @@ residents, meetings, report, real call usage) plus memory.sqlite (long term memo
 Every resident, turn, comment and memory in a scenario is simulated.
 """
 
+import importlib.util
 import json
 import os
 import re
 import shutil
-import zlib
+from collections import Counter
 from datetime import datetime, timezone
 from functools import cache
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 
 from townhall import config
@@ -35,16 +35,42 @@ DEMO = Path(__file__).resolve().parent / "demo"  # committed runs for the online
 DEMO_RUNS = ("control_seed0", "whatif_seed0", "scale_seed2")  # runs/scenario_<name>.json, exported with the pilot
 PRESETS = {"I-81 Syracuse (New York, PUMA 00701)": ("36", "00701")}
 I81 = {"kind": "preset", "name": pilot.POLICY, "topic": pilot.TOPIC, "db_dir": str(index.DB_DIR)}
-FAKE_LABEL = "Free test model: FakeLLM template text, not a model. Simulated."
+FAKE_LABEL = "Demo mode: template text, not a model. Simulated."
 PILOT_PENDING = "Pilot scores are not available yet: no scorer run is recorded in runs/."
 PILOT_SCORE_FILES = (config.RUNS / "report_pilot_score.json", config.RUNS / "report_score_fake.json")
+BRIEF_NOTE = ("SIMULATED: every resident and comment in this brief was written by an AI resident. It is a rehearsal "
+              "for outreach, not public comment.")
+# list price per call, measured on the real runs: 61 meeting calls cost $0.0496 (runs/town_pilot_real.json), 59 tags
+# $0.0983 (runs/report_pilot_score.json), 40 profile calls $0.0081 (runs/town_profiles_real.json), 300 vision calls
+# $0.2082 (runs/retrieval_eval.json)
+PER_MEETING_CALL, PER_TAG, PER_PROFILE_CALL, PER_VISION_CALL = 0.0496 / 61, 0.0983 / 59, 0.0081 / 40, 0.2082 / 300
 
 
-def make_llm(free, max_calls):
-    """FakeLLM with canned replies (tagger and town pilot), or a real client that refuses call max_calls + 1."""
+def make_llm(free, max_calls, max_dollars=None):
+    """FakeLLM with canned replies (tagger and town pilot), or a real client that refuses call max_calls + 1 and any
+    call once the estimated list price reaches max_dollars."""
     if free or not config.OPENAI_API_KEY:
         return FakeLLM(responder=baselines.fake_responder)
-    return pilot.capped_openai(max_calls)
+    return pilot.capped_openai(max_calls, max_dollars)
+
+
+def cap_for(dollars):
+    return round(dollars * 1.5 + 0.01, 2)  # room for longer replies than the pilot's, still a hard stop
+
+
+def run_estimate(meetings, residents, rounds, vision=False):
+    """Real calls and list price dollars for meetings: an agenda per meeting, a turn and a summary per resident, one
+    comment each, then one tag per comment; vision adds 10 page image calls to each of a resident's two searches."""
+    meeting_calls = rounds * (meetings + 3 * residents) + (20 * residents * rounds if vision else 0)
+    dollars = (rounds * (meetings + 3 * residents) * PER_MEETING_CALL + residents * PER_TAG
+               + (20 * residents * rounds * PER_VISION_CALL if vision else 0))
+    return {"max_calls": meeting_calls + residents + 5, "dollars": round(dollars, 3), "cap": cap_for(dollars)}
+
+
+def profile_estimate(residents):
+    """A profile call and a review call per resident."""
+    dollars = 2 * residents * PER_PROFILE_CALL
+    return {"max_calls": 2 * residents + 5, "dollars": round(dollars, 3), "cap": cap_for(dollars)}
 
 
 def written_by(llm):
@@ -89,24 +115,9 @@ def index_ready(db_dir):
     return Path(db_dir).exists()
 
 
-def hash_embed(texts):
-    """Word hashing vectors for memory recall when sentence-transformers is not installed (the online demo).
-    shortcut: matches shared words, not meaning; install sentence-transformers to get all-MiniLM-L6-v2."""
-    out = np.zeros((len(texts), 256), dtype=np.float32)
-    for i, text in enumerate(texts):
-        for word in re.findall(r"[a-z]+", text.lower()):
-            out[i, zlib.crc32(word.encode()) % 256] += 1
-    return out / np.maximum(np.linalg.norm(out, axis=1, keepdims=True), 1e-9)
-
-
-def memory_embedder():
-    if EMBED is not None:
-        return EMBED
-    try:
-        import sentence_transformers  # noqa: F401
-    except ImportError:
-        return hash_embed
-    return None  # Memory loads all-MiniLM-L6-v2 itself
+def can_index():
+    """False on the online demo, whose slim install has no embedding models to index a new PDF with."""
+    return importlib.util.find_spec("sentence_transformers") is not None
 
 
 def page_count(db_dir):
@@ -182,15 +193,9 @@ def run_scenario(name, residents, policy, neighborhoods, rounds, llm, vision=Fal
     home.mkdir(parents=True)
     policy_text = policy["name"] + (f". Proposed change under test: {change}" if change.strip() else "")
     total, meetings, error = rounds * len(neighborhoods), [], None
-    memory = Memory(home / "memory.sqlite", embed=memory_embedder())
-    ready = index_ready(policy["db_dir"])
+    memory = Memory(home / "memory.sqlite", embed=EMBED)
     try:
-        if ready:
-            retrieve = meeting.retriever_from(get_retriever(policy["db_dir"]), k=5, llm=llm if vision else None)
-        elif isinstance(llm, FakeLLM):
-            retrieve = pilot.fake_retriever  # online demo: six FAKE pages, labeled in the settings below
-        else:
-            raise RuntimeError("the policy index is not on this server, so a real model run would cite nothing")
+        retrieve = meeting.retriever_from(get_retriever(policy["db_dir"]), k=5, llm=llm if vision else None)
         for rnd in range(1, rounds + 1):
             for hood in neighborhoods:
                 if on_progress:
@@ -211,8 +216,7 @@ def run_scenario(name, residents, policy, neighborhoods, rounds, llm, vision=Fal
         "settings": {**(community or {}), "policy": policy["name"], "policy_kind": policy["kind"],
                      "policy_db": policy["db_dir"], "neighborhoods": list(neighborhoods), "group_by": group_by,
                      "rounds": rounds,
-                     "meeting_text_by": written_by(llm), "vision_rerank": vision, "proposed_change": change,
-                     "retrieval": "impact statement index" if ready else "FAKE pages: the index is not on this server"},
+                     "meeting_text_by": written_by(llm), "vision_rerank": vision, "proposed_change": change},
         "status": "complete" if error is None else f"stopped early: {error}",
         "residents": residents, "meetings": meetings, "report": None, "usage": {"meetings": usage(llm)},
     }
@@ -258,7 +262,7 @@ def neighborhood_shapes():
 
 def build_report(comments, residents, llm, community=None):
     """Tag the simulated comments with the answer key's tagger (one call each), then build the report."""
-    tagged_by = ("FakeLLM picked the topics from a hash of each comment, not by meaning" if isinstance(llm, FakeLLM)
+    tagged_by = ("Demo mode picked the topics from a hash of each comment, not by meaning" if isinstance(llm, FakeLLM)
                  else f"Topics tagged by {config.ANALYST_MODEL}, the tagger used on the real comments")
     return report_from_tagged(analyst.tag_comments(comments, cb.load(), llm), residents, tagged_by, community)
 
@@ -279,8 +283,9 @@ def report_from_tagged(tagged, residents, tagged_by, community=None):
 
     def reach(e):
         expected = "" if e["expected_residents"] is None else f", {e['expected_residents']} expected"
-        return (f"{e['dimension'].replace('_', ' ')}, {e['group']}: {e['simulated_residents']} simulated "
-                f"residents{expected}. {'; '.join(e['reasons']).capitalize()}.")
+        n = e["simulated_residents"]
+        return (f"{e['dimension'].replace('_', ' ').capitalize()}, {e['group']}: {n} simulated "
+                f"resident{'' if n == 1 else 's'}{expected}. {'; '.join(e['reasons']).capitalize()}.")
 
     matrix = [{"dimension": dim, "group": g, "code": k, "topic": names.get(k, k), "comments": n}
               for dim, by in {"neighborhood": report["by_neighborhood"], **report["by_group"]}.items()
@@ -317,6 +322,42 @@ def pilot_scores():
                      f"{run.get('label', '')}", "scores": scores}
 
 
+def real_topic_counts(scenario):
+    """Topic counts of the real I-81 comments, from the recorded pilot score file; None for other policies."""
+    if scenario["settings"]["policy_kind"] != "preset":
+        return None
+    counts = ((pilot_scores()["scores"] or {}).get("meeting") or {}).get("real_topic_counts")
+    return Counter(counts) if counts else None
+
+
+def reach_lines(report):
+    """The who to reach sentences; scenarios saved before the plural fix say '1 simulated residents'."""
+    return [re.sub(r"\b1 simulated residents\b", "1 simulated resident", s) for s in report["reach_in_person"]]
+
+
+def outreach_brief(scenario):
+    """The report as Markdown a team can take to its outreach planning, labeled simulated at the top."""
+    r, s, n = scenario["report"], scenario["settings"], len(scenario["meetings"])
+    lines = [f"# Outreach brief: {scenario['name']}", "", f"**{BRIEF_NOTE}**", "",
+             f"Policy: {s['policy']}. Community: {s.get('community', 'not recorded')}. "
+             f"{len(scenario['residents'])} simulated residents, {n} meeting{'' if n == 1 else 's'}, "
+             f"run {scenario['date'][:10]}.", "", "## Who to reach in person", ""]
+    lines += [f"- {item}" for item in reach_lines(r)] or ["- Nobody flagged."]
+    lines += ["", "## Concerns raised", ""]
+    lines += [f"- {row['topic']}: {row['simulated comments']} of {r.get('comments', '?')} simulated comments"
+              for row in r["tables"][0]["rows"]] or ["- No codebook topic raised."]
+    lines += ["", "## Concerns by neighborhood", ""]
+    lines += [f"- {row['neighborhood']}: {row['top topics'] or 'no codebook topic'}" for row in r["tables"][1]["rows"]]
+    lines += ["", "## Sample comments (SIMULATED)", ""]
+    seen = set()
+    for c in r["sample_comments"]:  # sampled per topic, so one comment can repeat
+        if (c["resident_id"], c["text"]) not in seen:
+            seen.add((c["resident_id"], c["text"]))
+            lines += [f"> {c['text']}", ">", f"> SIMULATED: {c['resident_id']}, {c['neighborhood']}, stance "
+                      f"{c['stance']}. Cited: {c['cited']}", ""]
+    return "\n".join(lines) + "\n"
+
+
 def import_pilot():
     """Save the real 20 resident pilot as a scenario, reusing its tagged comments, so the app shows it with no new
     calls. Reads what python -m townhall.town.pilot --real-meeting and python -m townhall.report.score wrote."""
@@ -331,7 +372,7 @@ def import_pilot():
     community = {"community": next(iter(PRESETS)), "state": "36", "puma": "00701", "residents": len(residents),
                  "seed": 0}
     scenario = {
-        "id": PILOT_ID, "name": "I-81 pilot: 20 residents, seed 0, one citywide meeting", "date": run["date"],
+        "id": PILOT_ID, "name": "I-81 pilot: 20 residents, one citywide meeting", "date": run["date"],
         "label": "Simulated residents. Not public comment.",
         "settings": {**community, "policy": I81["name"], "policy_kind": "preset", "policy_db": I81["db_dir"],
                      "neighborhoods": ["Citywide"], "rounds": 1, "vision_rerank": False, "proposed_change": "",
