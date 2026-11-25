@@ -2,28 +2,22 @@
 
 A simulated town hall for government teams to test a new policy before real outreach. The I-81 viaduct in Syracuse is the pilot.
 
-IST 688, Building Human Centered AI Applications, Syracuse University, Fall 2026.
-
 ## In plain words
 
 Syracuse is replacing the I-81 highway bridge through downtown. Before deciding, the state collected public comments and published them, sorted by topic: noise, pollution, traffic, people losing their homes.
 
-A planning team uploads a draft policy. The app builds a town of a few hundred AI residents from real Census data; each reads the parts of the policy that affect its own life, talks with neighbors in simulated meetings, and writes a comment. The team gets a report of which concerns come up, from which neighborhoods and groups, and who to reach in person. For I-81 we can check that report against what real residents told the state, and we show where the AI town got people wrong.
+A planning team uploads a draft policy. The app builds a town of AI residents from real Census records (the recorded runs use 20 and 50); each reads the parts of the policy that affect its own life, talks with neighbors in simulated meetings, and writes a comment. The team gets a report of which concerns come up, from which neighborhoods and groups, and who to reach in person. For I-81 we can check that report against what real residents told the state, and we show where the AI town got people wrong.
 
 The app is a rehearsal tool, not a replacement for real public input. Every output is labeled simulated.
 
-## Status, Nov 24, 2026
+## What is built
 
-Done:
-
-- Proposal accepted Nov 11: [docs/proposal.md](docs/proposal.md), submitted as [docs/proposal.pdf](docs/proposal.pdf)
-- Found why the Census microdata query returned nothing: the API now requires a free key (see [docs/data-sources.md](docs/data-sources.md))
-- Roadmap with workstreams, phase checklists, stack and risks: [docs/roadmap.md](docs/roadmap.md)
-- All 47 public source PDFs located; the downloader is tested; page and word counts are in [runs/pdf_stats.csv](runs/pdf_stats.csv), summarized in [docs/data-sources.md](docs/data-sources.md)
-
+- Sources: all 47 public source PDFs; the downloader is tested; page and word counts are in [runs/pdf_stats.csv](runs/pdf_stats.csv), summarized in [docs/data-sources.md](docs/data-sources.md). The Census microdata API needs a free key; without one the app reads the public CSV files.
 - Answer key: 3,009 comments split from 3,632 pages (319 OCRed), names, emails, phones and addresses removed ([runs/ingest_stats.json](runs/ingest_stats.json)). The 344 comments on the final impact statement are tagged with NYSDOT's 13 Appendix A topics by gpt-4.1, each near duplicate text once: 247 distinct texts, 92 of the comments are one form letter ([runs/ingest_tags_feis.json](runs/ingest_tags_feis.json)). Not yet checked by hand.
 - Retrieval over the impact statement: 31 documents, 1,363 pages, text and page images, hybrid search with cross-encoder and vision reranking ([runs/retrieval_index.json](runs/retrieval_index.json), [runs/retrieval_eval.json](runs/retrieval_eval.json)).
 - Residents, meetings with memory, the analyst and scorer, both baselines, and the Streamlit app behind a password.
+
+## Results
 
 Real model runs (gpt-4.1-mini residents, gpt-4.1 tagger), scored against the 344 real comments. All residents and comments are simulated; each pilot is one Census draw of 20 residents in one citywide meeting.
 
@@ -48,17 +42,15 @@ Known problems:
 - The 100 comment hand check of the tags ([issue #3](https://github.com/TanayPratapSingh/silicon-town-hall/issues/3)) is not done, so every topic number is provisional.
 - Meeting turns could state facts the resident's Census record contradicts (issue #21). Each resident's facts now go into every prompt; a phrase match check found 1 contradiction in 80 texts before and 0 in 80 after (a lower bound, [runs/final_summary.json](runs/final_summary.json)).
 
-## Deliverables
+## Docs
 
 | What | File |
 | --- | --- |
-| Proposal, accepted Nov 11 | [docs/proposal.pdf](docs/proposal.pdf) |
-| Approach and milestones, Nov 15 | [docs/approach-and-milestones.pdf](docs/approach-and-milestones.pdf) |
-| Milestone update, Nov 22 | [docs/milestone-update-nov22.pdf](docs/milestone-update-nov22.pdf) |
-| Final project document | [docs/final/final-document.pdf](docs/final/final-document.pdf), Word: [final-document.docx](docs/final/final-document.docx) |
+| Project document: how it works, stack, I-81 checks, ethics, how to reproduce | [docs/project.md](docs/project.md) |
+| Proposal | [docs/proposal.md](docs/proposal.md) |
+| Data sources | [docs/data-sources.md](docs/data-sources.md) |
 | Slides, 11 with speaker notes | [docs/slides/](docs/slides/) |
 | Demo script with timings | [docs/demo-script.md](docs/demo-script.md) |
-| Code | this repository; the zip is `git archive --format=zip HEAD` |
 
 ## Run it
 
@@ -83,13 +75,13 @@ streamlit run app/streamlit_app.py
 
 The online build shows the committed real runs in `app/demo/` (simulated text and public Census records only): their
 reports, meeting replays, comparisons and downloadable outreach briefs, and it samples residents. Search, uploads and
-new meetings say they run on the team's computer, because the 724 MB index is not uploaded. It installs from
+new meetings say they run locally, because the 724 MB index is not uploaded. It installs from
 `app/requirements.txt`, which leaves out torch, sentence-transformers and spacy.
 
 1. Sign in at share.streamlit.io with the GitHub account that owns this repository and allow access to it.
-2. Create an app: this repository, branch `build`, main file `app/streamlit_app.py`; under Advanced settings pick
+2. Create an app: this repository, branch `main`, main file `app/streamlit_app.py`; under Advanced settings pick
    Python 3.12.
-3. Under Secrets, set `APP_PASSWORD` (the team password), `SILICON_DEMO = "1"` and, to sample new residents,
+3. Under Secrets, set `APP_PASSWORD`, `SILICON_DEMO = "1"` and, to sample new residents,
    `CENSUS_API_KEY`. Leave `OPENAI_API_KEY` out, so the online app can never spend money.
 4. Deploy, and check that the build log installs from `app/requirements.txt`.
 
@@ -99,7 +91,7 @@ To refresh the demo runs after a new real run: `python -m app.core --export-demo
 
 | Path | What |
 | --- | --- |
-| `docs/` | Proposal, roadmap, data sources |
+| `docs/` | Project document, proposal, data sources, slides, demo script |
 | `townhall/ingest/` | Answer key: extraction, OCR, comment splitting, scrubbing, codebook, tagger |
 | `townhall/retrieval/` | Index of text chunks and page images, fusion, cross encoder and vision reranking, evaluation |
 | `townhall/town/` | Census residents, homes and districts, profiles, the LangGraph meeting loop, memory, pilots |
