@@ -19,24 +19,39 @@ INK = "#4a5562"  # secondary text ink; values never wear the series color
 RAMP = ["#b7d3f6", "#0d366b"]  # low to high: the low end recedes into the white surface
 
 
+def said(title, pairs, limit=15):
+    """The chart's description, which Vega makes its aria-label: a screen reader hears the values,
+    not "Vega visualization". pairs: [(name, value text)], in the chart's own order."""
+    pairs = list(pairs)
+    more = f"; {len(pairs) - limit} more in the table view" if len(pairs) > limit else ""
+    return f"{title}: " + "; ".join(f"{k}, {v}" for k, v in pairs[:limit]) + more + "."
+
+
 def _height(rows, per=28, pad=70):
     """Streamlit fits the whole chart, legend and axis included, into this height, so pad leaves them room."""
     return per * max(rows, 1) + pad
 
 
-def topic_bars(rows):
-    """rows: [{topic, code, simulated comments}] -> one series, ranked."""
+def topic_bars(rows, compact=False):
+    """rows: [{topic, code, simulated comments}] -> one series, ranked. compact: each topic name sits above its bar,
+    for narrow columns, where a side axis of long topic names would leave the bars no width."""
     df = pd.DataFrame([{"topic": r["topic"], "code": r["code"], "n": r["simulated comments"]} for r in rows])
     if df.empty:
         return None
+    ranked = df.sort_values("n", ascending=False, kind="stable")  # an explicit order: the names layer has no x field
     base = alt.Chart(df).encode(
-        y=alt.Y("topic:N", sort="-x", title=None, axis=alt.Axis(labelLimit=280)),
-        x=alt.X("n:Q", title="Simulated comments that raise the topic", axis=alt.Axis(tickMinStep=1)),
+        y=alt.Y("topic:N", sort=ranked.topic.tolist(), title=None, axis=None if compact else alt.Axis(labelLimit=280)),
+        x=alt.X("n:Q", title="Simulated comments" if compact else "Simulated comments that raise the topic",
+                axis=alt.Axis(tickMinStep=1)),
         tooltip=[alt.Tooltip("topic:N", title="Topic"), alt.Tooltip("code:N", title="NYSDOT code"),
                  alt.Tooltip("n:Q", title="Simulated comments")])
-    bars = base.mark_bar(color=BLUE, cornerRadiusEnd=4, size=16)
-    return (bars + base.mark_text(align="left", dx=5, color=INK).encode(text="n:Q")).properties(
-        height=_height(len(df)))
+    shift = 8 if compact else 0  # compact: the bar drops below its name
+    chart = (base.mark_bar(color=BLUE, cornerRadiusEnd=4, size=12 if compact else 16, yOffset=shift)
+             + base.mark_text(align="left", dx=5, yOffset=shift, color=INK).encode(text="n:Q"))
+    if compact:
+        chart += base.mark_text(align="left", yOffset=-9, limit=alt.ExprRef("width"), color=INK).encode(x=alt.value(0), text="topic:N")
+    return chart.properties(height=_height(len(df), per=44 if compact else 28), description=said(
+        "Simulated comments that raise each topic", zip(ranked.topic, ranked.n)))
 
 
 def real_vs_simulated(score, names):
@@ -52,6 +67,7 @@ def real_vs_simulated(score, names):
                          "share": counts.get(code, 0) / total, "total": total})
     df = pd.DataFrame(rows)
     order = df[df.source == REAL].sort_values("share", ascending=False).topic.tolist()
+    share = df.pivot(index="topic", columns="source", values="share")
     return alt.Chart(df).mark_bar(cornerRadiusEnd=4, size=9).encode(
         y=alt.Y("topic:N", sort=order, title=None, axis=alt.Axis(labelLimit=280)),
         yOffset=alt.YOffset("source:N", sort=[REAL, SIM]),
@@ -61,7 +77,9 @@ def real_vs_simulated(score, names):
         tooltip=[alt.Tooltip("topic:N", title="Topic"), alt.Tooltip("source:N", title="Comments"),
                  alt.Tooltip("share:Q", title="Share", format=".1%"), alt.Tooltip("n:Q", title="Comments raising it"),
                  alt.Tooltip("total:Q", title="Comments in all")],
-    ).properties(height=_height(len(order), per=34, pad=110))
+    ).properties(height=_height(len(order), per=34, pad=110), description=said(
+        "Share of real and of simulated comments that raise each topic",
+        ((t, f"real {share.at[t, REAL]:.0%}, simulated {share.at[t, SIM]:.0%}") for t in order)))
 
 
 def score_bars(scores, key, title, fmt):
@@ -78,7 +96,8 @@ def score_bars(scores, key, title, fmt):
         color=alt.condition("datum.meeting", alt.value(BLUE), alt.value(GRAY)))
     return (bars + base.mark_text(align="left", dx=5, color=INK).encode(
         text=alt.Text("value:Q", format=fmt))).properties(
-        height=_height(len(df), per=34))
+        height=_height(len(df), per=34), description=said(title, ((c, format(v, fmt))
+                                                                  for c, v in zip(df.condition, df.value))))
 
 
 def representation(rows):
@@ -99,7 +118,10 @@ def representation(rows):
         color=alt.Color("series:N", scale=alt.Scale(domain=[EXPECTED, SIMULATED], range=[GRAY, BLUE]),
                         legend=alt.Legend(orient="top", title=None, labelLimit=0)),
         tooltip=tooltip)
-    return (rule + points).properties(height=_height(len(df), per=32, pad=110))
+    return (rule + points).properties(height=_height(len(df), per=32, pad=110), description=said(
+        "Simulated residents against the Census expected count",
+        ((r.label, f"{r.simulated} simulated" + ("" if pd.isna(r.expected) else f", {r.expected:.1f} expected"))
+         for r in df.itertuples())))
 
 
 def heatmap(rows):
@@ -116,7 +138,9 @@ def heatmap(rows):
                         legend=alt.Legend(orient="bottom", tickMinStep=1)),
         tooltip=[alt.Tooltip("group:N", title="Group"), alt.Tooltip("topic:N", title="Topic"),
                  alt.Tooltip("comments:Q", title="Simulated comments")],
-    ).properties(height=_height(len(topics), per=30, pad=230))
+    ).properties(height=_height(len(topics), per=30, pad=230), description=said(
+        f"Simulated comments by topic across {df.group.nunique()} groups, largest first",
+        ((f"{r.topic} in {r.group}", r.comments) for r in df.sort_values("comments", ascending=False).itertuples())))
 
 
 def gap_color(gap, span=3.0):
