@@ -131,7 +131,8 @@ def test_pages_render_with_the_free_model(app):
     assert comments and all(c["simulated"] is True for c in comments)
 
     goto(app, "Community")
-    assert (app.dataframe[0].value["label"] == "SIMULATED").all()
+    residents = next(d.value for d in app.dataframe if "label" in d.value)  # the resident table
+    assert (residents["label"] == "SIMULATED").all()
     goto(app, "Policy")
     app.text_input[0].input("noise").run()
     assert "FAKE_policy.pdf, page 1" in [m.value.strip("*") for m in app.markdown]
@@ -139,7 +140,7 @@ def test_pages_render_with_the_free_model(app):
     text = " ".join(m.value for m in app.markdown)
     assert "**SIMULATED** comment by" in text and "badge[topic: " in text
     assert any("Demo mode picked the topics" in c.value for c in app.caption)
-    heads = [s.value for s in app.subheader]  # the planner's answer first, the check against real comments last
+    heads = [s.value for s in app.header]  # the planner's answer first, the check against real comments last
     assert heads == ["Who to reach in person", "Topics raised", "Topics by neighborhood", "Topics by group",
                      "Sample comments (SIMULATED)", "Check against the real I-81 comments"]
     assert app.get("download_button")  # the outreach brief
@@ -174,6 +175,9 @@ def test_charts_and_map_draw_the_report_numbers(app):
                   charts.representation([{"label": g, **{k: r[k] for k in ("simulated", "expected")}}
                                          for g, r in hood.items()])):
         assert chart.to_dict()["$schema"].startswith("https://vega.github.io/schema/vega-lite/")
+        assert chart.to_dict()["description"].endswith(".")  # Vega's aria-label: screen readers hear the values
+    assert "North, 2 simulated, 3.0 expected" in chart.to_dict()["description"]
+    assert charts.said("T", [(str(i), i) for i in range(17)]).endswith("; 2 more in the table view.")
     score = {"real_comments": 4, "simulated_comments": 2, "real_topic_counts": {"4": 2, "8": 1},
              "simulated_topic_counts": {"8": 2}}
     shares = charts.real_vs_simulated(score, {"4": "Purpose", "8": "Outreach"}).data.set_index(["topic", "source"]).share
