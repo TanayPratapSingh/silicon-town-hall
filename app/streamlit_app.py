@@ -92,7 +92,7 @@ def gate():
     _, mid, _ = st.columns([1, 1.5, 1])
     with mid:
         st.space("large")
-        st.markdown('<div class="sth-hero"><div class="sth-eyebrow">IST 688 Group 1 planning tool</div>'
+        st.markdown('<div class="sth-hero"><div class="sth-eyebrow">Planning tool</div>'
                     '<div class="sth-title" role="heading" aria-level="1">Silicon Town Hall</div>'
                     '<div class="sth-sub">Try a draft policy on simulated residents built from Census records, '
                     'and see who it misses, before the public meeting.</div></div>', unsafe_allow_html=True)
