@@ -1,8 +1,6 @@
-# Silicon Town Hall: IST 688 Final Project Proposal
+# Silicon Town Hall: Proposal
 
 *A simulated town hall for government teams to test new policies before real outreach*
-
-Accepted Nov 11, 2026. The submitted one page version is [proposal.pdf](proposal.pdf).
 
 Governments usually hear how residents feel about a new policy late, and from a self-selected few. Silicon Town Hall is a planning tool: a government team uploads a draft policy, a town of AI residents built from Census data reads it and debates it in neighborhood meetings, and the team gets a feedback report showing which concerns come up, which neighborhoods and groups raise them, and who to reach in person. It is a rehearsal before real outreach, not a replacement for it.
 
