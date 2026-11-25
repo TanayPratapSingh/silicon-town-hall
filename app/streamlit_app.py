@@ -135,8 +135,8 @@ def map_block(residents, rows):
     """Neighborhood map filled by simulated minus expected residents, with its legend and what it leaves out."""
     features = core.neighborhood_shapes()
     if not features:
-        return st.caption("The map needs the Syracuse neighborhood boundaries, which the Census step saves under "
-                          "data/raw/census/. Run the Community step once with the network on.")
+        return st.caption("The neighborhood map could not be loaded: it comes from the City of Syracuse open data "
+                          "and needs the network once.")
     hood_rows = [r for r in rows if r["dimension"] == "neighborhood"]
     st.pydeck_chart(charts.neighborhood_map(features, hood_rows, dark()), height=470)
     if any(r["expected"] is not None for r in hood_rows):

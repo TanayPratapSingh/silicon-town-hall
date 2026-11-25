@@ -94,6 +94,42 @@ def test_prompts_carry_the_census_facts():
     assert meeting._facts({"resident_id": "r2", "profile": "p"}) == ""
 
 
+def test_neighborhood_map_is_fetched_once_or_left_out(tmp_path, monkeypatch):
+    monkeypatch.setattr(census, "CENSUS_RAW", tmp_path)
+    calls = []
+
+    def fake_urlopen(url, timeout):
+        calls.append(url)
+        return _ctx(SimpleNamespace(read=lambda: b'{"features": [{"properties": {"NAME": "North"}}]}'))
+
+    monkeypatch.setattr(census.urllib.request, "urlopen", fake_urlopen)
+    core.neighborhood_shapes.cache_clear()
+    assert core.neighborhood_shapes()[0]["properties"]["NAME"] == "North"
+    core.neighborhood_shapes.cache_clear()
+    assert core.neighborhood_shapes() and len(calls) == 1  # the saved file is reused
+    (tmp_path / "syracuse_neighborhoods.geojson").unlink()
+
+    def offline(url, timeout):
+        raise OSError("no network")
+
+    monkeypatch.setattr(census.urllib.request, "urlopen", offline)
+    core.neighborhood_shapes.cache_clear()
+    assert core.neighborhood_shapes() is None  # the page shows a note, not a crash
+    core.neighborhood_shapes.cache_clear()
+
+
+class _ctx:
+    """A context manager around a fake response, the shape urlopen returns."""
+    def __init__(self, response):
+        self.response = response
+
+    def __enter__(self):
+        return self.response
+
+    def __exit__(self, *exc):
+        return False
+
+
 def test_delete_upload_removes_only_uploads(tmp_path, monkeypatch):
     monkeypatch.setattr(core, "UPLOADS", tmp_path / "uploads")
     home = core.UPLOADS / "upload_plan"

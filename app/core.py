@@ -255,9 +255,13 @@ def representation(residents, shares=None):
 
 @cache
 def neighborhood_shapes():
-    """Syracuse neighborhood polygons that homes.py saved, or None; the app never downloads them itself."""
-    path = census.CENSUS_RAW / "syracuse_neighborhoods.geojson"
-    return json.loads(path.read_text())["features"] if path.exists() else None
+    """Syracuse neighborhood polygons, fetched once from the city's public open data when not saved yet (a fresh
+    online server has no data/); None when that fails, so the page shows a note instead of a map."""
+    try:
+        path = census.fetch(homes.NEIGHBORHOODS_URL, census.CENSUS_RAW / "syracuse_neighborhoods.geojson")
+        return json.loads(path.read_text())["features"]
+    except (OSError, ValueError, KeyError):  # offline, or the city changed its file
+        return None
 
 
 def build_report(comments, residents, llm, community=None):
