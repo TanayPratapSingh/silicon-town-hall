@@ -14,9 +14,9 @@ REAL, SIM = "Real comments (NYSDOT)", "Simulated comments"
 EXPECTED, SIMULATED = "Census expected", "Simulated residents"
 CONDITIONS = {"meeting": "Meeting (personas and debate)", "no_personas": "One model, no personas",
               "skip_meeting": "Personas, no meeting"}
-POLES = {False: ((227, 73, 72), (240, 239, 236), (42, 120, 214)), True: ((230, 103, 103), (56, 56, 53), (57, 135, 229))}
-INK = {False: "#52514e", True: "#c3c2b7"}  # secondary text ink; values never wear the series color
-RAMP = {False: ["#b7d3f6", "#0d366b"], True: ["#184f95", "#cde2fb"]}  # low to high: the low end recedes into the surface
+POLES = ((227, 73, 72), (240, 239, 236), (42, 120, 214))  # under, about right, over
+INK = "#4a5562"  # secondary text ink; values never wear the series color
+RAMP = ["#b7d3f6", "#0d366b"]  # low to high: the low end recedes into the white surface
 
 
 def _height(rows, per=28, pad=70):
@@ -24,7 +24,7 @@ def _height(rows, per=28, pad=70):
     return per * max(rows, 1) + pad
 
 
-def topic_bars(rows, dark=False):
+def topic_bars(rows):
     """rows: [{topic, code, simulated comments}] -> one series, ranked."""
     df = pd.DataFrame([{"topic": r["topic"], "code": r["code"], "n": r["simulated comments"]} for r in rows])
     if df.empty:
@@ -35,7 +35,7 @@ def topic_bars(rows, dark=False):
         tooltip=[alt.Tooltip("topic:N", title="Topic"), alt.Tooltip("code:N", title="NYSDOT code"),
                  alt.Tooltip("n:Q", title="Simulated comments")])
     bars = base.mark_bar(color=BLUE, cornerRadiusEnd=4, size=16)
-    return (bars + base.mark_text(align="left", dx=5, color=INK[dark]).encode(text="n:Q")).properties(
+    return (bars + base.mark_text(align="left", dx=5, color=INK).encode(text="n:Q")).properties(
         height=_height(len(df)))
 
 
@@ -64,7 +64,7 @@ def real_vs_simulated(score, names):
     ).properties(height=_height(len(order), per=34, pad=110))
 
 
-def score_bars(scores, key, title, fmt, dark=False):
+def score_bars(scores, key, title, fmt):
     """One measure across the conditions; the meeting is blue, the baselines gray, the value at each bar tip."""
     df = pd.DataFrame([{"condition": CONDITIONS.get(name, name), "value": s[key], "meeting": name == "meeting"}
                        for name, s in scores.items() if s.get(key) is not None])
@@ -76,7 +76,7 @@ def score_bars(scores, key, title, fmt, dark=False):
         tooltip=[alt.Tooltip("condition:N", title="Condition"), alt.Tooltip("value:Q", title=title, format=fmt)])
     bars = base.mark_bar(cornerRadiusEnd=4, size=18).encode(
         color=alt.condition("datum.meeting", alt.value(BLUE), alt.value(GRAY)))
-    return (bars + base.mark_text(align="left", dx=5, color=INK[dark]).encode(
+    return (bars + base.mark_text(align="left", dx=5, color=INK).encode(
         text=alt.Text("value:Q", format=fmt))).properties(
         height=_height(len(df), per=34))
 
@@ -102,7 +102,7 @@ def representation(rows):
     return (rule + points).properties(height=_height(len(df), per=32, pad=110))
 
 
-def heatmap(rows, dark=False):
+def heatmap(rows):
     """Topic by group counts, sequential blue; empty cells mean no simulated comment. rows: [{group, topic, comments}]."""
     df = pd.DataFrame(rows)
     if df.empty:
@@ -112,16 +112,16 @@ def heatmap(rows, dark=False):
         x=alt.X("group:N", title=None, axis=alt.Axis(labelAngle=-40, labelLimit=170, orient="top",
                                                     labelOverlap=False)),
         y=alt.Y("topic:N", sort=topics, title=None, axis=alt.Axis(labelLimit=280)),
-        color=alt.Color("comments:Q", title="Simulated comments", scale=alt.Scale(range=RAMP[dark]),
+        color=alt.Color("comments:Q", title="Simulated comments", scale=alt.Scale(range=RAMP),
                         legend=alt.Legend(orient="bottom", tickMinStep=1)),
         tooltip=[alt.Tooltip("group:N", title="Group"), alt.Tooltip("topic:N", title="Topic"),
                  alt.Tooltip("comments:Q", title="Simulated comments")],
     ).properties(height=_height(len(topics), per=30, pad=230))
 
 
-def gap_color(gap, dark=False, span=3.0):
+def gap_color(gap, span=3.0):
     """Diverging fill for simulated minus expected residents: red under, gray about right, blue over."""
-    under, mid, over = POLES[dark]
+    under, mid, over = POLES
     if gap is None:
         return [*mid, 120]
     t = max(-1.0, min(1.0, gap / span))
@@ -129,7 +129,7 @@ def gap_color(gap, dark=False, span=3.0):
     return [round(m + (p - m) * abs(t)) for m, p in zip(mid, pole)] + [200]
 
 
-def neighborhood_map(features, rows, dark=False):
+def neighborhood_map(features, rows):
     """pydeck map of the neighborhood polygons, filled by simulated minus expected residents.
     rows: representation rows for the neighborhood dimension, [{group, simulated, expected}]."""
     by = {r["group"]: r for r in rows}
@@ -141,7 +141,7 @@ def neighborhood_map(features, rows, dark=False):
         shaped.append({"type": "Feature", "geometry": f["geometry"], "properties": {
             "name": name, "simulated": r["simulated"],
             "expected": "not known" if r["expected"] is None else f"{r['expected']:.1f}",
-            "fill": gap_color(gap, dark)}})
+            "fill": gap_color(gap)}})
         rings = f["geometry"]["coordinates"] if f["geometry"]["type"] == "Polygon" else [
             ring for poly in f["geometry"]["coordinates"] for ring in poly]
         for ring in rings:
@@ -149,10 +149,10 @@ def neighborhood_map(features, rows, dark=False):
             ys += [p[1] for p in ring]
     layer = pdk.Layer("GeoJsonLayer", {"type": "FeatureCollection", "features": shaped}, pickable=True,
                       auto_highlight=True, stroked=True, filled=True, get_fill_color="properties.fill",
-                      get_line_color=[20, 20, 22, 220] if dark else [255, 255, 255, 220], line_width_min_pixels=1.5)
+                      get_line_color=[255, 255, 255, 220], line_width_min_pixels=1.5)
     view = pdk.ViewState(longitude=(min(xs) + max(xs)) / 2, latitude=(min(ys) + max(ys)) / 2, zoom=11.6)
     tooltip = {"html": "<b>{name}</b><br/>{simulated} simulated residents<br/>{expected} expected from the Census",
-               "style": {"fontFamily": "Public Sans, sans-serif", "fontSize": "13px"}}
+               "style": {"fontFamily": "EB Garamond, Garamond, serif", "fontSize": "15px"}}
     # no scroll zoom: the wheel scrolls the page past the map; the + and - buttons and drag still work
     return pdk.Deck(layers=[layer], initial_view_state=view, tooltip=tooltip, map_style=None,
                     views=[pdk.View(type="MapView", controller={"scrollZoom": False, "dragRotate": False})])

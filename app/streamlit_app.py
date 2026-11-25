@@ -38,16 +38,19 @@ STANCE = {"support": ("blue", ":material/thumb_up:"), "oppose": ("red", ":materi
 PRESET_CHOICE, UPLOAD_CHOICE = "I-81 impact statement (preset, already indexed)", "Upload a PDF"
 SEARCHES = ["noise during construction", "displacement and relocation", "air quality", "the community grid"]
 CSS = """<style>
-.sth-hero {margin: 0 0 1.4rem;}
-.sth-eyebrow {text-transform: uppercase; letter-spacing: .12em; font-size: .74rem; font-weight: 600; color: #2a78d6;}
-.sth-title {font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: clamp(2rem, 3.4vw, 2.9rem);
-  line-height: 1.08; margin: .25rem 0 .45rem;}
-.sth-sub {opacity: .78; font-size: 1.05rem; max-width: 48rem; line-height: 1.5;}
-.sth-brand {font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: 1.45rem; line-height: 1.1;}
-.sth-tag {font-size: .8rem; opacity: .7; margin: .2rem 0 .6rem;}
-.sth-legend {display: flex; flex-wrap: wrap; gap: 1.1rem; font-size: .85rem; opacity: .85; margin: .4rem 0 .2rem;}
-.sth-swatch {display: inline-block; width: .8rem; height: .8rem; border-radius: 3px; margin-right: .35rem;
+.sth-hero {margin: 0 0 1.6rem;}
+.sth-step {font-style: italic; font-size: 1.02rem; color: #4a5562;}
+.sth-title {font-weight: 500; font-size: clamp(2.3rem, 3.8vw, 3.1rem); line-height: 1.04; letter-spacing: -.005em;
+  margin: .1rem 0 .5rem;}
+.sth-sub {color: #4a5562; font-size: 1.14rem; max-width: 38em; line-height: 1.55;}
+.sth-brand {font-weight: 600; font-size: 1.55rem; line-height: 1.1;}
+.sth-tag {font-style: italic; font-size: .95rem; color: #4a5562; margin: .15rem 0 .7rem;}
+.sth-legend {display: flex; flex-wrap: wrap; gap: 1.1rem; font-size: .92rem; color: #4a5562; margin: .4rem 0 .2rem;}
+.sth-swatch {display: inline-block; width: .8rem; height: .8rem; border-radius: 2px; margin-right: .35rem;
   vertical-align: -1px;}
+/* Garamond's default figures are oldstyle; counts and tables read better in lining, even width figures */
+[data-testid="stMetricValue"], [data-testid="stMarkdownContainer"] table, .sth-legend {
+  font-variant-numeric: lining-nums tabular-nums;}
 </style>"""
 
 
@@ -62,10 +65,6 @@ def tenure(value):
             else "Group quarters" if value.startswith("N/A") else md(value))
 
 
-def dark():
-    return getattr(st.context.theme, "type", None) == "dark"
-
-
 def go(page):
     """Button callback that switches the sidebar page; callbacks run before the radio is drawn."""
     return lambda: st.session_state.update(page=page)
@@ -73,7 +72,7 @@ def go(page):
 
 def hero(page):
     i = PAGES.index(page)
-    st.markdown(f'<div class="sth-hero"><div class="sth-eyebrow">Step {i + 1} of {len(PAGES)}</div>'
+    st.markdown(f'<div class="sth-hero"><div class="sth-step">Step {i + 1} of {len(PAGES)}</div>'
                 f'<div class="sth-title" role="heading" aria-level="1">{TITLES[page]}</div>'
                 f'<div class="sth-sub">{BLURBS[page]}</div></div>', unsafe_allow_html=True)
 
@@ -92,7 +91,7 @@ def gate():
     _, mid, _ = st.columns([1, 1.5, 1])
     with mid:
         st.space("large")
-        st.markdown('<div class="sth-hero"><div class="sth-eyebrow">Planning tool</div>'
+        st.markdown('<div class="sth-hero">'
                     '<div class="sth-title" role="heading" aria-level="1">Silicon Town Hall</div>'
                     '<div class="sth-sub">Try a draft policy on simulated residents built from Census records, '
                     'and see who it misses, before the public meeting.</div></div>', unsafe_allow_html=True)
@@ -122,7 +121,9 @@ def show(chart, empty="Nothing to chart yet."):
     if chart is None:
         st.caption(empty)
     else:
-        st.altair_chart(chart, width="stretch")
+        # Garamond's small x-height needs larger chart text than the theme's default to read at the same size
+        st.altair_chart(chart.configure_axis(labelFontSize=14, titleFontSize=14).configure_legend(
+            labelFontSize=14).configure_text(fontSize=14), width="stretch")
 
 
 def legend(items):
@@ -138,9 +139,9 @@ def map_block(residents, rows):
         return st.caption("The neighborhood map could not be loaded: it comes from the City of Syracuse open data "
                           "and needs the network once.")
     hood_rows = [r for r in rows if r["dimension"] == "neighborhood"]
-    st.pydeck_chart(charts.neighborhood_map(features, hood_rows, dark()), height=470)
+    st.pydeck_chart(charts.neighborhood_map(features, hood_rows), height=470)
     if any(r["expected"] is not None for r in hood_rows):
-        under, mid, over = (f"rgb{c}" for c in charts.POLES[dark()])
+        under, mid, over = (f"rgb{c}" for c in charts.POLES)
         legend([(under, "Fewer simulated residents than the Census implies"), (mid, "About as many"), (over, "More")])
     else:
         st.caption("Population shares are not available, so every neighborhood is gray; hover for counts.")
@@ -398,10 +399,10 @@ def render_pilot_scores(scenario):
     left, right = st.columns(2)
     with left:
         st.markdown("**Real topics raised** (higher is closer)")
-        show(charts.score_bars(runs, "topic_coverage", "Share of real topics raised", ".0%", dark()))
+        show(charts.score_bars(runs, "topic_coverage", "Share of real topics raised", ".0%"))
     with right:
         st.markdown("**Topic mix gap** (0 is the same mix, 1 none in common)")
-        show(charts.score_bars(runs, "topic_mix_gap", "Jensen Shannon distance", ".2f", dark()))
+        show(charts.score_bars(runs, "topic_mix_gap", "Jensen Shannon distance", ".2f"))
     with_counts = [n for n, s in runs.items() if s.get("real_topic_counts")]
     if with_counts:
         st.markdown("**What real commenters raised, and what simulated residents raised**")
@@ -463,13 +464,13 @@ def render_group_gaps(scenario, report, real, dim):
 def render_topics(scenario, report, real):
     rows = report["tables"]
     st.subheader("Topics raised")
-    show(charts.topic_bars(rows[0]["rows"], dark()), "No simulated comment raised a codebook topic.")
+    show(charts.topic_bars(rows[0]["rows"]), "No simulated comment raised a codebook topic.")
     with st.expander("Table view"):
         st.dataframe(pd.DataFrame(rows[0]["rows"]), hide_index=True)
     matrix = report.get("matrix")
     st.subheader("Topics by neighborhood")
     if matrix is not None:
-        show(charts.heatmap([m for m in matrix if m["dimension"] == "neighborhood"], dark()))
+        show(charts.heatmap([m for m in matrix if m["dimension"] == "neighborhood"]))
     with st.expander("Table view"):
         st.dataframe(pd.DataFrame(rows[1]["rows"]), hide_index=True)
     st.subheader("Topics by group")
@@ -477,7 +478,7 @@ def render_topics(scenario, report, real):
         dims = [d for d in DIMS if d != "neighborhood" and any(m["dimension"] == d for m in matrix)]
         if dims:
             dim = st.pills("Group by", dims, default=dims[0], format_func=DIMS.get, key="group_dim") or dims[0]
-            show(charts.heatmap([m for m in matrix if m["dimension"] == dim], dark()))
+            show(charts.heatmap([m for m in matrix if m["dimension"] == dim]))
             render_group_gaps(scenario, report, real, dim)
     with st.expander("Table view"):
         st.dataframe(pd.DataFrame(rows[2]["rows"]), hide_index=True)
@@ -618,7 +619,7 @@ def saved_page():
                 if other["report"] is None:
                     st.error("This scenario has no report: building it failed after the meetings were saved.")
                 else:
-                    show(charts.topic_bars(other["report"]["tables"][0]["rows"], dark()),
+                    show(charts.topic_bars(other["report"]["tables"][0]["rows"]),
                          "No simulated comment raised a codebook topic.")
 
 
