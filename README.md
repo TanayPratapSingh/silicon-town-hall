@@ -48,16 +48,6 @@ Known problems:
 - The 100 comment hand check of the tags ([issue #3](https://github.com/TanayPratapSingh/silicon-town-hall/issues/3)) is not done, so every topic number is provisional.
 - Meeting turns could state facts the resident's Census record contradicts (issue #21). Each resident's facts now go into every prompt; a phrase match check found 1 contradiction in 80 texts before and 0 in 80 after (a lower bound, [runs/final_summary.json](runs/final_summary.json)).
 
-## Deadlines
-
-| Date | What |
-| --- | --- |
-| Nov 8 | Proposal |
-| Nov 10 | Our RAG and reranking class presentation |
-| Nov 15 | Approach and milestones |
-| Nov 22 | Milestones update, with a working 20 resident pilot |
-| Dec 6 | App URL, project document, slides, code zip |
-
 ## Run it
 
 ```bash
