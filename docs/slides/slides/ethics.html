@@ -1,0 +1,14 @@
+<section id="ethics" class="white" data-transition="fade">
+<p class="eyebrow in">Ethics</p>
+<h2 class="in" style="--i:1; max-width:1600px;">Each safeguard has a number behind it</h2>
+<table class="data in" style="--i:2;">
+<tr class="head"><th style="width:42%;">Risk</th><th>What we measured</th></tr>
+<tr><td>Simulated text taken for public comment</td><td>Every comment in every real run carried the SIMULATED label</td></tr>
+<tr><td>Real commenters' details reach a model</td><td>0 emails, 0 phone numbers, 0 known full names left after scrubbing</td></tr>
+<tr><td>Stereotyped residents</td><td>0 of 90 profiles flagged; 2 of 90 flagged for invented facts</td></tr>
+<tr><td>Residents contradict their own record</td><td>1 of 80 texts before the Census facts went into the prompts, 0 of 380 after</td></tr>
+<tr><td>Groups left out</td><td>First draw: no Hispanic resident against 8.4% of adults; 41 groups flagged</td></tr>
+</table>
+<p class="foot">Contradictions are phrase matches, a lower bound. Source: runs/ingest_stats.json, runs/town_profiles_real*.json, runs/final_summary.json</p>
+<aside>About 30 seconds. The biggest ethical risk is misplaced trust: a planner reading fluent simulated comments might skip real outreach. So every resident, turn and comment is labeled simulated, in the app and in the data. Real commenters' names, emails, phones and addresses are removed before any text reaches a model, and an audit found none left. Profiles are written from Census facts only and reviewed; none of 90 was flagged as stereotyped. We also caught residents contradicting their own records, added their Census facts to every prompt, and the count went from 1 in 80 texts to 0 in 380. And the who to reach list makes missing groups visible instead of hiding them.</aside>
+</section>

@@ -1,0 +1,19 @@
+{
+  "v": 5,
+  "createdOnFiles": {"v": 1, "at": "2026-11-24T23:50:00Z"},
+  "lists": "css",
+  "format": {"v": 1, "shared": ["project/deck.css"]},
+  "title": "Silicon Town Hall Final Presentation",
+  "cover": "cover",
+  "order": ["cover", "problem", "what-it-does", "brief", "how-it-works", "demo", "wrong", "reliable", "ethics", "next", "questions"],
+  "sections": {
+    "s1": {"description": "The goal and how it works", "start": "cover"},
+    "s2": {"description": "Live demo of the what if editor", "start": "demo"},
+    "s3": {"description": "Key insights: where simulated residents get people wrong, and what the tool is reliable for", "start": "wrong"},
+    "s4": {"description": "Ethics, what comes next, and questions", "start": "ethics"}
+  },
+  "faces": {
+    "oswald": {"family": "Oswald", "href": "https://fonts.googleapis.com/css2?family=Oswald:wght@400..700&display=swap"}
+  },
+  "designSystems": []
+}

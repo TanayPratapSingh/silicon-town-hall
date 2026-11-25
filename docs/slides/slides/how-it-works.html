@@ -1,0 +1,30 @@
+<section id="how-it-works" class="white" data-transition="fade">
+<h2>Real comments only score the result</h2>
+<div class="host">
+<div class="box" style="left:50px; top:152px;"><p class="name">Impact statement</p><p class="what">31 chapters, 1,363 pages</p></div>
+<div class="box" style="left:458px; top:152px;"><p class="name">Index</p><p class="what">4,004 text chunks, 1,363 page images</p></div>
+<div class="box" style="left:866px; top:152px;"><p class="name">Retrieval</p><p class="what">fuse 50, rerank to 20, top 5 a turn</p></div>
+<div class="box" style="left:1274px; top:152px;"><p class="name">Streamlit app</p><p class="what">report, replay, what if</p></div>
+<div class="box" style="left:50px; top:352px;"><p class="name">Census records</p><p class="what">ACS 2024 PUMS, PUMA 00701</p></div>
+<div class="box" style="left:458px; top:352px;"><p class="name">Residents</p><p class="what">profiles, stereotype review</p></div>
+<div class="box accent" style="left:866px; top:352px;"><p class="name">Meeting loop</p><p class="what">agenda, turns, summary, comments</p></div>
+<div class="box" style="left:1274px; top:352px;"><p class="name">Report</p><p class="what">topics, groups, who to reach</p></div>
+<div class="box" style="left:50px; top:552px;"><p class="name">Real comments</p><p class="what">344 on the final statement</p></div>
+<div class="box" style="left:458px; top:552px;"><p class="name">Answer key</p><p class="what">names removed, gpt-4.1 tags</p></div>
+<div class="box" style="left:866px; top:552px;"><p class="name">Memory</p><p class="what">stances carried by round</p></div>
+<div class="box" style="left:1274px; top:552px;"><p class="name">Pilot score</p><p class="what">coverage vs two baselines</p></div>
+</div>
+<x-connector x1="518" y1="355" x2="586" y2="355" head="end"></x-connector>
+<x-connector x1="926" y1="355" x2="994" y2="355" head="end"></x-connector>
+<x-connector x1="1164" y1="430" x2="1164" y2="480" head="end"></x-connector>
+<x-connector x1="518" y1="555" x2="586" y2="555" head="end"></x-connector>
+<x-connector x1="926" y1="555" x2="994" y2="555" head="end"></x-connector>
+<x-connector x1="1164" y1="630" x2="1164" y2="680" head="both"></x-connector>
+<x-connector x1="1334" y1="555" x2="1402" y2="555" head="end"></x-connector>
+<x-connector x1="1572" y1="480" x2="1572" y2="430" head="end"></x-connector>
+<x-connector x1="1572" y1="630" x2="1572" y2="680" head="end"></x-connector>
+<x-connector x1="518" y1="755" x2="586" y2="755" head="end"></x-connector>
+<svg aria-label="The answer key feeds only the pilot score" style="position:absolute; left:755px; top:830px; width:832px; height:50px;" width="832" height="50" viewBox="0 0 832 50"><path d="M1 0 V40 H817 V6" fill="none" stroke="#4D5687" stroke-width="3"/><path d="M807 14 L817 0 L827 14 Z" fill="#4D5687"/></svg>
+<p class="small" style="position:absolute; left:755px; top:886px; width:832px; text-align:center;">The answer key only scores; residents never read it</p>
+<aside>About 40 seconds. Three inputs on the left. The impact statement becomes an index of text chunks and page images; each resident turn retrieves 50 candidate pages, a cross encoder keeps 20, and the resident sees the top 5. Census records become residents. Both feed the meeting loop, built with LangGraph, with SQLite memory so stances carry across rounds. The report tags every comment with NYSDOT topic codes using gpt-4.1. The real comments come in only at the bottom: they are the answer key, never shown to residents, so the score is not contaminated.</aside>
+</section>
