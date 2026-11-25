@@ -108,7 +108,7 @@ The largest risk is not a privacy leak but misplaced trust: a planner who reads 
 ## Reproduce
 
 - **Code.** This repository, branch `main`. `git archive --format=zip HEAD` makes the code zip, without `data/`.
-- **App.** `streamlit run app/streamlit_app.py`; the README covers the password, the optional keys and the online demo build. The online build shows the recorded real runs, their reports and their outreach briefs; search, uploads and new meetings run locally, because the index is 724 MB.
+- **App.** Online demo at https://silicon-town-hall.streamlit.app (password protected). Locally: `streamlit run app/streamlit_app.py`; the README covers the password, the optional keys and the online demo build. The online build shows the recorded real runs, their reports and their outreach briefs; search, uploads and new meetings run locally, because the index is 724 MB.
 - **Tests.** `python -m pytest` runs the offline suite: 81 tests pass.
 - **Cost.** All recorded real runs together came to $1.92 at list price, under hard call and dollar caps.
 

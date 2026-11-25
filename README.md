@@ -2,6 +2,8 @@
 
 A simulated town hall for government teams to test a new policy before real outreach. The I-81 viaduct in Syracuse is the pilot.
 
+Online demo: [silicon-town-hall.streamlit.app](https://silicon-town-hall.streamlit.app) (password protected; shows the recorded real runs).
+
 ## In plain words
 
 Syracuse is replacing the I-81 highway bridge through downtown. Before deciding, the state collected public comments and published them, sorted by topic: noise, pollution, traffic, people losing their homes.
@@ -73,7 +75,7 @@ streamlit run app/streamlit_app.py
 
 ## Online demo (Streamlit Community Cloud)
 
-The online build shows the committed real runs in `app/demo/` (simulated text and public Census records only): their
+Live at https://silicon-town-hall.streamlit.app. The online build shows the committed real runs in `app/demo/` (simulated text and public Census records only): their
 reports, meeting replays, comparisons and downloadable outreach briefs, and it samples residents. Search, uploads and
 new meetings say they run locally, because the 724 MB index is not uploaded. It installs from
 `app/requirements.txt`, which leaves out torch, sentence-transformers and spacy.
