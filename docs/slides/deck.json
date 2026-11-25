@@ -3,7 +3,7 @@
   "createdOnFiles": {"v": 1, "at": "2026-11-24T23:50:00Z"},
   "lists": "css",
   "format": {"v": 1, "shared": ["project/deck.css"]},
-  "title": "Silicon Town Hall Final Presentation",
+  "title": "Silicon Town Hall",
   "cover": "cover",
   "order": ["cover", "problem", "what-it-does", "brief", "how-it-works", "demo", "wrong", "reliable", "ethics", "next", "questions"],
   "sections": {
