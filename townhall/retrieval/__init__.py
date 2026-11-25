@@ -1,4 +1,4 @@
-"""Document indexing and retrieval (issues #4 and #5).
+"""Document indexing and retrieval.
 
 Index any PDF (every page as text chunks plus one page image) into a persistent
 ChromaDB at data/processed/retrieval/chroma/:

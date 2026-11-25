@@ -147,7 +147,7 @@ def uploads():
 
 
 def delete_upload(doc_id):
-    """Delete an uploaded PDF, its index and its page images (issue #22: a draft policy may be private)."""
+    """Delete an uploaded PDF, its index and its page images (a draft policy may be private)."""
     home = UPLOADS / doc_id
     if not doc_id.startswith("upload_") or home.resolve().parent != UPLOADS.resolve() or not home.is_dir():
         raise ValueError(f"not an upload: {doc_id}")

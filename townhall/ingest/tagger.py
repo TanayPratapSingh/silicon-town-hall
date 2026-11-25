@@ -24,7 +24,7 @@ TAGGED = DIR / "comments_tagged.jsonl"
 MAX_CHARS = 12000  # shortcut: long letters with exhibits are cut here; chunk them if their tags matter
 BATCH_CHARS, BATCH_SIZE = 20000, 10
 # Near duplicates are tagged once: word 5 gram overlap of 0.9 groups all 92 FEIS form emails, while 0.8 starts
-# merging distinct letters (issue #20). Tags differed across copies only because batch neighbors differed.
+# merging distinct letters. Tags differed across copies only because batch neighbors differed.
 DEDUPE_JACCARD = 0.9
 # gpt-4.1 list prices in dollars per token, from the lead; costs below are estimates from these, not the bill
 PROMPT_PRICE, COMPLETION_PRICE = 2.00 / 1e6, 8.00 / 1e6

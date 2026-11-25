@@ -1,4 +1,4 @@
-"""Silicon Town Hall app (issue #9). Run: streamlit run app/streamlit_app.py
+"""Silicon Town Hall app. Run: streamlit run app/streamlit_app.py
 
 Behind a password; every page carries the simulated banner. The sidebar switch "Demo mode" starts ON and then
 FakeLLM template text stands in for every profile, turn and comment, so nothing costs money.

@@ -1,4 +1,4 @@
-"""Do simulated turns and comments contradict the resident's own Census record? (issue #21)
+"""Do simulated turns and comments contradict the resident's own Census record?
 
 Phrase matching on four facts the record states plainly: commute, own or rent, age and disability. It only
 catches first person claims it has a pattern for, so its rate is a lower bound, not a measured error rate.

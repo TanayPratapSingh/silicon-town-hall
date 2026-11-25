@@ -1,4 +1,4 @@
-"""How much the tagger's codes change between two tagging runs of the same comments (issue #20).
+"""How much the tagger's codes change between two tagging runs of the same comments.
 
     python scripts/tag_stability.py data/processed/ingest/comments_tagged_v1_batch_order.jsonl \
         data/processed/ingest/comments_tagged.jsonl runs/ingest_tag_stability_feis.json

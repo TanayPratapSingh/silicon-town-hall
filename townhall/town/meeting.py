@@ -117,7 +117,7 @@ def _parse(raw, hits, stance):
 
 
 def _facts(resident):
-    """The resident's Census facts as a prompt line (issue #21: turns stated commutes the record does not have)."""
+    """The resident's Census facts as a prompt line (turns stated commutes the record does not have)."""
     if "race" not in resident:  # test residents carry only an id and a profile
         return ""
     return ("Census facts about you (true; never say anything that contradicts them, such as a commute, job, home "
