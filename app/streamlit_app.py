@@ -221,7 +221,7 @@ def community_page(free):
     cols[1].metric("Neighborhoods", len({r["neighborhood"] for r in residents}), border=True)
     cols[2].metric("Median age", f"{statistics.median(ages):g}", border=True)
     cols[3].metric("Renters", f"{sum(r['tenure'] == 'Rented' for r in residents) / len(residents):.0%}", border=True)
-    cols[4].metric("Groups with nobody", len(missing) if shares else "not known", border=True,
+    cols[4].metric("Missing groups", len(missing) if shares else "not known", border=True,
                    help="Census groups that imply at least half a resident at this size but got no simulated one.")
     with st.expander("About these residents"):
         st.caption(f"{c['community']}, {c['residents']} residents, draw number {c['seed']}. Census: "
@@ -325,7 +325,7 @@ def run_page(free, vision):
                             key="group_by")
         groups = core.meeting_groups(residents, group_by)
         chosen = st.multiselect("Meetings", list(groups), default=list(groups),
-                                format_func=lambda g: f"{g} ({len(groups[g])} residents)")
+                                format_func=lambda g: f"{g} ({len(groups[g])} resident{'' if len(groups[g]) == 1 else 's'})")
         rounds_col, name_col = st.columns([1, 3])
         rounds = rounds_col.number_input("Rounds", min_value=1, max_value=5, value=1)
         name = name_col.text_input("Scenario name", value=f"{policy['topic']} test")
