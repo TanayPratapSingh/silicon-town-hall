@@ -51,6 +51,17 @@ CSS = """<style>
 /* Garamond's default figures are oldstyle; counts and tables read better in lining, even width figures */
 [data-testid="stMetricValue"], [data-testid="stMarkdownContainer"] table, .sth-legend {
   font-variant-numeric: lining-nums tabular-nums;}
+/* WCAG AA: Streamlit fades captions to 60% (4.2:1); full strength is 7.6:1 */
+div[data-testid="stCaptionContainer"] {opacity: 1; color: #4a5562;}
+/* field edges at 3.5:1 so each box is visible, and a 2px edge in the action blue on focus */
+[data-testid="stTextInputRootElement"], [data-testid="stTextAreaRootElement"], [data-testid="stNumberInputContainer"],
+[data-testid="stSelectbox"] div:has(> input), [data-testid="stMultiSelect"] div:has(> input) {
+  border-color: #7d8a99 !important;}
+[data-testid="stTextInputRootElement"]:focus-within, [data-testid="stTextAreaRootElement"]:focus-within,
+[data-testid="stNumberInputContainer"]:focus-within, [data-testid="stSelectbox"] div:has(> input:focus),
+[data-testid="stMultiSelect"] div:has(> input:focus) {border-color: #1c5cab !important; box-shadow: 0 0 0 1px #1c5cab;}
+/* help icons are at least 24px to tap */
+[data-testid="stTooltipHoverTarget"] > button {min-width: 24px; min-height: 24px;}
 </style>"""
 
 
@@ -100,7 +111,7 @@ def gate():
             if not expected:
                 st.error("APP_PASSWORD is not set, so the app stays locked.")
                 st.stop()
-            typed = st.text_input("Password", type="password", placeholder="Team password")
+            typed = st.text_input("Password", type="password", placeholder="Team password", autocomplete="current-password")
             if typed and hmac.compare_digest(typed.encode(), expected.encode()):
                 st.session_state.authed = True
                 st.rerun()
@@ -122,8 +133,10 @@ def show(chart, empty="Nothing to chart yet."):
         st.caption(empty)
     else:
         # Garamond's small x-height needs larger chart text than the theme's default to read at the same size
-        st.altair_chart(chart.configure_axis(labelFontSize=14, titleFontSize=14).configure_legend(
-            labelFontSize=14).configure_text(fontSize=14), width="stretch")
+        # Streamlit's chart theme grays axis and legend text to 3.7:1; INK is 7.6:1
+        ink = {"labelColor": charts.INK, "titleColor": charts.INK}
+        st.altair_chart(chart.configure_axis(labelFontSize=14, titleFontSize=14, **ink).configure_legend(
+            labelFontSize=14, **ink).configure_text(fontSize=14), width="stretch")
 
 
 def legend(items):
@@ -132,8 +145,9 @@ def legend(items):
         + "</div>", unsafe_allow_html=True)
 
 
-def map_block(residents, rows):
-    """Neighborhood map filled by simulated minus expected residents, with its legend and what it leaves out."""
+def map_block(residents, rows, also):
+    """Neighborhood map filled by simulated minus expected residents, with its legend and what it leaves out.
+    also: where the same counts are as text, since the map is a canvas a keyboard or screen reader cannot read."""
     features = core.neighborhood_shapes()
     if not features:
         return st.caption("The neighborhood map could not be loaded: it comes from the City of Syracuse open data "
@@ -143,6 +157,7 @@ def map_block(residents, rows):
     if any(r["expected"] is not None for r in hood_rows):
         under, mid, over = (f"rgb{c}" for c in charts.POLES)
         legend([(under, "Fewer simulated residents than the Census implies"), (mid, "About as many"), (over, "More")])
+        st.caption(also)
     else:
         st.caption("Population shares are not available, so every neighborhood is gray; hover for counts.")
     names = {f["properties"]["NAME"] for f in features}
@@ -158,6 +173,9 @@ def representation_block(rows, key):
     picked = [{"label": r["group"], "simulated": r["simulated"], "expected": r["expected"]}
               for r in rows if r["dimension"] == dim]
     show(charts.representation(picked))
+    with st.expander("Table view"):
+        st.dataframe(pd.DataFrame(picked).rename(columns={"label": "Group", "simulated": "Simulated residents",
+                                                          "expected": "Census expected"}), hide_index=True)
     if all(r["expected"] is None for r in picked):
         st.caption("Census shares are not available, so only the simulated counts are drawn.")
 
@@ -230,7 +248,7 @@ def community_page(free):
     where, who, people, table = st.tabs([":material/map: Map", ":material/bar_chart: Who they are",
                                          ":material/badge: Residents", ":material/table: Table"])
     with where:
-        map_block(residents, rows)
+        map_block(residents, rows, "The same counts as a table: Who they are, compared on neighborhood, then Table view.")
     with who:
         representation_block(rows, key="community_dim")
     with people:
@@ -380,7 +398,7 @@ def kpis(scenario, report):
 
 def render_pilot_scores(scenario):
     """The recorded I-81 pilot scores, the only place where real comments exist to score against."""
-    st.subheader("Check against the real I-81 comments")
+    st.header("Check against the real I-81 comments")
     scores = core.pilot_scores() if scenario["settings"]["policy_kind"] == "preset" else None
     if scores is None:
         return st.caption("Pilot scores exist only for the I-81 pilot, where the real comments are known.")
@@ -421,7 +439,7 @@ def render_pilot_scores(scenario):
 
 
 def render_reach(scenario, report):
-    st.subheader("Who to reach in person")
+    st.header("Who to reach in person")
     reach = report.get("reach")
     if not report["reach_in_person"]:
         return st.success("Nobody flagged.", icon=":material/check_circle:")
@@ -439,7 +457,8 @@ def render_reach(scenario, report):
         settings = scenario["settings"]
         if "state" in settings:
             shares, _ = core.population(settings["state"], settings["puma"])
-            map_block(scenario["residents"], core.representation(scenario["residents"], shares))
+            map_block(scenario["residents"], core.representation(scenario["residents"], shares),
+                      "The Reasons tab lists every flagged neighborhood and group as text.")
         else:
             st.caption("This scenario has no community settings to map.")
     with sentences:
@@ -463,17 +482,17 @@ def render_group_gaps(scenario, report, real, dim):
 
 def render_topics(scenario, report, real):
     rows = report["tables"]
-    st.subheader("Topics raised")
+    st.header("Topics raised")
     show(charts.topic_bars(rows[0]["rows"]), "No simulated comment raised a codebook topic.")
     with st.expander("Table view"):
         st.dataframe(pd.DataFrame(rows[0]["rows"]), hide_index=True)
     matrix = report.get("matrix")
-    st.subheader("Topics by neighborhood")
+    st.header("Topics by neighborhood")
     if matrix is not None:
         show(charts.heatmap([m for m in matrix if m["dimension"] == "neighborhood"]))
     with st.expander("Table view"):
         st.dataframe(pd.DataFrame(rows[1]["rows"]), hide_index=True)
-    st.subheader("Topics by group")
+    st.header("Topics by group")
     if matrix is not None:
         dims = [d for d in DIMS if d != "neighborhood" and any(m["dimension"] == d for m in matrix)]
         if dims:
@@ -485,7 +504,7 @@ def render_topics(scenario, report, real):
 
 
 def render_samples(report):
-    st.subheader("Sample comments (SIMULATED)")
+    st.header("Sample comments (SIMULATED)")
     merged = {}  # the analyst samples per topic, so one comment can come back under several topics
     for c in report["sample_comments"]:
         merged.setdefault((c["resident_id"], c["text"]), {**c, "topics": []})["topics"].append(c.get("topic"))
@@ -608,18 +627,17 @@ def saved_page():
             st.rerun()
 
     if len(saved) > 1:
-        st.subheader("Compare two scenarios")
+        st.header("Compare two scenarios")
         for col, default in zip(st.columns(2), (0, 1)):
             with col, st.container(border=True):
                 other = pick_scenario("Scenario", saved, index=default, key=f"compare{default}")
                 st.caption(f"Change: {other['settings']['proposed_change'] or 'none'}")
                 stances = Counter(c.get("stance") for c in latest_comments(other))
-                st.metric("Support, mixed, oppose, undecided",
-                          " / ".join(str(stances[s]) for s in ("support", "mixed", "oppose", "undecided")))
+                st.markdown(", ".join(f"**{stances[s]}** {s}" for s in ("support", "mixed", "oppose", "undecided")))
                 if other["report"] is None:
                     st.error("This scenario has no report: building it failed after the meetings were saved.")
                 else:
-                    show(charts.topic_bars(other["report"]["tables"][0]["rows"]),
+                    show(charts.topic_bars(other["report"]["tables"][0]["rows"], compact=True),
                          "No simulated comment raised a codebook topic.")
 
 
