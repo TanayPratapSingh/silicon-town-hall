@@ -24,7 +24,7 @@ The I-81 viaduct in Syracuse is the pilot, because NYSDOT published 344 real com
 
 - The meeting narrows what residents raise. In both pilot draws its comments covered fewer of the real topics than either baseline, and both times it missed air quality and historic resources.
 - Residents echo a proposed change. In the what if run all 20 supported the plan and all 20 raised the change's own topics.
-- The topic tags are not yet checked by hand ([issue #3](https://github.com/TanayPratapSingh/silicon-town-hall/issues/3)). Until the 100 comment sample is labeled, every topic number is provisional.
+- The topic tags are not yet checked by hand. Until the 100 comment sample is labeled, every topic number is provisional.
 - Each pilot draw has only 20 residents, so differences between conditions move a lot from one draw to the next.
 
 ## Technical

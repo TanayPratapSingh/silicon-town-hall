@@ -33,14 +33,14 @@ Real model runs (gpt-4.1-mini residents, gpt-4.1 tagger), scored against the 344
 | What if: the same, plus two plan commitments | 38.5% | 0.613 | [runs/scenario_whatif_seed0.json](runs/scenario_whatif_seed0.json) |
 | Scale: 50 new residents (seed 2), 5 district meetings, 3 rounds | 92.3% | 0.426 | [runs/scenario_scale_seed2.json](runs/scenario_scale_seed2.json) |
 
-In both pilot draws the meeting made the comments narrower, not closer to the real ones: all 20 meeting comments raised construction and none raised air quality (165 of 344 real comments), in both draws (issue #23). In the what if run all 20 residents supported the changed plan, against 9 in the control, and every comment raised the change's own topics. In the scale run support rose from 34 to 41 of 50 over three rounds. No resident opposed the plan in any meeting run, while every baseline, with no meeting, had 1 or 2 opposing comments out of 20. The scale run's 92.3% is not comparable to the pilots, because 50 comments reach more topics than 20 and it has no baseline. All scored runs are gathered in [runs/final_summary.json](runs/final_summary.json); together the recorded real runs cost $1.92 at list price.
+In both pilot draws the meeting made the comments narrower, not closer to the real ones: all 20 meeting comments raised construction and none raised air quality (165 of 344 real comments), in both draws. In the what if run all 20 residents supported the changed plan, against 9 in the control, and every comment raised the change's own topics. In the scale run support rose from 34 to 41 of 50 over three rounds. No resident opposed the plan in any meeting run, while every baseline, with no meeting, had 1 or 2 opposing comments out of 20. The scale run's 92.3% is not comparable to the pilots, because 50 comments reach more topics than 20 and it has no baseline. All scored runs are gathered in [runs/final_summary.json](runs/final_summary.json); together the recorded real runs cost $1.92 at list price.
 
 Known problems:
 - The tagger is unstable across batches. Two gpt-4.1 runs at temperature 0 gave the same codes to 184 of 344 comments ([runs/ingest_tag_stability_feis.json](runs/ingest_tag_stability_feis.json)).
 - The form letter's Historic and Cultural Resources tag, which covers 92 comments, drops when the letter is sent alone ([runs/ingest_tag_form_letter_alone.json](runs/ingest_tag_form_letter_alone.json)).
 - The seed 0 draw has no Hispanic resident, against 8.36% of weighted adults.
-- The 100 comment hand check of the tags ([issue #3](https://github.com/TanayPratapSingh/silicon-town-hall/issues/3)) is not done, so every topic number is provisional.
-- Meeting turns could state facts the resident's Census record contradicts (issue #21). Each resident's facts now go into every prompt; a phrase match check found 1 contradiction in 80 texts before and 0 in 80 after (a lower bound, [runs/final_summary.json](runs/final_summary.json)).
+- The 100 comment hand check of the tags is not done, so every topic number is provisional.
+- Meeting turns could state facts the resident's Census record contradicts. Each resident's facts now go into every prompt; a phrase match check found 1 contradiction in 80 texts before and 0 in 80 after (a lower bound, [runs/final_summary.json](runs/final_summary.json)).
 
 ## Docs
 
