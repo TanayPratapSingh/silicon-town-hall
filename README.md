@@ -48,6 +48,18 @@ Known problems:
 - The 100 comment hand check of the tags ([issue #3](https://github.com/TanayPratapSingh/silicon-town-hall/issues/3)) is not done, so every topic number is provisional.
 - Meeting turns could state facts the resident's Census record contradicts (issue #21). Each resident's facts now go into every prompt; a phrase match check found 1 contradiction in 80 texts before and 0 in 80 after (a lower bound, [runs/final_summary.json](runs/final_summary.json)).
 
+## Deliverables
+
+| What | File |
+| --- | --- |
+| Proposal, accepted Nov 11 | [docs/proposal.pdf](docs/proposal.pdf) |
+| Approach and milestones, Nov 15 | [docs/approach-and-milestones.pdf](docs/approach-and-milestones.pdf) |
+| Milestone update, Nov 22 | [docs/milestone-update-nov22.pdf](docs/milestone-update-nov22.pdf) |
+| Final project document | [docs/final/final-document.pdf](docs/final/final-document.pdf), Word: [final-document.docx](docs/final/final-document.docx) |
+| Slides, 11 with speaker notes | [docs/slides/](docs/slides/) |
+| Demo script with timings | [docs/demo-script.md](docs/demo-script.md) |
+| Code | this repository; the zip is `git archive --format=zip HEAD` |
+
 ## Run it
 
 ```bash
