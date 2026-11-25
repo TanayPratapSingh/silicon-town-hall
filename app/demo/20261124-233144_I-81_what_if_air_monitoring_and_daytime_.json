@@ -1,0 +1,3278 @@
+{
+ "id": "20261124-233144_I-81_what_if_air_monitoring_and_daytime_",
+ "name": "I-81 what if: air monitoring and daytime construction",
+ "date": "2026-11-24T23:34:48+00:00",
+ "label": "Simulated residents. Not public comment.",
+ "settings": {
+  "community": "I-81 Syracuse (New York, PUMA 00701)",
+  "state": "36",
+  "puma": "00701",
+  "residents": 20,
+  "seed": 0,
+  "policy": "NYSDOT I-81 Viaduct Project, Final Environmental Impact Statement, April 2022",
+  "policy_kind": "preset",
+  "policy_db": "data/processed/retrieval/chroma",
+  "neighborhoods": [
+   "Citywide"
+  ],
+  "group_by": "citywide",
+  "rounds": 1,
+  "meeting_text_by": "gpt-4.1-mini, a real model. Simulated.",
+  "vision_rerank": false,
+  "proposed_change": "NYSDOT adds two commitments: a network of air quality monitors along the community grid and near schools, with readings posted online, and construction near homes limited to 7 am to 7 pm on weekdays."
+ },
+ "status": "complete",
+ "residents": [
+  {
+   "resident_id": "r000",
+   "serialno": "2022HU1049665",
+   "sporder": 1,
+   "age": 22,
+   "sex": "Male",
+   "race": "Asian alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "Asian alone, not Hispanic or Latino",
+   "income": 0,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Rented",
+   "disability": "Without a disability",
+   "person_weight": 4,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067003400",
+   "tract_name": "Census Tract 34",
+   "neighborhood": "University Hill",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 22-year-old male living in the University Hill neighborhood. I rent my home and did not commute to work last week. My annual income is $0. I am Asian and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only states facts given in the data without attributing traits or assumptions",
+      "No mention of health, family, job, religion, opinions, or feelings",
+      "Income is stated as yearly and matches the data"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r001",
+   "serialno": "2023HU0892497",
+   "sporder": 1,
+   "age": 34,
+   "sex": "Female",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 46072,
+   "commute": "Car, truck, or van",
+   "tenure": "Rented",
+   "disability": "Without a disability",
+   "person_weight": 28,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067001600",
+   "tract_name": "Census Tract 16",
+   "neighborhood": "Lincoln Hill",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 34-year-old woman living in the Lincoln Hill neighborhood. I rent my home and usually get around by car, truck, or van. My yearly income is $46,072. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without assumptions or added information"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r002",
+   "serialno": "2023GQ0041249",
+   "sporder": 1,
+   "age": 18,
+   "sex": "Male",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 0,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "N/A (lives in group quarters such as a dorm or nursing home)",
+   "disability": "Without a disability",
+   "person_weight": 17,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067001600",
+   "tract_name": "Census Tract 16",
+   "neighborhood": "Lincoln Hill",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am an 18-year-old male living in Lincoln Hill. I live in group quarters. I did not commute to work last week. My yearly income is $0. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r003",
+   "serialno": "2022HU1005376",
+   "sporder": 1,
+   "age": 70,
+   "sex": "Male",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 31505,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Owned free and clear",
+   "disability": "Without a disability",
+   "person_weight": 12,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067000200",
+   "tract_name": "Census Tract 2",
+   "neighborhood": "Washington Square",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 70-year-old male living in the Washington Square neighborhood. I own my home free and clear. Last week, I did not commute to work. My yearly income is $31,505. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r004",
+   "serialno": "2022GQ0138354",
+   "sporder": 1,
+   "age": 18,
+   "sex": "Female",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 0,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "N/A (lives in group quarters such as a dorm or nursing home)",
+   "disability": "Without a disability",
+   "person_weight": 23,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067005602",
+   "tract_name": "Census Tract 56.02",
+   "neighborhood": "South Campus",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am an 18-year-old female living in group quarters near South Campus. I did not commute to work last week. My yearly income is $0. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile states only facts given without assumptions or added details"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r005",
+   "serialno": "2023HU0205122",
+   "sporder": 2,
+   "age": 84,
+   "sex": "Male",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 55412,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Owned free and clear",
+   "disability": "Without a disability",
+   "person_weight": 41,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067006000",
+   "tract_name": "Census Tract 60",
+   "neighborhood": "South Valley",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am an 84-year-old male living in South Valley. I own my home free and clear. I did not commute to work last week. My yearly income is $55,412. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r006",
+   "serialno": "2022HU0058554",
+   "sporder": 1,
+   "age": 31,
+   "sex": "Female",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 10725,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Rented",
+   "disability": "With a disability",
+   "person_weight": 10,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067003500",
+   "tract_name": "Census Tract 35",
+   "neighborhood": "Near Eastside",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 31-year-old female living in the Near Eastside neighborhood. I rent my home and did not commute to work last week. My yearly income is $10,725. I have a disability. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile states only facts given in the data without assumptions or added information"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r007",
+   "serialno": "2024HU0544303",
+   "sporder": 2,
+   "age": 70,
+   "sex": "Male",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 48509,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Owned free and clear",
+   "disability": "Without a disability",
+   "person_weight": 13,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067004600",
+   "tract_name": "Census Tract 46",
+   "neighborhood": "Meadowbrook",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 70-year-old male living in the Meadowbrook neighborhood. I own my home free and clear. I did not commute to work last week. My yearly income is $48,509. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r008",
+   "serialno": "2024HU1186248",
+   "sporder": 1,
+   "age": 36,
+   "sex": "Female",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 81220,
+   "commute": "Worked from home",
+   "tenure": "Owned with mortgage or loan",
+   "disability": "Without a disability",
+   "person_weight": 19,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067002901",
+   "tract_name": "Census Tract 29.01",
+   "neighborhood": "Tipp Hill",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 36-year-old female living in the Tipp Hill neighborhood. I own my home with a mortgage or loan. I usually work from home. My yearly income is $81,220. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r009",
+   "serialno": "2021HU1276649",
+   "sporder": 1,
+   "age": 31,
+   "sex": "Male",
+   "race": "Black or African American alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "Black or African American alone, not Hispanic or Latino",
+   "income": 119324,
+   "commute": "Car, truck, or van",
+   "tenure": "Rented",
+   "disability": "Without a disability",
+   "person_weight": 20,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067006000",
+   "tract_name": "Census Tract 60",
+   "neighborhood": "South Valley",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 31-year-old man living in the South Valley neighborhood. I rent my home and usually commute by car, truck, or van. My yearly income is $119,324. I am Black or African American and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r010",
+   "serialno": "2024GQ0007877",
+   "sporder": 1,
+   "age": 21,
+   "sex": "Male",
+   "race": "Black or African American alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "Black or African American alone, not Hispanic or Latino",
+   "income": 6092,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "N/A (lives in group quarters such as a dorm or nursing home)",
+   "disability": "With a disability",
+   "person_weight": 8,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067006101",
+   "tract_name": "Census Tract 61.01",
+   "neighborhood": "North Valley",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 21-year-old male living in North Valley. I live in group quarters, though the type is not recorded. Last week, I did not commute to work. I have a disability. I am Black or African American and not Hispanic or Latino. My yearly income is $6,092.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r011",
+   "serialno": "2022HU0856214",
+   "sporder": 1,
+   "age": 86,
+   "sex": "Female",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 35527,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Owned with mortgage or loan",
+   "disability": "With a disability",
+   "person_weight": 45,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067000100",
+   "tract_name": "Census Tract 1",
+   "neighborhood": "Franklin Square",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am an 86-year-old female living in Franklin Square. I own my home with a mortgage or loan. Last week, I did not commute to work. My yearly income is $35,527. I have a disability. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile restates facts without adding assumptions or stereotypes",
+      "No attributes assigned based on race, age, sex, or disability beyond stated facts",
+      "No claims about health, family, job, religion, opinions, or feelings"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r012",
+   "serialno": "2022HU1223780",
+   "sporder": 2,
+   "age": 72,
+   "sex": "Male",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 82561,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Owned free and clear",
+   "disability": "Without a disability",
+   "person_weight": 21,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067005601",
+   "tract_name": "Census Tract 56.01",
+   "neighborhood": "University Neighborhood",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 72-year-old male living in the University Neighborhood. I own my home free and clear. Last week, I did not commute to work. My yearly income is $82,561. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r013",
+   "serialno": "2024HU0858596",
+   "sporder": 2,
+   "age": 38,
+   "sex": "Female",
+   "race": "Asian alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "Asian alone, not Hispanic or Latino",
+   "income": 8122,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Owned free and clear",
+   "disability": "Without a disability",
+   "person_weight": 15,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067000200",
+   "tract_name": "Census Tract 2",
+   "neighborhood": "Washington Square",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 38-year-old female living in Washington Square. I own my home free and clear. Last week, I did not commute to work. My yearly income is $8,122. I am Asian and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r014",
+   "serialno": "2020HU0359422",
+   "sporder": 1,
+   "age": 55,
+   "sex": "Male",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 23707,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Rented",
+   "disability": "With a disability",
+   "person_weight": 102,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067004401",
+   "tract_name": "Census Tract 44.01",
+   "neighborhood": "University Neighborhood",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 55-year-old male living in the University Neighborhood. I rent my home and did not commute to work last week. My yearly income is $23,707. I have a disability. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r015",
+   "serialno": "2020HU0470475",
+   "sporder": 1,
+   "age": 26,
+   "sex": "Female",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 40327,
+   "commute": "Car, truck, or van",
+   "tenure": "Owned with mortgage or loan",
+   "disability": "Without a disability",
+   "person_weight": 26,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067000900",
+   "tract_name": "Census Tract 9",
+   "neighborhood": "Sedgwick",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 26-year-old female living in the Sedgwick neighborhood. I own my home with a mortgage or loan. My yearly income is $40,327. I usually commute by car, truck, or van. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r016",
+   "serialno": "2020GQ0152355",
+   "sporder": 1,
+   "age": 66,
+   "sex": "Female",
+   "race": "Black or African American alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "Black or African American alone, not Hispanic or Latino",
+   "income": 21996,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "N/A (lives in group quarters such as a dorm or nursing home)",
+   "disability": "With a disability",
+   "person_weight": 11,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067006101",
+   "tract_name": "Census Tract 61.01",
+   "neighborhood": "North Valley",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 66-year-old female living in group quarters in North Valley. I did not commute to work last week. My yearly income is $21,996. I have a disability. I am Black or African American and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r017",
+   "serialno": "2024HU0052376",
+   "sporder": 2,
+   "age": 33,
+   "sex": "Male",
+   "race": "Black or African American alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "Black or African American alone, not Hispanic or Latino",
+   "income": 0,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Rented",
+   "disability": "Without a disability",
+   "person_weight": 104,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067004200",
+   "tract_name": "Census Tract 42",
+   "neighborhood": "Southside",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 33-year-old male living in the Southside neighborhood. I rented my home and did not commute to work last week. My yearly income is $0. I am Black or African American and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r018",
+   "serialno": "2023HU1371741",
+   "sporder": 1,
+   "age": 27,
+   "sex": "Male",
+   "race": "Two or More Races",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "Two or More Races, not Hispanic or Latino",
+   "income": 30854,
+   "commute": "Car, truck, or van",
+   "tenure": "Rented",
+   "disability": "Without a disability",
+   "person_weight": 30,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067001800",
+   "tract_name": "Census Tract 18",
+   "neighborhood": "Eastwood",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 27-year-old male living in the Eastwood neighborhood. I rent my home and usually commute by car, truck, or van. My yearly income is $30,854. I identify as Two or More Races and am not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r019",
+   "serialno": "2024HU0378847",
+   "sporder": 1,
+   "age": 29,
+   "sex": "Female",
+   "race": "Two or More Races",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "Two or More Races, not Hispanic or Latino",
+   "income": 0,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Rented",
+   "disability": "With a disability",
+   "person_weight": 50,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067002400",
+   "tract_name": "Census Tract 24",
+   "neighborhood": "Lincoln Hill",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 29-year-old female living in the Lincoln Hill neighborhood. I rent my home and did not commute to work last week. My yearly income is $0. I have a disability. I am of Two or More Races and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile states only facts given in the data without assumptions or added information"
+     ]
+    }
+   }
+  }
+ ],
+ "meetings": [
+  {
+   "round": 1,
+   "neighborhood": "Citywide",
+   "agenda": [
+    "Discuss the benefits and concerns regarding the installation of air quality monitors near schools and throughout the community grid",
+    "Evaluate the impact of limiting construction hours near homes to weekdays from 7 am to 7 pm",
+    "Consider how the online posting of air quality readings might affect community awareness and engagement",
+    "Discuss any additional measures residents would like to see included in the policy to protect community health and well-being"
+   ],
+   "transcript": [
+    {
+     "turn": 0,
+     "resident_id": "r000",
+     "neighborhood": "University Hill",
+     "agenda_item": "Discuss the benefits and concerns regarding the installation of air quality monitors near schools and throughout the community grid",
+     "text": "As someone who lives near University Hill and rents my home, I appreciate the addition of real-time air quality monitors near schools and throughout our community. Knowing that these monitors will provide data to protect sensitive groups like children and the elderly during construction gives me some peace of mind, especially since construction can impact local air quality significantly [2, 3, 5]. However, I would like to understand how accessible this data will be to residents like myself and how quickly any air quality issues will be addressed.",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       35
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       40
+      ],
+      [
+       "06-4-4 Air Quality_April 2022",
+       21
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 1,
+     "resident_id": "r001",
+     "neighborhood": "Lincoln Hill",
+     "agenda_item": "Discuss the benefits and concerns regarding the installation of air quality monitors near schools and throughout the community grid",
+     "text": "As a renter in Lincoln Hill who drives regularly, I see the value in having real-time air quality monitors especially near schools and residential areas to ensure construction doesn't harm our health. Knowing the data will be posted online helps me feel more informed and secure about air quality during this project. It’s important that NYSDOT acts promptly if any air quality issues arise from construction activities to protect our community [1, 4].",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "09 Agency Coordination and Public Outreach_April 2022",
+       27
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       35
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 2,
+     "resident_id": "r002",
+     "neighborhood": "Lincoln Hill",
+     "agenda_item": "Discuss the benefits and concerns regarding the installation of air quality monitors near schools and throughout the community grid",
+     "text": "As a young resident living in group quarters in Lincoln Hill, I don't drive or work currently, so my exposure to construction-related traffic might be limited, but I still spend time near schools and community areas. The commitment to install real-time air quality monitors near schools and throughout the community, with data posted online, is reassuring because it shows NYSDOT will actively track air quality impacts during construction. This transparency is important to me because even without commuting, poor air quality can affect my health. I also appreciate that the monitoring program will be overseen by NYSDOT and that protocols will be in place to address any air quality exceedances, which helps protect vulnerable groups in our community [1, 5].",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "09 Agency Coordination and Public Outreach_April 2022",
+       27
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       35
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 3,
+     "resident_id": "r003",
+     "neighborhood": "Washington Square",
+     "agenda_item": "Discuss the benefits and concerns regarding the installation of air quality monitors near schools and throughout the community grid",
+     "text": "As a longtime resident of Washington Square and a homeowner, I truly appreciate the commitment to install real-time air quality monitors near schools and throughout our community, especially given my age and the potential sensitivity to air quality issues [1, 3]. Knowing that NYSDOT will oversee this monitoring and have protocols to address any exceedances provides reassurance that our health will be protected during construction. I also welcome the transparency of posting data online so residents like me can stay informed without needing to commute or be directly involved daily [1].",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "09 Agency Coordination and Public Outreach_April 2022",
+       27
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       40
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 4,
+     "resident_id": "r004",
+     "neighborhood": "South Campus",
+     "agenda_item": "Discuss the benefits and concerns regarding the installation of air quality monitors near schools and throughout the community grid",
+     "text": "As a young resident living in group quarters near South Campus, I spend a lot of time around schools and community areas, so the installation of real-time air quality monitors and having the data available online really helps me feel safer. Even though I don't commute or work currently, poor air quality from construction could affect my health, so I appreciate NYSDOT's commitment to monitoring and addressing any issues promptly during the project [1, 2]. This transparency and oversight make me more comfortable with the ongoing construction near my neighborhood.",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "09 Agency Coordination and Public Outreach_April 2022",
+       27
+      ],
+      [
+       "00 Summary_April 2022",
+       20
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 5,
+     "resident_id": "r005",
+     "neighborhood": "South Valley",
+     "agenda_item": "Evaluate the impact of limiting construction hours near homes to weekdays from 7 am to 7 pm",
+     "text": "As an 84-year-old homeowner in South Valley, I find the proposal to limit construction near homes to weekdays from 7 am to 7 pm very considerate. It would help reduce noise and disturbances during early mornings, evenings, and weekends when we most want peace and quiet, especially since the current policy allows work as early as 6 am and as late as 9 pm [1, 2]. This change could significantly improve our quality of life during construction, so I am inclined to support it.",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "04 Construction Means and Methods_April 2022",
+       54
+      ],
+      [
+       "00 Summary_April 2022",
+       36
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 6,
+     "resident_id": "r006",
+     "neighborhood": "Near Eastside",
+     "agenda_item": "Evaluate the impact of limiting construction hours near homes to weekdays from 7 am to 7 pm",
+     "text": "As a renter with a disability living in Near Eastside, limiting construction hours near homes to weekdays from 7 am to 7 pm would greatly help me avoid excessive noise and disruption during early mornings, evenings, and weekends, which are important times for rest and managing my health. This change seems more considerate of residents' wellbeing and aligns with efforts to minimize neighborhood impacts during construction [1, 3, 5]. I support this limitation as it would improve my quality of life during the project.",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       60
+      ],
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       64
+      ],
+      [
+       "04 Construction Means and Methods_April 2022",
+       54
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 7,
+     "resident_id": "r007",
+     "neighborhood": "Meadowbrook",
+     "agenda_item": "Evaluate the impact of limiting construction hours near homes to weekdays from 7 am to 7 pm",
+     "text": "As a 70-year-old homeowner who lives free and clear in Meadowbrook, I appreciate the proposal to limit construction hours near homes to weekdays from 7 am to 7 pm. This change would help reduce noise and disruptions during early mornings, evenings, and weekends, which is important for my comfort and peace, especially since I am often at home throughout the day [3]. Knowing that construction vibration and noise are currently allowed between 6 am and 9 pm, this restriction feels like a needed improvement to lessen the impact on residents like me [3]. I support this measure as it balances construction needs with neighborhood quality of life [1, 3].",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       64
+      ],
+      [
+       "04 Construction Means and Methods_April 2022",
+       54
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 8,
+     "resident_id": "r008",
+     "neighborhood": "Tipp Hill",
+     "agenda_item": "Evaluate the impact of limiting construction hours near homes to weekdays from 7 am to 7 pm",
+     "text": "As someone who works from home in Tipp Hill and owns my home with a mortgage, limiting construction hours near residences to weekdays from 7 am to 7 pm would help reduce noise disruptions during times I am most likely to be working or resting at home. Currently, construction can occur as early as 6 am and as late as 9 pm, which can be very disruptive to my work-from-home schedule and overall peace [2, 3]. I appreciate that this change balances construction needs with protecting neighborhood quality of life during the project.",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "04 Construction Means and Methods_April 2022",
+       54
+      ],
+      [
+       "06-3-2 EC-Local and Regional Economy_April 2022",
+       28
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 9,
+     "resident_id": "r009",
+     "neighborhood": "South Valley",
+     "agenda_item": "Evaluate the impact of limiting construction hours near homes to weekdays from 7 am to 7 pm",
+     "text": "As a South Valley renter who commutes by car, limiting construction near homes to weekdays from 7 am to 7 pm would help reduce noise during times I am likely to be at home resting or preparing for my commute. Given that current construction hours are from 6 am to 9 pm, this change feels like a reasonable balance between allowing construction progress and respecting residents' quality of life, especially since it would lessen disturbances in early mornings and evenings [2, 3]. I support this measure as it acknowledges the impact on our neighborhood while keeping necessary work on schedule.",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "04 Construction Means and Methods_April 2022",
+       52
+      ],
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       60
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 10,
+     "resident_id": "r010",
+     "neighborhood": "North Valley",
+     "agenda_item": "Consider how the online posting of air quality readings might affect community awareness and engagement",
+     "text": "As someone living in group quarters in North Valley with a disability, having real-time air quality monitors online could really help me stay aware of the air quality near my home and school, which is important for managing my health. I appreciate that this transparency can keep the community informed and possibly prompt quicker action if pollution gets too high during construction, which aligns with the monitoring program described [4, 5]. Knowing when air quality is safe or not could help me plan my day better and protect my wellbeing.",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       40
+      ],
+      [
+       "06-4-4 Air Quality_April 2022",
+       19
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 11,
+     "resident_id": "r011",
+     "neighborhood": "Franklin Square",
+     "agenda_item": "Consider how the online posting of air quality readings might affect community awareness and engagement",
+     "text": "As an 86-year-old homeowner with a disability, I find the commitment to post real-time air quality readings online very reassuring. Being able to check air quality near my home helps me manage my health better, especially during construction when dust and emissions might increase. Also, limiting construction near homes to weekdays from 7 am to 7 pm would reduce noise that disrupts my rest and daily routine, which is critical for my well-being [4, 3]. I support these measures as they address both health and peace in our community.",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       49
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       50
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 12,
+     "resident_id": "r012",
+     "neighborhood": "University Neighborhood",
+     "agenda_item": "Consider how the online posting of air quality readings might affect community awareness and engagement",
+     "text": "As a 72-year-old homeowner in the University Neighborhood, I appreciate the plan to post real-time air quality readings online. This transparency helps me stay informed about environmental conditions near my home, which is important for my health and peace of mind, especially with construction nearby. Limiting construction hours to weekdays from 7 am to 7 pm would also reduce noise disruptions during times I am most likely to be home, enhancing my comfort and quality of life [3, 4]. Overall, I support these commitments as they balance construction progress with protecting residents' wellbeing.",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-4-4 Air Quality_April 2022",
+       18
+      ],
+      [
+       "00 Summary_April 2022",
+       30
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 13,
+     "resident_id": "r013",
+     "neighborhood": "Washington Square",
+     "agenda_item": "Consider how the online posting of air quality readings might affect community awareness and engagement",
+     "text": "As a homeowner in Washington Square living on a fixed income, I find the commitment to post real-time air quality readings online very important. It will help me stay informed about any changes in air pollution during construction, which could affect my health and the comfort of my home environment. Also, limiting construction hours to weekdays from 7 am to 7 pm would reduce noise disturbances during the early mornings and evenings when I am usually at home, which is crucial for my rest and peace [3, 4]. I support these measures because they balance necessary construction work with protecting residents like me.",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-4-4 Air Quality_April 2022",
+       18
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       29
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 14,
+     "resident_id": "r014",
+     "neighborhood": "University Neighborhood",
+     "agenda_item": "Consider how the online posting of air quality readings might affect community awareness and engagement",
+     "text": "As a renter with a disability in the University Neighborhood, I am encouraged by the commitment to post real-time air quality readings online because it will help me monitor environmental conditions that could affect my health, especially during construction. Knowing the air quality near my home at any time will allow me to better manage my disability and avoid exposure to harmful pollutants. Also, limiting construction hours near homes to weekdays from 7 am to 7 pm seems reasonable since it reduces noise disruptions that could impact my rest and well-being [3, 4]. These measures show a thoughtful balance between construction progress and protecting vulnerable community members like myself.",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-4-4 Air Quality_April 2022",
+       18
+      ],
+      [
+       "06-4-4 Air Quality_April 2022",
+       20
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 15,
+     "resident_id": "r015",
+     "neighborhood": "Sedgwick",
+     "agenda_item": "Discuss any additional measures residents would like to see included in the policy to protect community health and well-being",
+     "text": "As a homeowner in Sedgwick with a mortgage and someone who commutes by car, I really appreciate the addition of air quality monitors around schools and the community, as well as the plan to post readings online. This transparency will help me and my neighbors stay informed about any pollution that might affect our health during construction. Also, limiting construction near homes to weekdays from 7 am to 7 pm is very important to reduce noise during my early mornings and evenings when I am home resting or preparing for my commute. These measures seem like a reasonable balance between progress and protecting our quality of life.",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-4-4 Air Quality_April 2022",
+       18
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       23
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 16,
+     "resident_id": "r016",
+     "neighborhood": "North Valley",
+     "agenda_item": "Discuss any additional measures residents would like to see included in the policy to protect community health and well-being",
+     "text": "As a resident with a disability living in group quarters here in North Valley, I really welcome the addition of air quality monitors near schools and throughout the community, as well as posting the readings online. This transparency is crucial for me to monitor and manage my health during the construction period. Also, I strongly support limiting construction hours near homes to weekdays from 7 am to 7 pm, as this will help reduce noise disruptions that can negatively affect my rest and well-being. These measures seem like important steps toward protecting vulnerable community members like myself while construction is underway [2, 3, 4].",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       50
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       23
+      ],
+      [
+       "06-4-4 Air Quality_April 2022",
+       18
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 17,
+     "resident_id": "r017",
+     "neighborhood": "Southside",
+     "agenda_item": "Discuss any additional measures residents would like to see included in the policy to protect community health and well-being",
+     "text": "As a renter living in Southside with no income, I appreciate that the policy adds air quality monitors near schools and community areas with real-time data posted online, as this helps protect vulnerable residents like me from harmful pollution during construction. Limiting construction noise to weekdays from 7 am to 7 pm near homes would also reduce disturbances during times when people need rest, which is important for my well-being in a busy neighborhood. These measures show consideration for environmental justice concerns that affect low-income and minority residents in our community, like the construction impacts and health risks discussed in the policy [1, 3, 4].",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       50
+      ],
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       60
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       23
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 18,
+     "resident_id": "r018",
+     "neighborhood": "Eastwood",
+     "agenda_item": "Discuss any additional measures residents would like to see included in the policy to protect community health and well-being",
+     "text": "As a renter in Eastwood who commutes by car, I value the proposed network of air quality monitors near schools and community areas with online postings. This transparency helps me stay informed about pollution levels during construction, which is important since I live near busy roads and want to protect my health. Limiting construction hours to 7 am to 7 pm on weekdays also makes sense to reduce noise disruptions during my evening and early morning rest times. These measures seem like a reasonable way to balance project progress with community well-being [3, 4].",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       31
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       38
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 19,
+     "resident_id": "r019",
+     "neighborhood": "Lincoln Hill",
+     "agenda_item": "Discuss any additional measures residents would like to see included in the policy to protect community health and well-being",
+     "text": "As a renter with a disability living in Lincoln Hill and no income, I strongly support adding the network of air quality monitors near schools and community areas with readings posted online. This transparency is vital for me to track air quality and protect my health during construction, since emissions from equipment and traffic can affect vulnerable people like me [3, 4]. Limiting construction near homes to 7 am to 7 pm on weekdays would also help reduce noise disturbances that interfere with my rest and well-being [2]. These measures would show real consideration for people in my situation.",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       23
+      ],
+      [
+       "06-4-4 Air Quality_April 2022",
+       18
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       31
+      ]
+     ],
+     "simulated": true
+    }
+   ],
+   "summary": "Residents from University Hill, Lincoln Hill, Washington Square, South Campus, South Valley, Near Eastside, Meadowbrook, Tipp Hill, North Valley, Franklin Square, University Neighborhood, Sedgwick, Southside, and Eastwood have expressed strong support for installing real-time air quality monitors near schools and community areas, emphasizing their importance for protecting vulnerable groups, including low-income renters and those with disabilities, during construction. Many residents, including those from Southside, Sedgwick, Eastwood, and now Lincoln Hill, appreciate the transparency of posting real-time air quality data online and endorse limiting construction hours to weekdays from 7 am to 7 pm to reduce noise and disturbances, highlighting benefits for health, rest, and quality of life. Vulnerable community members, such as a North Valley resident with a disability, a Southside renter with no income, and a Lincoln Hill renter with a disability and no income, specifically noted these measures as crucial for managing health risks and environmental justice concerns related to construction impacts. An Eastwood renter who commutes by car emphasized the importance of these measures for staying informed about pollution near busy roads and balancing project progress with community well-being. Overall, the community consistently values transparency, health protection, noise reduction, and consideration for environmental justice in construction policies.",
+   "comments": [
+    {
+     "resident_id": "r000",
+     "neighborhood": "University Hill",
+     "text": "As a renter with no income living in University Hill, I strongly support the addition of air quality monitors near schools and community areas, as these measures will help protect vulnerable residents like myself from harmful pollution during construction. Posting real-time air quality data online ensures transparency and keeps the community informed, which I believe is crucial. Additionally, limiting construction near homes to weekdays from 7 am to 7 pm will reduce noise disturbances and improve our quality of life. These commitments show a thoughtful consideration for health and environmental justice that our neighborhood needs.",
+     "cited_pages": [
+      [
+       "02 Project Setting_April 2022",
+       6
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r001",
+     "neighborhood": "Lincoln Hill",
+     "text": "As a renter in Lincoln Hill who relies on driving for daily transportation, I strongly support the addition of air quality monitors near our community and schools. Having real-time data online will help residents like me stay informed about pollution levels, especially during construction, which is crucial for protecting our health and that of vulnerable neighbors. I also appreciate the construction hour limits to weekdays from 7 am to 7 pm, as this will reduce noise and disruptions, improving our quality of life. These measures demonstrate respect for our neighborhood's character and the well-being of residents. Thank you for prioritizing transparency and environmental justice in this project.",
+     "cited_pages": [
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       8
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r002",
+     "neighborhood": "Lincoln Hill",
+     "text": "As a resident of Lincoln Hill, I strongly support the addition of air quality monitors near community areas and schools, as this will help protect vulnerable groups like myself who live with no income and may be more affected by pollution during construction. Posting real-time readings online ensures transparency and allows residents to stay informed about air quality in our neighborhood. Limiting construction hours to 7 am to 7 pm on weekdays will reduce noise and disturbances, improving our quality of life and health. These measures show a commitment to environmental justice and community well-being that I appreciate deeply.",
+     "cited_pages": [
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       8
+      ],
+      [
+       "09 Agency Coordination and Public Outreach_April 2022",
+       27
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r003",
+     "neighborhood": "Washington Square",
+     "text": "As a longtime resident of Washington Square, I strongly support the commitments to install a network of air quality monitors near schools and community areas and to limit construction hours to weekdays from 7 am to 7 pm. These measures will help protect vulnerable residents like myself and others who are sensitive to pollution and noise. Posting real-time air quality readings online promotes transparency and allows the community to stay informed about environmental conditions during construction, which is crucial for maintaining quality of life. Limiting construction times will reduce noise disturbances and help ensure we can rest during evenings and weekends.",
+     "cited_pages": [],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r004",
+     "neighborhood": "South Campus",
+     "text": "As a young resident living near South Campus with no income, I strongly support the addition of air quality monitors along the community grid and near schools. Real-time data posted online will help vulnerable groups like myself stay informed about environmental health risks during construction. Limiting construction hours to weekdays from 7 am to 7 pm will also reduce noise and disturbances, improving our quality of life. These measures demonstrate a commitment to environmental justice and community well-being, which is essential for neighborhoods like ours [2].",
+     "cited_pages": [
+      [
+       "09 Agency Coordination and Public Outreach_April 2022",
+       27
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r005",
+     "neighborhood": "South Valley",
+     "text": "As an 84-year-old resident of South Valley who owns my home free and clear, I strongly support the addition of air quality monitors and limiting construction hours to 7 am to 7 pm on weekdays. These measures will help protect the health and quality of life of vulnerable community members like myself by reducing noise disturbances and providing transparency about pollution levels. Posting real-time air quality data online is especially important for keeping everyone informed during the project, ensuring environmental justice is considered. I appreciate the focus on health protection and community well-being reflected in these commitments.",
+     "cited_pages": [
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       50
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r006",
+     "neighborhood": "Near Eastside",
+     "text": "As a renter with a disability living in the Near Eastside neighborhood, I strongly support the addition of air quality monitors near schools and community areas with real-time data posted online. This transparency is crucial for vulnerable residents like me, who need to manage health risks related to construction pollution. Limiting construction hours to weekdays from 7 am to 7 pm will also help reduce noise and disturbances, improving our quality of life during the project. These measures show a commitment to environmental justice and community well-being, which I deeply appreciate. Protecting low-income renters with disabilities from adverse health impacts is essential as we move forward with this project.",
+     "cited_pages": [
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       50
+      ],
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       1
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r007",
+     "neighborhood": "Meadowbrook",
+     "text": "As a Meadowbrook resident, I strongly support the addition of air quality monitors near schools and community areas, with real-time readings posted online. This transparency is crucial for protecting the health of vulnerable populations during construction, and I appreciate the commitment to limit construction activities near homes to weekdays from 7 am to 7 pm, which will help reduce noise and disturbances. These measures demonstrate respect for community well-being and environmental justice, which I value deeply in our neighborhood.",
+     "cited_pages": [],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r008",
+     "neighborhood": "Tipp Hill",
+     "text": "As a Tipp Hill resident who works from home, I strongly support the commitments to install a network of air quality monitors near schools and community areas, with real-time data posted online. This transparency is crucial for keeping families like mine informed about air quality during construction, helping us protect our health. Additionally, limiting construction hours to weekdays from 7 am to 7 pm will significantly reduce noise disruptions, making it easier to work and rest at home. These measures show respect for residents' well-being and contribute to a better quality of life during the project.",
+     "cited_pages": [
+      [
+       "04 Construction Means and Methods_April 2022",
+       18
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r009",
+     "neighborhood": "South Valley",
+     "text": "As a renter living in South Valley who commutes by car, I strongly support the addition of air quality monitors near schools and community areas, with real-time data posted online. This transparency is crucial for residents like me to stay informed about pollution, especially during construction periods. Limiting construction hours to 7 am to 7 pm on weekdays will help reduce noise and disturbances, improving our quality of life and health. These measures show a strong commitment to protecting vulnerable community members and balancing project progress with neighborhood well-being.",
+     "cited_pages": [
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       1
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r010",
+     "neighborhood": "North Valley",
+     "text": "As a North Valley resident with a disability and low income, I strongly support the addition of real-time air quality monitors near community areas and schools, with data posted online. This transparency is vital for people like me who are vulnerable to environmental health risks during construction. I also appreciate the limit on construction hours to weekdays from 7 am to 7 pm, which will help reduce noise disturbances and improve quality of life. These measures show consideration for environmental justice concerns and protect our health during the project [1][5].",
+     "cited_pages": [
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       50
+      ],
+      [
+       "09 Agency Coordination and Public Outreach_April 2022",
+       27
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r011",
+     "neighborhood": "Franklin Square",
+     "text": "As a long-time resident of Franklin Square with a disability, I strongly support the addition of real-time air quality monitors near schools and community areas. This commitment will help protect vulnerable residents like myself by providing transparency and timely information about pollution levels during construction. Limiting construction activities to weekdays from 7 am to 7 pm will also greatly reduce noise and disturbances, improving our quality of life and health. These measures show respect for our neighborhood's character and the well-being of all residents in the Northern Neighborhoods Subarea, including Franklin Square [1].",
+     "cited_pages": [
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       7
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r012",
+     "neighborhood": "University Neighborhood",
+     "text": "As a longtime resident of University Neighborhood, I strongly support the addition of air quality monitors near schools and community areas with real-time online reporting. This transparency is crucial for protecting the health of all residents, including seniors like myself, especially during disruptive construction periods. Limiting construction hours to weekdays from 7 am to 7 pm will help reduce noise and disturbances, improving our quality of life and allowing for necessary rest. These commitments demonstrate a thoughtful balance between infrastructure advancement and community well-being, which I deeply appreciate.",
+     "cited_pages": [
+      [
+       "02 Project Setting_April 2022",
+       6
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r013",
+     "neighborhood": "Washington Square",
+     "text": "As a homeowner in Washington Square with a very limited income, I strongly support the addition of air quality monitors near schools and community areas with real-time data posted online. This transparency is crucial for residents like me who want to protect our health during the construction period. Limiting construction hours to weekdays from 7 am to 7 pm will also help reduce noise disturbances and allow for better rest, which is especially important in our neighborhood. These measures reflect the community's shared priorities for health, environmental justice, and quality of life.",
+     "cited_pages": [],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r014",
+     "neighborhood": "University Neighborhood",
+     "text": "As a renter with a disability living in the University Neighborhood, I strongly support the addition of air quality monitors near schools and community areas, as well as the limitation of construction hours to 7 am to 7 pm on weekdays. These measures are crucial for protecting vulnerable residents like myself from potential health risks associated with construction near homes. Posting real-time air quality data online will ensure transparency and allow us to stay informed about pollution levels, which is especially important given the proximity of our neighborhood to major roadways like I-81. Limiting noisy construction to weekdays and daytime hours will also help preserve our quality of life and rest. These commitments reflect the community’s values of health protection, environmental justice, and respect for renters and those with disabilities in University Hill [1].",
+     "cited_pages": [
+      [
+       "02 Project Setting_April 2022",
+       6
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r015",
+     "neighborhood": "Sedgwick",
+     "text": "As a homeowner in Sedgwick who commutes by car, I strongly support the addition of air quality monitors near schools and community areas, as well as the limitation of construction hours to weekdays from 7 am to 7 pm. These measures will help protect residents like me from excessive pollution and noise, improving our quality of life during the project. I appreciate the commitment to transparency by posting real-time air quality data online, which allows us to stay informed and manage potential health risks effectively. Limiting construction hours also respects our need for rest and reduces disturbances in our neighborhood. Overall, these commitments balance project progress with community well-being.",
+     "cited_pages": [],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r016",
+     "neighborhood": "North Valley",
+     "text": "As a resident of North Valley with a disability and limited income, I strongly support the addition of real-time air quality monitors near schools and community areas, with data posted online. This transparency is essential for protecting vulnerable populations like me from construction-related pollution. Limiting construction hours to weekdays from 7 am to 7 pm will also help reduce noise disturbances that impact our health and rest. These measures address significant environmental justice concerns raised by many in our community and demonstrate respect for those most affected by the I-81 project [1,5].",
+     "cited_pages": [
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       50
+      ],
+      [
+       "09 Agency Coordination and Public Outreach_April 2022",
+       27
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r017",
+     "neighborhood": "Southside",
+     "text": "As a renter with no income living in Southside, I strongly support the addition of air quality monitors near schools and community areas, with real-time data posted online. This transparency is crucial for vulnerable residents like me to stay informed about construction-related pollution and protect our health. I also support limiting construction hours to weekdays from 7 am to 7 pm to reduce noise disturbances and improve quality of life during the project. These measures address important environmental justice concerns raised by our community and help ensure that low-income renters are not disproportionately impacted by the project [1].",
+     "cited_pages": [
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       50
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r018",
+     "neighborhood": "Eastwood",
+     "text": "As an Eastwood resident who rents and commutes by car, I strongly support the addition of air quality monitors near schools and community areas with real-time data posted online. This transparency helps me stay informed about pollution levels near busy roads and protects vulnerable residents like myself. I also appreciate limiting construction to 7 am to 7 pm on weekdays, which will reduce noise and disturbances, improving quality of life during the project. These measures demonstrate respect for community health and environmental justice, which is especially important for renters and lower-income residents like me [1, 5].",
+     "cited_pages": [
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       4
+      ],
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       8
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r019",
+     "neighborhood": "Lincoln Hill",
+     "text": "As a renter with a disability living in Lincoln Hill, I strongly support the addition of real-time air quality monitors near schools and community areas. This transparency is crucial for people like me who have health vulnerabilities and no income, ensuring we can stay informed about pollution during construction. I also appreciate limiting construction to weekdays from 7 am to 7 pm, which will help reduce noise and disturbances, improving our quality of life. These measures show respect for environmental justice and the needs of vulnerable community members in our neighborhood [3].",
+     "cited_pages": [
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       8
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    }
+   ],
+   "stance_changes": 20,
+   "parse_failures": 0
+  }
+ ],
+ "report": {
+  "label": "SIMULATED: written by an AI resident, not a real person and not public input. Topics tagged by gpt-4.1, the tagger used on the real comments. Population shares: ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums); tract counts: ACS 2024 5 year B01003, B03002, B25008, B26001, Census API; tracts in the PUMA: Census 2020 tract to PUMA relationship file; population centers: Census 2020; neighborhoods: City of Syracuse open data.",
+  "residents": 20,
+  "comments": 20,
+  "reach": [
+   {
+    "dimension": "age_band",
+    "group": "45 to 64",
+    "simulated_residents": 1,
+    "expected_residents": 4.92,
+    "population_share": 0.2458,
+    "reasons": [
+     "underrepresented: 1 simulated residents where its population share implies 4.9",
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Northside",
+    "simulated_residents": 0,
+    "expected_residents": 2.14,
+    "population_share": 0.1072,
+    "reasons": [
+     "no simulated resident, though the group is 10.7% of the population"
+    ]
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Hispanic or Latino",
+    "simulated_residents": 0,
+    "expected_residents": 1.67,
+    "population_share": 0.0836,
+    "reasons": [
+     "no simulated resident, though the group is 8.4% of the population"
+    ]
+   },
+   {
+    "dimension": "commute",
+    "group": "Walked",
+    "simulated_residents": 0,
+    "expected_residents": 0.95,
+    "population_share": 0.0477,
+    "reasons": [
+     "no simulated resident, though the group is 4.8% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Near Westside",
+    "simulated_residents": 0,
+    "expected_residents": 0.9,
+    "population_share": 0.0451,
+    "reasons": [
+     "no simulated resident, though the group is 4.5% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Brighton",
+    "simulated_residents": 0,
+    "expected_residents": 0.88,
+    "population_share": 0.0442,
+    "reasons": [
+     "no simulated resident, though the group is 4.4% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Eastwood",
+    "simulated_residents": 1,
+    "expected_residents": 1.83,
+    "population_share": 0.0916,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Court-Woodlawn",
+    "simulated_residents": 0,
+    "expected_residents": 0.77,
+    "population_share": 0.0386,
+    "reasons": [
+     "no simulated resident, though the group is 3.9% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "University Hill",
+    "simulated_residents": 1,
+    "expected_residents": 1.65,
+    "population_share": 0.0823,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Salt Springs",
+    "simulated_residents": 0,
+    "expected_residents": 0.63,
+    "population_share": 0.0314,
+    "reasons": [
+     "no simulated resident, though the group is 3.1% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Strathmore",
+    "simulated_residents": 0,
+    "expected_residents": 0.55,
+    "population_share": 0.0276,
+    "reasons": [
+     "no simulated resident, though the group is 2.8% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Elmwood",
+    "simulated_residents": 0,
+    "expected_residents": 0.54,
+    "population_share": 0.0268,
+    "reasons": [
+     "no simulated resident, though the group is 2.7% of the population"
+    ]
+   },
+   {
+    "dimension": "commute",
+    "group": "Bus",
+    "simulated_residents": 0,
+    "expected_residents": 0.49,
+    "population_share": 0.0247,
+    "reasons": [
+     "no simulated resident, though the group is 2.5% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Downtown",
+    "simulated_residents": 0,
+    "expected_residents": 0.45,
+    "population_share": 0.0226,
+    "reasons": [
+     "no simulated resident, though the group is 2.3% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Outer Comstock",
+    "simulated_residents": 0,
+    "expected_residents": 0.45,
+    "population_share": 0.0223,
+    "reasons": [
+     "no simulated resident, though the group is 2.2% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Park Ave.",
+    "simulated_residents": 0,
+    "expected_residents": 0.33,
+    "population_share": 0.0165,
+    "reasons": [
+     "no simulated resident, though the group is 1.7% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Skunk City",
+    "simulated_residents": 0,
+    "expected_residents": 0.31,
+    "population_share": 0.0154,
+    "reasons": [
+     "no simulated resident, though the group is 1.5% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Westcott",
+    "simulated_residents": 0,
+    "expected_residents": 0.28,
+    "population_share": 0.0138,
+    "reasons": [
+     "no simulated resident, though the group is 1.4% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Far Westside",
+    "simulated_residents": 0,
+    "expected_residents": 0.27,
+    "population_share": 0.0136,
+    "reasons": [
+     "no simulated resident, though the group is 1.4% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Southwest",
+    "simulated_residents": 0,
+    "expected_residents": 0.25,
+    "population_share": 0.0123,
+    "reasons": [
+     "no simulated resident, though the group is 1.2% of the population"
+    ]
+   },
+   {
+    "dimension": "income_band",
+    "group": "$100,000 and over",
+    "simulated_residents": 1,
+    "expected_residents": 1.24,
+    "population_share": 0.0621,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Prospect Hill",
+    "simulated_residents": 0,
+    "expected_residents": 0.23,
+    "population_share": 0.0114,
+    "reasons": [
+     "no simulated resident, though the group is 1.1% of the population"
+    ]
+   },
+   {
+    "dimension": "commute",
+    "group": "Worked from home",
+    "simulated_residents": 1,
+    "expected_residents": 1.22,
+    "population_share": 0.0612,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Winkworth",
+    "simulated_residents": 0,
+    "expected_residents": 0.19,
+    "population_share": 0.0093,
+    "reasons": [
+     "no simulated resident, though the group is 0.9% of the population"
+    ]
+   },
+   {
+    "dimension": "commute",
+    "group": "Other method",
+    "simulated_residents": 0,
+    "expected_residents": 0.18,
+    "population_share": 0.0091,
+    "reasons": [
+     "no simulated resident, though the group is 0.9% of the population"
+    ]
+   },
+   {
+    "dimension": "tenure",
+    "group": "Occupied without payment of rent",
+    "simulated_residents": 0,
+    "expected_residents": 0.18,
+    "population_share": 0.0091,
+    "reasons": [
+     "no simulated resident, though the group is 0.9% of the population"
+    ]
+   },
+   {
+    "dimension": "commute",
+    "group": "Taxi or ride hailing services",
+    "simulated_residents": 0,
+    "expected_residents": 0.14,
+    "population_share": 0.0068,
+    "reasons": [
+     "no simulated resident, though the group is 0.7% of the population"
+    ]
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Some Other Race alone, not Hispanic or Latino",
+    "simulated_residents": 0,
+    "expected_residents": 0.09,
+    "population_share": 0.0043,
+    "reasons": [
+     "no simulated resident, though the group is 0.4% of the population"
+    ]
+   },
+   {
+    "dimension": "commute",
+    "group": "Bicycle",
+    "simulated_residents": 0,
+    "expected_residents": 0.08,
+    "population_share": 0.0041,
+    "reasons": [
+     "no simulated resident, though the group is 0.4% of the population"
+    ]
+   },
+   {
+    "dimension": "commute",
+    "group": "Subway or elevated rail",
+    "simulated_residents": 0,
+    "expected_residents": 0.07,
+    "population_share": 0.0034,
+    "reasons": [
+     "no simulated resident, though the group is 0.3% of the population"
+    ]
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "American Indian alone, not Hispanic or Latino",
+    "simulated_residents": 0,
+    "expected_residents": 0.05,
+    "population_share": 0.0025,
+    "reasons": [
+     "no simulated resident, though the group is 0.2% of the population"
+    ]
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "American Indian and Alaska Native tribes specified, or not specified and no other races, not Hispanic or Latino",
+    "simulated_residents": 0,
+    "expected_residents": 0.02,
+    "population_share": 0.0012,
+    "reasons": [
+     "no simulated resident, though the group is 0.1% of the population"
+    ]
+   },
+   {
+    "dimension": "commute",
+    "group": "Motorcycle",
+    "simulated_residents": 0,
+    "expected_residents": 0.01,
+    "population_share": 0.0004,
+    "reasons": [
+     "no simulated resident, though the group is 0.0% of the population"
+    ]
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Native Hawaiian and Other Pacific Islander alone, not Hispanic or Latino",
+    "simulated_residents": 0,
+    "expected_residents": 0.0,
+    "population_share": 0.0002,
+    "reasons": [
+     "no simulated resident, though the group is 0.0% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Campus",
+    "simulated_residents": 1,
+    "expected_residents": 0.71,
+    "population_share": 0.0357,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Southside",
+    "simulated_residents": 1,
+    "expected_residents": 0.66,
+    "population_share": 0.0331,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Meadowbrook",
+    "simulated_residents": 1,
+    "expected_residents": 0.61,
+    "population_share": 0.0303,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Tipp Hill",
+    "simulated_residents": 1,
+    "expected_residents": 0.59,
+    "population_share": 0.0297,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Sedgwick",
+    "simulated_residents": 1,
+    "expected_residents": 0.47,
+    "population_share": 0.0234,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Near Eastside",
+    "simulated_residents": 1,
+    "expected_residents": 0.3,
+    "population_share": 0.0151,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Franklin Square",
+    "simulated_residents": 1,
+    "expected_residents": 0.17,
+    "population_share": 0.0084,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   }
+  ],
+  "matrix": [
+   {
+    "dimension": "neighborhood",
+    "group": "University Hill",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "University Hill",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "University Hill",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Lincoln Hill",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 3
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Lincoln Hill",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 3
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Lincoln Hill",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 3
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Washington Square",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Washington Square",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Washington Square",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Campus",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Campus",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Campus",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Campus",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Valley",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Valley",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Valley",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Near Eastside",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Near Eastside",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Near Eastside",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Meadowbrook",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Meadowbrook",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Meadowbrook",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Tipp Hill",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Tipp Hill",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Tipp Hill",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "North Valley",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "North Valley",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "North Valley",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Franklin Square",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Franklin Square",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Franklin Square",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "University Neighborhood",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "University Neighborhood",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "University Neighborhood",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Sedgwick",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Sedgwick",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Sedgwick",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Sedgwick",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Southside",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Southside",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Southside",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Eastwood",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Eastwood",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Eastwood",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Asian alone, not Hispanic or Latino",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 2
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Asian alone, not Hispanic or Latino",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 2
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Asian alone, not Hispanic or Latino",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 2
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "White alone, not Hispanic or Latino",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 12
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "White alone, not Hispanic or Latino",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 12
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "White alone, not Hispanic or Latino",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 12
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "White alone, not Hispanic or Latino",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "White alone, not Hispanic or Latino",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Black or African American alone, not Hispanic or Latino",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 4
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Black or African American alone, not Hispanic or Latino",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 4
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Black or African American alone, not Hispanic or Latino",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 4
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Two or More Races, not Hispanic or Latino",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 2
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Two or More Races, not Hispanic or Latino",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 2
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Two or More Races, not Hispanic or Latino",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 2
+   },
+   {
+    "dimension": "age_band",
+    "group": "18 to 29",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 7
+   },
+   {
+    "dimension": "age_band",
+    "group": "18 to 29",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 7
+   },
+   {
+    "dimension": "age_band",
+    "group": "18 to 29",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 7
+   },
+   {
+    "dimension": "age_band",
+    "group": "18 to 29",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "age_band",
+    "group": "18 to 29",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "age_band",
+    "group": "30 to 44",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 6
+   },
+   {
+    "dimension": "age_band",
+    "group": "30 to 44",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 6
+   },
+   {
+    "dimension": "age_band",
+    "group": "30 to 44",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 6
+   },
+   {
+    "dimension": "age_band",
+    "group": "65 and over",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 6
+   },
+   {
+    "dimension": "age_band",
+    "group": "65 and over",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 6
+   },
+   {
+    "dimension": "age_band",
+    "group": "65 and over",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 6
+   },
+   {
+    "dimension": "age_band",
+    "group": "45 to 64",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 1
+   },
+   {
+    "dimension": "age_band",
+    "group": "45 to 64",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 1
+   },
+   {
+    "dimension": "age_band",
+    "group": "45 to 64",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "tenure",
+    "group": "Rented",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 8
+   },
+   {
+    "dimension": "tenure",
+    "group": "Rented",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 8
+   },
+   {
+    "dimension": "tenure",
+    "group": "Rented",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 8
+   },
+   {
+    "dimension": "tenure",
+    "group": "N/A (lives in group quarters such as a dorm or nursing home)",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 4
+   },
+   {
+    "dimension": "tenure",
+    "group": "N/A (lives in group quarters such as a dorm or nursing home)",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 4
+   },
+   {
+    "dimension": "tenure",
+    "group": "N/A (lives in group quarters such as a dorm or nursing home)",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 4
+   },
+   {
+    "dimension": "tenure",
+    "group": "N/A (lives in group quarters such as a dorm or nursing home)",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "tenure",
+    "group": "Owned free and clear",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 5
+   },
+   {
+    "dimension": "tenure",
+    "group": "Owned free and clear",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 5
+   },
+   {
+    "dimension": "tenure",
+    "group": "Owned free and clear",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 5
+   },
+   {
+    "dimension": "tenure",
+    "group": "Owned with mortgage or loan",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 3
+   },
+   {
+    "dimension": "tenure",
+    "group": "Owned with mortgage or loan",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 3
+   },
+   {
+    "dimension": "tenure",
+    "group": "Owned with mortgage or loan",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 3
+   },
+   {
+    "dimension": "tenure",
+    "group": "Owned with mortgage or loan",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "income_band",
+    "group": "under $25,000",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 10
+   },
+   {
+    "dimension": "income_band",
+    "group": "under $25,000",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 10
+   },
+   {
+    "dimension": "income_band",
+    "group": "under $25,000",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 10
+   },
+   {
+    "dimension": "income_band",
+    "group": "under $25,000",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "income_band",
+    "group": "$25,000 to $49,999",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 6
+   },
+   {
+    "dimension": "income_band",
+    "group": "$25,000 to $49,999",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 6
+   },
+   {
+    "dimension": "income_band",
+    "group": "$25,000 to $49,999",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 6
+   },
+   {
+    "dimension": "income_band",
+    "group": "$25,000 to $49,999",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "income_band",
+    "group": "$50,000 to $99,999",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 3
+   },
+   {
+    "dimension": "income_band",
+    "group": "$50,000 to $99,999",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 3
+   },
+   {
+    "dimension": "income_band",
+    "group": "$50,000 to $99,999",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 3
+   },
+   {
+    "dimension": "income_band",
+    "group": "$100,000 and over",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 1
+   },
+   {
+    "dimension": "income_band",
+    "group": "$100,000 and over",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 1
+   },
+   {
+    "dimension": "income_band",
+    "group": "$100,000 and over",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "disability",
+    "group": "Without a disability",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 14
+   },
+   {
+    "dimension": "disability",
+    "group": "Without a disability",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 14
+   },
+   {
+    "dimension": "disability",
+    "group": "Without a disability",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 14
+   },
+   {
+    "dimension": "disability",
+    "group": "Without a disability",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "disability",
+    "group": "Without a disability",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "disability",
+    "group": "With a disability",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 6
+   },
+   {
+    "dimension": "disability",
+    "group": "With a disability",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 6
+   },
+   {
+    "dimension": "disability",
+    "group": "With a disability",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 6
+   },
+   {
+    "dimension": "commute",
+    "group": "N/A (not a worker, or not at work last week)",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 15
+   },
+   {
+    "dimension": "commute",
+    "group": "N/A (not a worker, or not at work last week)",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 15
+   },
+   {
+    "dimension": "commute",
+    "group": "N/A (not a worker, or not at work last week)",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 15
+   },
+   {
+    "dimension": "commute",
+    "group": "N/A (not a worker, or not at work last week)",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "commute",
+    "group": "Car, truck, or van",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 4
+   },
+   {
+    "dimension": "commute",
+    "group": "Car, truck, or van",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 4
+   },
+   {
+    "dimension": "commute",
+    "group": "Car, truck, or van",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 4
+   },
+   {
+    "dimension": "commute",
+    "group": "Car, truck, or van",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "commute",
+    "group": "Worked from home",
+    "code": "7-4",
+    "topic": "Air Quality, Energy, and Climate Change",
+    "comments": 1
+   },
+   {
+    "dimension": "commute",
+    "group": "Worked from home",
+    "code": "7-5",
+    "topic": "Noise",
+    "comments": 1
+   },
+   {
+    "dimension": "commute",
+    "group": "Worked from home",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   }
+  ],
+  "comment_codes": [
+   {
+    "resident_id": "r000",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r001",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r002",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r003",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r004",
+    "codes": [
+     "4",
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r005",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r006",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r007",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r008",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r009",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r010",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r011",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r012",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r013",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r014",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r015",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7",
+     "8"
+    ]
+   },
+   {
+    "resident_id": "r016",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r017",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r018",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r019",
+    "codes": [
+     "7-4",
+     "7-5",
+     "7-7"
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "title": "Topics raised",
+    "rows": [
+     {
+      "code": "7-4",
+      "topic": "Air Quality, Energy, and Climate Change",
+      "simulated comments": 20
+     },
+     {
+      "code": "7-5",
+      "topic": "Noise",
+      "simulated comments": 20
+     },
+     {
+      "code": "7-7",
+      "topic": "Construction",
+      "simulated comments": 20
+     },
+     {
+      "code": "4",
+      "topic": "Community Grid Alternative",
+      "simulated comments": 1
+     },
+     {
+      "code": "8",
+      "topic": "Public Outreach",
+      "simulated comments": 1
+     }
+    ]
+   },
+   {
+    "title": "Topics by neighborhood",
+    "rows": [
+     {
+      "neighborhood": "University Hill",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (1); Noise (1); Construction (1)"
+     },
+     {
+      "neighborhood": "Lincoln Hill",
+      "simulated residents": 3,
+      "comments": 3,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (3); Noise (3); Construction (3)"
+     },
+     {
+      "neighborhood": "Washington Square",
+      "simulated residents": 2,
+      "comments": 2,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (2); Noise (2); Construction (2)"
+     },
+     {
+      "neighborhood": "South Campus",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (1); Air Quality, Energy, and Climate Change (1); Noise (1)"
+     },
+     {
+      "neighborhood": "South Valley",
+      "simulated residents": 2,
+      "comments": 2,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (2); Noise (2); Construction (2)"
+     },
+     {
+      "neighborhood": "Near Eastside",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (1); Noise (1); Construction (1)"
+     },
+     {
+      "neighborhood": "Meadowbrook",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (1); Noise (1); Construction (1)"
+     },
+     {
+      "neighborhood": "Tipp Hill",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (1); Noise (1); Construction (1)"
+     },
+     {
+      "neighborhood": "North Valley",
+      "simulated residents": 2,
+      "comments": 2,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (2); Noise (2); Construction (2)"
+     },
+     {
+      "neighborhood": "Franklin Square",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (1); Noise (1); Construction (1)"
+     },
+     {
+      "neighborhood": "University Neighborhood",
+      "simulated residents": 2,
+      "comments": 2,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (2); Noise (2); Construction (2)"
+     },
+     {
+      "neighborhood": "Sedgwick",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (1); Noise (1); Construction (1)"
+     },
+     {
+      "neighborhood": "Southside",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (1); Noise (1); Construction (1)"
+     },
+     {
+      "neighborhood": "Eastwood",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (1); Noise (1); Construction (1)"
+     }
+    ]
+   },
+   {
+    "title": "Topics by group",
+    "rows": [
+     {
+      "group type": "race ethnicity",
+      "group": "Asian alone, not Hispanic or Latino",
+      "simulated residents": 2,
+      "comments": 2,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (2); Noise (2); Construction (2)"
+     },
+     {
+      "group type": "race ethnicity",
+      "group": "White alone, not Hispanic or Latino",
+      "simulated residents": 12,
+      "comments": 12,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (12); Noise (12); Construction (12)"
+     },
+     {
+      "group type": "race ethnicity",
+      "group": "Black or African American alone, not Hispanic or Latino",
+      "simulated residents": 4,
+      "comments": 4,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (4); Noise (4); Construction (4)"
+     },
+     {
+      "group type": "race ethnicity",
+      "group": "Two or More Races, not Hispanic or Latino",
+      "simulated residents": 2,
+      "comments": 2,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (2); Noise (2); Construction (2)"
+     },
+     {
+      "group type": "age band",
+      "group": "18 to 29",
+      "simulated residents": 7,
+      "comments": 7,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (7); Noise (7); Construction (7)"
+     },
+     {
+      "group type": "age band",
+      "group": "30 to 44",
+      "simulated residents": 6,
+      "comments": 6,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (6); Noise (6); Construction (6)"
+     },
+     {
+      "group type": "age band",
+      "group": "65 and over",
+      "simulated residents": 6,
+      "comments": 6,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (6); Noise (6); Construction (6)"
+     },
+     {
+      "group type": "age band",
+      "group": "45 to 64",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (1); Noise (1); Construction (1)"
+     },
+     {
+      "group type": "tenure",
+      "group": "Rented",
+      "simulated residents": 8,
+      "comments": 8,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (8); Noise (8); Construction (8)"
+     },
+     {
+      "group type": "tenure",
+      "group": "N/A (lives in group quarters such as a dorm or nursing home)",
+      "simulated residents": 4,
+      "comments": 4,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (4); Noise (4); Construction (4)"
+     },
+     {
+      "group type": "tenure",
+      "group": "Owned free and clear",
+      "simulated residents": 5,
+      "comments": 5,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (5); Noise (5); Construction (5)"
+     },
+     {
+      "group type": "tenure",
+      "group": "Owned with mortgage or loan",
+      "simulated residents": 3,
+      "comments": 3,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (3); Noise (3); Construction (3)"
+     },
+     {
+      "group type": "income band",
+      "group": "under $25,000",
+      "simulated residents": 10,
+      "comments": 10,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (10); Noise (10); Construction (10)"
+     },
+     {
+      "group type": "income band",
+      "group": "$25,000 to $49,999",
+      "simulated residents": 6,
+      "comments": 6,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (6); Noise (6); Construction (6)"
+     },
+     {
+      "group type": "income band",
+      "group": "$50,000 to $99,999",
+      "simulated residents": 3,
+      "comments": 3,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (3); Noise (3); Construction (3)"
+     },
+     {
+      "group type": "income band",
+      "group": "$100,000 and over",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (1); Noise (1); Construction (1)"
+     },
+     {
+      "group type": "disability",
+      "group": "Without a disability",
+      "simulated residents": 14,
+      "comments": 14,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (14); Noise (14); Construction (14)"
+     },
+     {
+      "group type": "disability",
+      "group": "With a disability",
+      "simulated residents": 6,
+      "comments": 6,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (6); Noise (6); Construction (6)"
+     },
+     {
+      "group type": "commute",
+      "group": "N/A (not a worker, or not at work last week)",
+      "simulated residents": 15,
+      "comments": 15,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (15); Noise (15); Construction (15)"
+     },
+     {
+      "group type": "commute",
+      "group": "Car, truck, or van",
+      "simulated residents": 4,
+      "comments": 4,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (4); Noise (4); Construction (4)"
+     },
+     {
+      "group type": "commute",
+      "group": "Worked from home",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Air Quality, Energy, and Climate Change (1); Noise (1); Construction (1)"
+     }
+    ]
+   }
+  ],
+  "sample_comments": [
+   {
+    "label": "SIMULATED",
+    "simulated": true,
+    "topic": "Air Quality, Energy, and Climate Change",
+    "resident_id": "r000",
+    "neighborhood": "University Hill",
+    "stance": "support",
+    "text": "As a renter with no income living in University Hill, I strongly support the addition of air quality monitors near schools and community areas, as these measures will help protect vulnerable residents like myself from harmful pollution during construction. Posting real-time air quality data online ensures transparency and keeps the community informed, which I believe is crucial. Additionally, limiting construction near homes to weekdays from 7 am to 7 pm will reduce noise disturbances and improve our quality of life. These commitments show a thoughtful consideration for health and environmental justice that our neighborhood needs.",
+    "cited_pages": [
+     [
+      "02 Project Setting_April 2022",
+      6
+     ]
+    ],
+    "cited": "02 Project Setting_April 2022, page 6"
+   },
+   {
+    "label": "SIMULATED",
+    "simulated": true,
+    "topic": "Noise",
+    "resident_id": "r000",
+    "neighborhood": "University Hill",
+    "stance": "support",
+    "text": "As a renter with no income living in University Hill, I strongly support the addition of air quality monitors near schools and community areas, as these measures will help protect vulnerable residents like myself from harmful pollution during construction. Posting real-time air quality data online ensures transparency and keeps the community informed, which I believe is crucial. Additionally, limiting construction near homes to weekdays from 7 am to 7 pm will reduce noise disturbances and improve our quality of life. These commitments show a thoughtful consideration for health and environmental justice that our neighborhood needs.",
+    "cited_pages": [
+     [
+      "02 Project Setting_April 2022",
+      6
+     ]
+    ],
+    "cited": "02 Project Setting_April 2022, page 6"
+   },
+   {
+    "label": "SIMULATED",
+    "simulated": true,
+    "topic": "Construction",
+    "resident_id": "r000",
+    "neighborhood": "University Hill",
+    "stance": "support",
+    "text": "As a renter with no income living in University Hill, I strongly support the addition of air quality monitors near schools and community areas, as these measures will help protect vulnerable residents like myself from harmful pollution during construction. Posting real-time air quality data online ensures transparency and keeps the community informed, which I believe is crucial. Additionally, limiting construction near homes to weekdays from 7 am to 7 pm will reduce noise disturbances and improve our quality of life. These commitments show a thoughtful consideration for health and environmental justice that our neighborhood needs.",
+    "cited_pages": [
+     [
+      "02 Project Setting_April 2022",
+      6
+     ]
+    ],
+    "cited": "02 Project Setting_April 2022, page 6"
+   },
+   {
+    "label": "SIMULATED",
+    "simulated": true,
+    "topic": "Community Grid Alternative",
+    "resident_id": "r004",
+    "neighborhood": "South Campus",
+    "stance": "support",
+    "text": "As a young resident living near South Campus with no income, I strongly support the addition of air quality monitors along the community grid and near schools. Real-time data posted online will help vulnerable groups like myself stay informed about environmental health risks during construction. Limiting construction hours to weekdays from 7 am to 7 pm will also reduce noise and disturbances, improving our quality of life. These measures demonstrate a commitment to environmental justice and community well-being, which is essential for neighborhoods like ours [2].",
+    "cited_pages": [
+     [
+      "09 Agency Coordination and Public Outreach_April 2022",
+      27
+     ]
+    ],
+    "cited": "09 Agency Coordination and Public Outreach_April 2022, page 27"
+   }
+  ],
+  "reach_in_person": [
+   "age band, 45 to 64: 1 simulated residents, 4.92 expected. Underrepresented: 1 simulated residents where its population share implies 4.9; only one simulated resident speaks for this group.",
+   "neighborhood, Northside: 0 simulated residents, 2.14 expected. No simulated resident, though the group is 10.7% of the population.",
+   "race ethnicity, Hispanic or Latino: 0 simulated residents, 1.67 expected. No simulated resident, though the group is 8.4% of the population.",
+   "commute, Walked: 0 simulated residents, 0.95 expected. No simulated resident, though the group is 4.8% of the population.",
+   "neighborhood, Near Westside: 0 simulated residents, 0.9 expected. No simulated resident, though the group is 4.5% of the population.",
+   "neighborhood, Brighton: 0 simulated residents, 0.88 expected. No simulated resident, though the group is 4.4% of the population.",
+   "neighborhood, Eastwood: 1 simulated residents, 1.83 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Court-Woodlawn: 0 simulated residents, 0.77 expected. No simulated resident, though the group is 3.9% of the population.",
+   "neighborhood, University Hill: 1 simulated residents, 1.65 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Salt Springs: 0 simulated residents, 0.63 expected. No simulated resident, though the group is 3.1% of the population.",
+   "neighborhood, Strathmore: 0 simulated residents, 0.55 expected. No simulated resident, though the group is 2.8% of the population.",
+   "neighborhood, Elmwood: 0 simulated residents, 0.54 expected. No simulated resident, though the group is 2.7% of the population.",
+   "commute, Bus: 0 simulated residents, 0.49 expected. No simulated resident, though the group is 2.5% of the population.",
+   "neighborhood, Downtown: 0 simulated residents, 0.45 expected. No simulated resident, though the group is 2.3% of the population.",
+   "neighborhood, Outer Comstock: 0 simulated residents, 0.45 expected. No simulated resident, though the group is 2.2% of the population.",
+   "neighborhood, Park Ave.: 0 simulated residents, 0.33 expected. No simulated resident, though the group is 1.7% of the population.",
+   "neighborhood, Skunk City: 0 simulated residents, 0.31 expected. No simulated resident, though the group is 1.5% of the population.",
+   "neighborhood, Westcott: 0 simulated residents, 0.28 expected. No simulated resident, though the group is 1.4% of the population.",
+   "neighborhood, Far Westside: 0 simulated residents, 0.27 expected. No simulated resident, though the group is 1.4% of the population.",
+   "neighborhood, Southwest: 0 simulated residents, 0.25 expected. No simulated resident, though the group is 1.2% of the population.",
+   "income band, $100,000 and over: 1 simulated residents, 1.24 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Prospect Hill: 0 simulated residents, 0.23 expected. No simulated resident, though the group is 1.1% of the population.",
+   "commute, Worked from home: 1 simulated residents, 1.22 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Winkworth: 0 simulated residents, 0.19 expected. No simulated resident, though the group is 0.9% of the population.",
+   "commute, Other method: 0 simulated residents, 0.18 expected. No simulated resident, though the group is 0.9% of the population.",
+   "tenure, Occupied without payment of rent: 0 simulated residents, 0.18 expected. No simulated resident, though the group is 0.9% of the population.",
+   "commute, Taxi or ride hailing services: 0 simulated residents, 0.14 expected. No simulated resident, though the group is 0.7% of the population.",
+   "race ethnicity, Some Other Race alone, not Hispanic or Latino: 0 simulated residents, 0.09 expected. No simulated resident, though the group is 0.4% of the population.",
+   "commute, Bicycle: 0 simulated residents, 0.08 expected. No simulated resident, though the group is 0.4% of the population.",
+   "commute, Subway or elevated rail: 0 simulated residents, 0.07 expected. No simulated resident, though the group is 0.3% of the population.",
+   "race ethnicity, American Indian alone, not Hispanic or Latino: 0 simulated residents, 0.05 expected. No simulated resident, though the group is 0.2% of the population.",
+   "race ethnicity, American Indian and Alaska Native tribes specified, or not specified and no other races, not Hispanic or Latino: 0 simulated residents, 0.02 expected. No simulated resident, though the group is 0.1% of the population.",
+   "commute, Motorcycle: 0 simulated residents, 0.01 expected. No simulated resident, though the group is 0.0% of the population.",
+   "race ethnicity, Native Hawaiian and Other Pacific Islander alone, not Hispanic or Latino: 0 simulated residents, 0.0 expected. No simulated resident, though the group is 0.0% of the population.",
+   "neighborhood, South Campus: 1 simulated residents, 0.71 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Southside: 1 simulated residents, 0.66 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Meadowbrook: 1 simulated residents, 0.61 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Tipp Hill: 1 simulated residents, 0.59 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Sedgwick: 1 simulated residents, 0.47 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Near Eastside: 1 simulated residents, 0.3 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Franklin Square: 1 simulated residents, 0.17 expected. Only one simulated resident speaks for this group."
+  ]
+ },
+ "usage": {
+  "meetings": {
+   "real_calls": 61,
+   "prompt_tokens": 79221,
+   "completion_tokens": 12258,
+   "total_tokens": 91479
+  },
+  "meetings_and_report": {
+   "real_calls": 81,
+   "prompt_tokens": 94688,
+   "completion_tokens": 12704,
+   "total_tokens": 107392
+  }
+ }
+}

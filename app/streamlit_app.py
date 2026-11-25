@@ -263,6 +263,10 @@ def policy_page():
             st.info("Upload a PDF and index it. It goes into its own collection, apart from the I-81 index. "
                     "Delete removes the PDF, its index and its page images from this computer.")
             return
+    if not core.index_ready(policy["db_dir"]):
+        return st.info(f"**Using:** {md(policy['name'])}. Search needs its index (724 MB for the I-81 statement), "
+                       "which stays on the team's computer, so it is off here. Saved runs, reports and free test "
+                       "meetings over six FAKE pages still work.", icon=":material/cloud_off:")
     with st.container(border=True):
         name, pages = st.columns([4, 1], vertical_alignment="center")
         name.markdown(f":material/description: **Using:** {md(policy['name'])}")
@@ -312,6 +316,9 @@ def run_page(llm, vision):
     cols[3].metric("Text by", "Free test model" if core.written_by(llm) == core.FAKE_LABEL else config.RESIDENT_MODEL,
                    border=True)
     st.caption(f"Text by: {core.written_by(llm)}")
+    if not core.index_ready(policy["db_dir"]):
+        st.warning("The policy index is not on this server, so residents read six FAKE pages and only the free test "
+                   "model can run. The saved scenarios hold the real runs.", icon=":material/cloud_off:")
     if st.button("Run meetings", key="run", disabled=not chosen, type="primary", icon=":material/play_arrow:"):
         bar = st.progress(0.0, text="Starting")
 
@@ -579,6 +586,7 @@ def saved_page():
 st.set_page_config(page_title="Silicon Town Hall", page_icon=":material/account_balance:", layout="wide")
 st.html(CSS)
 gate()
+core.seed_demo()  # online demo only (SILICON_DEMO=1): the committed real runs
 with st.sidebar:
     st.markdown('<div class="sth-brand">Silicon Town Hall</div>'
                 '<div class="sth-tag">Simulated residents for planning teams</div>', unsafe_allow_html=True)

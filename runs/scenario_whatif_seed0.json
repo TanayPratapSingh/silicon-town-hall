@@ -1,0 +1,230 @@
+{
+  "label": "Real model run (gpt-4.1-mini residents, gpt-4.1 tagger). Every resident, turn and comment is simulated.",
+  "command": "python scripts/run_scenario.py --residents data/processed/town/residents_real.json --name 'I-81 what if: air monitoring and daytime construction' --group-by citywide --rounds 1 --cap 0.12 --out runs/scenario_whatif_seed0.json --change 'NYSDOT adds two commitments: a network of air quality monitors along the community grid and near schools, with readings posted online, and construction near homes limited to 7 am to 7 pm on weekdays.'",
+  "date": "2026-11-24",
+  "name": "I-81 what if: air monitoring and daytime construction",
+  "scenario_id": "20261124-233144_I-81_what_if_air_monitoring_and_daytime_",
+  "residents_file": "data/processed/town/residents_real.json",
+  "residents": 20,
+  "seed": 0,
+  "group_by": "citywide",
+  "meetings_per_round": {
+    "Citywide": 20
+  },
+  "rounds": 1,
+  "change": "NYSDOT adds two commitments: a network of air quality monitors along the community grid and near schools, with readings posted online, and construction near homes limited to 7 am to 7 pm on weekdays.",
+  "status": "complete",
+  "report_error": null,
+  "score": {
+    "real_comments": 344,
+    "simulated_comments": 20,
+    "real_comments_with_no_topic": 9,
+    "simulated_comments_with_no_topic": 0,
+    "topic_coverage": 0.3846,
+    "topic_coverage_note": "Share of the topics in the real comments that at least one simulated comment raised.",
+    "topic_mix_gap": 0.6134,
+    "topic_mix_gap_note": "Jensen Shannon distance (base 2) between the share of topic mentions in real and in simulated comments: 0 means the same mix of topics, 1 means no topic in common.",
+    "concerns_only_real": [
+      {
+        "code": "7-1",
+        "topic": "Land Acquisition, Displacement, and Relocation",
+        "real_comments": 154
+      },
+      {
+        "code": "7-2",
+        "topic": "Local and Regional Economies",
+        "real_comments": 145
+      },
+      {
+        "code": "7-3",
+        "topic": "Historic and Cultural Resources",
+        "real_comments": 99
+      },
+      {
+        "code": "6",
+        "topic": "Transportation Considerations",
+        "real_comments": 95
+      },
+      {
+        "code": "3",
+        "topic": "Viaduct Alternative",
+        "real_comments": 58
+      },
+      {
+        "code": "5",
+        "topic": "Other Potential Alternatives",
+        "real_comments": 28
+      },
+      {
+        "code": "2",
+        "topic": "Project Purpose, Objectives, and Need",
+        "real_comments": 16
+      },
+      {
+        "code": "7-6",
+        "topic": "Natural Resources",
+        "real_comments": 5
+      }
+    ],
+    "topics_only_simulated": [],
+    "real_topic_counts": {
+      "4": 177,
+      "7-4": 165,
+      "7-5": 157,
+      "7-1": 154,
+      "7-7": 149,
+      "7-2": 145,
+      "7-3": 99,
+      "6": 95,
+      "3": 58,
+      "8": 43,
+      "5": 28,
+      "2": 16,
+      "7-6": 5
+    },
+    "simulated_topic_counts": {
+      "7-4": 20,
+      "7-5": 20,
+      "7-7": 20,
+      "4": 1,
+      "8": 1
+    }
+  },
+  "group_gaps": {
+    "race_ethnicity": {
+      "White alone, not Hispanic or Latino": {
+        "comments": 12,
+        "topic_coverage": 0.3846,
+        "topic_mix_gap": 0.5993
+      },
+      "Black or African American alone, not Hispanic or Latino": {
+        "comments": 4,
+        "topic_coverage": 0.2308,
+        "topic_mix_gap": 0.6547
+      }
+    },
+    "age_band": {
+      "18 to 29": {
+        "comments": 7,
+        "topic_coverage": 0.3846,
+        "topic_mix_gap": 0.5823
+      },
+      "30 to 44": {
+        "comments": 6,
+        "topic_coverage": 0.2308,
+        "topic_mix_gap": 0.6547
+      },
+      "65 and over": {
+        "comments": 6,
+        "topic_coverage": 0.2308,
+        "topic_mix_gap": 0.6547
+      }
+    },
+    "tenure": {
+      "Rented": {
+        "comments": 8,
+        "topic_coverage": 0.2308,
+        "topic_mix_gap": 0.6547
+      },
+      "N/A (lives in group quarters such as a dorm or nursing home)": {
+        "comments": 4,
+        "topic_coverage": 0.3077,
+        "topic_mix_gap": 0.5879
+      },
+      "Owned free and clear": {
+        "comments": 5,
+        "topic_coverage": 0.2308,
+        "topic_mix_gap": 0.6547
+      },
+      "Owned with mortgage or loan": {
+        "comments": 3,
+        "topic_coverage": 0.3077,
+        "topic_mix_gap": 0.6309
+      }
+    },
+    "income_band": {
+      "under $25,000": {
+        "comments": 10,
+        "topic_coverage": 0.3077,
+        "topic_mix_gap": 0.6136
+      },
+      "$25,000 to $49,999": {
+        "comments": 6,
+        "topic_coverage": 0.3077,
+        "topic_mix_gap": 0.6319
+      },
+      "$50,000 to $99,999": {
+        "comments": 3,
+        "topic_coverage": 0.2308,
+        "topic_mix_gap": 0.6547
+      }
+    },
+    "disability": {
+      "Without a disability": {
+        "comments": 14,
+        "topic_coverage": 0.3846,
+        "topic_mix_gap": 0.6038
+      },
+      "With a disability": {
+        "comments": 6,
+        "topic_coverage": 0.2308,
+        "topic_mix_gap": 0.6547
+      }
+    },
+    "commute": {
+      "N/A (not a worker, or not at work last week)": {
+        "comments": 15,
+        "topic_coverage": 0.3077,
+        "topic_mix_gap": 0.6227
+      },
+      "Car, truck, or van": {
+        "comments": 4,
+        "topic_coverage": 0.3077,
+        "topic_mix_gap": 0.6307
+      }
+    },
+    "neighborhood": {
+      "Lincoln Hill": {
+        "comments": 3,
+        "topic_coverage": 0.2308,
+        "topic_mix_gap": 0.6547
+      }
+    }
+  },
+  "stances_by_round": {
+    "1": {
+      "support": 20
+    }
+  },
+  "stance_changes_by_round": {
+    "1": 20
+  },
+  "parse_failures": 0,
+  "fact_check": {
+    "turns": {
+      "texts_checked": 20,
+      "texts_with_a_contradiction": 0,
+      "by_kind": {},
+      "method": "phrase matching against the Census record; a lower bound"
+    },
+    "comments": {
+      "texts_checked": 20,
+      "texts_with_a_contradiction": 0,
+      "by_kind": {},
+      "method": "phrase matching against the Census record; a lower bound"
+    }
+  },
+  "real_calls": 81,
+  "max_calls": 86,
+  "cap_dollars": 0.12,
+  "token_usage": {
+    "prompt_tokens": 94688,
+    "completion_tokens": 12704
+  },
+  "models_returned": [
+    "gpt-4.1-2025-04-14",
+    "gpt-4.1-mini-2025-04-14"
+  ],
+  "estimated_dollars": 0.0858,
+  "estimate_note": "list prices from townhall.town.pilot.PRICES, not the OpenAI bill"
+}

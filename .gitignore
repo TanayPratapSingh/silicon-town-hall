@@ -2,6 +2,7 @@
 data/
 
 .env
+.streamlit/secrets.toml
 .venv/
 __pycache__/
 *.pyc

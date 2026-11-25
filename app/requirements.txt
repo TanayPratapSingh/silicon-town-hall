@@ -1,0 +1,13 @@
+# Online demo on Streamlit Community Cloud (entrypoint app/streamlit_app.py). Slim on purpose: no torch,
+# sentence-transformers or spacy, so the free tier can install it. Without them the app shows the committed
+# real runs, keeps search off and runs free test meetings over six FAKE pages. The full stack is ../requirements.txt.
+# Versions are the ones the 79 tests passed with on 2026-11-24.
+streamlit==1.67.0
+pandas==3.1.1
+numpy==2.5.4
+python-dotenv==1.2.4
+openai==3.49.0
+langgraph==1.2.20
+chromadb==1.5.9
+pymupdf==2.1
+pillow==13.0.0

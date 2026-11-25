@@ -23,6 +23,9 @@ def test_fact_check_catches_claims_the_record_contradicts():
     assert fc.check("As a renter, I worry my landlord will raise my rent.", OWNER) == ["tenure"]
     assert fc.check("I'm 62, and I have a disability.", OWNER) == ["age", "disability"]
     assert fc.check("As a 40-year-old homeowner I support the plan.", OWNER) == []
+    for negated in ("I don't drive to work, but", "Since I do not commute to work regularly,",
+                    "living here and not commuting to work, I"):  # restating the record is not a contradiction
+        assert fc.check(negated, OWNER) == []
     out = fc.check_texts([{"resident_id": "r1", "text": "my commute"}, {"resident_id": "r1", "text": "fine"},
                           {"resident_id": "unknown", "text": "my commute"}], [OWNER])
     assert (out["texts_checked"], out["texts_with_a_contradiction"], out["by_kind"]) == (2, 1, {"commute": 1})

@@ -1,0 +1,895 @@
+{
+  "label": "Every resident, turn and comment is simulated. Pilot numbers are from 20 residents per seed.",
+  "command": "python scripts/final_summary.py",
+  "date": "2026-11-24",
+  "real_comments": 344,
+  "pilots": {
+    "0": {
+      "source": "runs/report_pilot_score.json",
+      "conditions": {
+        "meeting": {
+          "topic_coverage": 0.6154,
+          "topic_mix_gap": 0.5503,
+          "simulated_comments": 20,
+          "simulated_comments_with_no_topic": 0,
+          "missed": [
+            "Air Quality, Energy, and Climate Change",
+            "Historic and Cultural Resources",
+            "Viaduct Alternative",
+            "Other Potential Alternatives",
+            "Natural Resources"
+          ]
+        },
+        "no_personas": {
+          "topic_coverage": 0.7692,
+          "topic_mix_gap": 0.4658,
+          "simulated_comments": 19,
+          "simulated_comments_with_no_topic": 5,
+          "missed": [
+            "Noise",
+            "Transportation Considerations",
+            "Natural Resources"
+          ]
+        },
+        "skip_meeting": {
+          "topic_coverage": 0.7692,
+          "topic_mix_gap": 0.4189,
+          "simulated_comments": 20,
+          "simulated_comments_with_no_topic": 0,
+          "missed": [
+            "Noise",
+            "Other Potential Alternatives",
+            "Natural Resources"
+          ]
+        }
+      },
+      "fact_check": {
+        "turns": {
+          "texts_checked": 20,
+          "texts_with_a_contradiction": 0,
+          "by_kind": {},
+          "method": "phrase matching against the Census record; a lower bound"
+        },
+        "comments": {
+          "texts_checked": 20,
+          "texts_with_a_contradiction": 0,
+          "by_kind": {},
+          "method": "phrase matching against the Census record; a lower bound"
+        }
+      },
+      "group_gaps": {
+        "race_ethnicity": {
+          "White alone, not Hispanic or Latino": {
+            "comments": 12,
+            "topic_coverage": 0.5385,
+            "topic_mix_gap": 0.5624
+          },
+          "Black or African American alone, not Hispanic or Latino": {
+            "comments": 4,
+            "topic_coverage": 0.3846,
+            "topic_mix_gap": 0.6387
+          }
+        },
+        "age_band": {
+          "18 to 29": {
+            "comments": 7,
+            "topic_coverage": 0.3846,
+            "topic_mix_gap": 0.6475
+          },
+          "30 to 44": {
+            "comments": 6,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.5986
+          },
+          "65 and over": {
+            "comments": 6,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.5858
+          }
+        },
+        "tenure": {
+          "Rented": {
+            "comments": 8,
+            "topic_coverage": 0.6154,
+            "topic_mix_gap": 0.5144
+          },
+          "N/A (lives in group quarters such as a dorm or nursing home)": {
+            "comments": 4,
+            "topic_coverage": 0.3077,
+            "topic_mix_gap": 0.6837
+          },
+          "Owned free and clear": {
+            "comments": 5,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.5875
+          },
+          "Owned with mortgage or loan": {
+            "comments": 3,
+            "topic_coverage": 0.3846,
+            "topic_mix_gap": 0.6693
+          }
+        },
+        "income_band": {
+          "under $25,000": {
+            "comments": 10,
+            "topic_coverage": 0.5385,
+            "topic_mix_gap": 0.5772
+          },
+          "$25,000 to $49,999": {
+            "comments": 6,
+            "topic_coverage": 0.5385,
+            "topic_mix_gap": 0.5616
+          },
+          "$50,000 to $99,999": {
+            "comments": 3,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.6174
+          }
+        },
+        "disability": {
+          "Without a disability": {
+            "comments": 14,
+            "topic_coverage": 0.6154,
+            "topic_mix_gap": 0.5538
+          },
+          "With a disability": {
+            "comments": 6,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.5952
+          }
+        },
+        "commute": {
+          "N/A (not a worker, or not at work last week)": {
+            "comments": 15,
+            "topic_coverage": 0.5385,
+            "topic_mix_gap": 0.5666
+          },
+          "Car, truck, or van": {
+            "comments": 4,
+            "topic_coverage": 0.3846,
+            "topic_mix_gap": 0.6157
+          }
+        },
+        "neighborhood": {
+          "Lincoln Hill": {
+            "comments": 3,
+            "topic_coverage": 0.3846,
+            "topic_mix_gap": 0.6303
+          }
+        }
+      },
+      "stances": {
+        "mixed": 14,
+        "support": 6
+      }
+    },
+    "1": {
+      "source": "runs/report_pilot_score_seed1.json",
+      "conditions": {
+        "meeting": {
+          "topic_coverage": 0.6923,
+          "topic_mix_gap": 0.4949,
+          "simulated_comments": 20,
+          "simulated_comments_with_no_topic": 0,
+          "missed": [
+            "Air Quality, Energy, and Climate Change",
+            "Historic and Cultural Resources",
+            "Other Potential Alternatives",
+            "Natural Resources"
+          ]
+        },
+        "no_personas": {
+          "topic_coverage": 1.0,
+          "topic_mix_gap": 0.3478,
+          "simulated_comments": 20,
+          "simulated_comments_with_no_topic": 3,
+          "missed": []
+        },
+        "skip_meeting": {
+          "topic_coverage": 0.8462,
+          "topic_mix_gap": 0.4547,
+          "simulated_comments": 20,
+          "simulated_comments_with_no_topic": 0,
+          "missed": [
+            "Noise",
+            "Historic and Cultural Resources"
+          ]
+        }
+      },
+      "fact_check": {
+        "turns": {
+          "texts_checked": 20,
+          "texts_with_a_contradiction": 1,
+          "by_kind": {
+            "commute": 1
+          },
+          "method": "phrase matching against the Census record; a lower bound"
+        },
+        "comments": {
+          "texts_checked": 20,
+          "texts_with_a_contradiction": 0,
+          "by_kind": {},
+          "method": "phrase matching against the Census record; a lower bound"
+        }
+      },
+      "group_gaps": {
+        "race_ethnicity": {
+          "Asian alone, not Hispanic or Latino": {
+            "comments": 3,
+            "topic_coverage": 0.5385,
+            "topic_mix_gap": 0.5378
+          },
+          "White alone, not Hispanic or Latino": {
+            "comments": 12,
+            "topic_coverage": 0.6923,
+            "topic_mix_gap": 0.5022
+          },
+          "Black or African American alone, not Hispanic or Latino": {
+            "comments": 4,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.5474
+          }
+        },
+        "age_band": {
+          "18 to 29": {
+            "comments": 7,
+            "topic_coverage": 0.6154,
+            "topic_mix_gap": 0.4879
+          },
+          "30 to 44": {
+            "comments": 6,
+            "topic_coverage": 0.3846,
+            "topic_mix_gap": 0.6273
+          },
+          "65 and over": {
+            "comments": 3,
+            "topic_coverage": 0.5385,
+            "topic_mix_gap": 0.5254
+          },
+          "45 to 64": {
+            "comments": 4,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.5539
+          }
+        },
+        "tenure": {
+          "N/A (lives in group quarters such as a dorm or nursing home)": {
+            "comments": 5,
+            "topic_coverage": 0.6154,
+            "topic_mix_gap": 0.4652
+          },
+          "Rented": {
+            "comments": 7,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.6001
+          },
+          "Owned with mortgage or loan": {
+            "comments": 4,
+            "topic_coverage": 0.3846,
+            "topic_mix_gap": 0.6168
+          },
+          "Owned free and clear": {
+            "comments": 4,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.6136
+          }
+        },
+        "income_band": {
+          "under $25,000": {
+            "comments": 9,
+            "topic_coverage": 0.6154,
+            "topic_mix_gap": 0.4743
+          },
+          "$50,000 to $99,999": {
+            "comments": 5,
+            "topic_coverage": 0.5385,
+            "topic_mix_gap": 0.5191
+          },
+          "$25,000 to $49,999": {
+            "comments": 6,
+            "topic_coverage": 0.3846,
+            "topic_mix_gap": 0.6726
+          }
+        },
+        "disability": {
+          "Without a disability": {
+            "comments": 18,
+            "topic_coverage": 0.6923,
+            "topic_mix_gap": 0.4981
+          }
+        },
+        "commute": {
+          "N/A (not a worker, or not at work last week)": {
+            "comments": 9,
+            "topic_coverage": 0.6154,
+            "topic_mix_gap": 0.4817
+          },
+          "Car, truck, or van": {
+            "comments": 9,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.6308
+          }
+        },
+        "neighborhood": {
+          "University Hill": {
+            "comments": 4,
+            "topic_coverage": 0.5385,
+            "topic_mix_gap": 0.4868
+          }
+        }
+      },
+      "stances": {
+        "mixed": 11,
+        "undecided": 4,
+        "support": 5
+      }
+    }
+  },
+  "pilot_means": {
+    "meeting": {
+      "topic_coverage": 0.6539,
+      "topic_mix_gap": 0.5226
+    },
+    "no_personas": {
+      "topic_coverage": 0.8846,
+      "topic_mix_gap": 0.4068
+    },
+    "skip_meeting": {
+      "topic_coverage": 0.8077,
+      "topic_mix_gap": 0.4368
+    }
+  },
+  "scenarios": {
+    "control_seed0": {
+      "name": "I-81 control: seed 0 residents, no change",
+      "scenario_id": "20261124-233142_I-81_control_seed_0_residents_no_change",
+      "residents": 20,
+      "seed": 0,
+      "group_by": "citywide",
+      "rounds": 1,
+      "change": "",
+      "status": "complete",
+      "stances_by_round": {
+        "1": {
+          "mixed": 11,
+          "support": 9
+        }
+      },
+      "stance_changes_by_round": {
+        "1": 20
+      },
+      "parse_failures": 0,
+      "fact_check": {
+        "turns": {
+          "texts_checked": 20,
+          "texts_with_a_contradiction": 0,
+          "by_kind": {},
+          "method": "phrase matching against the Census record; a lower bound"
+        },
+        "comments": {
+          "texts_checked": 20,
+          "texts_with_a_contradiction": 0,
+          "by_kind": {},
+          "method": "phrase matching against the Census record; a lower bound"
+        }
+      },
+      "real_calls": 81,
+      "estimated_dollars": 0.0843,
+      "score": {
+        "topic_coverage": 0.6923,
+        "topic_mix_gap": 0.521,
+        "simulated_comments": 20,
+        "simulated_comments_with_no_topic": 0,
+        "missed": [
+          "Air Quality, Energy, and Climate Change",
+          "Noise",
+          "Viaduct Alternative",
+          "Natural Resources"
+        ]
+      },
+      "topic_shares": {
+        "4": 1.0,
+        "7-7": 0.9,
+        "7-1": 0.75,
+        "8": 0.5,
+        "2": 0.25,
+        "6": 0.25,
+        "5": 0.2,
+        "7-3": 0.05,
+        "7-2": 0.05
+      },
+      "group_gaps": {
+        "race_ethnicity": {
+          "White alone, not Hispanic or Latino": {
+            "comments": 12,
+            "topic_coverage": 0.6154,
+            "topic_mix_gap": 0.5539
+          },
+          "Black or African American alone, not Hispanic or Latino": {
+            "comments": 4,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.5296
+          }
+        },
+        "age_band": {
+          "18 to 29": {
+            "comments": 7,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.5806
+          },
+          "30 to 44": {
+            "comments": 6,
+            "topic_coverage": 0.5385,
+            "topic_mix_gap": 0.5244
+          },
+          "65 and over": {
+            "comments": 6,
+            "topic_coverage": 0.5385,
+            "topic_mix_gap": 0.5951
+          }
+        },
+        "tenure": {
+          "Rented": {
+            "comments": 8,
+            "topic_coverage": 0.5385,
+            "topic_mix_gap": 0.5325
+          },
+          "N/A (lives in group quarters such as a dorm or nursing home)": {
+            "comments": 4,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.5866
+          },
+          "Owned free and clear": {
+            "comments": 5,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.6646
+          },
+          "Owned with mortgage or loan": {
+            "comments": 3,
+            "topic_coverage": 0.3846,
+            "topic_mix_gap": 0.5875
+          }
+        },
+        "income_band": {
+          "under $25,000": {
+            "comments": 10,
+            "topic_coverage": 0.6154,
+            "topic_mix_gap": 0.5369
+          },
+          "$25,000 to $49,999": {
+            "comments": 6,
+            "topic_coverage": 0.6154,
+            "topic_mix_gap": 0.531
+          },
+          "$50,000 to $99,999": {
+            "comments": 3,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.6133
+          }
+        },
+        "disability": {
+          "Without a disability": {
+            "comments": 14,
+            "topic_coverage": 0.6154,
+            "topic_mix_gap": 0.5396
+          },
+          "With a disability": {
+            "comments": 6,
+            "topic_coverage": 0.5385,
+            "topic_mix_gap": 0.5407
+          }
+        },
+        "commute": {
+          "N/A (not a worker, or not at work last week)": {
+            "comments": 15,
+            "topic_coverage": 0.6923,
+            "topic_mix_gap": 0.5206
+          },
+          "Car, truck, or van": {
+            "comments": 4,
+            "topic_coverage": 0.3846,
+            "topic_mix_gap": 0.5773
+          }
+        },
+        "neighborhood": {
+          "Lincoln Hill": {
+            "comments": 3,
+            "topic_coverage": 0.3077,
+            "topic_mix_gap": 0.6589
+          }
+        }
+      }
+    },
+    "scale_seed2": {
+      "name": "I-81 scale: 50 residents, 5 district meetings, 3 rounds",
+      "scenario_id": "20261124-233458_I-81_scale_50_residents_5_district_meeti",
+      "residents": 50,
+      "seed": 2,
+      "group_by": "district",
+      "rounds": 3,
+      "change": "",
+      "status": "complete",
+      "stances_by_round": {
+        "1": {
+          "undecided": 4,
+          "support": 34,
+          "mixed": 12
+        },
+        "2": {
+          "undecided": 1,
+          "support": 41,
+          "mixed": 8
+        },
+        "3": {
+          "mixed": 9,
+          "support": 41
+        }
+      },
+      "stance_changes_by_round": {
+        "1": 46,
+        "2": 8,
+        "3": 1
+      },
+      "parse_failures": 0,
+      "fact_check": {
+        "turns": {
+          "texts_checked": 150,
+          "texts_with_a_contradiction": 0,
+          "by_kind": {},
+          "method": "phrase matching against the Census record; a lower bound"
+        },
+        "comments": {
+          "texts_checked": 150,
+          "texts_with_a_contradiction": 0,
+          "by_kind": {},
+          "method": "phrase matching against the Census record; a lower bound"
+        }
+      },
+      "real_calls": 515,
+      "estimated_dollars": 0.4653,
+      "score": {
+        "topic_coverage": 0.9231,
+        "topic_mix_gap": 0.4256,
+        "simulated_comments": 50,
+        "simulated_comments_with_no_topic": 0,
+        "missed": [
+          "Natural Resources"
+        ]
+      },
+      "topic_shares": {
+        "7-7": 0.8,
+        "8": 0.8,
+        "7-1": 0.56,
+        "4": 0.52,
+        "6": 0.26,
+        "7-3": 0.14,
+        "7-2": 0.12,
+        "2": 0.1,
+        "7-5": 0.06,
+        "3": 0.06,
+        "7-4": 0.04,
+        "5": 0.02
+      },
+      "group_gaps": {
+        "race_ethnicity": {
+          "Black or African American alone, not Hispanic or Latino": {
+            "comments": 10,
+            "topic_coverage": 0.8462,
+            "topic_mix_gap": 0.413
+          },
+          "White alone, not Hispanic or Latino": {
+            "comments": 24,
+            "topic_coverage": 0.6923,
+            "topic_mix_gap": 0.4901
+          },
+          "Asian alone, not Hispanic or Latino": {
+            "comments": 3,
+            "topic_coverage": 0.3846,
+            "topic_mix_gap": 0.5907
+          },
+          "Hispanic or Latino": {
+            "comments": 5,
+            "topic_coverage": 0.6154,
+            "topic_mix_gap": 0.4625
+          },
+          "Two or More Races, not Hispanic or Latino": {
+            "comments": 7,
+            "topic_coverage": 0.6154,
+            "topic_mix_gap": 0.5837
+          }
+        },
+        "age_band": {
+          "18 to 29": {
+            "comments": 22,
+            "topic_coverage": 0.7692,
+            "topic_mix_gap": 0.4723
+          },
+          "45 to 64": {
+            "comments": 7,
+            "topic_coverage": 0.6154,
+            "topic_mix_gap": 0.5187
+          },
+          "65 and over": {
+            "comments": 16,
+            "topic_coverage": 0.7692,
+            "topic_mix_gap": 0.415
+          },
+          "30 to 44": {
+            "comments": 5,
+            "topic_coverage": 0.6923,
+            "topic_mix_gap": 0.5371
+          }
+        },
+        "tenure": {
+          "Rented": {
+            "comments": 20,
+            "topic_coverage": 0.9231,
+            "topic_mix_gap": 0.4323
+          },
+          "N/A (lives in group quarters such as a dorm or nursing home)": {
+            "comments": 11,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.5661
+          },
+          "Owned free and clear": {
+            "comments": 11,
+            "topic_coverage": 0.7692,
+            "topic_mix_gap": 0.416
+          },
+          "Owned with mortgage or loan": {
+            "comments": 8,
+            "topic_coverage": 0.6154,
+            "topic_mix_gap": 0.5414
+          }
+        },
+        "income_band": {
+          "$25,000 to $49,999": {
+            "comments": 15,
+            "topic_coverage": 0.7692,
+            "topic_mix_gap": 0.4292
+          },
+          "under $25,000": {
+            "comments": 27,
+            "topic_coverage": 0.7692,
+            "topic_mix_gap": 0.4621
+          },
+          "$50,000 to $99,999": {
+            "comments": 4,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.6233
+          },
+          "$100,000 and over": {
+            "comments": 4,
+            "topic_coverage": 0.5385,
+            "topic_mix_gap": 0.6184
+          }
+        },
+        "disability": {
+          "Without a disability": {
+            "comments": 44,
+            "topic_coverage": 0.9231,
+            "topic_mix_gap": 0.4388
+          },
+          "With a disability": {
+            "comments": 6,
+            "topic_coverage": 0.6154,
+            "topic_mix_gap": 0.4564
+          }
+        },
+        "commute": {
+          "Car, truck, or van": {
+            "comments": 11,
+            "topic_coverage": 0.6154,
+            "topic_mix_gap": 0.4946
+          },
+          "N/A (not a worker, or not at work last week)": {
+            "comments": 29,
+            "topic_coverage": 0.8462,
+            "topic_mix_gap": 0.4375
+          },
+          "Walked": {
+            "comments": 5,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.6406
+          },
+          "Worked from home": {
+            "comments": 3,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.5259
+          }
+        },
+        "neighborhood": {
+          "University Hill": {
+            "comments": 8,
+            "topic_coverage": 0.3846,
+            "topic_mix_gap": 0.5861
+          },
+          "Lincoln Hill": {
+            "comments": 4,
+            "topic_coverage": 0.3077,
+            "topic_mix_gap": 0.718
+          },
+          "Eastwood": {
+            "comments": 4,
+            "topic_coverage": 0.3846,
+            "topic_mix_gap": 0.6736
+          },
+          "Northside": {
+            "comments": 4,
+            "topic_coverage": 0.4615,
+            "topic_mix_gap": 0.5372
+          },
+          "Strathmore": {
+            "comments": 3,
+            "topic_coverage": 0.6154,
+            "topic_mix_gap": 0.4412
+          },
+          "South Campus": {
+            "comments": 4,
+            "topic_coverage": 0.3077,
+            "topic_mix_gap": 0.6806
+          }
+        }
+      }
+    },
+    "whatif_seed0": {
+      "name": "I-81 what if: air monitoring and daytime construction",
+      "scenario_id": "20261124-233144_I-81_what_if_air_monitoring_and_daytime_",
+      "residents": 20,
+      "seed": 0,
+      "group_by": "citywide",
+      "rounds": 1,
+      "change": "NYSDOT adds two commitments: a network of air quality monitors along the community grid and near schools, with readings posted online, and construction near homes limited to 7 am to 7 pm on weekdays.",
+      "status": "complete",
+      "stances_by_round": {
+        "1": {
+          "support": 20
+        }
+      },
+      "stance_changes_by_round": {
+        "1": 20
+      },
+      "parse_failures": 0,
+      "fact_check": {
+        "turns": {
+          "texts_checked": 20,
+          "texts_with_a_contradiction": 0,
+          "by_kind": {},
+          "method": "phrase matching against the Census record; a lower bound"
+        },
+        "comments": {
+          "texts_checked": 20,
+          "texts_with_a_contradiction": 0,
+          "by_kind": {},
+          "method": "phrase matching against the Census record; a lower bound"
+        }
+      },
+      "real_calls": 81,
+      "estimated_dollars": 0.0858,
+      "score": {
+        "topic_coverage": 0.3846,
+        "topic_mix_gap": 0.6134,
+        "simulated_comments": 20,
+        "simulated_comments_with_no_topic": 0,
+        "missed": [
+          "Land Acquisition, Displacement, and Relocation",
+          "Local and Regional Economies",
+          "Historic and Cultural Resources",
+          "Transportation Considerations",
+          "Viaduct Alternative",
+          "Other Potential Alternatives",
+          "Project Purpose, Objectives, and Need",
+          "Natural Resources"
+        ]
+      },
+      "topic_shares": {
+        "7-4": 1.0,
+        "7-5": 1.0,
+        "7-7": 1.0,
+        "4": 0.05,
+        "8": 0.05
+      },
+      "group_gaps": {
+        "race_ethnicity": {
+          "White alone, not Hispanic or Latino": {
+            "comments": 12,
+            "topic_coverage": 0.3846,
+            "topic_mix_gap": 0.5993
+          },
+          "Black or African American alone, not Hispanic or Latino": {
+            "comments": 4,
+            "topic_coverage": 0.2308,
+            "topic_mix_gap": 0.6547
+          }
+        },
+        "age_band": {
+          "18 to 29": {
+            "comments": 7,
+            "topic_coverage": 0.3846,
+            "topic_mix_gap": 0.5823
+          },
+          "30 to 44": {
+            "comments": 6,
+            "topic_coverage": 0.2308,
+            "topic_mix_gap": 0.6547
+          },
+          "65 and over": {
+            "comments": 6,
+            "topic_coverage": 0.2308,
+            "topic_mix_gap": 0.6547
+          }
+        },
+        "tenure": {
+          "Rented": {
+            "comments": 8,
+            "topic_coverage": 0.2308,
+            "topic_mix_gap": 0.6547
+          },
+          "N/A (lives in group quarters such as a dorm or nursing home)": {
+            "comments": 4,
+            "topic_coverage": 0.3077,
+            "topic_mix_gap": 0.5879
+          },
+          "Owned free and clear": {
+            "comments": 5,
+            "topic_coverage": 0.2308,
+            "topic_mix_gap": 0.6547
+          },
+          "Owned with mortgage or loan": {
+            "comments": 3,
+            "topic_coverage": 0.3077,
+            "topic_mix_gap": 0.6309
+          }
+        },
+        "income_band": {
+          "under $25,000": {
+            "comments": 10,
+            "topic_coverage": 0.3077,
+            "topic_mix_gap": 0.6136
+          },
+          "$25,000 to $49,999": {
+            "comments": 6,
+            "topic_coverage": 0.3077,
+            "topic_mix_gap": 0.6319
+          },
+          "$50,000 to $99,999": {
+            "comments": 3,
+            "topic_coverage": 0.2308,
+            "topic_mix_gap": 0.6547
+          }
+        },
+        "disability": {
+          "Without a disability": {
+            "comments": 14,
+            "topic_coverage": 0.3846,
+            "topic_mix_gap": 0.6038
+          },
+          "With a disability": {
+            "comments": 6,
+            "topic_coverage": 0.2308,
+            "topic_mix_gap": 0.6547
+          }
+        },
+        "commute": {
+          "N/A (not a worker, or not at work last week)": {
+            "comments": 15,
+            "topic_coverage": 0.3077,
+            "topic_mix_gap": 0.6227
+          },
+          "Car, truck, or van": {
+            "comments": 4,
+            "topic_coverage": 0.3077,
+            "topic_mix_gap": 0.6307
+          }
+        },
+        "neighborhood": {
+          "Lincoln Hill": {
+            "comments": 3,
+            "topic_coverage": 0.2308,
+            "topic_mix_gap": 0.6547
+          }
+        }
+      }
+    }
+  }
+}

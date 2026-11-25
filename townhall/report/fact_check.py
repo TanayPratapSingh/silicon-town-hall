@@ -18,22 +18,29 @@ OWN_CLAIM = re.compile(r"\b(I own my (home|house)|as an? home ?owner|I'm a home 
 DISABILITY_CLAIM = re.compile(r"\b(my disability|I have a disability|as (a person|someone) with a disability|"
                               r"as a disabled|I'm disabled|I am disabled|my wheelchair)\b", re.I)
 AGE_CLAIM = re.compile(r"\b(\d{2})[- ]years?[- ]old\b|\b(?:I am|I'm) (\d{2})(?=[,.;]| and | years\b)", re.I)
+# "I do not commute to work" restates the record; the first control run had 4 such matches, all negations
+NEGATION = re.compile(r"\b(not|no|don't|do not|doesn't|never|no longer|without)\W+(\w+\W+){0,2}$", re.I)
 KINDS = ("commute", "tenure", "age", "disability")
+
+
+def _claims(pattern, text):
+    """Matches of pattern not negated by the words just before them."""
+    return any(not NEGATION.search(text[:m.start()]) for m in pattern.finditer(text))
 
 
 def check(text, resident):
     """Kinds of contradiction between one text and its resident's record, in KINDS order."""
     found = set()
-    if resident.get("commute") == census.NO_COMMUTE and COMMUTE_CLAIM.search(text):
+    if resident.get("commute") == census.NO_COMMUTE and _claims(COMMUTE_CLAIM, text):
         found.add("commute")
     tenure = resident.get("tenure", "")
-    if (tenure.startswith("Owned") and RENT_CLAIM.search(text)) or (
-            tenure in ("Rented", census.NO_TENURE) and OWN_CLAIM.search(text)):
+    if (tenure.startswith("Owned") and _claims(RENT_CLAIM, text)) or (
+            tenure in ("Rented", census.NO_TENURE) and _claims(OWN_CLAIM, text)):
         found.add("tenure")
     ages = [int(a or b) for a, b in AGE_CLAIM.findall(text)]
     if "age" in resident and any(abs(a - int(resident["age"])) > 1 for a in ages):
         found.add("age")
-    if resident.get("disability") == "Without a disability" and DISABILITY_CLAIM.search(text):
+    if resident.get("disability") == "Without a disability" and _claims(DISABILITY_CLAIM, text):
         found.add("disability")
     return [k for k in KINDS if k in found]
 

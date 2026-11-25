@@ -66,6 +66,7 @@ def app(tmp_path, monkeypatch):
     monkeypatch.setattr(core, "EMBED", fake_embed)
     monkeypatch.setattr(core, "population", lambda state, puma: (None, "test: no population shares"))
     monkeypatch.setattr(core, "neighborhood_shapes", lambda: [SQUARE])
+    monkeypatch.setattr(core, "index_ready", lambda db_dir: True)
     monkeypatch.setattr(core, "PILOT_SCORE_FILES", (tmp_path / "report_pilot_score.json",))
     monkeypatch.setattr(pilot, "capped_openai", refuse_real)
     monkeypatch.setattr(core.pilot, "capped_openai", refuse_real)
@@ -203,6 +204,30 @@ def test_citywide_meeting_is_scored_by_the_run_script(app):
     out = script.summarize(s, [["4"], ["8"]], core.cb.load())
     assert out["score"]["simulated_comments"] == 4 and out["fact_check"]["turns"]["texts_checked"] == 4
     assert sum(out["stances_by_round"][1].values()) == 4
+
+
+def test_online_demo_without_the_index(app, tmp_path, monkeypatch):
+    monkeypatch.setattr(core, "index_ready", lambda db_dir: False)
+    monkeypatch.setattr(core, "EMBED", None)
+    monkeypatch.setattr(core, "memory_embedder", lambda: core.hash_embed)
+    demo = tmp_path / "demo"
+    demo.mkdir()
+    (demo / "pilot_demo.json").write_text(json.dumps({"id": "pilot_demo", "name": "Demo run", "date": "2026-11-11T00:00:00",
+                                                      "settings": {"policy": "p", "rounds": 1, "meeting_text_by": "x"},
+                                                      "residents": [], "meetings": [], "status": "complete"}))
+    monkeypatch.setattr(core, "DEMO", demo)
+    assert core.seed_demo() == 0  # off unless SILICON_DEMO=1
+    monkeypatch.setenv("SILICON_DEMO", "1")
+    assert core.seed_demo() == 1 and core.seed_demo() == 0  # copied once, then left alone
+    monkeypatch.delenv("SILICON_DEMO")
+    core.delete_scenario("pilot_demo")  # run_meetings below reads the newest scenario
+    login(app)
+    goto(app, "Policy")
+    assert any("stays on the team's computer" in i.value for i in app.info) and not app.text_input
+    scenario = run_meetings(app)
+    assert scenario["settings"]["retrieval"].startswith("FAKE pages")
+    assert {p for m in scenario["meetings"] for t in m["transcript"] for d, p in t["cited_pages"]} <= set(range(1, 7))
+    assert core.hash_embed(["noise noise", "noise"]).shape == (2, 256)
 
 
 def test_delete_memories_and_scenario(app):

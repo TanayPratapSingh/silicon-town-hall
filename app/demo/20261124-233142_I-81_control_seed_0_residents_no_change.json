@@ -1,0 +1,4184 @@
+{
+ "id": "20261124-233142_I-81_control_seed_0_residents_no_change",
+ "name": "I-81 control: seed 0 residents, no change",
+ "date": "2026-11-24T23:34:30+00:00",
+ "label": "Simulated residents. Not public comment.",
+ "settings": {
+  "community": "I-81 Syracuse (New York, PUMA 00701)",
+  "state": "36",
+  "puma": "00701",
+  "residents": 20,
+  "seed": 0,
+  "policy": "NYSDOT I-81 Viaduct Project, Final Environmental Impact Statement, April 2022",
+  "policy_kind": "preset",
+  "policy_db": "data/processed/retrieval/chroma",
+  "neighborhoods": [
+   "Citywide"
+  ],
+  "group_by": "citywide",
+  "rounds": 1,
+  "meeting_text_by": "gpt-4.1-mini, a real model. Simulated.",
+  "vision_rerank": false,
+  "proposed_change": ""
+ },
+ "status": "complete",
+ "residents": [
+  {
+   "resident_id": "r000",
+   "serialno": "2022HU1049665",
+   "sporder": 1,
+   "age": 22,
+   "sex": "Male",
+   "race": "Asian alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "Asian alone, not Hispanic or Latino",
+   "income": 0,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Rented",
+   "disability": "Without a disability",
+   "person_weight": 4,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067003400",
+   "tract_name": "Census Tract 34",
+   "neighborhood": "University Hill",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 22-year-old male living in the University Hill neighborhood. I rent my home and did not commute to work last week. My annual income is $0. I am Asian and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only states facts given in the data without attributing traits or assumptions",
+      "No mention of health, family, job, religion, opinions, or feelings",
+      "Income is stated as yearly and matches the data"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r001",
+   "serialno": "2023HU0892497",
+   "sporder": 1,
+   "age": 34,
+   "sex": "Female",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 46072,
+   "commute": "Car, truck, or van",
+   "tenure": "Rented",
+   "disability": "Without a disability",
+   "person_weight": 28,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067001600",
+   "tract_name": "Census Tract 16",
+   "neighborhood": "Lincoln Hill",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 34-year-old woman living in the Lincoln Hill neighborhood. I rent my home and usually get around by car, truck, or van. My yearly income is $46,072. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without assumptions or added information"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r002",
+   "serialno": "2023GQ0041249",
+   "sporder": 1,
+   "age": 18,
+   "sex": "Male",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 0,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "N/A (lives in group quarters such as a dorm or nursing home)",
+   "disability": "Without a disability",
+   "person_weight": 17,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067001600",
+   "tract_name": "Census Tract 16",
+   "neighborhood": "Lincoln Hill",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am an 18-year-old male living in Lincoln Hill. I live in group quarters. I did not commute to work last week. My yearly income is $0. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r003",
+   "serialno": "2022HU1005376",
+   "sporder": 1,
+   "age": 70,
+   "sex": "Male",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 31505,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Owned free and clear",
+   "disability": "Without a disability",
+   "person_weight": 12,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067000200",
+   "tract_name": "Census Tract 2",
+   "neighborhood": "Washington Square",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 70-year-old male living in the Washington Square neighborhood. I own my home free and clear. Last week, I did not commute to work. My yearly income is $31,505. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r004",
+   "serialno": "2022GQ0138354",
+   "sporder": 1,
+   "age": 18,
+   "sex": "Female",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 0,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "N/A (lives in group quarters such as a dorm or nursing home)",
+   "disability": "Without a disability",
+   "person_weight": 23,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067005602",
+   "tract_name": "Census Tract 56.02",
+   "neighborhood": "South Campus",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am an 18-year-old female living in group quarters near South Campus. I did not commute to work last week. My yearly income is $0. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile states only facts given without assumptions or added details"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r005",
+   "serialno": "2023HU0205122",
+   "sporder": 2,
+   "age": 84,
+   "sex": "Male",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 55412,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Owned free and clear",
+   "disability": "Without a disability",
+   "person_weight": 41,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067006000",
+   "tract_name": "Census Tract 60",
+   "neighborhood": "South Valley",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am an 84-year-old male living in South Valley. I own my home free and clear. I did not commute to work last week. My yearly income is $55,412. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r006",
+   "serialno": "2022HU0058554",
+   "sporder": 1,
+   "age": 31,
+   "sex": "Female",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 10725,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Rented",
+   "disability": "With a disability",
+   "person_weight": 10,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067003500",
+   "tract_name": "Census Tract 35",
+   "neighborhood": "Near Eastside",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 31-year-old female living in the Near Eastside neighborhood. I rent my home and did not commute to work last week. My yearly income is $10,725. I have a disability. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile states only facts given in the data without assumptions or added information"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r007",
+   "serialno": "2024HU0544303",
+   "sporder": 2,
+   "age": 70,
+   "sex": "Male",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 48509,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Owned free and clear",
+   "disability": "Without a disability",
+   "person_weight": 13,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067004600",
+   "tract_name": "Census Tract 46",
+   "neighborhood": "Meadowbrook",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 70-year-old male living in the Meadowbrook neighborhood. I own my home free and clear. I did not commute to work last week. My yearly income is $48,509. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r008",
+   "serialno": "2024HU1186248",
+   "sporder": 1,
+   "age": 36,
+   "sex": "Female",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 81220,
+   "commute": "Worked from home",
+   "tenure": "Owned with mortgage or loan",
+   "disability": "Without a disability",
+   "person_weight": 19,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067002901",
+   "tract_name": "Census Tract 29.01",
+   "neighborhood": "Tipp Hill",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 36-year-old female living in the Tipp Hill neighborhood. I own my home with a mortgage or loan. I usually work from home. My yearly income is $81,220. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r009",
+   "serialno": "2021HU1276649",
+   "sporder": 1,
+   "age": 31,
+   "sex": "Male",
+   "race": "Black or African American alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "Black or African American alone, not Hispanic or Latino",
+   "income": 119324,
+   "commute": "Car, truck, or van",
+   "tenure": "Rented",
+   "disability": "Without a disability",
+   "person_weight": 20,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067006000",
+   "tract_name": "Census Tract 60",
+   "neighborhood": "South Valley",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 31-year-old man living in the South Valley neighborhood. I rent my home and usually commute by car, truck, or van. My yearly income is $119,324. I am Black or African American and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r010",
+   "serialno": "2024GQ0007877",
+   "sporder": 1,
+   "age": 21,
+   "sex": "Male",
+   "race": "Black or African American alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "Black or African American alone, not Hispanic or Latino",
+   "income": 6092,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "N/A (lives in group quarters such as a dorm or nursing home)",
+   "disability": "With a disability",
+   "person_weight": 8,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067006101",
+   "tract_name": "Census Tract 61.01",
+   "neighborhood": "North Valley",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 21-year-old male living in North Valley. I live in group quarters, though the type is not recorded. Last week, I did not commute to work. I have a disability. I am Black or African American and not Hispanic or Latino. My yearly income is $6,092.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r011",
+   "serialno": "2022HU0856214",
+   "sporder": 1,
+   "age": 86,
+   "sex": "Female",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 35527,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Owned with mortgage or loan",
+   "disability": "With a disability",
+   "person_weight": 45,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067000100",
+   "tract_name": "Census Tract 1",
+   "neighborhood": "Franklin Square",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am an 86-year-old female living in Franklin Square. I own my home with a mortgage or loan. Last week, I did not commute to work. My yearly income is $35,527. I have a disability. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile restates facts without adding assumptions or stereotypes",
+      "No attributes assigned based on race, age, sex, or disability beyond stated facts",
+      "No claims about health, family, job, religion, opinions, or feelings"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r012",
+   "serialno": "2022HU1223780",
+   "sporder": 2,
+   "age": 72,
+   "sex": "Male",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 82561,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Owned free and clear",
+   "disability": "Without a disability",
+   "person_weight": 21,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067005601",
+   "tract_name": "Census Tract 56.01",
+   "neighborhood": "University Neighborhood",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 72-year-old male living in the University Neighborhood. I own my home free and clear. Last week, I did not commute to work. My yearly income is $82,561. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r013",
+   "serialno": "2024HU0858596",
+   "sporder": 2,
+   "age": 38,
+   "sex": "Female",
+   "race": "Asian alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "Asian alone, not Hispanic or Latino",
+   "income": 8122,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Owned free and clear",
+   "disability": "Without a disability",
+   "person_weight": 15,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067000200",
+   "tract_name": "Census Tract 2",
+   "neighborhood": "Washington Square",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 38-year-old female living in Washington Square. I own my home free and clear. Last week, I did not commute to work. My yearly income is $8,122. I am Asian and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r014",
+   "serialno": "2020HU0359422",
+   "sporder": 1,
+   "age": 55,
+   "sex": "Male",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 23707,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Rented",
+   "disability": "With a disability",
+   "person_weight": 102,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067004401",
+   "tract_name": "Census Tract 44.01",
+   "neighborhood": "University Neighborhood",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 55-year-old male living in the University Neighborhood. I rent my home and did not commute to work last week. My yearly income is $23,707. I have a disability. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r015",
+   "serialno": "2020HU0470475",
+   "sporder": 1,
+   "age": 26,
+   "sex": "Female",
+   "race": "White alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "White alone, not Hispanic or Latino",
+   "income": 40327,
+   "commute": "Car, truck, or van",
+   "tenure": "Owned with mortgage or loan",
+   "disability": "Without a disability",
+   "person_weight": 26,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067000900",
+   "tract_name": "Census Tract 9",
+   "neighborhood": "Sedgwick",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 26-year-old female living in the Sedgwick neighborhood. I own my home with a mortgage or loan. My yearly income is $40,327. I usually commute by car, truck, or van. I am White and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r016",
+   "serialno": "2020GQ0152355",
+   "sporder": 1,
+   "age": 66,
+   "sex": "Female",
+   "race": "Black or African American alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "Black or African American alone, not Hispanic or Latino",
+   "income": 21996,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "N/A (lives in group quarters such as a dorm or nursing home)",
+   "disability": "With a disability",
+   "person_weight": 11,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067006101",
+   "tract_name": "Census Tract 61.01",
+   "neighborhood": "North Valley",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 66-year-old female living in group quarters in North Valley. I did not commute to work last week. My yearly income is $21,996. I have a disability. I am Black or African American and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r017",
+   "serialno": "2024HU0052376",
+   "sporder": 2,
+   "age": 33,
+   "sex": "Male",
+   "race": "Black or African American alone",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "Black or African American alone, not Hispanic or Latino",
+   "income": 0,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Rented",
+   "disability": "Without a disability",
+   "person_weight": 104,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067004200",
+   "tract_name": "Census Tract 42",
+   "neighborhood": "Southside",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 33-year-old male living in the Southside neighborhood. I rented my home and did not commute to work last week. My yearly income is $0. I am Black or African American and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r018",
+   "serialno": "2023HU1371741",
+   "sporder": 1,
+   "age": 27,
+   "sex": "Male",
+   "race": "Two or More Races",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "Two or More Races, not Hispanic or Latino",
+   "income": 30854,
+   "commute": "Car, truck, or van",
+   "tenure": "Rented",
+   "disability": "Without a disability",
+   "person_weight": 30,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067001800",
+   "tract_name": "Census Tract 18",
+   "neighborhood": "Eastwood",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 27-year-old male living in the Eastwood neighborhood. I rent my home and usually commute by car, truck, or van. My yearly income is $30,854. I identify as Two or More Races and am not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile only restates given facts without adding assumptions or stereotypes"
+     ]
+    }
+   }
+  },
+  {
+   "resident_id": "r019",
+   "serialno": "2024HU0378847",
+   "sporder": 1,
+   "age": 29,
+   "sex": "Female",
+   "race": "Two or More Races",
+   "hispanic_origin": "Not Spanish/Hispanic/Latino",
+   "race_ethnicity": "Two or More Races, not Hispanic or Latino",
+   "income": 0,
+   "commute": "N/A (not a worker, or not at work last week)",
+   "tenure": "Rented",
+   "disability": "With a disability",
+   "person_weight": 50,
+   "state": "36",
+   "puma": "00701",
+   "census_source": "ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums)",
+   "tract": "36067002400",
+   "tract_name": "Census Tract 24",
+   "neighborhood": "Lincoln Hill",
+   "home_draw": "race, ethnicity and tenure",
+   "profile": "I am a 29-year-old female living in the Lincoln Hill neighborhood. I rent my home and did not commute to work last week. My yearly income is $0. I have a disability. I am of Two or More Races and not Hispanic or Latino.",
+   "profile_written_by": "gpt-4.1-mini, a real model (simulated resident)",
+   "simulated": true,
+   "stereotype_review": {
+    "flagged": false,
+    "keyword_flags": [],
+    "llm_review": {
+     "stereotype": false,
+     "invented_facts": false,
+     "reasons": [
+      "Profile states only facts given in the data without assumptions or added information"
+     ]
+    }
+   }
+  }
+ ],
+ "meetings": [
+  {
+   "round": 1,
+   "neighborhood": "Citywide",
+   "agenda": [
+    "Overview of the I-81 Viaduct Project and its objectives",
+    "Environmental impacts and mitigation measures outlined in the Final Environmental Impact Statement",
+    "Potential effects on local traffic patterns and community connectivity",
+    "Opportunities for public input and concerns from residents",
+    "Next steps and timeline for project implementation"
+   ],
+   "transcript": [
+    {
+     "turn": 0,
+     "resident_id": "r000",
+     "neighborhood": "University Hill",
+     "agenda_item": "Overview of the I-81 Viaduct Project and its objectives",
+     "text": "As a renter living in University Hill, I appreciate that the project aims to fix aging infrastructure and improve transportation networks, which are crucial for our community's safety and accessibility (excerpt 1). I am particularly concerned about maintaining East Genesee Street's east-west access since it connects University Hill to Downtown and supports important bike lanes and bus routes I might rely on (excerpt 2). I hope the project carefully balances these improvements without disrupting our neighborhood's connectivity.",
+     "stance": "mixed",
+     "cited_pages": [
+      [
+       "03 Alternatives_April 2022",
+       6
+      ],
+      [
+       "03 Alternatives_April 2022",
+       8
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 1,
+     "resident_id": "r001",
+     "neighborhood": "Lincoln Hill",
+     "agenda_item": "Overview of the I-81 Viaduct Project and its objectives",
+     "text": "As a renter in Lincoln Hill who relies on driving, I appreciate that the I-81 Viaduct Project aims to fix the aging infrastructure and improve transportation safety and efficiency, which affects my daily commute and overall neighborhood connectivity (excerpts 1, 3). However, I am also concerned about any changes that might reduce vehicle access or complicate driving routes, especially since East Genesee Street is a key east-west corridor nearby that supports multiple transportation modes (excerpts 4, 5). I hope the project can enhance the infrastructure without negatively impacting my ability to get around by car.",
+     "stance": "mixed",
+     "cited_pages": [
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       11
+      ],
+      [
+       "01 Introduction_April 2022",
+       2
+      ],
+      [
+       "00 Summary_April 2022",
+       18
+      ],
+      [
+       "03 Alternatives_April 2022",
+       8
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 2,
+     "resident_id": "r002",
+     "neighborhood": "Lincoln Hill",
+     "agenda_item": "Overview of the I-81 Viaduct Project and its objectives",
+     "text": "As a young resident of Lincoln Hill living in group quarters and with no income, I don't drive to work, but I do rely on safe and accessible transportation options around the neighborhood (excerpts 1, 3). I appreciate that the project aims to fix structural deficiencies and improve public safety and mobility, which could benefit my community quality of life and access to key areas like Downtown and University Hill (excerpts 1, 4). However, I hope the plan carefully balances different modes of transport so that improvements do not disrupt existing access for pedestrians and transit users, which I might depend on (excerpts 4, 5).",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       11
+      ],
+      [
+       "03 Alternatives_April 2022",
+       6
+      ],
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       16
+      ],
+      [
+       "07 Final Section 4f Evaluation_April 2022",
+       3
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 3,
+     "resident_id": "r003",
+     "neighborhood": "Washington Square",
+     "agenda_item": "Overview of the I-81 Viaduct Project and its objectives",
+     "text": "As a 70-year-old homeowner in Washington Square, I am glad the I-81 Viaduct Project recognizes the need to fix aging infrastructure and improve the transportation network (excerpts 1 and 2). Since the project will affect areas near Washington Square, I hope it preserves neighborhood character and minimizes disruptions to residents like me (excerpt 3). It is important that improvements balance transit, pedestrian, bike, and car access so the community remains accessible and safe.",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "07 Final Section 4f Evaluation_April 2022",
+       3
+      ],
+      [
+       "03 Alternatives_April 2022",
+       6
+      ],
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       45
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 4,
+     "resident_id": "r004",
+     "neighborhood": "South Campus",
+     "agenda_item": "Environmental impacts and mitigation measures outlined in the Final Environmental Impact Statement",
+     "text": "As an 18-year-old living in group quarters near South Campus with no income, I am particularly concerned about the project's potential impacts on low-income populations like myself within the Environmental Justice Study Area (excerpts 1, 4). I appreciate that the project acknowledges unavoidable short-term construction effects and includes mitigation measures to reduce adverse impacts such as traffic noise and visual disruptions (excerpts 2, 5). I hope these efforts ensure that residents like me are not disproportionately burdened during construction and that communication efforts keep us informed (excerpt 3).",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       25
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       33
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       42
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       1
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       21
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 5,
+     "resident_id": "r005",
+     "neighborhood": "South Valley",
+     "agenda_item": "Environmental impacts and mitigation measures outlined in the Final Environmental Impact Statement",
+     "text": "As an 84-year-old homeowner in South Valley, I appreciate that the I-81 Viaduct Project aims to fix structural deficiencies and improve infrastructure safety (excerpt 3). While I do not commute and own my home free and clear, I am concerned about unavoidable adverse effects during construction, such as noise and visual disruptions, which could affect my daily peace and neighborhood environment (excerpts 2 and 4). I hope the proposed mitigation measures are effective in minimizing these impacts on residents like me.",
+     "stance": "mixed",
+     "cited_pages": [
+      [
+       "06-7 Unavoidable Impacts_April 2022",
+       1
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       25
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       42
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 6,
+     "resident_id": "r006",
+     "neighborhood": "Near Eastside",
+     "agenda_item": "Environmental impacts and mitigation measures outlined in the Final Environmental Impact Statement",
+     "text": "As a renter with a disability living in Near Eastside and a low annual income, I am concerned about the unavoidable short-term construction effects such as noise, visual disruptions, and traffic impacts mentioned in excerpts 1 and 2. These could directly affect my quality of life, especially since I depend on accessible and safe neighborhood conditions. However, I appreciate that the project includes mitigation measures and communication plans to minimize these impacts and keep residents informed, which is crucial for vulnerable populations like myself (excerpt 3). I hope these efforts are effectively implemented to reduce disproportionate burdens on environmental justice populations in my area.",
+     "stance": "mixed",
+     "cited_pages": [
+      [
+       "06-7 Unavoidable Impacts_April 2022",
+       1
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       33
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       25
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 7,
+     "resident_id": "r007",
+     "neighborhood": "Meadowbrook",
+     "agenda_item": "Environmental impacts and mitigation measures outlined in the Final Environmental Impact Statement",
+     "text": "As a 70-year-old homeowner in Meadowbrook, I appreciate that the I-81 Viaduct Project acknowledges some adverse environmental impacts cannot be fully avoided, especially noise and visual disruptions during construction (excerpts 1 and 2). Although I don't commute, these disturbances could affect my quality of life at home. I am encouraged that there are mitigation measures planned to minimize these effects and hope they are effectively implemented to protect residents like me (excerpt 3).",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-7 Unavoidable Impacts_April 2022",
+       1
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       33
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       25
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 8,
+     "resident_id": "r008",
+     "neighborhood": "Tipp Hill",
+     "agenda_item": "Potential effects on local traffic patterns and community connectivity",
+     "text": "As a homeowner working from home in Tipp Hill, I am particularly interested in how the removal of the existing I-81 viaduct, which is currently a barrier, could improve pedestrian and bicycle connectivity between neighborhoods, potentially making it easier and safer for me to enjoy local walks or bike rides (excerpts 1, 3, 4). I also appreciate that the project intends to improve connections between Downtown and University Hill, which could enhance overall community cohesion and access to job centers. However, I remain cautious about potential traffic pattern changes and hope the project will maintain efficient vehicle movement to avoid inconveniencing residents who rely on driving (excerpts 4, 5).",
+     "stance": "mixed",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       16
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       25
+      ],
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       27
+      ],
+      [
+       "06-3-2 EC-Local and Regional Economy_April 2022",
+       22
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 9,
+     "resident_id": "r009",
+     "neighborhood": "South Valley",
+     "agenda_item": "Potential effects on local traffic patterns and community connectivity",
+     "text": "As a South Valley resident who rents and drives regularly, I am encouraged by the Community Grid Alternative's potential to improve neighborhood cohesion and local street connections without displacing residents (excerpt 1). However, I am concerned about how changes in traffic patterns might affect my daily commute, so I appreciate the project's focus on dispersing traffic through improved signal coordination and street network enhancements to maintain efficient vehicle movement (excerpt 5). These measures are crucial for those of us who rely on car travel while also aiming for better community connectivity.",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "00 Summary_April 2022",
+       26
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 10,
+     "resident_id": "r010",
+     "neighborhood": "North Valley",
+     "agenda_item": "Potential effects on local traffic patterns and community connectivity",
+     "text": "As someone living in group quarters in North Valley with a disability and a very low income, I am concerned about how changes to traffic patterns might affect my daily life, especially if construction causes disruptions or reduces access to transit and pedestrian routes. I appreciate that the Community Grid Alternative aims to improve neighborhood cohesion and pedestrian and bicycle connections without displacing residents, which is important for accessibility and safety for people like me (excerpts 1 and 5). However, I hope the project carefully manages traffic during construction to avoid making travel more difficult for those who rely on local streets and transit.",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "08 Summary of Alternatives_April 2022",
+       11
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 11,
+     "resident_id": "r011",
+     "neighborhood": "Franklin Square",
+     "agenda_item": "Potential effects on local traffic patterns and community connectivity",
+     "text": "As an 86-year-old homeowner with a disability living in Franklin Square, I am concerned about how the project might alter local land uses and neighborhood character, especially since some vacant or parking areas near me could change to transportation right-of-way. However, I am reassured that these changes are not expected to adversely impact our neighborhood's land use or services (excerpts 2 and 3). I hope the project also carefully manages traffic disruptions during construction, as I rely on safe and accessible local streets for my mobility.",
+     "stance": "mixed",
+     "cited_pages": [
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       58
+      ],
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       45
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 12,
+     "resident_id": "r012",
+     "neighborhood": "University Neighborhood",
+     "agenda_item": "Opportunities for public input and concerns from residents",
+     "text": "As a homeowner in University Neighborhood, I appreciate that the Community Grid Alternative aims to improve neighborhood cohesion and enhance pedestrian and bicycle connections without displacing residents (excerpts 2, 4). Since I do not commute to work regularly, improved local connections and safer walkways would benefit me by making it easier to get around my neighborhood. However, I am still concerned about how the changes might affect parking availability, especially since there could be losses in public off-street parking spaces (excerpt 1). I hope mitigation efforts will sufficiently address these impacts to avoid inconvenience.",
+     "stance": "mixed",
+     "cited_pages": [
+      [
+       "05 Transportation and Engineering Considerations_April 2022",
+       211
+      ],
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       16
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 13,
+     "resident_id": "r013",
+     "neighborhood": "Washington Square",
+     "agenda_item": "Opportunities for public input and concerns from residents",
+     "text": "As a homeowner in Washington Square who does not commute regularly, I appreciate that the Community Grid Alternative aims to improve neighborhood cohesion and enhance pedestrian and bicycle connections without displacing residents, which would benefit me by making it easier to get around my neighborhood (excerpt 1). I am also reassured that changes to vacant or parking areas being converted to transportation right-of-way are not expected to adversely impact land uses in our neighborhood (excerpt 4). However, I remain concerned about the potential loss of public off-street parking spaces and hope that mitigation efforts will adequately address this issue (excerpt 3).",
+     "stance": "mixed",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "05 Transportation and Engineering Considerations_April 2022",
+       211
+      ],
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       58
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 14,
+     "resident_id": "r014",
+     "neighborhood": "University Neighborhood",
+     "agenda_item": "Opportunities for public input and concerns from residents",
+     "text": "As a renter with a disability living in University Neighborhood and not commuting to work, I appreciate that the Community Grid Alternative aims to improve neighborhood cohesion and enhance pedestrian and bicycle connections without displacing residents, which is important for my mobility and independence (excerpts 1, 4, 5). However, I am concerned about the potential loss of public off-street parking spaces, as parking is already limited and important for my accessibility needs. I hope that mitigation efforts will adequately address this issue to ensure I can continue to access my neighborhood safely and conveniently (excerpt 2).",
+     "stance": "mixed",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "05 Transportation and Engineering Considerations_April 2022",
+       211
+      ],
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       16
+      ],
+      [
+       "06-3-1 LandAcqDisplRelocated_April 2022",
+       34
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 15,
+     "resident_id": "r015",
+     "neighborhood": "Sedgwick",
+     "agenda_item": "Opportunities for public input and concerns from residents",
+     "text": "As a homeowner in Sedgwick who depends on driving for my commute, I am concerned about the potential loss of public off-street parking spaces under the Community Grid Alternative, which could make parking more difficult for me and my guests (excerpt 1). However, I appreciate that the project aims to improve neighborhood cohesion and pedestrian and bicycle connectivity without displacing residents, which could enhance our community overall (excerpt 2). I hope mitigation plans for parking impacts will be sufficient to address the losses and maintain convenient access for drivers like me.",
+     "stance": "mixed",
+     "cited_pages": [
+      [
+       "05 Transportation and Engineering Considerations_April 2022",
+       211
+      ],
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 16,
+     "resident_id": "r016",
+     "neighborhood": "North Valley",
+     "agenda_item": "Next steps and timeline for project implementation",
+     "text": "As a resident with a disability living in group quarters here in North Valley, I am particularly concerned about the construction timeline and how the six-year duration (excerpt 1) might disrupt my access to necessary services and transportation. Since I do not commute to work, reliable neighborhood connections and clear communication about detours or accessibility changes during construction are essential for me to maintain independence. I support efforts to minimize disruption, but I hope the outreach plan will truly keep residents like me informed and supported throughout the project.",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       16
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 17,
+     "resident_id": "r017",
+     "neighborhood": "Southside",
+     "agenda_item": "Next steps and timeline for project implementation",
+     "text": "As a renter in Southside with no income and no commute, the project's focus on maintaining and enhancing pedestrian and bicycle connections without displacing residents is very important to me, as it could improve how I move around my neighborhood safely and affordably (excerpt 2). However, I am concerned about the long six-year construction period and how disruptions might affect access to essential services and neighborhood connectivity. I appreciate that NYSDOT plans a communication and outreach plan to keep residents informed and mitigate impacts during construction (excerpts 1, 3). I hope these measures will truly support residents like me who rely on neighborhood access and clear information.",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "03 Alternatives_April 2022",
+       9
+      ],
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       16
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 18,
+     "resident_id": "r018",
+     "neighborhood": "Eastwood",
+     "agenda_item": "Next steps and timeline for project implementation",
+     "text": "As a renter in Eastwood who commutes by car, I am concerned about how the six-year construction timeline might affect my daily commute and parking availability. I appreciate that the project includes a Traffic Management Plan with strategies like retimed signals and designated truck routes to help manage traffic flow and minimize disruptions (excerpts 1, 3). However, I hope the plan also addresses maintaining convenient parking options for residents like me, since losing parking spaces would make commuting and daily errands much harder. Clear communication during construction will be key to planning my trips effectively (excerpt 2).",
+     "stance": "mixed",
+     "cited_pages": [
+      [
+       "00 Summary_April 2022",
+       34
+      ],
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "04 Construction Means and Methods_April 2022",
+       52
+      ]
+     ],
+     "simulated": true
+    },
+    {
+     "turn": 19,
+     "resident_id": "r019",
+     "neighborhood": "Lincoln Hill",
+     "agenda_item": "Next steps and timeline for project implementation",
+     "text": "As a renter with a disability in Lincoln Hill and no income, the six-year construction timeline worries me because disruptions could affect my ability to access essential services and move safely within my neighborhood. I appreciate that NYSDOT plans a communication and outreach plan to keep residents informed and provide new connections if current routes are disrupted, which is crucial for me to maintain independence during construction (excerpts 1, 4). However, I hope the Traffic Management Plan also considers accessibility needs, so I don't face additional barriers while the work is ongoing (excerpts 2, 3).",
+     "stance": "support",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       16
+      ],
+      [
+       "00 Summary_April 2022",
+       34
+      ],
+      [
+       "04 Construction Means and Methods_April 2022",
+       52
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       41
+      ]
+     ],
+     "simulated": true
+    }
+   ],
+   "summary": "A renter with a disability from University Neighborhood appreciated the Community Grid Alternative's focus on neighborhood cohesion and connectivity without displacement but raised concerns about potential loss of public off-street parking spaces and the need for adequate mitigation for accessibility. Homeowners from University Neighborhood and Washington Square also expressed concerns about parking losses and mitigation. An 86-year-old homeowner from Franklin Square was reassured about minimal adverse impacts despite concerns about land use changes. A Sedgwick homeowner who commutes by car shared similar parking concerns but supported the project's goals. A North Valley resident with a disability living in group quarters highlighted concerns about the six-year construction timeline disrupting access to services and transportation, emphasizing the need for reliable neighborhood connections and effective communication about detours and accessibility changes to maintain independence. A renter in Southside with no income and no commute valued the project's focus on enhancing pedestrian and bicycle connections without displacement but expressed concern about the lengthy construction period's impact on access to essential services and neighborhood connectivity, appreciating NYSDOT's planned communication and outreach efforts to support residents reliant on neighborhood access and clear information. A renter in Eastwood who commutes by car expressed concern about the six-year construction timeline affecting daily commute and parking availability, appreciating the Traffic Management Plan's strategies to manage traffic flow but hoping it also ensures convenient parking options and clear communication during construction for effective trip planning. A renter with a disability and no income from Lincoln Hill echoed concerns about the six-year construction timeline disrupting access to essential services and safe neighborhood movement, valuing NYSDOT's communication and outreach plans but urging that the Traffic Management Plan specifically address accessibility needs to prevent additional barriers during construction. Overall, residents stressed managing construction disruptions, preserving neighborhood character, and ensuring clear communication and mitigation for accessibility.",
+   "comments": [
+    {
+     "resident_id": "r000",
+     "neighborhood": "University Hill",
+     "text": "As a renter with no income living in University Hill, I appreciate that the Community Grid Alternative aims to improve pedestrian and bicycle connections without displacing residents, which is important for neighborhood cohesion and accessibility (2). However, I am concerned about the significant loss of public off-street parking spaces and hope that mitigation efforts will adequately address this impact to maintain access for all residents (3). Additionally, the lengthy construction timeline worries me because it could disrupt access to essential services and neighborhood connectivity, so clear communication and support during this period are crucial. Overall, I support the project's goals but remain cautiously optimistic about how these challenges will be managed.",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "05 Transportation and Engineering Considerations_April 2022",
+       211
+      ]
+     ],
+     "stance": "mixed",
+     "simulated": true
+    },
+    {
+     "resident_id": "r001",
+     "neighborhood": "Lincoln Hill",
+     "text": "As a renter in Lincoln Hill who relies on a car for commuting, I see both benefits and concerns with the Community Grid Alternative. I appreciate that it aims to improve neighborhood cohesion and pedestrian connections without displacing residents, which is important for community stability and accessibility [1, 2]. However, I am worried about the significant loss of public off-street parking spaces and hope that mitigation efforts will ensure convenient parking options during and after construction [3]. Additionally, the six-year timeline for construction raises concerns about disruptions to access and travel that need clear communication and accessibility accommodations to avoid barriers [1]. Overall, I support the project's goals but urge careful management of parking and construction impacts for renters like me.",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "06-3-1 LandAcqDisplRelocated_April 2022",
+       34
+      ],
+      [
+       "05 Transportation and Engineering Considerations_April 2022",
+       211
+      ]
+     ],
+     "stance": "mixed",
+     "simulated": true
+    },
+    {
+     "resident_id": "r002",
+     "neighborhood": "Lincoln Hill",
+     "text": "As a resident of Lincoln Hill who relies heavily on neighborhood access and clear communication, I support the Community Grid Alternative because it prioritizes improved pedestrian and bicycle connections and enhances neighborhood cohesion without displacing residents (2, 5). I appreciate that no residents will be displaced and that efforts have been made to minimize property acquisitions (1). While I understand there will be some loss of public parking spaces, I trust that mitigation measures will be implemented to address this issue (3). I urge that the Traffic Management Plan specifically address accessibility needs during the six-year construction period to ensure continued access to essential services and safe movement within our neighborhood.",
+     "cited_pages": [
+      [
+       "06-3-1 LandAcqDisplRelocated_April 2022",
+       34
+      ],
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "05 Transportation and Engineering Considerations_April 2022",
+       211
+      ],
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       55
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r003",
+     "neighborhood": "Washington Square",
+     "text": "As a longtime homeowner in Washington Square, I support the Community Grid Alternative because it aims to improve neighborhood cohesion and connectivity without displacing residents, which is important to maintaining our community character [4]. I appreciate that the project will not adversely impact land use patterns in our neighborhood, as vacant and surface parking spaces will be converted thoughtfully without disrupting the balance of uses [2]. While I understand concerns about parking losses, I am reassured by NYSDOT's commitment to mitigation measures to address these impacts [5]. Overall, I believe this project will enhance our neighborhood while preserving what makes it special.",
+     "cited_pages": [
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       58
+      ],
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "05 Transportation and Engineering Considerations_April 2022",
+       135
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r004",
+     "neighborhood": "South Campus",
+     "text": "As a young renter living near South Campus with no income and no commute, I strongly support the Community Grid Alternative because it improves neighborhood cohesion and connectivity without displacing residents like me. I appreciate that the plan enhances pedestrian and bicycle amenities, making it safer and easier to get around our neighborhoods on foot or by bike. While I am concerned about the long construction timeline, I am reassured by NYSDOT's commitment to clear communication and outreach to support residents' access to essential services during this period. Overall, this project aligns with my hope for a more connected and accessible community. (Citing excerpts 1, 3, and the meeting summary)",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       55
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r005",
+     "neighborhood": "South Valley",
+     "text": "As an 84-year-old homeowner in South Valley, I appreciate that the Community Grid Alternative aims to improve neighborhood cohesion and pedestrian connections without displacing residents, which is reassuring for those of us who value stability and community continuity [2, 4]. However, I am concerned about the significant loss of public off-street parking spaces, which could affect accessibility for seniors like me who may rely on convenient parking options [5]. The project’s communication and mitigation plans for construction impacts will be critical, especially given the lengthy timeline, to ensure that neighborhood access and services remain manageable during construction. I support the goals but urge careful attention to parking and accessibility during implementation.",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "06-3-1 LandAcqDisplRelocated_April 2022",
+       33
+      ],
+      [
+       "05 Transportation and Engineering Considerations_April 2022",
+       211
+      ]
+     ],
+     "stance": "mixed",
+     "simulated": true
+    },
+    {
+     "resident_id": "r006",
+     "neighborhood": "Near Eastside",
+     "text": "As a renter with a disability living in Near Eastside, I appreciate the Community Grid Alternative's focus on improving neighborhood cohesion and pedestrian and bicycle connections without causing displacement, which is very important for residents like me [1]. However, I share concerns raised about potential parking losses and the long construction timeline possibly disrupting access to essential services and neighborhoods, which could be especially challenging given my mobility needs [3]. I urge NYSDOT to ensure that the Traffic Management Plan includes specific measures addressing accessibility and clear communication to minimize barriers during construction [3]. Overall, I support the project's goals but hope these concerns are adequately mitigated.",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       50
+      ]
+     ],
+     "stance": "mixed",
+     "simulated": true
+    },
+    {
+     "resident_id": "r007",
+     "neighborhood": "Meadowbrook",
+     "text": "As a homeowner in Meadowbrook, I support the Community Grid Alternative because it focuses on improving neighborhood cohesion and connectivity without displacing residents, which is important for preserving our community's character and stability [4]. While I understand there are concerns about parking losses, the plan includes mitigation measures such as adding on-street parking spaces to offset some of the off-street losses [5]. This approach balances the need for infrastructure improvement with maintaining accessibility, which is reassuring for residents like me. I appreciate the efforts to enhance pedestrian and bicycle amenities, which can improve quality of life in our neighborhood.",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "05 Transportation and Engineering Considerations_April 2022",
+       211
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r008",
+     "neighborhood": "Tipp Hill",
+     "text": "As a homeowner in Tipp Hill who works from home, I appreciate the Community Grid Alternative's focus on improving neighborhood cohesion and pedestrian connections without displacing residents, which is important for maintaining our community character (3, 5). However, I am concerned about the significant loss of public off-street parking spaces and the adequacy of mitigation measures, since parking availability is crucial for residents like me who occasionally have visitors (1). I support the project's goals but urge NYSDOT to ensure effective mitigation for parking impacts and clear communication throughout the lengthy construction period to minimize disruptions.",
+     "cited_pages": [
+      [
+       "05 Transportation and Engineering Considerations_April 2022",
+       211
+      ],
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "06-3-1 LandAcqDisplRelocated_April 2022",
+       34
+      ]
+     ],
+     "stance": "mixed",
+     "simulated": true
+    },
+    {
+     "resident_id": "r009",
+     "neighborhood": "South Valley",
+     "text": "As a renter commuting by car in South Valley, I support the Community Grid Alternative because it improves neighborhood cohesion without displacing residents, which is important for maintaining our community stability [1, 4]. I appreciate the improved pedestrian and bicycle connections and the plan's alignment with pedestrian-friendly development goals [2]. While I understand concerns about parking loss, I trust that NYSDOT's mitigation measures and traffic management plan will address these issues to minimize disruption during construction [5]. Overall, this project balances transportation improvements with neighborhood character preservation.",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       55
+      ],
+      [
+       "06-3-1 LandAcqDisplRelocated_April 2022",
+       33
+      ],
+      [
+       "05 Transportation and Engineering Considerations_April 2022",
+       211
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r010",
+     "neighborhood": "North Valley",
+     "text": "As a North Valley resident with a disability living in group quarters, I support the Community Grid Alternative because it prioritizes neighborhood cohesion and connectivity without causing displacement, which is crucial for maintaining stability in our community [3, 5]. I appreciate the project's focus on improving pedestrian and bicycle amenities and enhancing access to local services, which will help me maintain my independence during and after construction [5]. However, I urge NYSDOT to ensure effective communication about detours and accessibility changes throughout the six-year construction timeline to minimize disruptions to essential services and transportation [1].",
+     "cited_pages": [
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       50
+      ],
+      [
+       "06-3-1 LandAcqDisplRelocated_April 2022",
+       33
+      ],
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r011",
+     "neighborhood": "Franklin Square",
+     "text": "As an 86-year-old homeowner in Franklin Square, I am reassured to learn that the Community Grid Alternative is considered compatible with our neighborhood's visual and land use character, with only minor adverse visual changes and no expected impacts to current land uses, including parking (excerpts 1 and 2). While I understand concerns about construction disruptions, I appreciate that the project aims to preserve neighborhood cohesion and historic sites like the Remington Monarch Typewriter Company Building (excerpts 3 and 4). Overall, I support the project’s goals but hope that mitigation efforts carefully address accessibility and parking impacts during the lengthy construction period.",
+     "cited_pages": [
+      [
+       "06-4-3 Visual_April 2022",
+       71
+      ],
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       58
+      ],
+      [
+       "07 Final Section 4f Evaluation_April 2022",
+       46
+      ],
+      [
+       "07 Final Section 4f Evaluation_April 2022",
+       31
+      ]
+     ],
+     "stance": "mixed",
+     "simulated": true
+    },
+    {
+     "resident_id": "r012",
+     "neighborhood": "University Neighborhood",
+     "text": "I appreciate that the Community Grid Alternative aims to improve neighborhood cohesion and pedestrian and bicycle connections without displacing residents, which is very important for maintaining our community's character [1]. However, I am concerned about the significant loss of public off-street parking spaces, which affects many homeowners like myself who rely on parking availability [4]. While the mitigation plans are noted, I hope they are fully effective in addressing these impacts. The project's goals are commendable, but the long construction period and parking challenges give me mixed feelings about the overall outcome.",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "05 Transportation and Engineering Considerations_April 2022",
+       211
+      ]
+     ],
+     "stance": "mixed",
+     "simulated": true
+    },
+    {
+     "resident_id": "r013",
+     "neighborhood": "Washington Square",
+     "text": "As a homeowner in Washington Square, I appreciate that the Community Grid Alternative aims to preserve neighborhood character and improve connectivity without displacing residents, which is very important to me and my community [3]. However, I am concerned about the significant loss of public off-street parking spaces (around 1,089) and how this will affect parking availability near my home [5]. I hope that mitigation efforts will ensure sufficient parking options and clear communication throughout the lengthy construction period. While I support the project's goals of enhancing neighborhood cohesion, these practical concerns leave me with mixed feelings about the overall impact.",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "05 Transportation and Engineering Considerations_April 2022",
+       211
+      ]
+     ],
+     "stance": "mixed",
+     "simulated": true
+    },
+    {
+     "resident_id": "r014",
+     "neighborhood": "University Neighborhood",
+     "text": "As a renter with a disability living in the University Neighborhood, I appreciate that the Community Grid Alternative focuses on improving neighborhood cohesion and connectivity without displacing residents, which is very important to me and my community [1][2]. However, I am concerned about the significant loss of public off-street parking spaces and hope that mitigation measures are effective to address this impact [3]. I also urge that accessibility needs be prioritized throughout construction and that clear communication is maintained to minimize disruptions to essential services and neighborhood access during the multi-year timeline [1]. Overall, while I support the goals of improved connectivity, I have mixed feelings due to concerns about parking and accessibility during construction.",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "06-3-1 LandAcqDisplRelocated_April 2022",
+       34
+      ],
+      [
+       "05 Transportation and Engineering Considerations_April 2022",
+       211
+      ]
+     ],
+     "stance": "mixed",
+     "simulated": true
+    },
+    {
+     "resident_id": "r015",
+     "neighborhood": "Sedgwick",
+     "text": "As a homeowner in Sedgwick who commutes by car, I appreciate the Community Grid Alternative's focus on improving neighborhood cohesion and pedestrian and bicycle connections without displacing residents, as outlined in excerpts [1] and [5]. However, I share concerns raised by others about potential impacts on parking availability and the need for effective communication during the lengthy construction period to minimize disruptions. I support the project's goals but hope the implementation carefully addresses these practical issues to preserve neighborhood character and commute convenience.",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "06-2-1 Neighborhood Character_April 2022",
+       55
+      ]
+     ],
+     "stance": "mixed",
+     "simulated": true
+    },
+    {
+     "resident_id": "r016",
+     "neighborhood": "North Valley",
+     "text": "As a North Valley resident with a disability living in group quarters, I support the Community Grid Alternative because it prioritizes maintaining neighborhood cohesion and connectivity without displacing residents like me. I am pleased that the plan acknowledges the importance of reliable neighborhood connections and includes strategies for effective communication about detours and accessibility changes during the six-year construction period, which is essential for people with disabilities to maintain their independence. I appreciate NYSDOT's commitment to addressing environmental justice concerns and minimizing adverse impacts on minority and low-income communities in the project area.",
+     "cited_pages": [
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       50
+      ],
+      [
+       "06-3-1 LandAcqDisplRelocated_April 2022",
+       33
+      ],
+      [
+       "08 Summary of Alternatives_April 2022",
+       6
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r017",
+     "neighborhood": "Southside",
+     "text": "As a renter in Southside with no income and no commute, I support the Community Grid Alternative because it improves pedestrian and bicycle connections without displacing residents, which is important for neighborhood cohesion and accessibility (excerpt 1). I appreciate the project's focus on maintaining neighborhood connectivity and NYSDOT's commitment to communication and outreach to help residents like me during the lengthy construction period (excerpt 2). This plan offers a positive vision for our neighborhood's future with improved local connections and economic potential (excerpts 3 and 4).",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "06-2-3 Environmental Justice_April 2022",
+       50
+      ],
+      [
+       "06-3-1 LandAcqDisplRelocated_April 2022",
+       34
+      ],
+      [
+       "06-3-2 EC-Local and Regional Economy_April 2022",
+       25
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    },
+    {
+     "resident_id": "r018",
+     "neighborhood": "Eastwood",
+     "text": "As a renter in Eastwood who commutes by car, I appreciate that the Community Grid Alternative aims to improve neighborhood cohesion and pedestrian/bicycle connections without displacing residents [1]. However, I am concerned about the significant loss of public off-street parking spaces and hope that mitigation strategies will ensure convenient parking options during the lengthy six-year construction period [2]. I also value that the Traffic Management Plan includes strategies to manage traffic flow, but I urge the plan to prioritize clear communication about parking and detours to help residents like me effectively plan daily commutes [2]. Overall, I support the project's goals but remain cautious about construction impacts on accessibility and parking availability.",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "05 Transportation and Engineering Considerations_April 2022",
+       211
+      ]
+     ],
+     "stance": "mixed",
+     "simulated": true
+    },
+    {
+     "resident_id": "r019",
+     "neighborhood": "Lincoln Hill",
+     "text": "As a renter with a disability in Lincoln Hill, I support the Community Grid Alternative because it improves neighborhood cohesion and pedestrian connections without displacing residents, which is very important for our community's stability and accessibility [2]. I appreciate that although some public off-street parking spaces will be lost, there are mitigation plans in place to address these impacts [4]. It is crucial that the Traffic Management Plan specifically considers accessibility needs during the six-year construction period to ensure no additional barriers arise for residents like me. Overall, the focus on maintaining access and connectivity while minimizing displacement aligns well with the needs of vulnerable populations in our neighborhood.",
+     "cited_pages": [
+      [
+       "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+       15
+      ],
+      [
+       "05 Transportation and Engineering Considerations_April 2022",
+       211
+      ]
+     ],
+     "stance": "support",
+     "simulated": true
+    }
+   ],
+   "stance_changes": 20,
+   "parse_failures": 0
+  }
+ ],
+ "report": {
+  "label": "SIMULATED: written by an AI resident, not a real person and not public input. Topics tagged by gpt-4.1, the tagger used on the real comments. Population shares: ACS 2024 5 year PUMS (2020 to 2024), Census API (https://api.census.gov/data/2024/acs/acs5/pums); tract counts: ACS 2024 5 year B01003, B03002, B25008, B26001, Census API; tracts in the PUMA: Census 2020 tract to PUMA relationship file; population centers: Census 2020; neighborhoods: City of Syracuse open data.",
+  "residents": 20,
+  "comments": 20,
+  "reach": [
+   {
+    "dimension": "age_band",
+    "group": "45 to 64",
+    "simulated_residents": 1,
+    "expected_residents": 4.92,
+    "population_share": 0.2458,
+    "reasons": [
+     "underrepresented: 1 simulated residents where its population share implies 4.9",
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Northside",
+    "simulated_residents": 0,
+    "expected_residents": 2.14,
+    "population_share": 0.1072,
+    "reasons": [
+     "no simulated resident, though the group is 10.7% of the population"
+    ]
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Hispanic or Latino",
+    "simulated_residents": 0,
+    "expected_residents": 1.67,
+    "population_share": 0.0836,
+    "reasons": [
+     "no simulated resident, though the group is 8.4% of the population"
+    ]
+   },
+   {
+    "dimension": "commute",
+    "group": "Walked",
+    "simulated_residents": 0,
+    "expected_residents": 0.95,
+    "population_share": 0.0477,
+    "reasons": [
+     "no simulated resident, though the group is 4.8% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Near Westside",
+    "simulated_residents": 0,
+    "expected_residents": 0.9,
+    "population_share": 0.0451,
+    "reasons": [
+     "no simulated resident, though the group is 4.5% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Brighton",
+    "simulated_residents": 0,
+    "expected_residents": 0.88,
+    "population_share": 0.0442,
+    "reasons": [
+     "no simulated resident, though the group is 4.4% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Eastwood",
+    "simulated_residents": 1,
+    "expected_residents": 1.83,
+    "population_share": 0.0916,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Court-Woodlawn",
+    "simulated_residents": 0,
+    "expected_residents": 0.77,
+    "population_share": 0.0386,
+    "reasons": [
+     "no simulated resident, though the group is 3.9% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "University Hill",
+    "simulated_residents": 1,
+    "expected_residents": 1.65,
+    "population_share": 0.0823,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Salt Springs",
+    "simulated_residents": 0,
+    "expected_residents": 0.63,
+    "population_share": 0.0314,
+    "reasons": [
+     "no simulated resident, though the group is 3.1% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Strathmore",
+    "simulated_residents": 0,
+    "expected_residents": 0.55,
+    "population_share": 0.0276,
+    "reasons": [
+     "no simulated resident, though the group is 2.8% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Elmwood",
+    "simulated_residents": 0,
+    "expected_residents": 0.54,
+    "population_share": 0.0268,
+    "reasons": [
+     "no simulated resident, though the group is 2.7% of the population"
+    ]
+   },
+   {
+    "dimension": "commute",
+    "group": "Bus",
+    "simulated_residents": 0,
+    "expected_residents": 0.49,
+    "population_share": 0.0247,
+    "reasons": [
+     "no simulated resident, though the group is 2.5% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Downtown",
+    "simulated_residents": 0,
+    "expected_residents": 0.45,
+    "population_share": 0.0226,
+    "reasons": [
+     "no simulated resident, though the group is 2.3% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Outer Comstock",
+    "simulated_residents": 0,
+    "expected_residents": 0.45,
+    "population_share": 0.0223,
+    "reasons": [
+     "no simulated resident, though the group is 2.2% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Park Ave.",
+    "simulated_residents": 0,
+    "expected_residents": 0.33,
+    "population_share": 0.0165,
+    "reasons": [
+     "no simulated resident, though the group is 1.7% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Skunk City",
+    "simulated_residents": 0,
+    "expected_residents": 0.31,
+    "population_share": 0.0154,
+    "reasons": [
+     "no simulated resident, though the group is 1.5% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Westcott",
+    "simulated_residents": 0,
+    "expected_residents": 0.28,
+    "population_share": 0.0138,
+    "reasons": [
+     "no simulated resident, though the group is 1.4% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Far Westside",
+    "simulated_residents": 0,
+    "expected_residents": 0.27,
+    "population_share": 0.0136,
+    "reasons": [
+     "no simulated resident, though the group is 1.4% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Southwest",
+    "simulated_residents": 0,
+    "expected_residents": 0.25,
+    "population_share": 0.0123,
+    "reasons": [
+     "no simulated resident, though the group is 1.2% of the population"
+    ]
+   },
+   {
+    "dimension": "income_band",
+    "group": "$100,000 and over",
+    "simulated_residents": 1,
+    "expected_residents": 1.24,
+    "population_share": 0.0621,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Prospect Hill",
+    "simulated_residents": 0,
+    "expected_residents": 0.23,
+    "population_share": 0.0114,
+    "reasons": [
+     "no simulated resident, though the group is 1.1% of the population"
+    ]
+   },
+   {
+    "dimension": "commute",
+    "group": "Worked from home",
+    "simulated_residents": 1,
+    "expected_residents": 1.22,
+    "population_share": 0.0612,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Winkworth",
+    "simulated_residents": 0,
+    "expected_residents": 0.19,
+    "population_share": 0.0093,
+    "reasons": [
+     "no simulated resident, though the group is 0.9% of the population"
+    ]
+   },
+   {
+    "dimension": "commute",
+    "group": "Other method",
+    "simulated_residents": 0,
+    "expected_residents": 0.18,
+    "population_share": 0.0091,
+    "reasons": [
+     "no simulated resident, though the group is 0.9% of the population"
+    ]
+   },
+   {
+    "dimension": "tenure",
+    "group": "Occupied without payment of rent",
+    "simulated_residents": 0,
+    "expected_residents": 0.18,
+    "population_share": 0.0091,
+    "reasons": [
+     "no simulated resident, though the group is 0.9% of the population"
+    ]
+   },
+   {
+    "dimension": "commute",
+    "group": "Taxi or ride hailing services",
+    "simulated_residents": 0,
+    "expected_residents": 0.14,
+    "population_share": 0.0068,
+    "reasons": [
+     "no simulated resident, though the group is 0.7% of the population"
+    ]
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Some Other Race alone, not Hispanic or Latino",
+    "simulated_residents": 0,
+    "expected_residents": 0.09,
+    "population_share": 0.0043,
+    "reasons": [
+     "no simulated resident, though the group is 0.4% of the population"
+    ]
+   },
+   {
+    "dimension": "commute",
+    "group": "Bicycle",
+    "simulated_residents": 0,
+    "expected_residents": 0.08,
+    "population_share": 0.0041,
+    "reasons": [
+     "no simulated resident, though the group is 0.4% of the population"
+    ]
+   },
+   {
+    "dimension": "commute",
+    "group": "Subway or elevated rail",
+    "simulated_residents": 0,
+    "expected_residents": 0.07,
+    "population_share": 0.0034,
+    "reasons": [
+     "no simulated resident, though the group is 0.3% of the population"
+    ]
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "American Indian alone, not Hispanic or Latino",
+    "simulated_residents": 0,
+    "expected_residents": 0.05,
+    "population_share": 0.0025,
+    "reasons": [
+     "no simulated resident, though the group is 0.2% of the population"
+    ]
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "American Indian and Alaska Native tribes specified, or not specified and no other races, not Hispanic or Latino",
+    "simulated_residents": 0,
+    "expected_residents": 0.02,
+    "population_share": 0.0012,
+    "reasons": [
+     "no simulated resident, though the group is 0.1% of the population"
+    ]
+   },
+   {
+    "dimension": "commute",
+    "group": "Motorcycle",
+    "simulated_residents": 0,
+    "expected_residents": 0.01,
+    "population_share": 0.0004,
+    "reasons": [
+     "no simulated resident, though the group is 0.0% of the population"
+    ]
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Native Hawaiian and Other Pacific Islander alone, not Hispanic or Latino",
+    "simulated_residents": 0,
+    "expected_residents": 0.0,
+    "population_share": 0.0002,
+    "reasons": [
+     "no simulated resident, though the group is 0.0% of the population"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Campus",
+    "simulated_residents": 1,
+    "expected_residents": 0.71,
+    "population_share": 0.0357,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Southside",
+    "simulated_residents": 1,
+    "expected_residents": 0.66,
+    "population_share": 0.0331,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Meadowbrook",
+    "simulated_residents": 1,
+    "expected_residents": 0.61,
+    "population_share": 0.0303,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Tipp Hill",
+    "simulated_residents": 1,
+    "expected_residents": 0.59,
+    "population_share": 0.0297,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Sedgwick",
+    "simulated_residents": 1,
+    "expected_residents": 0.47,
+    "population_share": 0.0234,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Near Eastside",
+    "simulated_residents": 1,
+    "expected_residents": 0.3,
+    "population_share": 0.0151,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Franklin Square",
+    "simulated_residents": 1,
+    "expected_residents": 0.17,
+    "population_share": 0.0084,
+    "reasons": [
+     "only one simulated resident speaks for this group"
+    ]
+   }
+  ],
+  "matrix": [
+   {
+    "dimension": "neighborhood",
+    "group": "University Hill",
+    "code": "2",
+    "topic": "Project Purpose, Objectives, and Need",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "University Hill",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "University Hill",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "University Hill",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "University Hill",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Lincoln Hill",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 3
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Lincoln Hill",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 3
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Lincoln Hill",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 3
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Lincoln Hill",
+    "code": "2",
+    "topic": "Project Purpose, Objectives, and Need",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Washington Square",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Washington Square",
+    "code": "5",
+    "topic": "Other Potential Alternatives",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Washington Square",
+    "code": "2",
+    "topic": "Project Purpose, Objectives, and Need",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Washington Square",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Washington Square",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Campus",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Campus",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Campus",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Campus",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Valley",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Valley",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Valley",
+    "code": "2",
+    "topic": "Project Purpose, Objectives, and Need",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Valley",
+    "code": "5",
+    "topic": "Other Potential Alternatives",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Valley",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "South Valley",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Near Eastside",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Near Eastside",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Near Eastside",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Near Eastside",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Near Eastside",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Meadowbrook",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Meadowbrook",
+    "code": "5",
+    "topic": "Other Potential Alternatives",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Tipp Hill",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Tipp Hill",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Tipp Hill",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Tipp Hill",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "North Valley",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "North Valley",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "North Valley",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "North Valley",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "North Valley",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Franklin Square",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Franklin Square",
+    "code": "7-3",
+    "topic": "Historic and Cultural Resources",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Franklin Square",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "University Neighborhood",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "University Neighborhood",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "University Neighborhood",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 2
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "University Neighborhood",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Sedgwick",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Sedgwick",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Sedgwick",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Sedgwick",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Southside",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Southside",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Southside",
+    "code": "7-2",
+    "topic": "Local and Regional Economies",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Southside",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Southside",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Eastwood",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Eastwood",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Eastwood",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Eastwood",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "neighborhood",
+    "group": "Eastwood",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Asian alone, not Hispanic or Latino",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 2
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Asian alone, not Hispanic or Latino",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 2
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Asian alone, not Hispanic or Latino",
+    "code": "2",
+    "topic": "Project Purpose, Objectives, and Need",
+    "comments": 1
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Asian alone, not Hispanic or Latino",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 1
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Asian alone, not Hispanic or Latino",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 1
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Asian alone, not Hispanic or Latino",
+    "code": "5",
+    "topic": "Other Potential Alternatives",
+    "comments": 1
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Asian alone, not Hispanic or Latino",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "White alone, not Hispanic or Latino",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 12
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "White alone, not Hispanic or Latino",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 10
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "White alone, not Hispanic or Latino",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 8
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "White alone, not Hispanic or Latino",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 5
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "White alone, not Hispanic or Latino",
+    "code": "2",
+    "topic": "Project Purpose, Objectives, and Need",
+    "comments": 3
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "White alone, not Hispanic or Latino",
+    "code": "5",
+    "topic": "Other Potential Alternatives",
+    "comments": 3
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "White alone, not Hispanic or Latino",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 1
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "White alone, not Hispanic or Latino",
+    "code": "7-3",
+    "topic": "Historic and Cultural Resources",
+    "comments": 1
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Black or African American alone, not Hispanic or Latino",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 4
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Black or African American alone, not Hispanic or Latino",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 4
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Black or African American alone, not Hispanic or Latino",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 4
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Black or African American alone, not Hispanic or Latino",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 3
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Black or African American alone, not Hispanic or Latino",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 2
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Black or African American alone, not Hispanic or Latino",
+    "code": "7-2",
+    "topic": "Local and Regional Economies",
+    "comments": 1
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Two or More Races, not Hispanic or Latino",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 2
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Two or More Races, not Hispanic or Latino",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 2
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Two or More Races, not Hispanic or Latino",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 2
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Two or More Races, not Hispanic or Latino",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 1
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Two or More Races, not Hispanic or Latino",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "race_ethnicity",
+    "group": "Two or More Races, not Hispanic or Latino",
+    "code": "2",
+    "topic": "Project Purpose, Objectives, and Need",
+    "comments": 1
+   },
+   {
+    "dimension": "age_band",
+    "group": "18 to 29",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 7
+   },
+   {
+    "dimension": "age_band",
+    "group": "18 to 29",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 7
+   },
+   {
+    "dimension": "age_band",
+    "group": "18 to 29",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 7
+   },
+   {
+    "dimension": "age_band",
+    "group": "18 to 29",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 4
+   },
+   {
+    "dimension": "age_band",
+    "group": "18 to 29",
+    "code": "2",
+    "topic": "Project Purpose, Objectives, and Need",
+    "comments": 3
+   },
+   {
+    "dimension": "age_band",
+    "group": "18 to 29",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 3
+   },
+   {
+    "dimension": "age_band",
+    "group": "30 to 44",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 6
+   },
+   {
+    "dimension": "age_band",
+    "group": "30 to 44",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 6
+   },
+   {
+    "dimension": "age_band",
+    "group": "30 to 44",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 5
+   },
+   {
+    "dimension": "age_band",
+    "group": "30 to 44",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 4
+   },
+   {
+    "dimension": "age_band",
+    "group": "30 to 44",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 2
+   },
+   {
+    "dimension": "age_band",
+    "group": "30 to 44",
+    "code": "5",
+    "topic": "Other Potential Alternatives",
+    "comments": 1
+   },
+   {
+    "dimension": "age_band",
+    "group": "30 to 44",
+    "code": "7-2",
+    "topic": "Local and Regional Economies",
+    "comments": 1
+   },
+   {
+    "dimension": "age_band",
+    "group": "65 and over",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 6
+   },
+   {
+    "dimension": "age_band",
+    "group": "65 and over",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 4
+   },
+   {
+    "dimension": "age_band",
+    "group": "65 and over",
+    "code": "5",
+    "topic": "Other Potential Alternatives",
+    "comments": 3
+   },
+   {
+    "dimension": "age_band",
+    "group": "65 and over",
+    "code": "2",
+    "topic": "Project Purpose, Objectives, and Need",
+    "comments": 2
+   },
+   {
+    "dimension": "age_band",
+    "group": "65 and over",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 2
+   },
+   {
+    "dimension": "age_band",
+    "group": "65 and over",
+    "code": "7-3",
+    "topic": "Historic and Cultural Resources",
+    "comments": 1
+   },
+   {
+    "dimension": "age_band",
+    "group": "65 and over",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "age_band",
+    "group": "45 to 64",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "age_band",
+    "group": "45 to 64",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 1
+   },
+   {
+    "dimension": "age_band",
+    "group": "45 to 64",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "age_band",
+    "group": "45 to 64",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "tenure",
+    "group": "Rented",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 8
+   },
+   {
+    "dimension": "tenure",
+    "group": "Rented",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 8
+   },
+   {
+    "dimension": "tenure",
+    "group": "Rented",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 8
+   },
+   {
+    "dimension": "tenure",
+    "group": "Rented",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 4
+   },
+   {
+    "dimension": "tenure",
+    "group": "Rented",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 4
+   },
+   {
+    "dimension": "tenure",
+    "group": "Rented",
+    "code": "2",
+    "topic": "Project Purpose, Objectives, and Need",
+    "comments": 2
+   },
+   {
+    "dimension": "tenure",
+    "group": "Rented",
+    "code": "7-2",
+    "topic": "Local and Regional Economies",
+    "comments": 1
+   },
+   {
+    "dimension": "tenure",
+    "group": "N/A (lives in group quarters such as a dorm or nursing home)",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 4
+   },
+   {
+    "dimension": "tenure",
+    "group": "N/A (lives in group quarters such as a dorm or nursing home)",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 4
+   },
+   {
+    "dimension": "tenure",
+    "group": "N/A (lives in group quarters such as a dorm or nursing home)",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 4
+   },
+   {
+    "dimension": "tenure",
+    "group": "N/A (lives in group quarters such as a dorm or nursing home)",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 3
+   },
+   {
+    "dimension": "tenure",
+    "group": "N/A (lives in group quarters such as a dorm or nursing home)",
+    "code": "2",
+    "topic": "Project Purpose, Objectives, and Need",
+    "comments": 1
+   },
+   {
+    "dimension": "tenure",
+    "group": "N/A (lives in group quarters such as a dorm or nursing home)",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 1
+   },
+   {
+    "dimension": "tenure",
+    "group": "Owned free and clear",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 5
+   },
+   {
+    "dimension": "tenure",
+    "group": "Owned free and clear",
+    "code": "5",
+    "topic": "Other Potential Alternatives",
+    "comments": 4
+   },
+   {
+    "dimension": "tenure",
+    "group": "Owned free and clear",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 3
+   },
+   {
+    "dimension": "tenure",
+    "group": "Owned free and clear",
+    "code": "2",
+    "topic": "Project Purpose, Objectives, and Need",
+    "comments": 2
+   },
+   {
+    "dimension": "tenure",
+    "group": "Owned free and clear",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 1
+   },
+   {
+    "dimension": "tenure",
+    "group": "Owned free and clear",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "tenure",
+    "group": "Owned with mortgage or loan",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 3
+   },
+   {
+    "dimension": "tenure",
+    "group": "Owned with mortgage or loan",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 3
+   },
+   {
+    "dimension": "tenure",
+    "group": "Owned with mortgage or loan",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 2
+   },
+   {
+    "dimension": "tenure",
+    "group": "Owned with mortgage or loan",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 2
+   },
+   {
+    "dimension": "tenure",
+    "group": "Owned with mortgage or loan",
+    "code": "7-3",
+    "topic": "Historic and Cultural Resources",
+    "comments": 1
+   },
+   {
+    "dimension": "income_band",
+    "group": "under $25,000",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 10
+   },
+   {
+    "dimension": "income_band",
+    "group": "under $25,000",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 10
+   },
+   {
+    "dimension": "income_band",
+    "group": "under $25,000",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 9
+   },
+   {
+    "dimension": "income_band",
+    "group": "under $25,000",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 7
+   },
+   {
+    "dimension": "income_band",
+    "group": "under $25,000",
+    "code": "2",
+    "topic": "Project Purpose, Objectives, and Need",
+    "comments": 3
+   },
+   {
+    "dimension": "income_band",
+    "group": "under $25,000",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 3
+   },
+   {
+    "dimension": "income_band",
+    "group": "under $25,000",
+    "code": "5",
+    "topic": "Other Potential Alternatives",
+    "comments": 1
+   },
+   {
+    "dimension": "income_band",
+    "group": "under $25,000",
+    "code": "7-2",
+    "topic": "Local and Regional Economies",
+    "comments": 1
+   },
+   {
+    "dimension": "income_band",
+    "group": "$25,000 to $49,999",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 6
+   },
+   {
+    "dimension": "income_band",
+    "group": "$25,000 to $49,999",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 4
+   },
+   {
+    "dimension": "income_band",
+    "group": "$25,000 to $49,999",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 3
+   },
+   {
+    "dimension": "income_band",
+    "group": "$25,000 to $49,999",
+    "code": "5",
+    "topic": "Other Potential Alternatives",
+    "comments": 2
+   },
+   {
+    "dimension": "income_band",
+    "group": "$25,000 to $49,999",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 2
+   },
+   {
+    "dimension": "income_band",
+    "group": "$25,000 to $49,999",
+    "code": "2",
+    "topic": "Project Purpose, Objectives, and Need",
+    "comments": 1
+   },
+   {
+    "dimension": "income_band",
+    "group": "$25,000 to $49,999",
+    "code": "7-3",
+    "topic": "Historic and Cultural Resources",
+    "comments": 1
+   },
+   {
+    "dimension": "income_band",
+    "group": "$25,000 to $49,999",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 1
+   },
+   {
+    "dimension": "income_band",
+    "group": "$50,000 to $99,999",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 3
+   },
+   {
+    "dimension": "income_band",
+    "group": "$50,000 to $99,999",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 3
+   },
+   {
+    "dimension": "income_band",
+    "group": "$50,000 to $99,999",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 2
+   },
+   {
+    "dimension": "income_band",
+    "group": "$50,000 to $99,999",
+    "code": "2",
+    "topic": "Project Purpose, Objectives, and Need",
+    "comments": 1
+   },
+   {
+    "dimension": "income_band",
+    "group": "$50,000 to $99,999",
+    "code": "5",
+    "topic": "Other Potential Alternatives",
+    "comments": 1
+   },
+   {
+    "dimension": "income_band",
+    "group": "$50,000 to $99,999",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   },
+   {
+    "dimension": "income_band",
+    "group": "$100,000 and over",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "income_band",
+    "group": "$100,000 and over",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 1
+   },
+   {
+    "dimension": "income_band",
+    "group": "$100,000 and over",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 1
+   },
+   {
+    "dimension": "income_band",
+    "group": "$100,000 and over",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "disability",
+    "group": "Without a disability",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 14
+   },
+   {
+    "dimension": "disability",
+    "group": "Without a disability",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 12
+   },
+   {
+    "dimension": "disability",
+    "group": "Without a disability",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 10
+   },
+   {
+    "dimension": "disability",
+    "group": "Without a disability",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 6
+   },
+   {
+    "dimension": "disability",
+    "group": "Without a disability",
+    "code": "2",
+    "topic": "Project Purpose, Objectives, and Need",
+    "comments": 4
+   },
+   {
+    "dimension": "disability",
+    "group": "Without a disability",
+    "code": "5",
+    "topic": "Other Potential Alternatives",
+    "comments": 4
+   },
+   {
+    "dimension": "disability",
+    "group": "Without a disability",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 3
+   },
+   {
+    "dimension": "disability",
+    "group": "Without a disability",
+    "code": "7-2",
+    "topic": "Local and Regional Economies",
+    "comments": 1
+   },
+   {
+    "dimension": "disability",
+    "group": "With a disability",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 6
+   },
+   {
+    "dimension": "disability",
+    "group": "With a disability",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 6
+   },
+   {
+    "dimension": "disability",
+    "group": "With a disability",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 5
+   },
+   {
+    "dimension": "disability",
+    "group": "With a disability",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 4
+   },
+   {
+    "dimension": "disability",
+    "group": "With a disability",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 2
+   },
+   {
+    "dimension": "disability",
+    "group": "With a disability",
+    "code": "7-3",
+    "topic": "Historic and Cultural Resources",
+    "comments": 1
+   },
+   {
+    "dimension": "disability",
+    "group": "With a disability",
+    "code": "2",
+    "topic": "Project Purpose, Objectives, and Need",
+    "comments": 1
+   },
+   {
+    "dimension": "commute",
+    "group": "N/A (not a worker, or not at work last week)",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 15
+   },
+   {
+    "dimension": "commute",
+    "group": "N/A (not a worker, or not at work last week)",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 13
+   },
+   {
+    "dimension": "commute",
+    "group": "N/A (not a worker, or not at work last week)",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 10
+   },
+   {
+    "dimension": "commute",
+    "group": "N/A (not a worker, or not at work last week)",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 7
+   },
+   {
+    "dimension": "commute",
+    "group": "N/A (not a worker, or not at work last week)",
+    "code": "2",
+    "topic": "Project Purpose, Objectives, and Need",
+    "comments": 5
+   },
+   {
+    "dimension": "commute",
+    "group": "N/A (not a worker, or not at work last week)",
+    "code": "5",
+    "topic": "Other Potential Alternatives",
+    "comments": 4
+   },
+   {
+    "dimension": "commute",
+    "group": "N/A (not a worker, or not at work last week)",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 3
+   },
+   {
+    "dimension": "commute",
+    "group": "N/A (not a worker, or not at work last week)",
+    "code": "7-3",
+    "topic": "Historic and Cultural Resources",
+    "comments": 1
+   },
+   {
+    "dimension": "commute",
+    "group": "N/A (not a worker, or not at work last week)",
+    "code": "7-2",
+    "topic": "Local and Regional Economies",
+    "comments": 1
+   },
+   {
+    "dimension": "commute",
+    "group": "Car, truck, or van",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 4
+   },
+   {
+    "dimension": "commute",
+    "group": "Car, truck, or van",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 4
+   },
+   {
+    "dimension": "commute",
+    "group": "Car, truck, or van",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 4
+   },
+   {
+    "dimension": "commute",
+    "group": "Car, truck, or van",
+    "code": "6",
+    "topic": "Transportation Considerations",
+    "comments": 2
+   },
+   {
+    "dimension": "commute",
+    "group": "Car, truck, or van",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 2
+   },
+   {
+    "dimension": "commute",
+    "group": "Worked from home",
+    "code": "4",
+    "topic": "Community Grid Alternative",
+    "comments": 1
+   },
+   {
+    "dimension": "commute",
+    "group": "Worked from home",
+    "code": "7-1",
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "comments": 1
+   },
+   {
+    "dimension": "commute",
+    "group": "Worked from home",
+    "code": "7-7",
+    "topic": "Construction",
+    "comments": 1
+   },
+   {
+    "dimension": "commute",
+    "group": "Worked from home",
+    "code": "8",
+    "topic": "Public Outreach",
+    "comments": 1
+   }
+  ],
+  "comment_codes": [
+   {
+    "resident_id": "r000",
+    "codes": [
+     "2",
+     "4",
+     "6",
+     "7-1",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r001",
+    "codes": [
+     "4",
+     "7-1",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r002",
+    "codes": [
+     "2",
+     "4",
+     "7-1",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r003",
+    "codes": [
+     "2",
+     "4",
+     "5"
+    ]
+   },
+   {
+    "resident_id": "r004",
+    "codes": [
+     "4",
+     "7-1",
+     "7-7",
+     "8"
+    ]
+   },
+   {
+    "resident_id": "r005",
+    "codes": [
+     "2",
+     "4",
+     "5",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r006",
+    "codes": [
+     "4",
+     "6",
+     "7-1",
+     "7-7",
+     "8"
+    ]
+   },
+   {
+    "resident_id": "r007",
+    "codes": [
+     "4",
+     "5"
+    ]
+   },
+   {
+    "resident_id": "r008",
+    "codes": [
+     "4",
+     "7-1",
+     "7-7",
+     "8"
+    ]
+   },
+   {
+    "resident_id": "r009",
+    "codes": [
+     "4",
+     "6",
+     "7-1",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r010",
+    "codes": [
+     "4",
+     "6",
+     "7-1",
+     "7-7",
+     "8"
+    ]
+   },
+   {
+    "resident_id": "r011",
+    "codes": [
+     "4",
+     "7-3",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r012",
+    "codes": [
+     "4",
+     "7-1",
+     "7-7"
+    ]
+   },
+   {
+    "resident_id": "r013",
+    "codes": [
+     "4",
+     "5",
+     "7-7",
+     "8"
+    ]
+   },
+   {
+    "resident_id": "r014",
+    "codes": [
+     "4",
+     "7-1",
+     "7-7",
+     "8"
+    ]
+   },
+   {
+    "resident_id": "r015",
+    "codes": [
+     "4",
+     "7-1",
+     "7-7",
+     "8"
+    ]
+   },
+   {
+    "resident_id": "r016",
+    "codes": [
+     "4",
+     "7-1",
+     "7-7",
+     "8"
+    ]
+   },
+   {
+    "resident_id": "r017",
+    "codes": [
+     "4",
+     "7-1",
+     "7-2",
+     "7-7",
+     "8"
+    ]
+   },
+   {
+    "resident_id": "r018",
+    "codes": [
+     "4",
+     "6",
+     "7-1",
+     "7-7",
+     "8"
+    ]
+   },
+   {
+    "resident_id": "r019",
+    "codes": [
+     "2",
+     "4",
+     "7-1",
+     "7-7"
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "title": "Topics raised",
+    "rows": [
+     {
+      "code": "4",
+      "topic": "Community Grid Alternative",
+      "simulated comments": 20
+     },
+     {
+      "code": "7-7",
+      "topic": "Construction",
+      "simulated comments": 18
+     },
+     {
+      "code": "7-1",
+      "topic": "Land Acquisition, Displacement, and Relocation",
+      "simulated comments": 15
+     },
+     {
+      "code": "8",
+      "topic": "Public Outreach",
+      "simulated comments": 10
+     },
+     {
+      "code": "2",
+      "topic": "Project Purpose, Objectives, and Need",
+      "simulated comments": 5
+     },
+     {
+      "code": "6",
+      "topic": "Transportation Considerations",
+      "simulated comments": 5
+     },
+     {
+      "code": "5",
+      "topic": "Other Potential Alternatives",
+      "simulated comments": 4
+     },
+     {
+      "code": "7-3",
+      "topic": "Historic and Cultural Resources",
+      "simulated comments": 1
+     },
+     {
+      "code": "7-2",
+      "topic": "Local and Regional Economies",
+      "simulated comments": 1
+     }
+    ]
+   },
+   {
+    "title": "Topics by neighborhood",
+    "rows": [
+     {
+      "neighborhood": "University Hill",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Project Purpose, Objectives, and Need (1); Community Grid Alternative (1); Transportation Considerations (1)"
+     },
+     {
+      "neighborhood": "Lincoln Hill",
+      "simulated residents": 3,
+      "comments": 3,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (3); Land Acquisition, Displacement, and Relocation (3); Construction (3)"
+     },
+     {
+      "neighborhood": "Washington Square",
+      "simulated residents": 2,
+      "comments": 2,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (2); Other Potential Alternatives (2); Project Purpose, Objectives, and Need (1)"
+     },
+     {
+      "neighborhood": "South Campus",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (1); Land Acquisition, Displacement, and Relocation (1); Construction (1)"
+     },
+     {
+      "neighborhood": "South Valley",
+      "simulated residents": 2,
+      "comments": 2,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (2); Construction (2); Project Purpose, Objectives, and Need (1)"
+     },
+     {
+      "neighborhood": "Near Eastside",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (1); Transportation Considerations (1); Land Acquisition, Displacement, and Relocation (1)"
+     },
+     {
+      "neighborhood": "Meadowbrook",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (1); Other Potential Alternatives (1)"
+     },
+     {
+      "neighborhood": "Tipp Hill",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (1); Land Acquisition, Displacement, and Relocation (1); Construction (1)"
+     },
+     {
+      "neighborhood": "North Valley",
+      "simulated residents": 2,
+      "comments": 2,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (2); Land Acquisition, Displacement, and Relocation (2); Construction (2)"
+     },
+     {
+      "neighborhood": "Franklin Square",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (1); Historic and Cultural Resources (1); Construction (1)"
+     },
+     {
+      "neighborhood": "University Neighborhood",
+      "simulated residents": 2,
+      "comments": 2,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (2); Land Acquisition, Displacement, and Relocation (2); Construction (2)"
+     },
+     {
+      "neighborhood": "Sedgwick",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (1); Land Acquisition, Displacement, and Relocation (1); Construction (1)"
+     },
+     {
+      "neighborhood": "Southside",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (1); Land Acquisition, Displacement, and Relocation (1); Local and Regional Economies (1)"
+     },
+     {
+      "neighborhood": "Eastwood",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (1); Transportation Considerations (1); Land Acquisition, Displacement, and Relocation (1)"
+     }
+    ]
+   },
+   {
+    "title": "Topics by group",
+    "rows": [
+     {
+      "group type": "race ethnicity",
+      "group": "Asian alone, not Hispanic or Latino",
+      "simulated residents": 2,
+      "comments": 2,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (2); Construction (2); Project Purpose, Objectives, and Need (1)"
+     },
+     {
+      "group type": "race ethnicity",
+      "group": "White alone, not Hispanic or Latino",
+      "simulated residents": 12,
+      "comments": 12,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (12); Construction (10); Land Acquisition, Displacement, and Relocation (8)"
+     },
+     {
+      "group type": "race ethnicity",
+      "group": "Black or African American alone, not Hispanic or Latino",
+      "simulated residents": 4,
+      "comments": 4,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (4); Land Acquisition, Displacement, and Relocation (4); Construction (4)"
+     },
+     {
+      "group type": "race ethnicity",
+      "group": "Two or More Races, not Hispanic or Latino",
+      "simulated residents": 2,
+      "comments": 2,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (2); Land Acquisition, Displacement, and Relocation (2); Construction (2)"
+     },
+     {
+      "group type": "age band",
+      "group": "18 to 29",
+      "simulated residents": 7,
+      "comments": 7,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (7); Land Acquisition, Displacement, and Relocation (7); Construction (7)"
+     },
+     {
+      "group type": "age band",
+      "group": "30 to 44",
+      "simulated residents": 6,
+      "comments": 6,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (6); Construction (6); Land Acquisition, Displacement, and Relocation (5)"
+     },
+     {
+      "group type": "age band",
+      "group": "65 and over",
+      "simulated residents": 6,
+      "comments": 6,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (6); Construction (4); Other Potential Alternatives (3)"
+     },
+     {
+      "group type": "age band",
+      "group": "45 to 64",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (1); Land Acquisition, Displacement, and Relocation (1); Construction (1)"
+     },
+     {
+      "group type": "tenure",
+      "group": "Rented",
+      "simulated residents": 8,
+      "comments": 8,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (8); Land Acquisition, Displacement, and Relocation (8); Construction (8)"
+     },
+     {
+      "group type": "tenure",
+      "group": "N/A (lives in group quarters such as a dorm or nursing home)",
+      "simulated residents": 4,
+      "comments": 4,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (4); Land Acquisition, Displacement, and Relocation (4); Construction (4)"
+     },
+     {
+      "group type": "tenure",
+      "group": "Owned free and clear",
+      "simulated residents": 5,
+      "comments": 5,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (5); Other Potential Alternatives (4); Construction (3)"
+     },
+     {
+      "group type": "tenure",
+      "group": "Owned with mortgage or loan",
+      "simulated residents": 3,
+      "comments": 3,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (3); Construction (3); Land Acquisition, Displacement, and Relocation (2)"
+     },
+     {
+      "group type": "income band",
+      "group": "under $25,000",
+      "simulated residents": 10,
+      "comments": 10,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (10); Construction (10); Land Acquisition, Displacement, and Relocation (9)"
+     },
+     {
+      "group type": "income band",
+      "group": "$25,000 to $49,999",
+      "simulated residents": 6,
+      "comments": 6,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (6); Construction (4); Land Acquisition, Displacement, and Relocation (3)"
+     },
+     {
+      "group type": "income band",
+      "group": "$50,000 to $99,999",
+      "simulated residents": 3,
+      "comments": 3,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (3); Construction (3); Land Acquisition, Displacement, and Relocation (2)"
+     },
+     {
+      "group type": "income band",
+      "group": "$100,000 and over",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (1); Transportation Considerations (1); Land Acquisition, Displacement, and Relocation (1)"
+     },
+     {
+      "group type": "disability",
+      "group": "Without a disability",
+      "simulated residents": 14,
+      "comments": 14,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (14); Construction (12); Land Acquisition, Displacement, and Relocation (10)"
+     },
+     {
+      "group type": "disability",
+      "group": "With a disability",
+      "simulated residents": 6,
+      "comments": 6,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (6); Construction (6); Land Acquisition, Displacement, and Relocation (5)"
+     },
+     {
+      "group type": "commute",
+      "group": "N/A (not a worker, or not at work last week)",
+      "simulated residents": 15,
+      "comments": 15,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (15); Construction (13); Land Acquisition, Displacement, and Relocation (10)"
+     },
+     {
+      "group type": "commute",
+      "group": "Car, truck, or van",
+      "simulated residents": 4,
+      "comments": 4,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (4); Land Acquisition, Displacement, and Relocation (4); Construction (4)"
+     },
+     {
+      "group type": "commute",
+      "group": "Worked from home",
+      "simulated residents": 1,
+      "comments": 1,
+      "comments with no topic": 0,
+      "top topics": "Community Grid Alternative (1); Land Acquisition, Displacement, and Relocation (1); Construction (1)"
+     }
+    ]
+   }
+  ],
+  "sample_comments": [
+   {
+    "label": "SIMULATED",
+    "simulated": true,
+    "topic": "Project Purpose, Objectives, and Need",
+    "resident_id": "r000",
+    "neighborhood": "University Hill",
+    "stance": "mixed",
+    "text": "As a renter with no income living in University Hill, I appreciate that the Community Grid Alternative aims to improve pedestrian and bicycle connections without displacing residents, which is important for neighborhood cohesion and accessibility (2). However, I am concerned about the significant loss of public off-street parking spaces and hope that mitigation efforts will adequately address this impact to maintain access for all residents (3). Additionally, the lengthy construction timeline worries me because it could disrupt access to essential services and neighborhood connectivity, so clear communication and support during this period are crucial. Overall, I support the project's goals but remain cautiously optimistic about how these challenges will be managed.",
+    "cited_pages": [
+     [
+      "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+      15
+     ],
+     [
+      "05 Transportation and Engineering Considerations_April 2022",
+      211
+     ]
+    ],
+    "cited": "06-2-2 Social Groups Benefitted or Harmed_April 2022, page 15; 05 Transportation and Engineering Considerations_April 2022, page 211"
+   },
+   {
+    "label": "SIMULATED",
+    "simulated": true,
+    "topic": "Community Grid Alternative",
+    "resident_id": "r000",
+    "neighborhood": "University Hill",
+    "stance": "mixed",
+    "text": "As a renter with no income living in University Hill, I appreciate that the Community Grid Alternative aims to improve pedestrian and bicycle connections without displacing residents, which is important for neighborhood cohesion and accessibility (2). However, I am concerned about the significant loss of public off-street parking spaces and hope that mitigation efforts will adequately address this impact to maintain access for all residents (3). Additionally, the lengthy construction timeline worries me because it could disrupt access to essential services and neighborhood connectivity, so clear communication and support during this period are crucial. Overall, I support the project's goals but remain cautiously optimistic about how these challenges will be managed.",
+    "cited_pages": [
+     [
+      "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+      15
+     ],
+     [
+      "05 Transportation and Engineering Considerations_April 2022",
+      211
+     ]
+    ],
+    "cited": "06-2-2 Social Groups Benefitted or Harmed_April 2022, page 15; 05 Transportation and Engineering Considerations_April 2022, page 211"
+   },
+   {
+    "label": "SIMULATED",
+    "simulated": true,
+    "topic": "Transportation Considerations",
+    "resident_id": "r000",
+    "neighborhood": "University Hill",
+    "stance": "mixed",
+    "text": "As a renter with no income living in University Hill, I appreciate that the Community Grid Alternative aims to improve pedestrian and bicycle connections without displacing residents, which is important for neighborhood cohesion and accessibility (2). However, I am concerned about the significant loss of public off-street parking spaces and hope that mitigation efforts will adequately address this impact to maintain access for all residents (3). Additionally, the lengthy construction timeline worries me because it could disrupt access to essential services and neighborhood connectivity, so clear communication and support during this period are crucial. Overall, I support the project's goals but remain cautiously optimistic about how these challenges will be managed.",
+    "cited_pages": [
+     [
+      "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+      15
+     ],
+     [
+      "05 Transportation and Engineering Considerations_April 2022",
+      211
+     ]
+    ],
+    "cited": "06-2-2 Social Groups Benefitted or Harmed_April 2022, page 15; 05 Transportation and Engineering Considerations_April 2022, page 211"
+   },
+   {
+    "label": "SIMULATED",
+    "simulated": true,
+    "topic": "Land Acquisition, Displacement, and Relocation",
+    "resident_id": "r000",
+    "neighborhood": "University Hill",
+    "stance": "mixed",
+    "text": "As a renter with no income living in University Hill, I appreciate that the Community Grid Alternative aims to improve pedestrian and bicycle connections without displacing residents, which is important for neighborhood cohesion and accessibility (2). However, I am concerned about the significant loss of public off-street parking spaces and hope that mitigation efforts will adequately address this impact to maintain access for all residents (3). Additionally, the lengthy construction timeline worries me because it could disrupt access to essential services and neighborhood connectivity, so clear communication and support during this period are crucial. Overall, I support the project's goals but remain cautiously optimistic about how these challenges will be managed.",
+    "cited_pages": [
+     [
+      "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+      15
+     ],
+     [
+      "05 Transportation and Engineering Considerations_April 2022",
+      211
+     ]
+    ],
+    "cited": "06-2-2 Social Groups Benefitted or Harmed_April 2022, page 15; 05 Transportation and Engineering Considerations_April 2022, page 211"
+   },
+   {
+    "label": "SIMULATED",
+    "simulated": true,
+    "topic": "Construction",
+    "resident_id": "r000",
+    "neighborhood": "University Hill",
+    "stance": "mixed",
+    "text": "As a renter with no income living in University Hill, I appreciate that the Community Grid Alternative aims to improve pedestrian and bicycle connections without displacing residents, which is important for neighborhood cohesion and accessibility (2). However, I am concerned about the significant loss of public off-street parking spaces and hope that mitigation efforts will adequately address this impact to maintain access for all residents (3). Additionally, the lengthy construction timeline worries me because it could disrupt access to essential services and neighborhood connectivity, so clear communication and support during this period are crucial. Overall, I support the project's goals but remain cautiously optimistic about how these challenges will be managed.",
+    "cited_pages": [
+     [
+      "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+      15
+     ],
+     [
+      "05 Transportation and Engineering Considerations_April 2022",
+      211
+     ]
+    ],
+    "cited": "06-2-2 Social Groups Benefitted or Harmed_April 2022, page 15; 05 Transportation and Engineering Considerations_April 2022, page 211"
+   },
+   {
+    "label": "SIMULATED",
+    "simulated": true,
+    "topic": "Other Potential Alternatives",
+    "resident_id": "r003",
+    "neighborhood": "Washington Square",
+    "stance": "support",
+    "text": "As a longtime homeowner in Washington Square, I support the Community Grid Alternative because it aims to improve neighborhood cohesion and connectivity without displacing residents, which is important to maintaining our community character [4]. I appreciate that the project will not adversely impact land use patterns in our neighborhood, as vacant and surface parking spaces will be converted thoughtfully without disrupting the balance of uses [2]. While I understand concerns about parking losses, I am reassured by NYSDOT's commitment to mitigation measures to address these impacts [5]. Overall, I believe this project will enhance our neighborhood while preserving what makes it special.",
+    "cited_pages": [
+     [
+      "06-2-1 Neighborhood Character_April 2022",
+      58
+     ],
+     [
+      "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+      15
+     ],
+     [
+      "05 Transportation and Engineering Considerations_April 2022",
+      135
+     ]
+    ],
+    "cited": "06-2-1 Neighborhood Character_April 2022, page 58; 06-2-2 Social Groups Benefitted or Harmed_April 2022, page 15; 05 Transportation and Engineering Considerations_April 2022, page 135"
+   },
+   {
+    "label": "SIMULATED",
+    "simulated": true,
+    "topic": "Public Outreach",
+    "resident_id": "r004",
+    "neighborhood": "South Campus",
+    "stance": "support",
+    "text": "As a young renter living near South Campus with no income and no commute, I strongly support the Community Grid Alternative because it improves neighborhood cohesion and connectivity without displacing residents like me. I appreciate that the plan enhances pedestrian and bicycle amenities, making it safer and easier to get around our neighborhoods on foot or by bike. While I am concerned about the long construction timeline, I am reassured by NYSDOT's commitment to clear communication and outreach to support residents' access to essential services during this period. Overall, this project aligns with my hope for a more connected and accessible community. (Citing excerpts 1, 3, and the meeting summary)",
+    "cited_pages": [
+     [
+      "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+      15
+     ],
+     [
+      "06-2-1 Neighborhood Character_April 2022",
+      55
+     ]
+    ],
+    "cited": "06-2-2 Social Groups Benefitted or Harmed_April 2022, page 15; 06-2-1 Neighborhood Character_April 2022, page 55"
+   },
+   {
+    "label": "SIMULATED",
+    "simulated": true,
+    "topic": "Historic and Cultural Resources",
+    "resident_id": "r011",
+    "neighborhood": "Franklin Square",
+    "stance": "mixed",
+    "text": "As an 86-year-old homeowner in Franklin Square, I am reassured to learn that the Community Grid Alternative is considered compatible with our neighborhood's visual and land use character, with only minor adverse visual changes and no expected impacts to current land uses, including parking (excerpts 1 and 2). While I understand concerns about construction disruptions, I appreciate that the project aims to preserve neighborhood cohesion and historic sites like the Remington Monarch Typewriter Company Building (excerpts 3 and 4). Overall, I support the project’s goals but hope that mitigation efforts carefully address accessibility and parking impacts during the lengthy construction period.",
+    "cited_pages": [
+     [
+      "06-4-3 Visual_April 2022",
+      71
+     ],
+     [
+      "06-2-1 Neighborhood Character_April 2022",
+      58
+     ],
+     [
+      "07 Final Section 4f Evaluation_April 2022",
+      46
+     ],
+     [
+      "07 Final Section 4f Evaluation_April 2022",
+      31
+     ]
+    ],
+    "cited": "06-4-3 Visual_April 2022, page 71; 06-2-1 Neighborhood Character_April 2022, page 58; 07 Final Section 4f Evaluation_April 2022, page 46; 07 Final Section 4f Evaluation_April 2022, page 31"
+   },
+   {
+    "label": "SIMULATED",
+    "simulated": true,
+    "topic": "Local and Regional Economies",
+    "resident_id": "r017",
+    "neighborhood": "Southside",
+    "stance": "support",
+    "text": "As a renter in Southside with no income and no commute, I support the Community Grid Alternative because it improves pedestrian and bicycle connections without displacing residents, which is important for neighborhood cohesion and accessibility (excerpt 1). I appreciate the project's focus on maintaining neighborhood connectivity and NYSDOT's commitment to communication and outreach to help residents like me during the lengthy construction period (excerpt 2). This plan offers a positive vision for our neighborhood's future with improved local connections and economic potential (excerpts 3 and 4).",
+    "cited_pages": [
+     [
+      "06-2-2 Social Groups Benefitted or Harmed_April 2022",
+      15
+     ],
+     [
+      "06-2-3 Environmental Justice_April 2022",
+      50
+     ],
+     [
+      "06-3-1 LandAcqDisplRelocated_April 2022",
+      34
+     ],
+     [
+      "06-3-2 EC-Local and Regional Economy_April 2022",
+      25
+     ]
+    ],
+    "cited": "06-2-2 Social Groups Benefitted or Harmed_April 2022, page 15; 06-2-3 Environmental Justice_April 2022, page 50; 06-3-1 LandAcqDisplRelocated_April 2022, page 34; 06-3-2 EC-Local and Regional Economy_April 2022, page 25"
+   }
+  ],
+  "reach_in_person": [
+   "age band, 45 to 64: 1 simulated residents, 4.92 expected. Underrepresented: 1 simulated residents where its population share implies 4.9; only one simulated resident speaks for this group.",
+   "neighborhood, Northside: 0 simulated residents, 2.14 expected. No simulated resident, though the group is 10.7% of the population.",
+   "race ethnicity, Hispanic or Latino: 0 simulated residents, 1.67 expected. No simulated resident, though the group is 8.4% of the population.",
+   "commute, Walked: 0 simulated residents, 0.95 expected. No simulated resident, though the group is 4.8% of the population.",
+   "neighborhood, Near Westside: 0 simulated residents, 0.9 expected. No simulated resident, though the group is 4.5% of the population.",
+   "neighborhood, Brighton: 0 simulated residents, 0.88 expected. No simulated resident, though the group is 4.4% of the population.",
+   "neighborhood, Eastwood: 1 simulated residents, 1.83 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Court-Woodlawn: 0 simulated residents, 0.77 expected. No simulated resident, though the group is 3.9% of the population.",
+   "neighborhood, University Hill: 1 simulated residents, 1.65 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Salt Springs: 0 simulated residents, 0.63 expected. No simulated resident, though the group is 3.1% of the population.",
+   "neighborhood, Strathmore: 0 simulated residents, 0.55 expected. No simulated resident, though the group is 2.8% of the population.",
+   "neighborhood, Elmwood: 0 simulated residents, 0.54 expected. No simulated resident, though the group is 2.7% of the population.",
+   "commute, Bus: 0 simulated residents, 0.49 expected. No simulated resident, though the group is 2.5% of the population.",
+   "neighborhood, Downtown: 0 simulated residents, 0.45 expected. No simulated resident, though the group is 2.3% of the population.",
+   "neighborhood, Outer Comstock: 0 simulated residents, 0.45 expected. No simulated resident, though the group is 2.2% of the population.",
+   "neighborhood, Park Ave.: 0 simulated residents, 0.33 expected. No simulated resident, though the group is 1.7% of the population.",
+   "neighborhood, Skunk City: 0 simulated residents, 0.31 expected. No simulated resident, though the group is 1.5% of the population.",
+   "neighborhood, Westcott: 0 simulated residents, 0.28 expected. No simulated resident, though the group is 1.4% of the population.",
+   "neighborhood, Far Westside: 0 simulated residents, 0.27 expected. No simulated resident, though the group is 1.4% of the population.",
+   "neighborhood, Southwest: 0 simulated residents, 0.25 expected. No simulated resident, though the group is 1.2% of the population.",
+   "income band, $100,000 and over: 1 simulated residents, 1.24 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Prospect Hill: 0 simulated residents, 0.23 expected. No simulated resident, though the group is 1.1% of the population.",
+   "commute, Worked from home: 1 simulated residents, 1.22 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Winkworth: 0 simulated residents, 0.19 expected. No simulated resident, though the group is 0.9% of the population.",
+   "commute, Other method: 0 simulated residents, 0.18 expected. No simulated resident, though the group is 0.9% of the population.",
+   "tenure, Occupied without payment of rent: 0 simulated residents, 0.18 expected. No simulated resident, though the group is 0.9% of the population.",
+   "commute, Taxi or ride hailing services: 0 simulated residents, 0.14 expected. No simulated resident, though the group is 0.7% of the population.",
+   "race ethnicity, Some Other Race alone, not Hispanic or Latino: 0 simulated residents, 0.09 expected. No simulated resident, though the group is 0.4% of the population.",
+   "commute, Bicycle: 0 simulated residents, 0.08 expected. No simulated resident, though the group is 0.4% of the population.",
+   "commute, Subway or elevated rail: 0 simulated residents, 0.07 expected. No simulated resident, though the group is 0.3% of the population.",
+   "race ethnicity, American Indian alone, not Hispanic or Latino: 0 simulated residents, 0.05 expected. No simulated resident, though the group is 0.2% of the population.",
+   "race ethnicity, American Indian and Alaska Native tribes specified, or not specified and no other races, not Hispanic or Latino: 0 simulated residents, 0.02 expected. No simulated resident, though the group is 0.1% of the population.",
+   "commute, Motorcycle: 0 simulated residents, 0.01 expected. No simulated resident, though the group is 0.0% of the population.",
+   "race ethnicity, Native Hawaiian and Other Pacific Islander alone, not Hispanic or Latino: 0 simulated residents, 0.0 expected. No simulated resident, though the group is 0.0% of the population.",
+   "neighborhood, South Campus: 1 simulated residents, 0.71 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Southside: 1 simulated residents, 0.66 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Meadowbrook: 1 simulated residents, 0.61 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Tipp Hill: 1 simulated residents, 0.59 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Sedgwick: 1 simulated residents, 0.47 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Near Eastside: 1 simulated residents, 0.3 expected. Only one simulated resident speaks for this group.",
+   "neighborhood, Franklin Square: 1 simulated residents, 0.17 expected. Only one simulated resident speaks for this group."
+  ]
+ },
+ "usage": {
+  "meetings": {
+   "real_calls": 61,
+   "prompt_tokens": 77001,
+   "completion_tokens": 11647,
+   "total_tokens": 88648
+  },
+  "meetings_and_report": {
+   "real_calls": 81,
+   "prompt_tokens": 92636,
+   "completion_tokens": 12100,
+   "total_tokens": 104736
+  }
+ }
+}

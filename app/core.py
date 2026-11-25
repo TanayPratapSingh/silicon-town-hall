@@ -6,12 +6,15 @@ Every resident, turn, comment and memory in a scenario is simulated.
 """
 
 import json
+import os
 import re
 import shutil
+import zlib
 from datetime import datetime, timezone
 from functools import cache
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 from townhall import config
@@ -28,6 +31,8 @@ UPLOADS = APP / "uploads"
 EMBED = None  # memory embedder; None loads all-MiniLM-L6-v2 on first use, tests pass a stand in
 
 PILOT_ID = "pilot_I-81_seed_0"  # sorts before the dated scenarios, so the pilot is listed first
+DEMO = Path(__file__).resolve().parent / "demo"  # committed runs for the online demo: simulated text, public Census rows
+DEMO_RUNS = ("control_seed0", "whatif_seed0", "scale_seed2")  # runs/scenario_<name>.json, exported with the pilot
 PRESETS = {"I-81 Syracuse (New York, PUMA 00701)": ("36", "00701")}
 I81 = {"kind": "preset", "name": pilot.POLICY, "topic": pilot.TOPIC, "db_dir": str(index.DB_DIR)}
 FAKE_LABEL = "Free test model: FakeLLM template text, not a model. Simulated."
@@ -77,6 +82,31 @@ def resident_table(residents):
 @cache
 def get_retriever(db_dir):
     return Retriever(db_dir=Path(db_dir))
+
+
+def index_ready(db_dir):
+    """False on the online demo: the 724 MB impact statement index stays on the team's computer."""
+    return Path(db_dir).exists()
+
+
+def hash_embed(texts):
+    """Word hashing vectors for memory recall when sentence-transformers is not installed (the online demo).
+    shortcut: matches shared words, not meaning; install sentence-transformers to get all-MiniLM-L6-v2."""
+    out = np.zeros((len(texts), 256), dtype=np.float32)
+    for i, text in enumerate(texts):
+        for word in re.findall(r"[a-z]+", text.lower()):
+            out[i, zlib.crc32(word.encode()) % 256] += 1
+    return out / np.maximum(np.linalg.norm(out, axis=1, keepdims=True), 1e-9)
+
+
+def memory_embedder():
+    if EMBED is not None:
+        return EMBED
+    try:
+        import sentence_transformers  # noqa: F401
+    except ImportError:
+        return hash_embed
+    return None  # Memory loads all-MiniLM-L6-v2 itself
 
 
 def page_count(db_dir):
@@ -152,9 +182,15 @@ def run_scenario(name, residents, policy, neighborhoods, rounds, llm, vision=Fal
     home.mkdir(parents=True)
     policy_text = policy["name"] + (f". Proposed change under test: {change}" if change.strip() else "")
     total, meetings, error = rounds * len(neighborhoods), [], None
-    memory = Memory(home / "memory.sqlite", embed=EMBED)
+    memory = Memory(home / "memory.sqlite", embed=memory_embedder())
+    ready = index_ready(policy["db_dir"])
     try:
-        retrieve = meeting.retriever_from(get_retriever(policy["db_dir"]), k=5, llm=llm if vision else None)
+        if ready:
+            retrieve = meeting.retriever_from(get_retriever(policy["db_dir"]), k=5, llm=llm if vision else None)
+        elif isinstance(llm, FakeLLM):
+            retrieve = pilot.fake_retriever  # online demo: six FAKE pages, labeled in the settings below
+        else:
+            raise RuntimeError("the policy index is not on this server, so a real model run would cite nothing")
         for rnd in range(1, rounds + 1):
             for hood in neighborhoods:
                 if on_progress:
@@ -175,7 +211,8 @@ def run_scenario(name, residents, policy, neighborhoods, rounds, llm, vision=Fal
         "settings": {**(community or {}), "policy": policy["name"], "policy_kind": policy["kind"],
                      "policy_db": policy["db_dir"], "neighborhoods": list(neighborhoods), "group_by": group_by,
                      "rounds": rounds,
-                     "meeting_text_by": written_by(llm), "vision_rerank": vision, "proposed_change": change},
+                     "meeting_text_by": written_by(llm), "vision_rerank": vision, "proposed_change": change,
+                     "retrieval": "impact statement index" if ready else "FAKE pages: the index is not on this server"},
         "status": "complete" if error is None else f"stopped early: {error}",
         "residents": residents, "meetings": meetings, "report": None, "usage": {"meetings": usage(llm)},
     }
@@ -313,6 +350,34 @@ def import_pilot():
     return scenario
 
 
+def export_demo():
+    """Copy the pilot and the DEMO_RUNS scenarios into app/demo/ for the online demo, without memory files and
+    with local paths made relative. Returns the ids written."""
+    DEMO.mkdir(exist_ok=True)
+    ids = [PILOT_ID] + [json.loads((config.RUNS / f"scenario_{n}.json").read_text())["scenario_id"] for n in DEMO_RUNS
+                        if (config.RUNS / f"scenario_{n}.json").exists()]
+    root = str(config.ROOT) + "/"
+    for sid in ids:
+        text = (SCENARIOS / sid / "scenario.json").read_text().replace(root, "")
+        assert "/Users/" not in text, f"{sid} still holds a local path"
+        (DEMO / f"{sid}.json").write_text(text)
+    return ids
+
+
+def seed_demo():
+    """With SILICON_DEMO=1 (the online demo), copy app/demo/ scenarios into SCENARIOS where missing."""
+    if os.environ.get("SILICON_DEMO") != "1":
+        return 0
+    copied = 0
+    for path in DEMO.glob("*.json"):
+        home = SCENARIOS / path.stem
+        if not (home / "scenario.json").exists():
+            home.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(path, home / "scenario.json")
+            copied += 1
+    return copied
+
+
 def list_scenarios():
     """Saved scenarios, newest first."""
     paths = sorted(SCENARIOS.glob("*/scenario.json"), reverse=True)
@@ -355,5 +420,9 @@ def delete_scenario(sid):
     shutil.rmtree(home)
 
 
-if __name__ == "__main__":  # python -m app.core imports the real pilot as a scenario
+if __name__ == "__main__":  # python -m app.core imports the real pilot; --export-demo then writes app/demo/
+    import sys
+
     print("saved scenario", import_pilot()["id"])
+    if "--export-demo" in sys.argv:
+        print("exported", export_demo())
